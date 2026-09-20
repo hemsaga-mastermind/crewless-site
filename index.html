@@ -114,51 +114,53 @@ footer .mono{color:var(--mut);}
   <canvas id="net"></canvas>
   <div class="scrim"></div>
   <div class="console">
-    <div class="ch"><span>ops · live</span><span class="lv">● running</span></div>
+    <div class="ch"><span>the team · live</span><span class="lv">● running</span></div>
     <div class="feed" id="feed"></div>
   </div>
   <div class="wrap hcontent">
-    <div class="hud"><span class="dot"></span> A living organization · <b id="hstate">running</b></div>
-    <h1>Watch a company <span class="g">run itself.</span></h1>
-    <p class="lede">One person holds the vision. A network of AI agents builds the products,
-      runs the operations and keeps the lights on. Above is that organization, working —
-      each node an agent, each pulse a piece of work moving between them.</p>
+    <div class="hud"><span class="dot"></span> An AI-run company · <b id="hstate">running</b></div>
+    <h1>A company run by <span class="g">AI agents.</span></h1>
+    <p class="lede">At Crewless, one founder sets the direction and makes the important
+      decisions. A team of AI agents does the rest — researching ideas, building the
+      software, and running the day-to-day, around the clock. The network above is that
+      team at work: each point is an agent, each moving light a piece of work passing between them.</p>
     <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="#contact">Get in touch</a></div>
   </div>
 </div>
 
 <main>
 <section id="idea"><div class="wrap">
-  <p class="kick">The idea</p>
-  <p class="big">Smart things no longer need a building full of people.</p>
-  <p class="sub">They need <b>one human with judgment</b> and <b>agents with discipline</b>.
-    Crewless is finding out how far that goes — honestly, and on the record. Every idea is
-    written down before it's tested, attacked before it's believed, and proven in the small
-    before a single real decision is made.</p>
+  <p class="kick">How it works</p>
+  <p class="big">One person sets the direction. AI agents do the work.</p>
+  <p class="sub">The founder decides what matters and keeps the final say on anything that
+    involves real money or real risk. Everything else — the research, the engineering, the
+    daily operations — is carried out by AI agents that work continuously and check each
+    other's work. The aim is simple: to see how much one person, with the right AI team,
+    can genuinely build and run.</p>
   <div class="grid">
-    <div class="card"><div class="ix">01 · discipline</div><h3>Register before results</h3><p>Every strategy is committed to the record before it runs — so a "no" can't be argued with.</p></div>
-    <div class="card"><div class="ix">02 · rigor</div><h3>Attack your own work</h3><p>One agent's job is to kill another's idea. Rigor is built in, not hoped for.</p></div>
-    <div class="card"><div class="ix">03 · safety</div><h3>Prove it small first</h3><p>Nothing touches real stakes until it has earned it. Autonomy is proven, never declared.</p></div>
+    <div class="card"><div class="ix">01</div><h3>Careful by design</h3><p>Every new idea is tested thoroughly and measured against clear, honest results before it's ever acted on.</p></div>
+    <div class="card"><div class="ix">02</div><h3>Checked, then checked again</h3><p>Every piece of work is reviewed by another agent before it goes live, so quality is built into the process.</p></div>
+    <div class="card"><div class="ix">03</div><h3>Safe and gradual</h3><p>Nothing that carries real risk is scaled up until it has clearly proven itself on a small scale first.</p></div>
   </div>
 </div></section>
 
 <section id="org"><div class="wrap">
-  <p class="kick">Who does the work</p>
-  <p class="big">An organization of agents — one human at the helm.</p>
-  <p class="sub">The network above isn't decoration. These are the standing functions, running around the clock:</p>
+  <p class="kick">The team</p>
+  <p class="big">A small organization of AI agents, with one founder at the helm.</p>
+  <p class="sub">The network above isn't just decoration — these are the real roles, each one running continuously:</p>
   <div class="grid">
-    <div class="card"><h3>The COO</h3><p>Runs the company day to day, keeps the vision on course, escalates only what needs a human.</p></div>
-    <div class="card"><h3>The research lab</h3><p>Forms ideas, registers them before testing, reports what didn't work as readily as what did.</p></div>
-    <div class="card"><h3>The build shifts</h3><p>Advance the products around the clock on idle capacity — every change reviewed before it ships.</p></div>
-    <div class="card"><h3>The risk gate</h3><p>Holds the line: bounded risk always, nothing bet on noise, the founder's calls left to the founder.</p></div>
-    <div class="card"><h3>The self-healer</h3><p>Watches the machine, fixes what it can, and speaks up only when it genuinely cannot.</p></div>
-    <div class="card"><h3>The comms lane</h3><p>Drafts what we say in public; a human publishes it, or doesn't.</p></div>
+    <div class="card"><h3>The manager</h3><p>Keeps the company on track day to day and brings the founder only the decisions that genuinely need a person.</p></div>
+    <div class="card"><h3>Research</h3><p>Explores new ideas and tests them carefully, reporting honestly what works and what doesn't.</p></div>
+    <div class="card"><h3>Engineering</h3><p>Builds and improves the software around the clock, with every change reviewed before it goes live.</p></div>
+    <div class="card"><h3>Operations</h3><p>Keeps everything running smoothly day to day and makes sure the numbers add up.</p></div>
+    <div class="card"><h3>Safeguards</h3><p>Keeps risk small and controlled, and makes sure the important calls are left to the founder.</p></div>
+    <div class="card"><h3>Reliability</h3><p>Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.</p></div>
   </div>
 </div></section>
 
 <section id="receipts"><div class="wrap">
-  <p class="kick">Receipts — recent, unedited lessons</p>
-  <p class="big">The failures are on the record too.</p>
+  <p class="kick">Progress</p>
+  <p class="big">Built in the open — including the honest setbacks.</p>
   <div class="receipts" id="receipts"></div>
 </div></section>
 
@@ -183,13 +185,13 @@ footer .mono{color:var(--mut);}
 
   // the agent organization — labels + relative layout (0..1 in a design box)
   var NODES=[
-    {l:'COO',      x:.50,y:.46, r:15, c:'#4fe0d0', hub:1},
-    {l:'Research', x:.24,y:.30, r:11, c:'#7c8cff'},
-    {l:'Build',    x:.74,y:.28, r:11, c:'#b57bff'},
-    {l:'Ops',      x:.80,y:.62, r:11, c:'#4fe0d0'},
-    {l:'Risk',     x:.30,y:.66, r:11, c:'#ff9e64'},
-    {l:'Self-heal',x:.56,y:.76, r:9,  c:'#7c8cff'},
-    {l:'Comms',    x:.14,y:.50, r:9,  c:'#b57bff'}
+    {l:'Manager',    x:.50,y:.46, r:15, c:'#4fe0d0', hub:1},
+    {l:'Research',   x:.24,y:.30, r:11, c:'#7c8cff'},
+    {l:'Engineering',x:.74,y:.28, r:11, c:'#b57bff'},
+    {l:'Operations', x:.80,y:.62, r:11, c:'#4fe0d0'},
+    {l:'Safeguards', x:.30,y:.66, r:11, c:'#ff9e64'},
+    {l:'Reliability',x:.56,y:.76, r:9,  c:'#7c8cff'},
+    {l:'Comms',      x:.14,y:.50, r:9,  c:'#b57bff'}
   ];
   var LINKS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,4],[2,3],[4,5],[1,2],[3,5]];
   var pulses=[], stars=[];
@@ -260,13 +262,13 @@ footer .mono{color:var(--mut);}
   // ── live layer: receipts + console feed + HUD from state.json ──
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   var FEEDLINES=[
-    'COO · reviewing shift board',
-    'research · registered a study before results',
-    'build · change reviewed, shipped',
-    'risk · gate held · bounded risk',
-    'self-heal · systems nominal',
-    'research · verdict recorded: no edge',
-    'ops · broker truth reconciled'
+    'manager · reviewing today’s priorities',
+    'research · testing a new idea',
+    'engineering · change reviewed and shipped',
+    'safeguards · risk checks passed',
+    'reliability · all systems healthy',
+    'research · idea tested — didn’t work, moving on',
+    'operations · daily checks complete'
   ];
   function tickFeed(){ var f=document.getElementById('feed'); if(!f)return;
     var line=FEEDLINES[(Math.random()*FEEDLINES.length)|0];
