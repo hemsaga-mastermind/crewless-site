@@ -1,133 +1,358 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en"><head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Crewless is a company that runs itself — one person holds the vision, AI agents build and operate everything else. Watch it run, with receipts.">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Crewless — a company that runs itself. One founder holds the vision; AI agents build, operate, and maintain everything else. Watch it run, in 3D, with receipts.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Crewless — watch a company run itself">
-<meta property="og:description" content="Most companies tell you they use AI. This one shows you it running itself — live, with receipts, including the failures.">
+<meta property="og:description" content="One human holds the vision. AI agents run everything else — live, in 3D, with receipts including the failures.">
 <meta property="og:url" content="https://crewless.se">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Crewless — watch a company run itself">
-<meta name="twitter:description" content="One human holds the vision. AI agents run everything else. Built in the open, with receipts.">
 <link rel="canonical" href="https://crewless.se">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Crewless","url":"https://crewless.se","slogan":"a captain, no crew","description":"A one-person company run by AI agents — one human holds the vision, agents build, operate, and maintain everything else, in the open with receipts.","foundingDate":"2026","knowsAbout":["autonomous AI agents","agent-run company","AI operations","building in public"]}</script>
 <title>Crewless</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-:root{--bg:#f6f5f2;--card:#fffdfa;--ink:#16181b;--mut:#5f636a;--line:#e5e2db;--acc:#0f6b54;--acc-soft:#0f6b5414;--brass:#9a6b2f;--live:#0f6b54;}
-@media(prefers-color-scheme:dark){:root{--bg:#131619;--card:#1a1e22;--ink:#edeae4;--mut:#9aa0a6;--line:#2a2f35;--acc:#41af8d;--acc-soft:#41af8d1e;--brass:#c99a5b;--live:#41af8d;}}
-*{box-sizing:border-box;}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 "IBM Plex Sans",-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;}
-.wrap{max-width:680px;margin:0 auto;padding:0 1.5rem;}
-header{border-bottom:1px solid var(--line);}
-.mast{display:flex;align-items:center;gap:.7rem;padding:1rem 0;}
-.anchor{width:2.2rem;height:2.2rem;border-radius:50%;flex:none;background:var(--acc);color:#fff;display:grid;place-items:center;font-size:1.2rem;}
-.name{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.3rem;letter-spacing:-.01em;line-height:1;}
-.sub{font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--mut);letter-spacing:.03em;margin-top:.2rem;}
-.hero{padding:3.6rem 0 1.4rem;}
-.hero h1{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(2.1rem,6.4vw,3.4rem);line-height:1.07;letter-spacing:-.022em;text-wrap:balance;margin:0 0 1.2rem;}
-.hero h1 em{font-style:italic;color:var(--acc);}
-.hero .lede{font-size:1.2rem;color:var(--mut);max-width:32em;margin:0;}
-.pulse{display:flex;flex-wrap:wrap;gap:1.4rem;align-items:baseline;padding:1.2rem 0 0;font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--mut);}
-.pulse .live{color:var(--live);font-weight:500;}
-.pulse .dot{display:inline-block;width:.5rem;height:.5rem;border-radius:50%;background:var(--live);margin-right:.4rem;vertical-align:middle;}
-.pulse b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums;}
-section{padding:2.4rem 0;border-top:1px solid var(--line);}
-.kicker{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin:0 0 1rem;}
-.creed{font-family:"Fraunces",Georgia,serif;font-size:1.5rem;font-weight:400;font-style:italic;line-height:1.42;letter-spacing:-.01em;text-wrap:balance;margin:0;}
-.creed b{font-style:normal;font-weight:600;color:var(--acc);}
-.role,.receipt{padding:1.1rem 0;border-bottom:1px solid var(--line);}
-.role:last-child,.receipt:last-child{border-bottom:0;}
-.role b,.receipt b{display:block;font-weight:600;margin-bottom:.25rem;}
-.role span,.receipt span{color:var(--mut);font-size:.98rem;display:block;}
-.receipt .rd{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--brass);letter-spacing:.03em;margin-bottom:.3rem;}
-footer{border-top:1px solid var(--line);padding:2.2rem 0 3.5rem;font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--mut);line-height:1.8;}
-footer .dot{color:var(--acc);}
-.stage{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);height:240px;margin:.4rem 0 .8rem;}
-.stage::before{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(180deg,transparent 0 39px,var(--line) 39px 40px);}
-.hud{position:absolute;top:.9rem;left:1rem;font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--ink);z-index:3;}
-.hud .st{font-size:1.15rem;font-weight:500;font-family:"Fraunces",Georgia,serif;letter-spacing:-.01em;margin-top:.15rem;}
-.hud .desc{color:var(--mut);margin-top:.15rem;max-width:20em;font-family:"IBM Plex Sans",sans-serif;font-size:.78rem;}
-.live{display:inline-flex;align-items:center;gap:.35rem;color:var(--acc);}
-.live .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--acc);animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.runway{position:absolute;left:0;right:0;bottom:56px;height:52px;z-index:1;background:var(--bg);opacity:.6;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.runway::after{content:"";position:absolute;top:50%;left:0;right:0;height:2px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,var(--acc) 0 16px,transparent 16px 40px);opacity:.5;}
-.hangar{position:absolute;left:4%;bottom:52px;width:104px;height:60px;border:2px solid var(--mut);border-radius:8px;opacity:0;transition:opacity .5s;z-index:1;}
-.jet{position:absolute;bottom:50px;left:12%;width:104px;transition:left 1.1s cubic-bezier(.3,.7,.2,1),bottom 1.1s cubic-bezier(.3,.7,.2,1),transform 1.1s;z-index:2;color:var(--acc);}
-.jet svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 6px rgba(0,0,0,.12));}
-.radar{position:absolute;bottom:54px;left:12%;width:0;height:0;z-index:1;opacity:0;}
-.radar span{position:absolute;left:0;bottom:0;width:140px;height:140px;border-radius:50%;border:1.5px solid var(--acc);animation:ping 2.4s infinite;}
-@keyframes ping{0%{transform:translate(-40px,70px) scale(.2);opacity:.6}100%{transform:translate(-40px,70px) scale(1);opacity:0}}
-[data-state="hangar"] .jet{left:6%;opacity:.5;color:var(--mut);}
-[data-state="hangar"] .hangar{opacity:.7;}
-[data-state="holding"] .jet{left:15%;}
-[data-state="scouting"] .jet{left:34%;}
-[data-state="scouting"] .radar{opacity:1;left:34%;}
-[data-state="airborne"] .jet{left:66%;bottom:150px;transform:rotate(-9deg);}
-[data-state="landed"] .jet{left:80%;bottom:54px;transform:rotate(3deg);}
-[data-state="grounded"] .jet{left:15%;color:var(--brass);}
-.deckcap{font-family:"Fraunces",Georgia,serif;font-style:italic;color:var(--mut);font-size:.92rem;margin:.3rem 0 0;}
-@media(prefers-reduced-motion:reduce){.live .dot,.radar span{animation:none;}}
-</style></head><body>
-<header><div class="wrap mast"><div class="anchor">⚓</div>
-<div><div class="name">Crewless</div><div class="sub">a captain, no crew</div></div></div></header>
-<main class="wrap">
-<div class="hero">
-<h1>Most companies tell you they use AI.<br><em>Watch one run itself.</em></h1>
-<p class="lede">One person holds the vision. AI agents build the products, run
-the operations, and keep the lights on. This page is a live window into that
-— rebuilt from our own record, receipts and all.</p>
-<div class="pulse">
-<span class="live"><span class="dot"></span>live</span>
-<span>this page rebuilt itself <b>2026-09-20 12:04 UTC</b></span>
-<span><b>72</b> changes shipped in 7 days</span>
-<span>agents worked <b>7</b> of the last 7 days</span>
+:root{
+  --bg:#070b12; --bg2:#0b111b; --panel:#0e1622cc; --line:#1b2635;
+  --ink:#eaf0f7; --mut:#8b97ab; --dim:#5c6779;
+  --acc:#3fe3c8; --acc2:#59a8ff; --burn:#ff7a3c; --live:#3fe3c8;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);
+  font:400 16px/1.65 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;}
+.mono{font-family:"IBM Plex Mono",monospace;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem);}
+
+/* ── top bar ── */
+header{position:fixed;top:0;left:0;right:0;z-index:20;
+  backdrop-filter:blur(10px);background:linear-gradient(#070b12ee,#070b1288);
+  border-bottom:1px solid var(--line);}
+.bar{display:flex;align-items:center;justify-content:space-between;
+  height:56px;}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.01em;font-size:1.05rem;}
+.brand .ac{width:1.5rem;height:1.5rem;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,var(--acc),#0d7a6a);color:#04120f;font-size:.85rem;}
+.nav{display:flex;gap:1.4rem;font-size:.82rem;color:var(--mut);}
+.nav a{text-decoration:none;transition:color .2s;}
+.nav a:hover{color:var(--acc);}
+@media(max-width:620px){.nav{display:none;}}
+
+/* ── hero / flight deck ── */
+.hero{position:relative;height:100svh;min-height:600px;}
+#deck{position:absolute;inset:0;width:100%;height:100%;display:block;
+  background:radial-gradient(120% 90% at 50% 8%,#12233a 0%,#0a111c 46%,#070b12 100%);}
+.hero .fallback{position:absolute;inset:0;display:none;place-items:center;
+  background:radial-gradient(120% 90% at 50% 10%,#13243b,#070b12);}
+.hero.nowebgl .fallback{display:grid;}
+.hero.nowebgl #deck{display:none;}
+.scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(#070b1200 55%,#070b12dd 92%,#070b12 100%);}
+.overlay{position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:flex-end;padding-bottom:clamp(2rem,7vh,5rem);pointer-events:none;}
+.hud{display:inline-flex;align-items:center;gap:.55rem;align-self:flex-start;
+  padding:.4rem .8rem;border:1px solid var(--line);border-radius:100px;
+  background:var(--panel);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mut);margin-bottom:1.3rem;}
+.hud .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);
+  box-shadow:0 0 0 0 var(--live);animation:pulse 2.6s infinite;}
+.hud b{color:var(--ink);font-weight:500;letter-spacing:.05em;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #3fe3c880}70%{box-shadow:0 0 0 7px #3fe3c800}100%{box-shadow:0 0 0 0 #3fe3c800}}
+h1{font-size:clamp(2.3rem,6.6vw,4.4rem);line-height:1.02;font-weight:600;
+  letter-spacing:-.02em;max-width:16ch;text-wrap:balance;}
+h1 .g{background:linear-gradient(100deg,var(--acc),var(--acc2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.lede{margin-top:1.1rem;max-width:46ch;color:var(--mut);font-size:clamp(1rem,2.2vw,1.18rem);}
+.cta{margin-top:1.6rem;display:flex;gap:.8rem;flex-wrap:wrap;pointer-events:auto;}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.15rem;border-radius:10px;
+  font-weight:500;font-size:.92rem;text-decoration:none;transition:.2s;}
+.btn.p{background:var(--acc);color:#04120f;}
+.btn.p:hover{filter:brightness(1.08);transform:translateY(-1px);}
+.btn.s{border:1px solid var(--line);color:var(--ink);background:var(--panel);}
+.btn.s:hover{border-color:var(--acc);color:var(--acc);}
+.stat-strip{position:absolute;top:76px;right:clamp(1.1rem,4vw,2rem);z-index:5;
+  display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;pointer-events:none;}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--mut);
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.3rem .6rem;}
+.chip b{color:var(--acc);}
+@media(max-width:620px){.stat-strip{display:none;}}
+
+/* ── sections ── */
+section{padding:clamp(3.4rem,9vw,6rem) 0;border-top:1px solid var(--line);position:relative;}
+.kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--acc);margin-bottom:1.1rem;}
+.big{font-size:clamp(1.5rem,3.6vw,2.2rem);font-weight:600;letter-spacing:-.015em;max-width:24ch;line-height:1.15;}
+.sub{color:var(--mut);max-width:52ch;margin-top:.9rem;}
+.grid{display:grid;gap:1rem;margin-top:2rem;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+.card{border:1px solid var(--line);border-radius:14px;padding:1.3rem;
+  background:linear-gradient(180deg,#0e1622,#0b111b);transition:.25s;}
+.card:hover{border-color:#2a3a50;transform:translateY(-2px);}
+.card h3{font-size:1.05rem;margin-bottom:.4rem;}
+.card p{color:var(--mut);font-size:.92rem;}
+.card .ix{font-family:"IBM Plex Mono",monospace;color:var(--acc);font-size:.78rem;margin-bottom:.7rem;}
+.receipts{display:flex;flex-direction:column;gap:.2rem;margin-top:1.8rem;}
+.rcpt{display:grid;grid-template-columns:96px 1fr;gap:1rem;padding:1.05rem 0;border-top:1px solid var(--line);}
+.rcpt:first-child{border-top:none;}
+.rcpt .d{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--dim);padding-top:.15rem;}
+.rcpt h4{font-size:1rem;font-weight:500;}
+.rcpt p{color:var(--mut);font-size:.9rem;margin-top:.25rem;}
+@media(max-width:560px){.rcpt{grid-template-columns:1fr;gap:.2rem;}}
+.creed{font-size:clamp(1.25rem,3vw,1.7rem);font-weight:500;line-height:1.35;letter-spacing:-.01em;max-width:22ch;}
+.creed b{background:linear-gradient(100deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+footer{border-top:1px solid var(--line);padding:2.4rem 0 3rem;color:var(--dim);font-size:.82rem;}
+footer .mono{color:var(--mut);}
+.disc{margin-top:.5rem;}
+</style></head>
+<body>
+<header><div class="wrap bar">
+  <div class="brand"><span class="ac">⚓</span> Crewless</div>
+  <nav class="nav">
+    <a href="#what">The idea</a><a href="#org">Who works</a>
+    <a href="#receipts">Receipts</a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<div class="hero" id="hero">
+  <canvas id="deck"></canvas>
+  <div class="fallback"><div class="wrap"><div class="overlay" style="position:static;padding:0;">
+    <div class="hud"><span class="dot"></span> Product one · <b id="hs2">live</b></div>
+    <h1>A company that <span class="g">runs itself.</span></h1>
+    <p class="lede">One founder holds the vision. AI agents build, operate and maintain everything else.</p>
+  </div></div></div>
+  <div class="scrim"></div>
+  <div class="stat-strip" id="chips">
+    <div class="chip">DESK · <b id="c-state">…</b></div>
+    <div class="chip"><b id="c-ships">…</b> changes / 7d</div>
+    <div class="chip"><b id="c-days">…</b>/7 active days</div>
+  </div>
+  <div class="wrap overlay">
+    <div class="hud"><span class="dot"></span> Product one — the trading desk · <b id="hstate">live</b></div>
+    <h1>Most companies say they use AI.<br><span class="g">Watch one run itself.</span></h1>
+    <p class="lede">One person holds the vision. AI agents build the products, run the
+      operations and keep the lights on. The aircraft above is the real state of the desk —
+      never a position, never a number. It only moves when the system moves.</p>
+    <div class="cta">
+      <a class="btn p" href="#what">See how it works ↓</a>
+      <a class="btn s" href="#contact">Get in touch</a>
+    </div>
+  </div>
 </div>
-</div>
-<section>
-<p class="kicker">Product one — live</p>
-<div class="stage" data-state="holding">
-<div class="hud"><span class="live"><span class="dot"></span>live</span>
-<div class="st">Holding short</div><div class="desc">Armed and waiting for a setup worth flying.</div></div>
-<div class="hangar"></div><div class="runway"></div><div class="radar"><span></span></div>
-<div class="jet"><svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" aria-label="F-35 top-down silhouette"><path fill="currentColor" opacity=".62" d="M44 58 L14 40 L24 44 L52 57 Z"/><path fill="currentColor" opacity=".62" d="M44 62 L14 80 L24 76 L52 63 Z"/><path fill="currentColor" opacity=".82" d="M58 55 L41 39 L48 38 L62 56 Z"/><path fill="currentColor" opacity=".82" d="M58 65 L41 81 L48 82 L62 64 Z"/><path fill="currentColor" d="M98 52 L54 23 L46 27 L74 56 Z"/><path fill="currentColor" d="M98 68 L54 97 L46 93 L74 64 Z"/><path fill="currentColor" d="M170 60 C154 55 138 53 118 52 L96 53 L50 57 L18 59 L18 61 L50 63 L96 67 C138 67 154 65 170 60 Z"/><ellipse cx="132" cy="60" rx="8.5" ry="5" fill="var(--bg)" opacity=".9"/><circle cx="19" cy="60" r="2.6" fill="var(--bg)"/></svg></div>
-</div>
-<p class="deckcap">The aircraft shows the real state of the trading desk — never a position, never a number. It only moves when the system moves.</p>
-</section>
-<section>
-<p class="kicker">What we believe</p>
-<p class="creed">Smart things no longer need a building full of people. They
-need <b>one human with judgment</b>, and <b>agents with discipline</b>. We're
-finding out how far that goes — honestly, and on the record.</p>
-</section>
-<section>
-<p class="kicker">Who does the work</p>
-<div class="role"><b>The COO</b><span>Runs the company day to day, keeps the vision on course, escalates only what needs a human.</span></div>
-<div class="role"><b>The research lab</b><span>Forms ideas, registers them before testing, and reports what didn&#x27;t work as readily as what did.</span></div>
-<div class="role"><b>The build shifts</b><span>Advance the products around the clock on idle capacity, each change reviewed before it ships.</span></div>
-<div class="role"><b>The comms lane</b><span>Drafts what we say in public; a human publishes it, or doesn&#x27;t.</span></div>
-<div class="role"><b>The self-healer</b><span>Watches the machine, fixes what it can, and speaks up only when it genuinely cannot.</span></div>
-</section>
-<section>
-<p class="kicker">Receipts — recent, unedited lessons</p>
-<div class="receipt"><div class="rd">2026-09-15</div><b>We opened the same playbook on new ground</b><span>Proving one person and a fleet of agents can build something real shouldn&#x27;t stop at one place — so we began applying the same disciplined, receipt-first playbook to new ground, in parallel, without disturbing what already runs.</span></div>
-<div class="receipt"><div class="rd">2026-09-15</div><b>Our first test on new ground came back &quot;no&quot;</b><span>We put one of our new ideas through a pass/fail rule fixed in advance; the honest answer was &quot;no&quot;, so we kept the receipt and moved on — a &quot;no&quot; is a finding, not a setback.</span></div>
-<div class="receipt"><div class="rd">2026-09-13</div><b>We made our own website heal itself</b><span>A site that claims a company runs itself must not go stale — so it now rebuilds from the record every hour and speaks up only when it genuinely can&#x27;t fix itself.</span></div>
-<div class="receipt"><div class="rd">2026-09-12</div><b>We decided how we&#x27;d be proven wrong, first</b><span>Before running a test of one of our own ideas, we committed the pass/fail rule to the record — so when the answer came back &quot;no&quot;, we couldn&#x27;t argue with it.</span></div>
-<div class="receipt"><div class="rd">2026-09-11</div><b>We broke our own system on purpose</b><span>We injected faults into the live system to see if it would tell on itself; the health report came back FAILED, which was exactly the result we wanted.</span></div>
-</section>
-<section>
-<p class="creed">If it works, it means a person with a clear idea and the right
-tools can build what used to take a crowd. <b>That's the story we're trying to
-earn the right to tell.</b></p>
-</section>
+
+<main>
+<section id="what"><div class="wrap">
+  <p class="kick">The idea</p>
+  <p class="big">Smart things no longer need a building full of people.</p>
+  <p class="sub">They need <b>one human with judgment</b> and <b>agents with discipline</b>.
+    Crewless is finding out how far that goes — honestly, and on the record. Every idea is
+    written down before it's tested, attacked before it's believed, and proven in the small
+    before a single real decision is made.</p>
+  <div class="grid">
+    <div class="card"><div class="ix">01 · discipline</div><h3>Register before results</h3>
+      <p>Every strategy is committed to the record before it's run — so a "no" can't be argued with.</p></div>
+    <div class="card"><div class="ix">02 · rigor</div><h3>Attack your own work</h3>
+      <p>One agent's job is to kill another's idea. Rigor is built in, not hoped for.</p></div>
+    <div class="card"><div class="ix">03 · safety</div><h3>Prove it small first</h3>
+      <p>Nothing touches real stakes until it's earned it. Autonomy is proven, never declared.</p></div>
+  </div>
+</div></section>
+
+<section id="org"><div class="wrap">
+  <p class="kick">Who does the work</p>
+  <p class="big">An organization of agents, one human at the helm.</p>
+  <div class="grid" id="org-grid">
+    <div class="card"><h3>The COO</h3><p>Runs the company day to day, keeps the vision on course, escalates only what needs a human.</p></div>
+    <div class="card"><h3>The research lab</h3><p>Forms ideas, registers them before testing, and reports what didn't work as readily as what did.</p></div>
+    <div class="card"><h3>The build shifts</h3><p>Advance the products around the clock on idle capacity — every change reviewed before it ships.</p></div>
+    <div class="card"><h3>The self-healer</h3><p>Watches the machine, fixes what it can, and speaks up only when it genuinely cannot.</p></div>
+  </div>
+</div></section>
+
+<section id="receipts"><div class="wrap">
+  <p class="kick">Receipts — recent, unedited lessons</p>
+  <p class="big">The failures are on the record too.</p>
+  <div class="receipts" id="receipts"><!-- filled from state.json --></div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <p class="creed">If it works, one person with a clear idea and the right tools can build
+    what used to take a crowd. <b>That's the story we're trying to earn the right to tell.</b></p>
+  <div class="cta"><a class="btn p" href="mailto:hello@crewless.se">hello@crewless.se</a></div>
+</div></section>
 </main>
-<footer><div class="wrap"><span class="dot">●</span> Building in the open.
-Nothing here is a promise of results — it's a record of how the work is done.<br>
-Crewless · a one-person company, run by agents · © 2026</div></footer>
+
+<footer><div class="wrap">
+  <span class="mono">⚓ Crewless — a one-person company, run by agents.</span>
+  <div class="disc">Built in the open. Nothing here is a promise of results — it's a record of how the work is done. © 2026</div>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var hero=document.getElementById('hero');
+
+  // ── live state from state.json (drives HUD, receipts, and the jet) ──
+  var STATE={desk_state:'holding',desk_label:'Holding short',changes_7d:'—',active_days_7d:'—',receipts:[]};
+  function paint(){
+    var set=function(id,v){var e=document.getElementById(id);if(e)e.textContent=v;};
+    set('c-state',(STATE.desk_label||STATE.desk_state||'—'));
+    set('c-ships',STATE.changes_7d); set('c-days',STATE.active_days_7d);
+    set('hstate',(STATE.desk_label||'live')); set('hs2',(STATE.desk_label||'live'));
+    var rc=document.getElementById('receipts');
+    if(rc && STATE.receipts && STATE.receipts.length){
+      rc.innerHTML=STATE.receipts.slice(0,5).map(function(r){
+        return '<div class="rcpt"><div class="d">'+esc(r.date)+'</div><div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div></div>';
+      }).join('');
+    }
+    setTarget(STATE.desk_state);
+  }
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function fetchState(){
+    fetch('state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      STATE=Object.assign(STATE,d); paint();
+    }).catch(function(){paint();});
+  }
+
+  // ── 3D flight deck ──
+  if(!window.WebGLRenderingContext || !window.THREE){ hero.classList.add('nowebgl'); fetchState(); return; }
+  var canvas=document.getElementById('deck'), renderer, scene, camera, jet, burnA, burnB, burnLight, clock;
+  var target={x:-9,y:0.35,z:0,pitch:0.05,roll:0,throttle:0.25}; // where the jet wants to be
+  var cur=Object.assign({},target);
+
+  // desk state -> flight pose (the whole point: the jet reflects the real state)
+  var POSES={
+    holding:  {x:-9,  y:0.35, z:0,  pitch:0.06, roll:0,     throttle:0.22},
+    hangar:   {x:-12, y:0.3,  z:2,  pitch:0.0,  roll:0,     throttle:0.05},
+    grounded: {x:-9,  y:0.35, z:0,  pitch:0.02, roll:0,     throttle:0.05},
+    scouting: {x:-3,  y:0.5,  z:0,  pitch:0.10, roll:0.05,  throttle:0.6},
+    airborne: {x:5,   y:5.5,  z:-1, pitch:0.16, roll:-0.22, throttle:1.0},
+    landed:   {x:9,   y:0.35, z:0,  pitch:0.0,  roll:0,     throttle:0.15}
+  };
+  function setTarget(state){ var p=POSES[state]||POSES.holding; target=Object.assign({},p); }
+
+  function init(){
+    try{
+      renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:false});
+      renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+      renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+      renderer.outputEncoding=THREE.sRGBEncoding||3001;
+      scene=new THREE.Scene();
+      scene.fog=new THREE.FogExp2(0x070b12,0.028);
+      camera=new THREE.PerspectiveCamera(42,1,0.1,300);
+      camera.position.set(-6,4.2,15); camera.lookAt(2,2,0);
+
+      // lights
+      scene.add(new THREE.HemisphereLight(0x9fc6ff,0x0a0f18,0.55));
+      var key=new THREE.DirectionalLight(0xbfe8ff,1.15);
+      key.position.set(-8,14,10); key.castShadow=true;
+      key.shadow.mapSize.set(1024,1024); key.shadow.camera.near=1; key.shadow.camera.far=60;
+      key.shadow.camera.left=-25;key.shadow.camera.right=25;key.shadow.camera.top=25;key.shadow.camera.bottom=-25;
+      scene.add(key);
+      var rim=new THREE.DirectionalLight(0x3fe3c8,0.5); rim.position.set(10,6,-8); scene.add(rim);
+
+      // ground + runway
+      var ground=new THREE.Mesh(new THREE.PlaneGeometry(400,400),
+        new THREE.MeshStandardMaterial({color:0x0a1018,roughness:1,metalness:0}));
+      ground.rotation.x=-Math.PI/2; ground.receiveShadow=true; scene.add(ground);
+      var runway=new THREE.Mesh(new THREE.PlaneGeometry(70,7),
+        new THREE.MeshStandardMaterial({color:0x11202f,roughness:.85,metalness:.1}));
+      runway.rotation.x=-Math.PI/2; runway.position.y=0.01; runway.receiveShadow=true; scene.add(runway);
+      var dashMat=new THREE.MeshStandardMaterial({color:0x3fe3c8,emissive:0x0d5147,emissiveIntensity:.6,roughness:.5});
+      for(var i=-6;i<=6;i++){ var d=new THREE.Mesh(new THREE.BoxGeometry(2.2,.04,.18),dashMat);
+        d.position.set(i*5,0.03,0); scene.add(d); }
+      // edge lights
+      var em=new THREE.MeshStandardMaterial({color:0x59a8ff,emissive:0x1c3f66,emissiveIntensity:.9});
+      for(var j=-6;j<=6;j++){ [-3.4,3.4].forEach(function(zz){
+        var b=new THREE.Mesh(new THREE.SphereGeometry(.09,8,8),em); b.position.set(j*5,0.06,zz); scene.add(b);}); }
+
+      jet=buildJet(); scene.add(jet);
+      clock=new THREE.Clock();
+      resize(); window.addEventListener('resize',resize);
+      animate();
+    }catch(e){ hero.classList.add('nowebgl'); }
+  }
+
+  function buildJet(){
+    var g=new THREE.Group();
+    var body=new THREE.MeshStandardMaterial({color:0x2b3542,metalness:.72,roughness:.38});
+    var dark=new THREE.MeshStandardMaterial({color:0x1a222c,metalness:.6,roughness:.5});
+    var glass=new THREE.MeshStandardMaterial({color:0x0a1a24,metalness:.3,roughness:.15,emissive:0x113a44,emissiveIntensity:.5});
+    // fuselage (tapered) using a lathe-ish cylinder
+    var fus=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.5,4.6,20),body);
+    fus.rotation.z=Math.PI/2; fus.castShadow=true; g.add(fus);
+    // nose cone
+    var nose=new THREE.Mesh(new THREE.ConeGeometry(0.28,1.5,20),body);
+    nose.rotation.z=-Math.PI/2; nose.position.x=3.05; nose.castShadow=true; g.add(nose);
+    // tail nozzle
+    var noz=new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.34,0.5,20),dark);
+    noz.rotation.z=Math.PI/2; noz.position.x=-2.5; noz.castShadow=true; g.add(noz);
+    // delta wings via extruded shape
+    var ws=new THREE.Shape(); ws.moveTo(0.9,0); ws.lineTo(-1.7,0); ws.lineTo(-1.7,3.0); ws.lineTo(0.55,0.35); ws.lineTo(0.9,0);
+    var wgeo=new THREE.ExtrudeGeometry(ws,{depth:0.09,bevelEnabled:false});
+    var wingL=new THREE.Mesh(wgeo,body); wingL.rotation.x=-Math.PI/2; wingL.position.set(-0.2,0,0); wingL.castShadow=true; g.add(wingL);
+    var wingR=wingL.clone(); wingR.rotation.x=Math.PI/2; wingR.position.z=0; g.add(wingR);
+    // twin tails
+    var ts=new THREE.Shape(); ts.moveTo(0,0); ts.lineTo(-1.1,0); ts.lineTo(-1.0,0.95); ts.lineTo(-0.1,0.2); ts.lineTo(0,0);
+    var tgeo=new THREE.ExtrudeGeometry(ts,{depth:0.06,bevelEnabled:false});
+    var tail1=new THREE.Mesh(tgeo,body); tail1.position.set(-1.9,0.18,0.45); tail1.rotation.y=0.28; tail1.castShadow=true; g.add(tail1);
+    var tail2=tail1.clone(); tail2.position.z=-0.45; tail2.rotation.y=-0.28; g.add(tail2);
+    // horizontal stabs
+    var hs=new THREE.Shape(); hs.moveTo(0,0); hs.lineTo(-0.9,0); hs.lineTo(-0.9,1.0); hs.lineTo(0.1,0.15); hs.lineTo(0,0);
+    var hgeo=new THREE.ExtrudeGeometry(hs,{depth:0.06,bevelEnabled:false});
+    var st1=new THREE.Mesh(hgeo,body); st1.rotation.x=-Math.PI/2; st1.position.set(-1.9,0,0.2); g.add(st1);
+    var st2=st1.clone(); st2.rotation.x=Math.PI/2; g.add(st2);
+    // canopy
+    var can=new THREE.Mesh(new THREE.SphereGeometry(0.32,16,12,0,Math.PI*2,0,Math.PI/2),glass);
+    can.scale.set(1.5,0.7,0.85); can.position.set(1.5,0.34,0); g.add(can);
+    // afterburner glow
+    var bmat=new THREE.MeshBasicMaterial({color:0xff7a3c,transparent:true,opacity:.9});
+    burnA=new THREE.Mesh(new THREE.ConeGeometry(0.3,1.4,16),bmat);
+    burnA.rotation.z=Math.PI/2; burnA.position.x=-3.3; g.add(burnA);
+    burnB=new THREE.Mesh(new THREE.ConeGeometry(0.16,2.4,16),new THREE.MeshBasicMaterial({color:0x9fd6ff,transparent:true,opacity:.6}));
+    burnB.rotation.z=Math.PI/2; burnB.position.x=-3.8; g.add(burnB);
+    burnLight=new THREE.PointLight(0xff7a3c,1.2,8); burnLight.position.set(-3.4,0,0); g.add(burnLight);
+    g.scale.set(0.9,0.9,0.9);
+    return g;
+  }
+
+  function resize(){
+    var w=hero.clientWidth,h=hero.clientHeight;
+    renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
+  }
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function animate(){
+    requestAnimationFrame(animate);
+    var t=clock.getElapsedTime(), dt=0.06;
+    cur.x=lerp(cur.x,target.x,dt); cur.y=lerp(cur.y,target.y,dt); cur.z=lerp(cur.z,target.z,dt);
+    cur.pitch=lerp(cur.pitch,target.pitch,dt); cur.roll=lerp(cur.roll,target.roll,dt);
+    cur.throttle=lerp(cur.throttle,target.throttle,0.08);
+    var bob=(target.y>1?0:1)*Math.sin(t*1.4)*0.03;              // idle bob on ground
+    var sway=(target.y>1?1:0)*Math.sin(t*0.6)*0.12;             // gentle sway airborne
+    jet.position.set(cur.x, cur.y+bob, cur.z);
+    jet.rotation.set(cur.roll+sway*0.4, Math.PI, -cur.pitch);   // face +x (nose right)
+    var flick=0.85+Math.sin(t*40)*0.15;
+    burnA.scale.set(cur.throttle*flick, 1+cur.throttle, 1);
+    burnB.scale.set(cur.throttle*flick, 1+cur.throttle*1.4, 1);
+    burnA.material.opacity=0.25+cur.throttle*0.7;
+    burnB.material.opacity=0.15+cur.throttle*0.5;
+    burnLight.intensity=cur.throttle*2.2;
+    // slow cinematic camera drift
+    camera.position.x=-6+Math.sin(t*0.15)*1.5;
+    camera.position.y=4.2+Math.sin(t*0.12)*0.4;
+    camera.lookAt(cur.x*0.4+1, cur.y*0.5+1.2, 0);
+    renderer.render(scene,camera);
+  }
+
+  init();
+  fetchState();
+  setInterval(fetchState,120000);   // refresh live state every 2 min
+})();
+</script>
 </body></html>
