@@ -39,12 +39,12 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 @media(max-width:640px){.nav{display:none;}}
 
 /* ── hero ── mobile-first: network band on top, copy below ── */
-.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;}
+.hero{position:relative;}
+.stage{position:relative;width:100%;height:48svh;min-height:320px;overflow:hidden;}
 #net{position:absolute;inset:0;width:100%;height:100%;display:block;}
 .scrim{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(0deg,#05070d 2%,#05070dcc 22%,transparent 48%);}
-.hcontent{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
-  align-items:flex-start;padding-bottom:clamp(2rem,6vh,4rem);pointer-events:none;}
+  background:linear-gradient(0deg,#05070d 1%,#05070d99 14%,transparent 40%);}
+.hcontent{padding:1.6rem 0 clamp(2.2rem,7vh,3.4rem);}
 .hud{display:inline-flex;align-items:center;gap:.55rem;
   padding:.4rem .85rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);
   font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
@@ -89,10 +89,13 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 
 /* ── desktop: copy left, network right ── */
 @media(min-width:880px){
+  .hero{height:100svh;min-height:640px;overflow:hidden;}
+  .stage{position:absolute;inset:0;height:auto;min-height:0;}
   .scrim{background:
     linear-gradient(90deg,#05070d 2%,rgba(5,7,13,.74) 30%,rgba(5,7,13,.15) 52%,rgba(5,7,13,0) 66%),
     linear-gradient(0deg,#05070d55,transparent 30%);}
-  .hcontent{justify-content:center;padding-bottom:0;}
+  .hcontent{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    align-items:flex-start;padding:1.6rem 0 0;pointer-events:none;}
   .lede{max-width:34ch;}
   .hint{top:auto;bottom:clamp(1.8rem,6vh,3.2rem);left:72%;}
   .pick{left:auto;right:clamp(1.6rem,4vw,2.6rem);bottom:clamp(1.6rem,4vw,2.6rem);width:min(322px,33vw);}
@@ -132,10 +135,12 @@ footer .mono{color:var(--mut);}
 </div></header>
 
 <div class="hero" id="hero">
-  <canvas id="net"></canvas>
-  <div class="scrim"></div>
-  <div class="hint" id="hint">◎ Tap an agent to see what it does</div>
-  <div class="pick" id="pick" hidden></div>
+  <div class="stage" id="stage">
+    <canvas id="net"></canvas>
+    <div class="scrim"></div>
+    <div class="hint" id="hint">◎ Tap an agent to see what it does</div>
+    <div class="pick" id="pick" hidden></div>
+  </div>
   <div class="wrap hcontent">
     <div class="hud"><span class="dot"></span> An AI-run company · <b id="hstate">running</b></div>
     <h1>A company run by <span class="g">AI agents.</span></h1>
@@ -201,7 +206,8 @@ footer .mono{color:var(--mut);}
 (function(){
   "use strict";
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var cv=document.getElementById('net'), ctx=cv.getContext('2d'), hero=document.getElementById('hero');
+  var cv=document.getElementById('net'), ctx=cv.getContext('2d'),
+      hero=document.getElementById('hero'), stage=document.getElementById('stage');
   var W,H,DPR,mx=0,my=0,tmx=0,tmy=0;
 
   // the agent organization — labels + relative layout (0..1 in a design box)
@@ -219,23 +225,23 @@ footer .mono{color:var(--mut);}
   var pulses=[], stars=[];
 
   function layout(){
-    var rect=hero.getBoundingClientRect(); W=rect.width; H=rect.height;
+    var rect=stage.getBoundingClientRect(); W=rect.width; H=rect.height;
     DPR=Math.min(devicePixelRatio||1,2);
     cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
     var bw,bh,ox,oy;
     if(W>=880){                                   // desktop: network on the right half
       bw=Math.min(W*0.44,560); bh=Math.min(H*0.72,560);
       ox=W*0.50; oy=(H-bh)/2 - H*0.01;
-    }else{                                         // mobile: network as a band up top
-      bw=Math.min(W*0.94,540); bh=Math.min(H*0.36,330);
-      ox=(W-bw)/2; oy=H*0.07;
+    }else{                                         // mobile: network fills its own band (below the header)
+      bw=Math.min(W*0.9,520); bh=H*0.62;
+      ox=(W-bw)/2; oy=H*0.22;
     }
     NODES.forEach(function(n){ n.px=ox+n.x*bw; n.py=oy+n.y*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
     stars=[]; var count=Math.round(W*H/9000);
     for(var i=0;i<count;i++) stars.push({x:Math.random()*W,y:Math.random()*H,z:Math.random(),tw:Math.random()*6.28});
   }
   window.addEventListener('resize',layout);
-  hero.addEventListener('pointermove',function(e){ var r=hero.getBoundingClientRect();
+  stage.addEventListener('pointermove',function(e){ var r=stage.getBoundingClientRect();
     tmx=((e.clientX-r.left)/r.width-0.5); tmy=((e.clientY-r.top)/r.height-0.5);
     cv.style.cursor=(pickAt(e.clientX-r.left,e.clientY-r.top)>=0)?'pointer':'default'; });
   function pickAt(cx,cy){ var best=-1,bd=1e9; for(var i=0;i<NODES.length;i++){ var n=NODES[i];
@@ -334,7 +340,7 @@ footer .mono{color:var(--mut);}
     }).catch(function(){});
   }
 
-  try{ layout(); requestAnimationFrame(loop); }catch(e){ hero.style.background='radial-gradient(80% 60% at 72% 35%,#13233a,#05070d)'; }
+  try{ layout(); requestAnimationFrame(loop); }catch(e){ stage.style.background='radial-gradient(80% 60% at 72% 35%,#13233a,#05070d)'; }
   loadState(); setInterval(loadState,120000);
   tickFeed(); if(!reduce) setInterval(tickFeed,2600);
 })();
