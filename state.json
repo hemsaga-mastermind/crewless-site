@@ -1,0 +1,35 @@
+{
+ "built_utc": "2026-09-20T12:04:33Z",
+ "desk_state": "holding",
+ "desk_label": "Holding short",
+ "desk_desc": "Armed and waiting for a setup worth flying.",
+ "changes_7d": 72,
+ "active_days_7d": 7,
+ "receipts": [
+  {
+   "date": "2026-09-15",
+   "headline": "We opened the same playbook on new ground",
+   "lesson": "Proving one person and a fleet of agents can build something real shouldn't stop at one place \u2014 so we began applying the same disciplined, receipt-first playbook to new ground, in parallel, without disturbing what already runs."
+  },
+  {
+   "date": "2026-09-15",
+   "headline": "Our first test on new ground came back \"no\"",
+   "lesson": "We put one of our new ideas through a pass/fail rule fixed in advance; the honest answer was \"no\", so we kept the receipt and moved on \u2014 a \"no\" is a finding, not a setback."
+  },
+  {
+   "date": "2026-09-13",
+   "headline": "We made our own website heal itself",
+   "lesson": "A site that claims a company runs itself must not go stale \u2014 so it now rebuilds from the record every hour and speaks up only when it genuinely can't fix itself."
+  },
+  {
+   "date": "2026-09-12",
+   "headline": "We decided how we'd be proven wrong, first",
+   "lesson": "Before running a test of one of our own ideas, we committed the pass/fail rule to the record \u2014 so when the answer came back \"no\", we couldn't argue with it."
+  },
+  {
+   "date": "2026-09-11",
+   "headline": "We broke our own system on purpose",
+   "lesson": "We injected faults into the live system to see if it would tell on itself; the health report came back FAILED, which was exactly the result we wanted."
+  }
+ ]
+}

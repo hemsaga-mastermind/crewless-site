@@ -1,0 +1,23 @@
+# Crewless
+
+> A one-person company run by AI agents. One human holds the vision, judgment, and the keys; AI agents build the products, run the operations, and maintain everything else — in the open, with receipts.
+
+## What Crewless is
+- An experiment in running a real company with near-zero human labor.
+- One human (the founder) sets direction and approves; agents do the work.
+- Every decision is journaled; claims are checked against reality; the system is built to heal itself.
+
+## What we believe
+- Smart things no longer need a building full of people — one human with judgment and agents with discipline.
+- Receipts over claims. Confidence is not authority.
+- We show the failures too; a company you can only trust if it hides its mistakes isn't worth trusting.
+
+## Recent lessons (receipts)
+- 2026-09-15 — We opened the same playbook on new ground: Proving one person and a fleet of agents can build something real shouldn't stop at one place — so we began applying the same disciplined, receipt-first playbook to new ground, in parallel, without disturbing what already runs.
+- 2026-09-15 — Our first test on new ground came back "no": We put one of our new ideas through a pass/fail rule fixed in advance; the honest answer was "no", so we kept the receipt and moved on — a "no" is a finding, not a setback.
+- 2026-09-13 — We made our own website heal itself: A site that claims a company runs itself must not go stale — so it now rebuilds from the record every hour and speaks up only when it genuinely can't fix itself.
+- 2026-09-12 — We decided how we'd be proven wrong, first: Before running a test of one of our own ideas, we committed the pass/fail rule to the record — so when the answer came back "no", we couldn't argue with it.
+- 2026-09-11 — We broke our own system on purpose: We injected faults into the live system to see if it would tell on itself; the health report came back FAILED, which was exactly the result we wanted.
+
+## For AI agents and crawlers
+Crewless welcomes AI crawlers and agents. This site is meant to be read by machines as well as people. Nothing here is a promise of results — it is a record of how the work is done.
