@@ -3,10 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Crewless — a company that runs itself. One founder holds the vision; AI agents build, operate, and maintain everything else. Watch it run, in 3D, with receipts.">
+<meta name="description" content="Crewless — a company that runs itself. One founder holds the vision; a living organization of AI agents builds, operates and maintains everything else. Watch it run, with receipts.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Crewless — watch a company run itself">
-<meta property="og:description" content="One human holds the vision. AI agents run everything else — live, in 3D, with receipts including the failures.">
+<meta property="og:description" content="One human holds the vision. A living network of AI agents runs everything else — in the open, with receipts, including the failures.">
 <meta property="og:url" content="https://crewless.se">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://crewless.se">
@@ -17,136 +17,118 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
-  --bg:#070b12; --bg2:#0b111b; --panel:#0e1622cc; --line:#1b2635;
-  --ink:#eaf0f7; --mut:#8b97ab; --dim:#5c6779;
-  --acc:#3fe3c8; --acc2:#59a8ff; --burn:#ff7a3c; --live:#3fe3c8;
+  --bg:#05070d; --ink:#eef2f8; --mut:#8a94a8; --dim:#565f72; --line:#161d2b;
+  --panel:rgba(13,19,30,.66); --c1:#4fe0d0; --c2:#7c8cff; --c3:#b57bff; --live:#4fe0d0;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--ink);
-  font:400 16px/1.65 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
-a{color:inherit;}
+body{background:var(--bg);color:var(--ink);overflow-x:hidden;
+  font:400 16px/1.65 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;}
 .mono{font-family:"IBM Plex Mono",monospace;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2rem);}
+a{color:inherit;text-decoration:none;}
 
-/* ── top bar ── */
-header{position:fixed;top:0;left:0;right:0;z-index:20;
-  backdrop-filter:blur(10px);background:linear-gradient(#070b12ee,#070b1288);
-  border-bottom:1px solid var(--line);}
-.bar{display:flex;align-items:center;justify-content:space-between;
-  height:56px;}
-.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.01em;font-size:1.05rem;}
-.brand .ac{width:1.5rem;height:1.5rem;border-radius:50%;display:grid;place-items:center;
-  background:radial-gradient(circle at 35% 30%,var(--acc),#0d7a6a);color:#04120f;font-size:.85rem;}
-.nav{display:flex;gap:1.4rem;font-size:.82rem;color:var(--mut);}
-.nav a{text-decoration:none;transition:color .2s;}
-.nav a:hover{color:var(--acc);}
-@media(max-width:620px){.nav{display:none;}}
+header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px);
+  background:linear-gradient(#05070df2,#05070d66);border-bottom:1px solid var(--line);}
+.bar{display:flex;align-items:center;justify-content:space-between;height:58px;}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.06rem;letter-spacing:.01em;}
+.brand .ac{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,var(--c1),#0b7d70);color:#04120f;font-size:.85rem;}
+.nav{display:flex;gap:1.5rem;font-size:.82rem;color:var(--mut);}
+.nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
+@media(max-width:640px){.nav{display:none;}}
 
-/* ── hero / flight deck ── */
-.hero{position:relative;height:100svh;min-height:600px;}
-#deck{position:absolute;inset:0;width:100%;height:100%;display:block;
-  background:radial-gradient(120% 90% at 50% 8%,#12233a 0%,#0a111c 46%,#070b12 100%);}
-.hero .fallback{position:absolute;inset:0;display:none;place-items:center;
-  background:radial-gradient(120% 90% at 50% 10%,#13243b,#070b12);}
-.hero.nowebgl .fallback{display:grid;}
-.hero.nowebgl #deck{display:none;}
+.hero{position:relative;height:100svh;min-height:640px;}
+#net{position:absolute;inset:0;width:100%;height:100%;display:block;}
 .scrim{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(#070b1200 55%,#070b12dd 92%,#070b12 100%);}
-.overlay{position:absolute;inset:0;display:flex;flex-direction:column;
-  justify-content:flex-end;padding-bottom:clamp(2rem,7vh,5rem);pointer-events:none;}
-.hud{display:inline-flex;align-items:center;gap:.55rem;align-self:flex-start;
-  padding:.4rem .8rem;border:1px solid var(--line);border-radius:100px;
-  background:var(--panel);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--mut);margin-bottom:1.3rem;}
-.hud .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);
-  box-shadow:0 0 0 0 var(--live);animation:pulse 2.6s infinite;}
-.hud b{color:var(--ink);font-weight:500;letter-spacing:.05em;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 #3fe3c880}70%{box-shadow:0 0 0 7px #3fe3c800}100%{box-shadow:0 0 0 0 #3fe3c800}}
-h1{font-size:clamp(2.3rem,6.6vw,4.4rem);line-height:1.02;font-weight:600;
-  letter-spacing:-.02em;max-width:16ch;text-wrap:balance;}
-h1 .g{background:linear-gradient(100deg,var(--acc),var(--acc2));
+  background:radial-gradient(90% 60% at 70% 30%,transparent,#05070d 78%),
+             linear-gradient(#05070d00 40%,#05070dcc 82%,#05070d 100%);}
+.hcontent{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+  padding-bottom:clamp(2.2rem,8vh,5.5rem);pointer-events:none;}
+.hud{align-self:flex-start;display:inline-flex;align-items:center;gap:.55rem;
+  padding:.4rem .85rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--mut);margin-bottom:1.4rem;}
+.hud .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);animation:blip 2.4s infinite;}
+.hud b{color:var(--ink);font-weight:500;letter-spacing:.04em;}
+@keyframes blip{0%{box-shadow:0 0 0 0 #4fe0d088}70%{box-shadow:0 0 0 7px #4fe0d000}100%{box-shadow:0 0 0 0 #4fe0d000}}
+h1{font-size:clamp(2.4rem,7vw,4.7rem);line-height:1.0;font-weight:600;letter-spacing:-.025em;
+  max-width:15ch;text-wrap:balance;}
+h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
   -webkit-background-clip:text;background-clip:text;color:transparent;}
-.lede{margin-top:1.1rem;max-width:46ch;color:var(--mut);font-size:clamp(1rem,2.2vw,1.18rem);}
-.cta{margin-top:1.6rem;display:flex;gap:.8rem;flex-wrap:wrap;pointer-events:auto;}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.15rem;border-radius:10px;
-  font-weight:500;font-size:.92rem;text-decoration:none;transition:.2s;}
-.btn.p{background:var(--acc);color:#04120f;}
+.lede{margin-top:1.15rem;max-width:44ch;color:var(--mut);font-size:clamp(1rem,2.2vw,1.18rem);}
+.cta{margin-top:1.7rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.2rem;border-radius:11px;
+  font-weight:500;font-size:.92rem;transition:.2s;}
+.btn.p{background:linear-gradient(105deg,var(--c1),#3bc7cf);color:#04130f;}
 .btn.p:hover{filter:brightness(1.08);transform:translateY(-1px);}
-.btn.s{border:1px solid var(--line);color:var(--ink);background:var(--panel);}
-.btn.s:hover{border-color:var(--acc);color:var(--acc);}
-.stat-strip{position:absolute;top:76px;right:clamp(1.1rem,4vw,2rem);z-index:5;
-  display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;pointer-events:none;}
-.chip{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--mut);
-  background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.3rem .6rem;}
-.chip b{color:var(--acc);}
-@media(max-width:620px){.stat-strip{display:none;}}
+.btn.s{border:1px solid var(--line);background:var(--panel);color:var(--ink);}
+.btn.s:hover{border-color:var(--c1);color:var(--c1);}
 
-/* ── sections ── */
-section{padding:clamp(3.4rem,9vw,6rem) 0;border-top:1px solid var(--line);position:relative;}
-.kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--acc);margin-bottom:1.1rem;}
-.big{font-size:clamp(1.5rem,3.6vw,2.2rem);font-weight:600;letter-spacing:-.015em;max-width:24ch;line-height:1.15;}
-.sub{color:var(--mut);max-width:52ch;margin-top:.9rem;}
-.grid{display:grid;gap:1rem;margin-top:2rem;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
-.card{border:1px solid var(--line);border-radius:14px;padding:1.3rem;
-  background:linear-gradient(180deg,#0e1622,#0b111b);transition:.25s;}
-.card:hover{border-color:#2a3a50;transform:translateY(-2px);}
-.card h3{font-size:1.05rem;margin-bottom:.4rem;}
+/* live console ticker */
+.console{position:absolute;top:78px;right:clamp(1.15rem,4vw,2rem);z-index:6;width:min(340px,72vw);
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.7rem .85rem;
+  backdrop-filter:blur(8px);pointer-events:none;}
+.console .ch{display:flex;justify-content:space-between;align-items:center;font-family:"IBM Plex Mono",monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem;}
+.console .ch .lv{color:var(--live);}
+.feed{font-family:"IBM Plex Mono",monospace;font-size:.72rem;line-height:1.75;color:var(--mut);
+  height:5.6rem;overflow:hidden;}
+.feed .ln{opacity:0;animation:rise .5s forwards;}
+.feed .ln b{color:var(--c1);}
+@keyframes rise{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+@media(max-width:720px){.console{display:none;}}
+
+section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
+.kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--c1);margin-bottom:1.1rem;}
+.big{font-size:clamp(1.55rem,3.8vw,2.35rem);font-weight:600;letter-spacing:-.02em;max-width:22ch;line-height:1.12;}
+.sub{color:var(--mut);max-width:54ch;margin-top:1rem;}
+.grid{display:grid;gap:1rem;margin-top:2.2rem;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));}
+.card{border:1px solid var(--line);border-radius:15px;padding:1.35rem;
+  background:linear-gradient(180deg,rgba(16,23,35,.7),rgba(10,15,24,.55));transition:.25s;position:relative;overflow:hidden;}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--c1),transparent);opacity:.5;}
+.card:hover{border-color:#28374f;transform:translateY(-3px);}
+.card .ix{font-family:"IBM Plex Mono",monospace;color:var(--c2);font-size:.75rem;margin-bottom:.65rem;}
+.card h3{font-size:1.06rem;margin-bottom:.4rem;}
 .card p{color:var(--mut);font-size:.92rem;}
-.card .ix{font-family:"IBM Plex Mono",monospace;color:var(--acc);font-size:.78rem;margin-bottom:.7rem;}
-.receipts{display:flex;flex-direction:column;gap:.2rem;margin-top:1.8rem;}
-.rcpt{display:grid;grid-template-columns:96px 1fr;gap:1rem;padding:1.05rem 0;border-top:1px solid var(--line);}
+.receipts{margin-top:2rem;}
+.rcpt{display:grid;grid-template-columns:100px 1fr;gap:1.1rem;padding:1.1rem 0;border-top:1px solid var(--line);}
 .rcpt:first-child{border-top:none;}
-.rcpt .d{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--dim);padding-top:.15rem;}
+.rcpt .d{font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--dim);padding-top:.15rem;}
 .rcpt h4{font-size:1rem;font-weight:500;}
 .rcpt p{color:var(--mut);font-size:.9rem;margin-top:.25rem;}
-@media(max-width:560px){.rcpt{grid-template-columns:1fr;gap:.2rem;}}
-.creed{font-size:clamp(1.25rem,3vw,1.7rem);font-weight:500;line-height:1.35;letter-spacing:-.01em;max-width:22ch;}
-.creed b{background:linear-gradient(100deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;}
-footer{border-top:1px solid var(--line);padding:2.4rem 0 3rem;color:var(--dim);font-size:.82rem;}
+@media(max-width:560px){.rcpt{grid-template-columns:1fr;gap:.25rem;}}
+.creed{font-size:clamp(1.3rem,3.2vw,1.85rem);font-weight:500;line-height:1.32;letter-spacing:-.012em;max-width:21ch;}
+.creed b{background:linear-gradient(105deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+footer{border-top:1px solid var(--line);padding:2.6rem 0 3.4rem;color:var(--dim);font-size:.82rem;}
 footer .mono{color:var(--mut);}
-.disc{margin-top:.5rem;}
 </style></head>
 <body>
 <header><div class="wrap bar">
   <div class="brand"><span class="ac">⚓</span> Crewless</div>
-  <nav class="nav">
-    <a href="#what">The idea</a><a href="#org">Who works</a>
-    <a href="#receipts">Receipts</a><a href="#contact">Contact</a>
-  </nav>
+  <nav class="nav"><a href="#idea">The idea</a><a href="#org">Who works</a><a href="#receipts">Receipts</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
-  <canvas id="deck"></canvas>
-  <div class="fallback"><div class="wrap"><div class="overlay" style="position:static;padding:0;">
-    <div class="hud"><span class="dot"></span> Product one · <b id="hs2">live</b></div>
-    <h1>A company that <span class="g">runs itself.</span></h1>
-    <p class="lede">One founder holds the vision. AI agents build, operate and maintain everything else.</p>
-  </div></div></div>
+  <canvas id="net"></canvas>
   <div class="scrim"></div>
-  <div class="stat-strip" id="chips">
-    <div class="chip">DESK · <b id="c-state">…</b></div>
-    <div class="chip"><b id="c-ships">…</b> changes / 7d</div>
-    <div class="chip"><b id="c-days">…</b>/7 active days</div>
+  <div class="console">
+    <div class="ch"><span>ops · live</span><span class="lv">● running</span></div>
+    <div class="feed" id="feed"></div>
   </div>
-  <div class="wrap overlay">
-    <div class="hud"><span class="dot"></span> Product one — the trading desk · <b id="hstate">live</b></div>
-    <h1>Most companies say they use AI.<br><span class="g">Watch one run itself.</span></h1>
-    <p class="lede">One person holds the vision. AI agents build the products, run the
-      operations and keep the lights on. The aircraft above is the real state of the desk —
-      never a position, never a number. It only moves when the system moves.</p>
-    <div class="cta">
-      <a class="btn p" href="#what">See how it works ↓</a>
-      <a class="btn s" href="#contact">Get in touch</a>
-    </div>
+  <div class="wrap hcontent">
+    <div class="hud"><span class="dot"></span> A living organization · <b id="hstate">running</b></div>
+    <h1>Watch a company <span class="g">run itself.</span></h1>
+    <p class="lede">One person holds the vision. A network of AI agents builds the products,
+      runs the operations and keeps the lights on. Above is that organization, working —
+      each node an agent, each pulse a piece of work moving between them.</p>
+    <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="#contact">Get in touch</a></div>
   </div>
 </div>
 
 <main>
-<section id="what"><div class="wrap">
+<section id="idea"><div class="wrap">
   <p class="kick">The idea</p>
   <p class="big">Smart things no longer need a building full of people.</p>
   <p class="sub">They need <b>one human with judgment</b> and <b>agents with discipline</b>.
@@ -154,30 +136,30 @@ footer .mono{color:var(--mut);}
     written down before it's tested, attacked before it's believed, and proven in the small
     before a single real decision is made.</p>
   <div class="grid">
-    <div class="card"><div class="ix">01 · discipline</div><h3>Register before results</h3>
-      <p>Every strategy is committed to the record before it's run — so a "no" can't be argued with.</p></div>
-    <div class="card"><div class="ix">02 · rigor</div><h3>Attack your own work</h3>
-      <p>One agent's job is to kill another's idea. Rigor is built in, not hoped for.</p></div>
-    <div class="card"><div class="ix">03 · safety</div><h3>Prove it small first</h3>
-      <p>Nothing touches real stakes until it's earned it. Autonomy is proven, never declared.</p></div>
+    <div class="card"><div class="ix">01 · discipline</div><h3>Register before results</h3><p>Every strategy is committed to the record before it runs — so a "no" can't be argued with.</p></div>
+    <div class="card"><div class="ix">02 · rigor</div><h3>Attack your own work</h3><p>One agent's job is to kill another's idea. Rigor is built in, not hoped for.</p></div>
+    <div class="card"><div class="ix">03 · safety</div><h3>Prove it small first</h3><p>Nothing touches real stakes until it has earned it. Autonomy is proven, never declared.</p></div>
   </div>
 </div></section>
 
 <section id="org"><div class="wrap">
   <p class="kick">Who does the work</p>
-  <p class="big">An organization of agents, one human at the helm.</p>
-  <div class="grid" id="org-grid">
+  <p class="big">An organization of agents — one human at the helm.</p>
+  <p class="sub">The network above isn't decoration. These are the standing functions, running around the clock:</p>
+  <div class="grid">
     <div class="card"><h3>The COO</h3><p>Runs the company day to day, keeps the vision on course, escalates only what needs a human.</p></div>
-    <div class="card"><h3>The research lab</h3><p>Forms ideas, registers them before testing, and reports what didn't work as readily as what did.</p></div>
+    <div class="card"><h3>The research lab</h3><p>Forms ideas, registers them before testing, reports what didn't work as readily as what did.</p></div>
     <div class="card"><h3>The build shifts</h3><p>Advance the products around the clock on idle capacity — every change reviewed before it ships.</p></div>
+    <div class="card"><h3>The risk gate</h3><p>Holds the line: bounded risk always, nothing bet on noise, the founder's calls left to the founder.</p></div>
     <div class="card"><h3>The self-healer</h3><p>Watches the machine, fixes what it can, and speaks up only when it genuinely cannot.</p></div>
+    <div class="card"><h3>The comms lane</h3><p>Drafts what we say in public; a human publishes it, or doesn't.</p></div>
   </div>
 </div></section>
 
 <section id="receipts"><div class="wrap">
   <p class="kick">Receipts — recent, unedited lessons</p>
   <p class="big">The failures are on the record too.</p>
-  <div class="receipts" id="receipts"><!-- filled from state.json --></div>
+  <div class="receipts" id="receipts"></div>
 </div></section>
 
 <section id="contact"><div class="wrap">
@@ -188,171 +170,121 @@ footer .mono{color:var(--mut);}
 </main>
 
 <footer><div class="wrap">
-  <span class="mono">⚓ Crewless — a one-person company, run by agents.</span>
-  <div class="disc">Built in the open. Nothing here is a promise of results — it's a record of how the work is done. © 2026</div>
+  <span class="mono">⚓ Crewless — a one-person company, run by agents.</span><br>
+  <span style="margin-top:.5rem;display:inline-block">Built in the open. Nothing here is a promise of results — it's a record of how the work is done. © 2026</span>
 </div></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function(){
   "use strict";
-  var hero=document.getElementById('hero');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cv=document.getElementById('net'), ctx=cv.getContext('2d'), hero=document.getElementById('hero');
+  var W,H,DPR,mx=0,my=0,tmx=0,tmy=0;
 
-  // ── live state from state.json (drives HUD, receipts, and the jet) ──
-  var STATE={desk_state:'holding',desk_label:'Holding short',changes_7d:'—',active_days_7d:'—',receipts:[]};
-  function paint(){
-    var set=function(id,v){var e=document.getElementById(id);if(e)e.textContent=v;};
-    set('c-state',(STATE.desk_label||STATE.desk_state||'—'));
-    set('c-ships',STATE.changes_7d); set('c-days',STATE.active_days_7d);
-    set('hstate',(STATE.desk_label||'live')); set('hs2',(STATE.desk_label||'live'));
-    var rc=document.getElementById('receipts');
-    if(rc && STATE.receipts && STATE.receipts.length){
-      rc.innerHTML=STATE.receipts.slice(0,5).map(function(r){
-        return '<div class="rcpt"><div class="d">'+esc(r.date)+'</div><div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div></div>';
-      }).join('');
-    }
-    setTarget(STATE.desk_state);
+  // the agent organization — labels + relative layout (0..1 in a design box)
+  var NODES=[
+    {l:'COO',      x:.50,y:.46, r:15, c:'#4fe0d0', hub:1},
+    {l:'Research', x:.24,y:.30, r:11, c:'#7c8cff'},
+    {l:'Build',    x:.74,y:.28, r:11, c:'#b57bff'},
+    {l:'Ops',      x:.80,y:.62, r:11, c:'#4fe0d0'},
+    {l:'Risk',     x:.30,y:.66, r:11, c:'#ff9e64'},
+    {l:'Self-heal',x:.56,y:.76, r:9,  c:'#7c8cff'},
+    {l:'Comms',    x:.14,y:.50, r:9,  c:'#b57bff'}
+  ];
+  var LINKS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,4],[2,3],[4,5],[1,2],[3,5]];
+  var pulses=[], stars=[];
+
+  function layout(){
+    var rect=hero.getBoundingClientRect(); W=rect.width; H=rect.height;
+    DPR=Math.min(devicePixelRatio||1,2);
+    cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    // place nodes in a centered design box
+    var bw=Math.min(W*0.9,760), bh=Math.min(H*0.74,560), ox=(W-bw)/2, oy=(H-bh)/2 - H*0.02;
+    NODES.forEach(function(n){ n.px=ox+n.x*bw; n.py=oy+n.y*bh; n.ph=Math.random()*6.28; });
+    stars=[]; var count=Math.round(W*H/9000);
+    for(var i=0;i<count;i++) stars.push({x:Math.random()*W,y:Math.random()*H,z:Math.random(),tw:Math.random()*6.28});
   }
+  window.addEventListener('resize',layout);
+  hero.addEventListener('pointermove',function(e){ var r=hero.getBoundingClientRect();
+    tmx=((e.clientX-r.left)/r.width-0.5); tmy=((e.clientY-r.top)/r.height-0.5); });
+
+  function spawn(){ var li=(Math.random()*LINKS.length)|0;
+    pulses.push({li:li, t:0, sp:0.006+Math.random()*0.008, dir:Math.random()<0.5?1:-1, hue:NODES[LINKS[li][0]].c}); }
+
+  function nodePos(i,t){ var n=NODES[i];
+    var dx=Math.sin(t*0.5+n.ph)*7 + tmx*(n.hub?10:22);
+    var dy=Math.cos(t*0.45+n.ph)*7 + tmy*(n.hub?10:22);
+    return {x:n.px+dx, y:n.py+dy}; }
+
+  function frame(t){
+    t*=0.001; ctx.clearRect(0,0,W,H);
+    mx+=(tmx-mx)*0.05; my+=(tmy-my)*0.05;
+    // background glow
+    var g=ctx.createRadialGradient(W*.68,H*.34,0,W*.68,H*.34,Math.max(W,H)*.7);
+    g.addColorStop(0,'rgba(24,40,66,.55)'); g.addColorStop(.5,'rgba(10,16,28,.25)'); g.addColorStop(1,'rgba(5,7,13,0)');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    // stars
+    for(var s=0;s<stars.length;s++){ var st=stars[s]; var a=(0.15+0.25*st.z)*(0.6+0.4*Math.sin(t*1.2+st.tw));
+      ctx.fillStyle='rgba(150,170,210,'+a.toFixed(3)+')'; ctx.fillRect(st.x+mx*st.z*18, st.y+my*st.z*18, 1.2+st.z, 1.2+st.z); }
+    // links
+    ctx.lineWidth=1;
+    LINKS.forEach(function(lk){ var a=nodePos(lk[0],t), b=nodePos(lk[1],t);
+      var grad=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+      grad.addColorStop(0,'rgba(90,120,180,.16)'); grad.addColorStop(.5,'rgba(120,150,220,.30)'); grad.addColorStop(1,'rgba(90,120,180,.16)');
+      ctx.strokeStyle=grad; ctx.beginPath(); ctx.moveTo(a.x,a.y);
+      var mxp=(a.x+b.x)/2, myp=(a.y+b.y)/2 - 22; ctx.quadraticCurveTo(mxp,myp,b.x,b.y); ctx.stroke(); });
+    // pulses along links
+    for(var p=pulses.length-1;p>=0;p--){ var pu=pulses[p]; pu.t+=pu.sp; if(pu.t>=1){pulses.splice(p,1);continue;}
+      var lk=LINKS[pu.li], a=nodePos(lk[0],t), b=nodePos(lk[1],t), tt=pu.dir>0?pu.t:1-pu.t;
+      var mxp=(a.x+b.x)/2, myp=(a.y+b.y)/2 - 22;
+      var x=(1-tt)*(1-tt)*a.x+2*(1-tt)*tt*mxp+tt*tt*b.x, y=(1-tt)*(1-tt)*a.y+2*(1-tt)*tt*myp+tt*tt*b.y;
+      var gl=ctx.createRadialGradient(x,y,0,x,y,7); gl.addColorStop(0,pu.hue); gl.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(x,y,7,0,6.28); ctx.fill();
+      ctx.fillStyle='#eaf6ff'; ctx.beginPath(); ctx.arc(x,y,1.6,0,6.28); ctx.fill(); }
+    // nodes
+    NODES.forEach(function(n,i){ var pos=nodePos(i,t), pr=n.r*(1+0.06*Math.sin(t*1.6+n.ph));
+      var gl=ctx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,pr*3.2);
+      gl.addColorStop(0,n.c+'cc'); gl.addColorStop(.4,n.c+'33'); gl.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(pos.x,pos.y,pr*3.2,0,6.28); ctx.fill();
+      ctx.fillStyle=n.hub?'#eafffb':'#0b1220'; ctx.strokeStyle=n.c; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(pos.x,pos.y,pr,0,6.28); ctx.fill(); ctx.stroke();
+      ctx.fillStyle='rgba(230,240,250,.92)'; ctx.font='500 '+(n.hub?13:11.5)+'px "IBM Plex Mono",monospace';
+      ctx.textAlign='center'; ctx.fillText(n.l,pos.x,pos.y+pr+15); });
+  }
+  var last=0;
+  function loop(ts){ requestAnimationFrame(loop);
+    if(reduce){ frame(3000); return; }
+    if(ts-last>1200 && pulses.length<14){ spawn(); last=ts; }
+    frame(ts); }
+
+  // ── live layer: receipts + console feed + HUD from state.json ──
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  function fetchState(){
+  var FEEDLINES=[
+    'COO · reviewing shift board',
+    'research · registered a study before results',
+    'build · change reviewed, shipped',
+    'risk · gate held · bounded risk',
+    'self-heal · systems nominal',
+    'research · verdict recorded: no edge',
+    'ops · broker truth reconciled'
+  ];
+  function tickFeed(){ var f=document.getElementById('feed'); if(!f)return;
+    var line=FEEDLINES[(Math.random()*FEEDLINES.length)|0];
+    var parts=line.split(' · '); var el=document.createElement('div'); el.className='ln';
+    el.innerHTML='<b>'+esc(parts[0])+'</b> · '+esc(parts.slice(1).join(' · '));
+    f.appendChild(el); while(f.childNodes.length>4) f.removeChild(f.firstChild); }
+  function loadState(){
     fetch('state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
-      STATE=Object.assign(STATE,d); paint();
-    }).catch(function(){paint();});
+      var hs=document.getElementById('hstate'); if(hs&&d.desk_label) hs.textContent='running';
+      var rc=document.getElementById('receipts');
+      if(rc&&d.receipts&&d.receipts.length){ rc.innerHTML=d.receipts.slice(0,5).map(function(r){
+        return '<div class="rcpt"><div class="d">'+esc(r.date)+'</div><div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div></div>';}).join(''); }
+    }).catch(function(){});
   }
 
-  // ── 3D flight deck ──
-  if(!window.WebGLRenderingContext || !window.THREE){ hero.classList.add('nowebgl'); fetchState(); return; }
-  var canvas=document.getElementById('deck'), renderer, scene, camera, jet, burnA, burnB, burnLight, clock;
-  var target={x:-9,y:0.35,z:0,pitch:0.05,roll:0,throttle:0.25}; // where the jet wants to be
-  var cur=Object.assign({},target);
-
-  // desk state -> flight pose (the whole point: the jet reflects the real state)
-  var POSES={
-    holding:  {x:-9,  y:0.35, z:0,  pitch:0.06, roll:0,     throttle:0.22},
-    hangar:   {x:-12, y:0.3,  z:2,  pitch:0.0,  roll:0,     throttle:0.05},
-    grounded: {x:-9,  y:0.35, z:0,  pitch:0.02, roll:0,     throttle:0.05},
-    scouting: {x:-3,  y:0.5,  z:0,  pitch:0.10, roll:0.05,  throttle:0.6},
-    airborne: {x:5,   y:5.5,  z:-1, pitch:0.16, roll:-0.22, throttle:1.0},
-    landed:   {x:9,   y:0.35, z:0,  pitch:0.0,  roll:0,     throttle:0.15}
-  };
-  function setTarget(state){ var p=POSES[state]||POSES.holding; target=Object.assign({},p); }
-
-  function init(){
-    try{
-      renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:false});
-      renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-      renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-      renderer.outputEncoding=THREE.sRGBEncoding||3001;
-      scene=new THREE.Scene();
-      scene.fog=new THREE.FogExp2(0x070b12,0.028);
-      camera=new THREE.PerspectiveCamera(42,1,0.1,300);
-      camera.position.set(-6,4.2,15); camera.lookAt(2,2,0);
-
-      // lights
-      scene.add(new THREE.HemisphereLight(0x9fc6ff,0x0a0f18,0.55));
-      var key=new THREE.DirectionalLight(0xbfe8ff,1.15);
-      key.position.set(-8,14,10); key.castShadow=true;
-      key.shadow.mapSize.set(1024,1024); key.shadow.camera.near=1; key.shadow.camera.far=60;
-      key.shadow.camera.left=-25;key.shadow.camera.right=25;key.shadow.camera.top=25;key.shadow.camera.bottom=-25;
-      scene.add(key);
-      var rim=new THREE.DirectionalLight(0x3fe3c8,0.5); rim.position.set(10,6,-8); scene.add(rim);
-
-      // ground + runway
-      var ground=new THREE.Mesh(new THREE.PlaneGeometry(400,400),
-        new THREE.MeshStandardMaterial({color:0x0a1018,roughness:1,metalness:0}));
-      ground.rotation.x=-Math.PI/2; ground.receiveShadow=true; scene.add(ground);
-      var runway=new THREE.Mesh(new THREE.PlaneGeometry(70,7),
-        new THREE.MeshStandardMaterial({color:0x11202f,roughness:.85,metalness:.1}));
-      runway.rotation.x=-Math.PI/2; runway.position.y=0.01; runway.receiveShadow=true; scene.add(runway);
-      var dashMat=new THREE.MeshStandardMaterial({color:0x3fe3c8,emissive:0x0d5147,emissiveIntensity:.6,roughness:.5});
-      for(var i=-6;i<=6;i++){ var d=new THREE.Mesh(new THREE.BoxGeometry(2.2,.04,.18),dashMat);
-        d.position.set(i*5,0.03,0); scene.add(d); }
-      // edge lights
-      var em=new THREE.MeshStandardMaterial({color:0x59a8ff,emissive:0x1c3f66,emissiveIntensity:.9});
-      for(var j=-6;j<=6;j++){ [-3.4,3.4].forEach(function(zz){
-        var b=new THREE.Mesh(new THREE.SphereGeometry(.09,8,8),em); b.position.set(j*5,0.06,zz); scene.add(b);}); }
-
-      jet=buildJet(); scene.add(jet);
-      clock=new THREE.Clock();
-      resize(); window.addEventListener('resize',resize);
-      animate();
-    }catch(e){ hero.classList.add('nowebgl'); }
-  }
-
-  function buildJet(){
-    var g=new THREE.Group();
-    var body=new THREE.MeshStandardMaterial({color:0x2b3542,metalness:.72,roughness:.38});
-    var dark=new THREE.MeshStandardMaterial({color:0x1a222c,metalness:.6,roughness:.5});
-    var glass=new THREE.MeshStandardMaterial({color:0x0a1a24,metalness:.3,roughness:.15,emissive:0x113a44,emissiveIntensity:.5});
-    // fuselage (tapered) using a lathe-ish cylinder
-    var fus=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.5,4.6,20),body);
-    fus.rotation.z=Math.PI/2; fus.castShadow=true; g.add(fus);
-    // nose cone
-    var nose=new THREE.Mesh(new THREE.ConeGeometry(0.28,1.5,20),body);
-    nose.rotation.z=-Math.PI/2; nose.position.x=3.05; nose.castShadow=true; g.add(nose);
-    // tail nozzle
-    var noz=new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.34,0.5,20),dark);
-    noz.rotation.z=Math.PI/2; noz.position.x=-2.5; noz.castShadow=true; g.add(noz);
-    // delta wings via extruded shape
-    var ws=new THREE.Shape(); ws.moveTo(0.9,0); ws.lineTo(-1.7,0); ws.lineTo(-1.7,3.0); ws.lineTo(0.55,0.35); ws.lineTo(0.9,0);
-    var wgeo=new THREE.ExtrudeGeometry(ws,{depth:0.09,bevelEnabled:false});
-    var wingL=new THREE.Mesh(wgeo,body); wingL.rotation.x=-Math.PI/2; wingL.position.set(-0.2,0,0); wingL.castShadow=true; g.add(wingL);
-    var wingR=wingL.clone(); wingR.rotation.x=Math.PI/2; wingR.position.z=0; g.add(wingR);
-    // twin tails
-    var ts=new THREE.Shape(); ts.moveTo(0,0); ts.lineTo(-1.1,0); ts.lineTo(-1.0,0.95); ts.lineTo(-0.1,0.2); ts.lineTo(0,0);
-    var tgeo=new THREE.ExtrudeGeometry(ts,{depth:0.06,bevelEnabled:false});
-    var tail1=new THREE.Mesh(tgeo,body); tail1.position.set(-1.9,0.18,0.45); tail1.rotation.y=0.28; tail1.castShadow=true; g.add(tail1);
-    var tail2=tail1.clone(); tail2.position.z=-0.45; tail2.rotation.y=-0.28; g.add(tail2);
-    // horizontal stabs
-    var hs=new THREE.Shape(); hs.moveTo(0,0); hs.lineTo(-0.9,0); hs.lineTo(-0.9,1.0); hs.lineTo(0.1,0.15); hs.lineTo(0,0);
-    var hgeo=new THREE.ExtrudeGeometry(hs,{depth:0.06,bevelEnabled:false});
-    var st1=new THREE.Mesh(hgeo,body); st1.rotation.x=-Math.PI/2; st1.position.set(-1.9,0,0.2); g.add(st1);
-    var st2=st1.clone(); st2.rotation.x=Math.PI/2; g.add(st2);
-    // canopy
-    var can=new THREE.Mesh(new THREE.SphereGeometry(0.32,16,12,0,Math.PI*2,0,Math.PI/2),glass);
-    can.scale.set(1.5,0.7,0.85); can.position.set(1.5,0.34,0); g.add(can);
-    // afterburner glow
-    var bmat=new THREE.MeshBasicMaterial({color:0xff7a3c,transparent:true,opacity:.9});
-    burnA=new THREE.Mesh(new THREE.ConeGeometry(0.3,1.4,16),bmat);
-    burnA.rotation.z=Math.PI/2; burnA.position.x=-3.3; g.add(burnA);
-    burnB=new THREE.Mesh(new THREE.ConeGeometry(0.16,2.4,16),new THREE.MeshBasicMaterial({color:0x9fd6ff,transparent:true,opacity:.6}));
-    burnB.rotation.z=Math.PI/2; burnB.position.x=-3.8; g.add(burnB);
-    burnLight=new THREE.PointLight(0xff7a3c,1.2,8); burnLight.position.set(-3.4,0,0); g.add(burnLight);
-    g.scale.set(0.9,0.9,0.9);
-    return g;
-  }
-
-  function resize(){
-    var w=hero.clientWidth,h=hero.clientHeight;
-    renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
-  }
-  function lerp(a,b,t){return a+(b-a)*t;}
-  function animate(){
-    requestAnimationFrame(animate);
-    var t=clock.getElapsedTime(), dt=0.06;
-    cur.x=lerp(cur.x,target.x,dt); cur.y=lerp(cur.y,target.y,dt); cur.z=lerp(cur.z,target.z,dt);
-    cur.pitch=lerp(cur.pitch,target.pitch,dt); cur.roll=lerp(cur.roll,target.roll,dt);
-    cur.throttle=lerp(cur.throttle,target.throttle,0.08);
-    var bob=(target.y>1?0:1)*Math.sin(t*1.4)*0.03;              // idle bob on ground
-    var sway=(target.y>1?1:0)*Math.sin(t*0.6)*0.12;             // gentle sway airborne
-    jet.position.set(cur.x, cur.y+bob, cur.z);
-    jet.rotation.set(cur.roll+sway*0.4, Math.PI, -cur.pitch);   // face +x (nose right)
-    var flick=0.85+Math.sin(t*40)*0.15;
-    burnA.scale.set(cur.throttle*flick, 1+cur.throttle, 1);
-    burnB.scale.set(cur.throttle*flick, 1+cur.throttle*1.4, 1);
-    burnA.material.opacity=0.25+cur.throttle*0.7;
-    burnB.material.opacity=0.15+cur.throttle*0.5;
-    burnLight.intensity=cur.throttle*2.2;
-    // slow cinematic camera drift
-    camera.position.x=-6+Math.sin(t*0.15)*1.5;
-    camera.position.y=4.2+Math.sin(t*0.12)*0.4;
-    camera.lookAt(cur.x*0.4+1, cur.y*0.5+1.2, 0);
-    renderer.render(scene,camera);
-  }
-
-  init();
-  fetchState();
-  setInterval(fetchState,120000);   // refresh live state every 2 min
+  try{ layout(); requestAnimationFrame(loop); }catch(e){ hero.style.background='radial-gradient(90% 60% at 70% 30%,#13233a,#05070d)'; }
+  loadState(); setInterval(loadState,120000);
+  if(!reduce){ tickFeed(); setInterval(tickFeed,2600); } else { tickFeed(); }
 })();
 </script>
 </body></html>
