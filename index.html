@@ -34,7 +34,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.06rem;letter-spacing:.01em;}
 .brand .ac{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;
   background:radial-gradient(circle at 35% 30%,var(--c1),#0b7d70);color:#04120f;font-size:.85rem;}
-.nav{display:flex;gap:1.5rem;font-size:.82rem;color:var(--mut);}
+.nav{display:flex;gap:1.15rem;font-size:.8rem;color:var(--mut);}
 .nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
 @media(max-width:640px){.nav{display:none;}}
 
@@ -139,11 +139,18 @@ footer .mono{color:var(--mut);}
 .prod::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--c1),transparent);opacity:.6;}
 .prod h3{font-size:1.32rem;margin:.15rem 0 .55rem;letter-spacing:-.01em;}
 .prod p{color:var(--mut);max-width:60ch;}
+.flowlabel{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--c1);margin:1.9rem 0 .3rem;}
+.flow{display:flex;align-items:center;gap:.5rem;overflow-x:auto;padding:.3rem 0 .6rem;-webkit-overflow-scrolling:touch;}
+.flow .st{flex:none;white-space:nowrap;border:1px solid var(--line);border-radius:10px;padding:.5rem .8rem;
+  font-size:.84rem;background:linear-gradient(180deg,rgba(16,23,35,.6),rgba(10,15,24,.5));}
+.flow .st.k{border-color:#2a4a52;color:#bff3ec;}
+.flow .ar{flex:none;color:var(--dim);font-family:"IBM Plex Mono",monospace;}
 </style></head>
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac">⚓</span> Crewless</a>
-  <nav class="nav"><a href="#vision">Why</a><a href="#idea">How it works</a><a href="#org">The team</a><a href="#products">Product</a><a href="#run">Safeguards</a><a href="#contact">Contact</a></nav>
+  <nav class="nav"><a href="#vision">Why</a><a href="#idea">How it works</a><a href="#org">The team</a><a href="#products">What's live</a><a href="#run">Safeguards</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -159,9 +166,9 @@ footer .mono{color:var(--mut);}
     <p class="lede">One founder sets the direction and makes the important decisions. A team of
       AI agents does the rest — exploring ideas in parallel, building and shipping the software,
       keeping the systems healthy, and running the day-to-day around the clock. It even builds and
-      maintains this website. The network here is the company at work: a COO, the teams of agents that do
-      the research, engineering, operations, safeguards, reliability and communications, and the things they
-      run — the one live product and this very website. Every point of light is an agent, working in parallel.</p>
+      maintains this website. The network here is the company at work: a small board of agents that grows
+      and protects Crewless, a COO who runs the day-to-day, and each product with its own swarm of agents —
+      the one live product and this very website. Every point of light is an agent, working in parallel.</p>
     <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
     <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
   </div>
@@ -169,7 +176,7 @@ footer .mono{color:var(--mut);}
 
 <main>
 <section id="vision"><div class="wrap">
-  <p class="kick">Why Crewless</p>
+  <p class="kick">Why</p>
   <p class="big">Can one person, with a team of AI agents, build and run a real company?</p>
   <p class="sub">That's the honest question behind Crewless. The tools have finally reached the point
     where a very small human core — even one person — can do work that used to take a crowd. We're
@@ -194,16 +201,46 @@ footer .mono{color:var(--mut);}
     <div class="card"><div class="ix">02</div><h3>Checked, then checked again</h3><p>Every piece of work is reviewed by another agent before it goes live, so quality is built into the process.</p></div>
     <div class="card"><div class="ix">03</div><h3>Safe and gradual</h3><p>Nothing that carries real risk is scaled up until it has clearly proven itself on a small scale first.</p></div>
   </div>
+
+  <p class="flowlabel">The real path — automated investing research</p>
+  <div class="flow">
+    <span class="st">Overnight research</span><span class="ar">→</span>
+    <span class="st">Candidate found</span><span class="ar">→</span>
+    <span class="st k">Safety checks</span><span class="ar">→</span>
+    <span class="st">Small, capped position</span><span class="ar">→</span>
+    <span class="st">Reconciled &amp; logged</span><span class="ar">→</span>
+    <span class="st">Reviewed honestly</span>
+  </div>
+
+  <p class="flowlabel">The real path — this website</p>
+  <div class="flow">
+    <span class="st">Idea</span><span class="ar">→</span>
+    <span class="st">Built by an agent</span><span class="ar">→</span>
+    <span class="st k">Independently reviewed</span><span class="ar">→</span>
+    <span class="st">Deployed</span><span class="ar">→</span>
+    <span class="st">Live &amp; monitored</span><span class="ar">→</span>
+    <span class="st">Fixes itself</span>
+  </div>
 </div></section>
 
 <section id="org"><div class="wrap">
   <p class="kick">The team</p>
-  <p class="big">One COO. Teams of agents doing the real work.</p>
-  <p class="sub">Under the COO, teams of AI agents run continuously — research, engineering, operations, safeguards, reliability and communications. Together they run the one live product and build and maintain everything you see here, including this website. The company is built so a second product could later be run the same way, independently — but today, honestly, there's just the one. These are the kinds of agents at work:</p>
+  <p class="big">A board that grows the company. A swarm behind every product.</p>
+  <p class="sub">There are two layers. A small board of agents looks for the company's next products, keeps
+    Crewless secure, and holds it to its own rules — that's how it grows and stays safe. Under the COO, each
+    product runs on its own swarm of agents. The founder sets the direction and holds the decisions that matter.</p>
+
+  <p class="flowlabel">The board — growing &amp; protecting the company</p>
   <div class="grid">
-    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>The COO</h3></div><p>Sits at the top. Runs the company day to day and brings the founder only the decisions that genuinely need a person.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Strategy &amp; ventures</h3></div><p>Looks for the company's next products and honestly tests whether each new idea is worth doing. This is how Crewless grows.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#ff9e64"></span><h3>Security</h3></div><p>Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Governance</h3></div><p>Holds the company to its own rules: nothing ships without review, and anything involving money or real risk goes to the founder.</p></div>
+  </div>
+
+  <p class="flowlabel">Inside every product — the swarm</p>
+  <div class="grid">
     <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Research</h3></div><p>Explores new ideas and tests them carefully, reporting honestly what works and what doesn't.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Engineering</h3></div><p>Builds and improves the software around the clock, with every change reviewed before it goes live.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Engineering</h3></div><p>Builds and ships the software around the clock, with every change reviewed before it goes live.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Operations</h3></div><p>Keeps everything running smoothly day to day and makes sure the numbers add up.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#ff9e64"></span><h3>Safeguards</h3></div><p>Keeps risk small and controlled, and makes sure the important decisions are left to the founder.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Reliability</h3></div><p>Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.</p></div>
@@ -232,7 +269,7 @@ footer .mono{color:var(--mut);}
 </div></section>
 
 <section id="run"><div class="wrap">
-  <p class="kick">How it's run</p>
+  <p class="kick">Safeguards</p>
   <p class="big">Built with guardrails, not guesswork.</p>
   <p class="sub">The same discipline runs behind everything here — so the work can move quickly
     without moving carelessly. This is what an engineer or a security reviewer would want to know.</p>
@@ -255,11 +292,13 @@ footer .mono{color:var(--mut);}
   <p class="creed">If it works, one person with a clear idea and the right tools can build
     what used to take a crowd. <b>That's the story we're trying to earn the right to tell.</b></p>
   <div class="cta"><a class="btn p" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
+  <p class="mono" style="color:var(--dim);margin-top:1.3rem;font-size:.82rem">◉ Based in Sweden · working remotely</p>
 </div></section>
 </main>
 
 <footer><div class="wrap">
   <span class="mono">⚓ Crewless — a one-person company, run by agents.</span><br>
+  <span class="mono" style="display:inline-block;margin-top:.5rem">Based in Sweden · working remotely</span><br>
   <span style="margin-top:.5rem;display:inline-block">Built in the open. Nothing here is a promise of results — it's a record of how the work is done. © 2026</span>
 </div></footer>
 
@@ -277,19 +316,18 @@ footer .mono{color:var(--mut);}
   // without disturbing it. x/y = desktop, mx/my = mobile.
   // the whole company at work: a COO, the teams of agents that do the real work, and the two
   // real things they produce and run — the one live product and this website itself.
+  // two layers: a BOARD of agents that grows & protects the company (top), a COO who runs it
+  // day to day, and each PRODUCT run by its own swarm of agents (bottom).
   var NODES=[
-    {l:'COO', kind:'coo', x:.50,y:.08, r:15, c:'#4fe0d0', hub:1, role:'Sits at the top. Runs the company day to day and brings the founder only the decisions that genuinely need a person.'},
-    {l:'Research', kind:'team', x:.18,y:.30, r:11, c:'#7c8cff', role:'Explores new ideas and tests them carefully, reporting honestly what works and what doesn’t.'},
-    {l:'Engineering', kind:'team', x:.50,y:.26, r:11, c:'#b57bff', role:'Builds and ships the software around the clock, with every change reviewed before it goes live.'},
-    {l:'Operations', kind:'team', x:.82,y:.30, r:11, c:'#4fe0d0', role:'Keeps everything running smoothly day to day and makes sure the numbers add up.'},
-    {l:'Safeguards', kind:'team', x:.20,y:.54, r:11, c:'#ff9e64', role:'Keeps risk small and controlled, and makes sure the important decisions are left to the founder.'},
-    {l:'Reliability', kind:'team', x:.50,y:.56, r:11, c:'#7c8cff', role:'Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.'},
-    {l:'Comms', kind:'team', x:.80,y:.54, r:11, c:'#b57bff', role:'Prepares everything the company shares publicly — including this website — with a human giving final approval.'},
-    {l:'Investing research', kind:'out', x:.32,y:.84, r:13, c:'#4fe0d0', role:'The one product live today: automated investing research, running at a small capped size with a person holding the risk.'},
-    {l:'This website', kind:'out', x:.70,y:.84, r:13, c:'#ffd166', role:'Built, written and deployed by the agents themselves — and kept up to date by them. What you’re reading is the company at work: a baby of Crewless.'}
+    {l:'COO', kind:'coo', x:.50,y:.44, r:14, c:'#4fe0d0', hub:1, role:'Runs the company day to day and brings the founder only the decisions that genuinely need a person.'},
+    {l:'Strategy & ventures', kind:'board', x:.22,y:.14, r:11, c:'#7c8cff', role:'Part of the board. Looks for the company’s next products and honestly tests whether each new idea is worth doing — this is how Crewless grows.'},
+    {l:'Security', kind:'board', x:.50,y:.12, r:11, c:'#ff9e64', role:'Part of the board. Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.'},
+    {l:'Governance', kind:'board', x:.78,y:.14, r:11, c:'#4fe0d0', role:'Part of the board. Holds the company to its own rules: nothing ships without review, and money or real-risk decisions always go to the founder.'},
+    {l:'Investing research', kind:'out', x:.30,y:.80, r:13, c:'#4fe0d0', role:'The one product live today: automated investing research, run by its own swarm of agents at a small capped size, with a person holding the risk.'},
+    {l:'This website', kind:'out', x:.70,y:.80, r:13, c:'#ffd166', role:'Built, written and deployed by the agents themselves — and kept up to date by them. A baby of Crewless, run by its own swarm.'}
   ];
   var sel=-1;
-  var LINKS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,7],[2,7],[3,7],[4,7],[2,8],[5,8],[6,8]];
+  var LINKS=[[1,0],[2,0],[3,0],[0,4],[0,5],[2,4],[2,5]];
   var pulses=[], stars=[], WORKERS=[];
 
   function layout(){
@@ -307,10 +345,11 @@ footer .mono{color:var(--mut);}
     NODES.forEach(function(n){ var ux=(W<880&&n.mx!=null)?n.mx:n.x, uy=(W<880&&n.my!=null)?n.my:n.y;
       n.px=ox+ux*bw; n.py=oy+uy*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
     // the cluster: a swarm of agents, mostly around the one live pod (empty slots get none)
-    WORKERS=[]; var perHub=(W>=880)?[6,11,11,11,11,11,11,0,0]:[4,7,7,7,7,7,7,0,0];
-    var clusterR=Math.min(bw,bh)*(W>=880?0.12:0.11);
-    for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||0;
-      for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=clusterR*Math.sqrt(Math.random());
+    // swarm: big pods on the products, small teams on the board / COO
+    WORKERS=[]; var perHub=(W>=880)?[6,5,5,5,24,20]:[4,3,3,3,15,12];
+    var clusterR=Math.min(bw,bh)*(W>=880?0.13:0.12);
+    for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||0, cr=(NODES[hi].kind==='out')?clusterR:clusterR*0.5;
+      for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=cr*Math.sqrt(Math.random());
         WORKERS.push({hub:hi, ox:Math.cos(ang)*rad, oy:Math.sin(ang)*rad*0.82,
           ph:Math.random()*6.28, sp:0.4+Math.random()*0.7, r:1.1+Math.random()*1.6, tw:Math.random()*6.28}); } }
     var ce=document.getElementById('agentct'); if(ce) ce.textContent=(WORKERS.length+NODES.length);
@@ -386,13 +425,15 @@ footer .mono{color:var(--mut);}
       ctx.fillStyle=ghost?'#080c14':((n.hub||on)?'#eafffb':'#0b1220'); ctx.strokeStyle=n.c; ctx.lineWidth=on?3:2;
       ctx.beginPath(); ctx.arc(pos.x,pos.y,pr,0,6.28); ctx.fill(); ctx.stroke();
       if(ghost) ctx.setLineDash([]);
-      // label with a soft dark halo so it stays legible over the starfield
-      ctx.save();
-      ctx.shadowColor='rgba(5,7,13,0.95)'; ctx.shadowBlur=8;
-      ctx.fillStyle=on?'#ffffff':(ghost?'rgba(160,172,196,.9)':'rgba(233,242,253,.94)');
-      ctx.font='500 '+((n.hub||on)?13:11.5)+'px "IBM Plex Mono",monospace'; ctx.textAlign='center';
-      ctx.fillText(n.l,pos.x,pos.y+pr+15);
-      ctx.restore();
+      // label with a soft dark halo; on mobile, only the COO and the two products stay labelled
+      if(W>=880 || n.kind!=='board' || on){
+        ctx.save();
+        ctx.shadowColor='rgba(5,7,13,0.95)'; ctx.shadowBlur=8;
+        ctx.fillStyle=on?'#ffffff':(ghost?'rgba(160,172,196,.9)':'rgba(233,242,253,.94)');
+        ctx.font='500 '+((n.hub||on)?13:11.5)+'px "IBM Plex Mono",monospace'; ctx.textAlign='center';
+        ctx.fillText(n.l,pos.x,pos.y+pr+15);
+        ctx.restore();
+      }
       ctx.globalAlpha=1; });
   }
   var last=0;
