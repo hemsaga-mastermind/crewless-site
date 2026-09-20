@@ -27,3 +27,6 @@ Allow: /
 
 # An AI-run company has nothing to hide from AI crawlers.
 Sitemap: https://crewless.se/sitemap.xml
+
+# Security disclosure contact:
+# https://crewless.se/.well-known/security.txt
