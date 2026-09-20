@@ -148,6 +148,18 @@ footer .mono{color:var(--mut);}
   font-size:.84rem;background:linear-gradient(180deg,rgba(16,23,35,.6),rgba(10,15,24,.5));}
 .flow .st.k{border-color:#2a4a52;color:#bff3ec;}
 .flow .ar{flex:none;color:var(--dim);font-family:"IBM Plex Mono",monospace;}
+.fb{margin-top:2rem;max-width:540px;}
+.fbq{font-weight:600;font-size:1.05rem;margin-bottom:.75rem;}
+.fbchips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem;}
+.fbchips button{font:inherit;font-size:.85rem;color:var(--mut);background:var(--panel);border:1px solid var(--line);
+  border-radius:100px;padding:.44rem .95rem;cursor:pointer;transition:.15s;}
+.fbchips button:hover{border-color:#2a3a56;color:var(--ink);}
+.fbchips button.on{border-color:var(--c1);color:var(--c1);background:rgba(79,224,208,.10);}
+#fbtext{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--ink);
+  font:inherit;font-size:.92rem;line-height:1.5;padding:.75rem .9rem;resize:vertical;margin-bottom:.85rem;}
+#fbtext:focus{outline:none;border-color:#2a3a56;}
+.fbrow{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;}
+.fbnote{font-size:.82rem;color:var(--dim);}
 </style></head>
 <body>
 <header><div class="wrap bar">
@@ -297,7 +309,17 @@ footer .mono{color:var(--mut);}
 <section id="contact"><div class="wrap">
   <p class="creed">If it works, one person with a clear idea and the right tools can build
     what used to take a crowd. <b>That's the story we're trying to earn the right to tell.</b></p>
-  <div class="cta"><a class="btn p" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
+  <div class="fb">
+    <p class="fbq">What do you make of this idea?</p>
+    <div class="fbchips" id="fbchips">
+      <button type="button" data-v="Love it">Love it</button>
+      <button type="button" data-v="Curious">Curious</button>
+      <button type="button" data-v="Skeptical">Skeptical</button>
+    </div>
+    <textarea id="fbtext" rows="3" placeholder="Anything you'd tell the founder — one line is plenty (optional)"></textarea>
+    <div class="fbrow"><button class="btn p" id="fbsend" type="button">Send feedback</button><span class="fbnote" id="fbnote"></span></div>
+  </div>
+  <div class="cta"><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Or just email us</a></div>
   <p class="mono" style="color:var(--dim);margin-top:1.3rem;font-size:.82rem">◉ Based in Sweden · working remotely</p>
 </div></section>
 </main>
@@ -482,6 +504,23 @@ footer .mono{color:var(--mut);}
   try{ layout(); requestAnimationFrame(loop); }catch(e){ stage.style.background='radial-gradient(80% 60% at 72% 35%,#13233a,#05070d)'; }
   loadState(); setInterval(loadState,120000);
   tickFeed(); if(!reduce) setInterval(tickFeed,2600);
+})();
+</script>
+<script>
+(function(){
+  var chips=document.getElementById('fbchips'), txt=document.getElementById('fbtext'),
+      note=document.getElementById('fbnote'), send=document.getElementById('fbsend'), sel='';
+  if(chips) chips.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b)return;
+    sel=b.getAttribute('data-v');
+    for(var i=0;i<chips.children.length;i++) chips.children[i].classList.toggle('on',chips.children[i]===b); });
+  if(send) send.addEventListener('click',function(){
+    var body=(txt&&txt.value?txt.value.trim():'');
+    if(!sel && !body){ if(note) note.textContent='Pick one, or add a note first.'; return; }
+    var subj='Crewless feedback'+(sel?(' — '+sel):'');
+    var full=(sel?('Reaction: '+sel+'\n\n'):'')+body+'\n\n— sent from crewless.se';
+    window.location.href='mailto:admin@dancing-flamingo.org?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(full);
+    if(note) note.textContent='Opening your email app to send…';
+  });
 })();
 </script>
 </body></html>
