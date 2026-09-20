@@ -134,18 +134,23 @@ footer .mono{color:var(--mut);}
 .badge.live{color:#4fe0d0;border-color:#1c5b53;} .badge.live .bd{background:#4fe0d0;animation:blip 2.4s infinite;}
 .badge.test{color:#ffcf70;border-color:#5b4a1c;} .badge.test .bd{background:#ffcf70;}
 .badge.plan{color:var(--mut);border-color:var(--line);} .badge.plan .bd{background:var(--mut);}
+.prod{border:1px solid var(--line);border-radius:16px;padding:clamp(1.4rem,4vw,1.9rem);margin-top:2rem;max-width:660px;
+  background:linear-gradient(180deg,rgba(16,23,35,.72),rgba(10,15,24,.55));position:relative;overflow:hidden;}
+.prod::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--c1),transparent);opacity:.6;}
+.prod h3{font-size:1.32rem;margin:.15rem 0 .55rem;letter-spacing:-.01em;}
+.prod p{color:var(--mut);max-width:60ch;}
 </style></head>
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac">⚓</span> Crewless</a>
-  <nav class="nav"><a href="#idea">How it works</a><a href="#org">The team</a><a href="#products">Products</a><a href="#run">Safeguards</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
+  <nav class="nav"><a href="#vision">Why</a><a href="#idea">How it works</a><a href="#org">The team</a><a href="#products">Product</a><a href="#run">Safeguards</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
   <div class="stage" id="stage">
     <canvas id="net"></canvas>
     <div class="scrim"></div>
-    <div class="hint" id="hint">◎ Tap a team to see what it does</div>
+    <div class="hint" id="hint">◎ Tap the COO or a line to see more</div>
     <div class="pick" id="pick" hidden></div>
   </div>
   <div class="wrap hcontent">
@@ -154,15 +159,28 @@ footer .mono{color:var(--mut);}
     <p class="lede">One founder sets the direction and makes the important decisions. A team of
       AI agents does the rest — exploring ideas in parallel, building and shipping the software,
       keeping the systems healthy, and running the day-to-day around the clock. It even builds and
-      maintains this website. The network here is that team at work — a cluster of dozens of agents:
-      each small point of light is an agent, the labelled hubs are the teams they group into, and each
-      moving spark is a piece of work passing between them.</p>
+      maintains this website. The network here shows how it's organised: a COO at the top, one line of
+      work running live today, and room to add more — each line run end to end by its own pod of agents,
+      every point of light one of them, working in parallel.</p>
     <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
     <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
   </div>
 </div>
 
 <main>
+<section id="vision"><div class="wrap">
+  <p class="kick">Why Crewless</p>
+  <p class="big">Can one person, with a team of AI agents, build and run a real company?</p>
+  <p class="sub">That's the honest question behind Crewless. The tools have finally reached the point
+    where a very small human core — even one person — can do work that used to take a crowd. We're
+    trying to find out how far that really goes, and to be candid about it the whole way.</p>
+  <div class="grid">
+    <div class="card"><h3>Our mission</h3><p>Build genuinely useful products with a tiny human core and a large team of AI agents — carefully, in the open, and without pretending things work before they do.</p></div>
+    <div class="card"><h3>Our vision</h3><p>A company that can take on a new line of work independently — each one run end to end by its own agents — while people stay responsible for the decisions that matter.</p></div>
+    <div class="card"><h3>Where we honestly are</h3><p>Early. One product is in a small live pilot; the rest is structure and intent. We'd rather show the real state of it — including what hasn't worked — than a polished story.</p></div>
+  </div>
+</div></section>
+
 <section id="idea"><div class="wrap">
   <p class="kick">How it works</p>
   <p class="big">One person sets the direction. AI agents do the work.</p>
@@ -180,10 +198,10 @@ footer .mono{color:var(--mut);}
 
 <section id="org"><div class="wrap">
   <p class="kick">The team</p>
-  <p class="big">Seven teams. Dozens of agents. One founder at the helm.</p>
-  <p class="sub">The labelled hubs in the network are the teams; the smaller points of light around them are the individual agents doing the work. Tap a team to see what it does.</p>
+  <p class="big">One COO. A manager for each line of work. Dozens of agents.</p>
+  <p class="sub">Under the COO, each line of work gets its own manager that runs the whole lifecycle — from first idea to live — with its own pod of agents. A new line can be added without disturbing the one already running. Today one line is live; the rest is honest, empty capacity. Every pod is staffed by the same kinds of agents:</p>
   <div class="grid">
-    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>The manager</h3></div><p>Keeps the company on track day to day and brings the founder only the decisions that genuinely need a person.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>The manager</h3></div><p>Each line of work has one. It runs that line day to day and escalates only the decisions that genuinely need the founder.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Research</h3></div><p>Explores new ideas and tests them carefully, reporting honestly what works and what doesn't.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Engineering</h3></div><p>Builds and improves the software around the clock, with every change reviewed before it goes live.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Operations</h3></div><p>Keeps everything running smoothly day to day and makes sure the numbers add up.</p></div>
@@ -194,15 +212,16 @@ footer .mono{color:var(--mut);}
 </div></section>
 
 <section id="products"><div class="wrap">
-  <p class="kick">What we're building</p>
-  <p class="big">A handful of products — some live, some still taking shape.</p>
-  <p class="sub">These are early and evolving. Each one follows the same path — researched, tested in
-    the open, and trusted with more only once it has earned it. Nothing here is a promise of results.</p>
-  <div class="grid">
-    <div class="card"><span class="badge test"><span class="bd"></span>In testing</span><h3>HemSaga</h3><p>Helps a family handle the decisions and paperwork around a home and estate — clearly, in one place, even across countries.</p></div>
-    <div class="card"><span class="badge plan"><span class="bd"></span>In design</span><h3>Home Lens</h3><p>A simple way to really understand a home before you commit — the neighbourhood, the true running costs, and the things a listing won't tell you.</p></div>
-    <div class="card"><span class="badge live"><span class="bd"></span>Live pilot</span><h3>Automated investing research</h3><p>Automated systems that study the markets and make careful, size-capped decisions. One is in a small live pilot; others are still in research.</p></div>
-    <div class="card"><span class="badge plan"><span class="bd"></span>Idea</span><h3>More on the way</h3><p>New ideas are explored constantly. The few that prove genuinely useful graduate into products; the rest are honestly set aside.</p></div>
+  <p class="kick">Our product</p>
+  <p class="big">One product, in a small live pilot.</p>
+  <p class="sub">We're deliberately doing one thing first, and doing it honestly, rather than spreading
+    thin or announcing things that don't exist yet. Nothing here is a promise of results.</p>
+  <div class="prod">
+    <span class="badge live"><span class="bd"></span>Live pilot</span>
+    <h3>Automated investing research</h3>
+    <p>Automated systems that study the markets and make careful, size-capped decisions. It runs live
+      at a deliberately small size, with a person holding the risk — and it's judged on what it actually
+      does, not on any promise. More lines of work will come only once this one has earned it.</p>
   </div>
 </div></section>
 
@@ -247,17 +266,17 @@ footer .mono{color:var(--mut);}
   var W,H,DPR,mx=0,my=0,tmx=0,tmy=0;
 
   // the agent organization — labels + relative layout (0..1 in a design box)
+  // org model (candid): a COO over lines of work. ONE line runs live today (its own
+  // independent pod of agents); the empty slots show the structure is built to add more
+  // without disturbing it. x/y = desktop, mx/my = mobile.
   var NODES=[
-    {l:'Manager',    x:.50,y:.44, r:15, c:'#4fe0d0', hub:1, role:'Keeps the company on track day to day and brings the founder only the decisions that genuinely need a person.'},
-    {l:'Research',   x:.20,y:.24, r:11, c:'#7c8cff', role:'Explores new ideas and tests them carefully, reporting honestly what works and what doesn’t.'},
-    {l:'Engineering',x:.80,y:.22, r:11, c:'#b57bff', role:'Builds and improves the software around the clock, with every change reviewed before it goes live.'},
-    {l:'Operations', x:.83,y:.66, r:11, c:'#4fe0d0', role:'Keeps everything running smoothly day to day and makes sure the numbers add up.'},
-    {l:'Safeguards', x:.22,y:.70, r:11, c:'#ff9e64', role:'Keeps risk small and controlled, and makes sure the important decisions are left to the founder.'},
-    {l:'Reliability',x:.55,y:.84, r:9,  c:'#7c8cff', role:'Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.'},
-    {l:'Comms',      x:.12,y:.47, r:9,  c:'#b57bff', role:'Prepares anything the company shares publicly — with a human giving final approval.'}
+    {l:'COO', kind:'coo', x:.50,y:.13, mx:.50,my:.12, r:15, c:'#4fe0d0', hub:1, role:'Sits at the top of the company. Sets the day-to-day direction, keeps the founder’s key decisions in front of a person, and oversees every line of work.'},
+    {l:'Investing research', kind:'mgr', x:.50,y:.50, mx:.50,my:.50, r:13, c:'#4fe0d0', role:'The one line running today: a manager that runs the whole automated investing-research lifecycle end to end — at a small, capped size, with its own pod of agents and a person holding the risk.'},
+    {l:'＋ new line', kind:'ghost', x:.18,y:.53, mx:.20,my:.55, r:10, c:'#6b7690', role:'The company is built so a new line can be added here — its own manager and pod — without disturbing the one already running. None added yet; we say so honestly.'},
+    {l:'＋ new line', kind:'ghost', x:.82,y:.53, mx:.80,my:.55, r:10, c:'#6b7690', role:'The company is built so a new line can be added here — its own manager and pod — without disturbing the one already running. None added yet; we say so honestly.'}
   ];
   var sel=-1;
-  var LINKS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,4],[2,3],[4,5],[1,2],[3,5],[1,6],[4,6]];
+  var LINKS=[[0,1],[0,2],[0,3]];
   var pulses=[], stars=[], WORKERS=[];
 
   function layout(){
@@ -272,13 +291,15 @@ footer .mono{color:var(--mut);}
       bw=Math.min(W*0.9,520); bh=H*0.62;
       ox=(W-bw)/2; oy=H*0.22;
     }
-    NODES.forEach(function(n){ n.px=ox+n.x*bw; n.py=oy+n.y*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
-    // the cluster: a swarm of small agents around each team hub (~89 desktop / ~59 mobile)
-    WORKERS=[]; var perHub=(W>=880)?[16,12,12,12,12,9,9]:[10,8,8,8,8,5,5];
-    var clusterR=Math.min(bw,bh)*(W>=880?0.17:0.15);
-    for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||8;
-      for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=clusterR*Math.sqrt(Math.random());
-        WORKERS.push({hub:hi, ox:Math.cos(ang)*rad, oy:Math.sin(ang)*rad*0.82,
+    NODES.forEach(function(n){ var ux=(W<880&&n.mx!=null)?n.mx:n.x, uy=(W<880&&n.my!=null)?n.my:n.y;
+      n.px=ox+ux*bw; n.py=oy+uy*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
+    // the cluster: a swarm of agents, mostly around the one live pod (empty slots get none)
+    WORKERS=[]; var perHub=(W>=880)?[8,72,0,0]:[5,46,0,0];
+    var clusterR=Math.min(bw,bh)*(W>=880?0.30:0.24);
+    for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||0, big=(NODES[hi].kind==='mgr');
+      var cr=big?clusterR:clusterR*0.28, down=big?cr*0.18:0;
+      for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=cr*Math.sqrt(Math.random());
+        WORKERS.push({hub:hi, ox:Math.cos(ang)*rad, oy:Math.sin(ang)*rad*0.82+down,
           ph:Math.random()*6.28, sp:0.4+Math.random()*0.7, r:1.1+Math.random()*1.6, tw:Math.random()*6.28}); } }
     var ce=document.getElementById('agentct'); if(ce) ce.textContent=(WORKERS.length+NODES.length);
     stars=[]; var count=Math.round(W*H/9000);
@@ -343,17 +364,20 @@ footer .mono{color:var(--mut);}
       ctx.fillStyle='#eaf6ff'; ctx.beginPath(); ctx.arc(x,y,1.6,0,6.28); ctx.fill(); }
     // nodes
     NODES.forEach(function(n,i){ var pos=nodePos(i,t); n._x=pos.x; n._y=pos.y;
-      var on=(sel===i), off=(sel>=0&&!on), pr=n.r*(1+0.06*Math.sin(t*1.6+n.ph))*(on?1.25:1), gr=pr*(on?4.2:3.2);
-      ctx.globalAlpha=off?0.4:1;
-      var gl=ctx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,gr);
-      gl.addColorStop(0,n.c+(off?'55':(on?'ee':'cc'))); gl.addColorStop(.4,n.c+'33'); gl.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(pos.x,pos.y,gr,0,6.28); ctx.fill();
-      ctx.fillStyle=(n.hub||on)?'#eafffb':'#0b1220'; ctx.strokeStyle=n.c; ctx.lineWidth=on?3:2;
+      var on=(sel===i), off=(sel>=0&&!on), ghost=(n.kind==='ghost');
+      var pr=n.r*(1+0.06*Math.sin(t*1.6+n.ph))*(on?1.25:1), gr=pr*(on?4.2:3.2);
+      ctx.globalAlpha=off?0.4:(ghost&&!on?0.62:1);
+      if(!ghost){ var gl=ctx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,gr);
+        gl.addColorStop(0,n.c+(off?'55':(on?'ee':'cc'))); gl.addColorStop(.4,n.c+'33'); gl.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(pos.x,pos.y,gr,0,6.28); ctx.fill(); }
+      if(ghost) ctx.setLineDash([4,4]);
+      ctx.fillStyle=ghost?'#080c14':((n.hub||on)?'#eafffb':'#0b1220'); ctx.strokeStyle=n.c; ctx.lineWidth=on?3:2;
       ctx.beginPath(); ctx.arc(pos.x,pos.y,pr,0,6.28); ctx.fill(); ctx.stroke();
+      if(ghost) ctx.setLineDash([]);
       // label with a soft dark halo so it stays legible over the starfield
       ctx.save();
       ctx.shadowColor='rgba(5,7,13,0.95)'; ctx.shadowBlur=8;
-      ctx.fillStyle=on?'#ffffff':'rgba(233,242,253,.94)';
+      ctx.fillStyle=on?'#ffffff':(ghost?'rgba(160,172,196,.9)':'rgba(233,242,253,.94)');
       ctx.font='500 '+((n.hub||on)?13:11.5)+'px "IBM Plex Mono",monospace'; ctx.textAlign='center';
       ctx.fillText(n.l,pos.x,pos.y+pr+15);
       ctx.restore();
