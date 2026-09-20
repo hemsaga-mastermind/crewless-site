@@ -5,7 +5,7 @@
 <meta name="robots" content="index,follow">
 <meta name="description" content="Crewless is a company run by AI agents. One founder sets the direction and makes the key decisions; a team of AI agents handles the research, engineering and day-to-day operations.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Crewless — watch a company run itself">
+<meta property="og:title" content="Crewless — a company run by AI agents">
 <meta property="og:description" content="One founder sets the direction. A team of AI agents does the research, engineering and daily operations — built openly, including the honest setbacks.">
 <meta property="og:url" content="https://crewless.se">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,18 +18,18 @@
 <style>
 :root{
   --bg:#05070d; --ink:#eef2f8; --mut:#8a94a8; --dim:#565f72; --line:#161d2b;
-  --panel:rgba(13,19,30,.66); --c1:#4fe0d0; --c2:#7c8cff; --c3:#b57bff; --live:#4fe0d0;
+  --panel:rgba(13,19,30,.72); --c1:#4fe0d0; --c2:#7c8cff; --c3:#b57bff; --live:#4fe0d0;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);overflow-x:hidden;
   font:400 16px/1.65 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;}
 .mono{font-family:"IBM Plex Mono",monospace;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2rem);}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2.2rem);}
 a{color:inherit;text-decoration:none;}
 
 header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px);
-  background:linear-gradient(#05070df2,#05070d66);border-bottom:1px solid var(--line);}
+  background:linear-gradient(#05070df2,#05070d55);border-bottom:1px solid var(--line);}
 .bar{display:flex;align-items:center;justify-content:space-between;height:58px;}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.06rem;letter-spacing:.01em;}
 .brand .ac{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;
@@ -38,46 +38,65 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 .nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
 @media(max-width:640px){.nav{display:none;}}
 
-.hero{position:relative;height:100svh;min-height:640px;}
+/* ── hero ── mobile-first: network band on top, copy below ── */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;}
 #net{position:absolute;inset:0;width:100%;height:100%;display:block;}
 .scrim{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(90% 60% at 70% 30%,transparent,#05070d 78%),
-             linear-gradient(#05070d00 40%,#05070dcc 82%,#05070d 100%);}
+  background:linear-gradient(0deg,#05070d 2%,#05070dcc 22%,transparent 48%);}
 .hcontent{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
-  padding-bottom:clamp(2.2rem,8vh,5.5rem);pointer-events:none;}
-.hud{align-self:flex-start;display:inline-flex;align-items:center;gap:.55rem;
+  align-items:flex-start;padding-bottom:clamp(2rem,6vh,4rem);pointer-events:none;}
+.hud{display:inline-flex;align-items:center;gap:.55rem;
   padding:.4rem .85rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);
   font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--mut);margin-bottom:1.4rem;}
+  color:var(--mut);margin-bottom:1.3rem;}
 .hud .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);animation:blip 2.4s infinite;}
 .hud b{color:var(--ink);font-weight:500;letter-spacing:.04em;}
 @keyframes blip{0%{box-shadow:0 0 0 0 #4fe0d088}70%{box-shadow:0 0 0 7px #4fe0d000}100%{box-shadow:0 0 0 0 #4fe0d000}}
-h1{font-size:clamp(2.4rem,7vw,4.7rem);line-height:1.0;font-weight:600;letter-spacing:-.025em;
+h1{font-size:clamp(2.3rem,6.2vw,4.3rem);line-height:1.03;font-weight:600;letter-spacing:-.025em;
   max-width:15ch;text-wrap:balance;}
 h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
   -webkit-background-clip:text;background-clip:text;color:transparent;}
-.lede{margin-top:1.15rem;max-width:44ch;color:var(--mut);font-size:clamp(1rem,2.2vw,1.18rem);}
-.cta{margin-top:1.7rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;}
+.lede{margin-top:1.1rem;max-width:40ch;color:var(--mut);font-size:clamp(1rem,2.1vw,1.13rem);}
+.cta{margin-top:1.6rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;}
 .btn{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.2rem;border-radius:11px;
   font-weight:500;font-size:.92rem;transition:.2s;}
 .btn.p{background:linear-gradient(105deg,var(--c1),#3bc7cf);color:#04130f;}
 .btn.p:hover{filter:brightness(1.08);transform:translateY(-1px);}
 .btn.s{border:1px solid var(--line);background:var(--panel);color:var(--ink);}
 .btn.s:hover{border-color:var(--c1);color:var(--c1);}
+/* one-line live pulse under the buttons (replaces the panel) */
+.pulse{margin-top:1.45rem;display:flex;align-items:center;gap:.55rem;min-height:1.2em;
+  font-family:"IBM Plex Mono",monospace;font-size:.73rem;color:var(--mut);pointer-events:none;}
+.pulse .pdot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);flex:none;animation:blip 2.4s infinite;}
+.pulse #feedline b{color:var(--c1);font-weight:500;}
+.pulse .fade{animation:fadein .5s;}
+@keyframes fadein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 
-/* live console ticker */
-.console{position:absolute;top:78px;right:clamp(1.15rem,4vw,2rem);z-index:6;width:min(340px,72vw);
-  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.7rem .85rem;
-  backdrop-filter:blur(8px);pointer-events:none;}
-.console .ch{display:flex;justify-content:space-between;align-items:center;font-family:"IBM Plex Mono",monospace;
-  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem;}
-.console .ch .lv{color:var(--live);}
-.feed{font-family:"IBM Plex Mono",monospace;font-size:.72rem;line-height:1.75;color:var(--mut);
-  height:5.6rem;overflow:hidden;}
-.feed .ln{opacity:0;animation:rise .5s forwards;}
-.feed .ln b{color:var(--c1);}
-@keyframes rise{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
-@media(max-width:720px){.console{display:none;}}
+/* prompt + info card, anchored over the network */
+.hint{position:absolute;z-index:7;top:74px;left:50%;transform:translateX(-50%);
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--mut);letter-spacing:.04em;
+  border:1px solid var(--line);background:var(--panel);border-radius:100px;padding:.34rem .9rem;
+  backdrop-filter:blur(6px);animation:fade 3s infinite;pointer-events:none;white-space:nowrap;}
+@keyframes fade{0%,100%{opacity:.5}50%{opacity:.95}}
+.pick{position:absolute;z-index:9;left:1.1rem;right:1.1rem;bottom:1.1rem;
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.95rem 1.05rem;
+  backdrop-filter:blur(12px);box-shadow:0 16px 48px #000b;animation:rise .25s ease;}
+.pick .pk-h{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:1.02rem;margin-bottom:.45rem;}
+.pick .pk-dot{width:.62rem;height:.62rem;border-radius:50%;flex:none;}
+.pick .pk-x{margin-left:auto;background:none;border:none;color:var(--mut);font-size:1.3rem;line-height:1;cursor:pointer;padding:0 .15rem;}
+.pick .pk-x:hover{color:var(--ink);}
+.pick p{color:var(--mut);font-size:.88rem;line-height:1.55;}
+
+/* ── desktop: copy left, network right ── */
+@media(min-width:880px){
+  .scrim{background:
+    linear-gradient(90deg,#05070d 2%,rgba(5,7,13,.74) 30%,rgba(5,7,13,.15) 52%,rgba(5,7,13,0) 66%),
+    linear-gradient(0deg,#05070d55,transparent 30%);}
+  .hcontent{justify-content:center;padding-bottom:0;}
+  .lede{max-width:34ch;}
+  .hint{top:auto;bottom:clamp(1.8rem,6vh,3.2rem);left:72%;}
+  .pick{left:auto;right:clamp(1.6rem,4vw,2.6rem);bottom:clamp(1.6rem,4vw,2.6rem);width:min(322px,33vw);}
+}
 
 section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
@@ -90,7 +109,9 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--c1),transparent);opacity:.5;}
 .card:hover{border-color:#28374f;transform:translateY(-3px);}
 .card .ix{font-family:"IBM Plex Mono",monospace;color:var(--c2);font-size:.75rem;margin-bottom:.65rem;}
-.card h3{font-size:1.06rem;margin-bottom:.4rem;}
+.card .rl{display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;}
+.card .rl .rd{width:.6rem;height:.6rem;border-radius:50%;flex:none;}
+.card h3{font-size:1.06rem;}
 .card p{color:var(--mut);font-size:.92rem;}
 .receipts{margin-top:2rem;}
 .rcpt{display:grid;grid-template-columns:100px 1fr;gap:1.1rem;padding:1.1rem 0;border-top:1px solid var(--line);}
@@ -103,20 +124,6 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .creed b{background:linear-gradient(105deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;}
 footer{border-top:1px solid var(--line);padding:2.6rem 0 3.4rem;color:var(--dim);font-size:.82rem;}
 footer .mono{color:var(--mut);}
-.hint{position:absolute;top:70px;left:50%;transform:translateX(-50%);z-index:7;
-  font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--mut);letter-spacing:.04em;
-  border:1px solid var(--line);background:var(--panel);border-radius:100px;padding:.32rem .85rem;
-  animation:fade 3s infinite;pointer-events:none;white-space:nowrap;}
-@keyframes fade{0%,100%{opacity:.55}50%{opacity:1}}
-.pick{position:absolute;top:70px;left:clamp(1.15rem,4vw,2rem);z-index:9;width:min(300px,76vw);
-  background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:.9rem 1rem;
-  backdrop-filter:blur(12px);box-shadow:0 14px 46px #000a;animation:rise .25s ease;}
-.pick .pk-h{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:1.02rem;margin-bottom:.45rem;}
-.pick .pk-dot{width:.62rem;height:.62rem;border-radius:50%;flex:none;}
-.pick .pk-x{margin-left:auto;background:none;border:none;color:var(--mut);font-size:1.25rem;line-height:1;cursor:pointer;padding:0 .1rem;}
-.pick .pk-x:hover{color:var(--ink);}
-.pick p{color:var(--mut);font-size:.88rem;line-height:1.55;}
-@media(max-width:720px){.pick{top:auto;bottom:1.1rem;left:1.1rem;right:1.1rem;width:auto;}.hint{top:66px;}}
 </style></head>
 <body>
 <header><div class="wrap bar">
@@ -129,18 +136,16 @@ footer .mono{color:var(--mut);}
   <div class="scrim"></div>
   <div class="hint" id="hint">◎ Tap an agent to see what it does</div>
   <div class="pick" id="pick" hidden></div>
-  <div class="console">
-    <div class="ch"><span>the team · live</span><span class="lv">● running</span></div>
-    <div class="feed" id="feed"></div>
-  </div>
   <div class="wrap hcontent">
     <div class="hud"><span class="dot"></span> An AI-run company · <b id="hstate">running</b></div>
     <h1>A company run by <span class="g">AI agents.</span></h1>
-    <p class="lede">At Crewless, one founder sets the direction and makes the important
-      decisions. A team of AI agents does the rest — researching ideas, building the
-      software, and running the day-to-day, around the clock. The network above is that
-      team at work: each point is an agent, each moving light a piece of work passing between them.</p>
+    <p class="lede">One founder sets the direction and makes the important decisions. A team of
+      AI agents does the rest — exploring ideas in parallel, building and shipping the software,
+      keeping the systems healthy, and running the day-to-day around the clock. It even builds and
+      maintains this website. The network beside this is that team at work: each point is an agent,
+      each moving light a piece of work passing between them.</p>
     <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
+    <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
   </div>
 </div>
 
@@ -163,14 +168,14 @@ footer .mono{color:var(--mut);}
 <section id="org"><div class="wrap">
   <p class="kick">The team</p>
   <p class="big">A small organization of AI agents, with one founder at the helm.</p>
-  <p class="sub">The network above isn't just decoration — these are the real roles, each one running continuously:</p>
+  <p class="sub">The network at the top isn't just decoration — these are the real roles, each one running continuously. Tap any agent up there to see what it does.</p>
   <div class="grid">
-    <div class="card"><h3>The manager</h3><p>Keeps the company on track day to day and brings the founder only the decisions that genuinely need a person.</p></div>
-    <div class="card"><h3>Research</h3><p>Explores new ideas and tests them carefully, reporting honestly what works and what doesn't.</p></div>
-    <div class="card"><h3>Engineering</h3><p>Builds and improves the software around the clock, with every change reviewed before it goes live.</p></div>
-    <div class="card"><h3>Operations</h3><p>Keeps everything running smoothly day to day and makes sure the numbers add up.</p></div>
-    <div class="card"><h3>Safeguards</h3><p>Keeps risk small and controlled, and makes sure the important calls are left to the founder.</p></div>
-    <div class="card"><h3>Reliability</h3><p>Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>The manager</h3></div><p>Keeps the company on track day to day and brings the founder only the decisions that genuinely need a person.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Research</h3></div><p>Explores new ideas and tests them carefully, reporting honestly what works and what doesn't.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Engineering</h3></div><p>Builds and improves the software around the clock, with every change reviewed before it goes live.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Operations</h3></div><p>Keeps everything running smoothly day to day and makes sure the numbers add up.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#ff9e64"></span><h3>Safeguards</h3></div><p>Keeps risk small and controlled, and makes sure the important decisions are left to the founder.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Reliability</h3></div><p>Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.</p></div>
   </div>
 </div></section>
 
@@ -201,25 +206,31 @@ footer .mono{color:var(--mut);}
 
   // the agent organization — labels + relative layout (0..1 in a design box)
   var NODES=[
-    {l:'Manager',    x:.50,y:.46, r:15, c:'#4fe0d0', hub:1, role:'Keeps the company on track day to day and brings the founder only the decisions that genuinely need a person.'},
-    {l:'Research',   x:.24,y:.30, r:11, c:'#7c8cff', role:'Explores new ideas and tests them carefully, reporting honestly what works and what doesn’t.'},
-    {l:'Engineering',x:.74,y:.28, r:11, c:'#b57bff', role:'Builds and improves the software around the clock, with every change reviewed before it goes live.'},
-    {l:'Operations', x:.80,y:.62, r:11, c:'#4fe0d0', role:'Keeps everything running smoothly day to day and makes sure the numbers add up.'},
-    {l:'Safeguards', x:.30,y:.66, r:11, c:'#ff9e64', role:'Keeps risk small and controlled, and makes sure the important decisions are left to the founder.'},
-    {l:'Reliability',x:.56,y:.76, r:9,  c:'#7c8cff', role:'Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.'},
-    {l:'Comms',      x:.14,y:.50, r:9,  c:'#b57bff', role:'Prepares anything the company shares publicly — with a human giving final approval.'}
+    {l:'Manager',    x:.50,y:.44, r:15, c:'#4fe0d0', hub:1, role:'Keeps the company on track day to day and brings the founder only the decisions that genuinely need a person.'},
+    {l:'Research',   x:.20,y:.24, r:11, c:'#7c8cff', role:'Explores new ideas and tests them carefully, reporting honestly what works and what doesn’t.'},
+    {l:'Engineering',x:.80,y:.22, r:11, c:'#b57bff', role:'Builds and improves the software around the clock, with every change reviewed before it goes live.'},
+    {l:'Operations', x:.83,y:.66, r:11, c:'#4fe0d0', role:'Keeps everything running smoothly day to day and makes sure the numbers add up.'},
+    {l:'Safeguards', x:.22,y:.70, r:11, c:'#ff9e64', role:'Keeps risk small and controlled, and makes sure the important decisions are left to the founder.'},
+    {l:'Reliability',x:.55,y:.84, r:9,  c:'#7c8cff', role:'Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.'},
+    {l:'Comms',      x:.12,y:.47, r:9,  c:'#b57bff', role:'Prepares anything the company shares publicly — with a human giving final approval.'}
   ];
   var sel=-1;
-  var LINKS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,4],[2,3],[4,5],[1,2],[3,5]];
+  var LINKS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,4],[2,3],[4,5],[1,2],[3,5],[1,6],[4,6]];
   var pulses=[], stars=[];
 
   function layout(){
     var rect=hero.getBoundingClientRect(); W=rect.width; H=rect.height;
     DPR=Math.min(devicePixelRatio||1,2);
     cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
-    // place nodes in a centered design box
-    var bw=Math.min(W*0.9,760), bh=Math.min(H*0.74,560), ox=(W-bw)/2, oy=(H-bh)/2 - H*0.02;
-    NODES.forEach(function(n){ n.px=ox+n.x*bw; n.py=oy+n.y*bh; n.ph=Math.random()*6.28; });
+    var bw,bh,ox,oy;
+    if(W>=880){                                   // desktop: network on the right half
+      bw=Math.min(W*0.44,560); bh=Math.min(H*0.72,560);
+      ox=W*0.50; oy=(H-bh)/2 - H*0.01;
+    }else{                                         // mobile: network as a band up top
+      bw=Math.min(W*0.94,540); bh=Math.min(H*0.36,330);
+      ox=(W-bw)/2; oy=H*0.07;
+    }
+    NODES.forEach(function(n){ n.px=ox+n.x*bw; n.py=oy+n.y*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
     stars=[]; var count=Math.round(W*H/9000);
     for(var i=0;i<count;i++) stars.push({x:Math.random()*W,y:Math.random()*H,z:Math.random(),tw:Math.random()*6.28});
   }
@@ -229,7 +240,7 @@ footer .mono{color:var(--mut);}
     cv.style.cursor=(pickAt(e.clientX-r.left,e.clientY-r.top)>=0)?'pointer':'default'; });
   function pickAt(cx,cy){ var best=-1,bd=1e9; for(var i=0;i<NODES.length;i++){ var n=NODES[i];
     if(n._x==null)continue; var d=Math.hypot(cx-n._x,cy-n._y);
-    if(d<Math.max(n.r*2.8,30)&&d<bd){bd=d;best=i;} } return best; }
+    if(d<Math.max(n.r*2.9,32)&&d<bd){bd=d;best=i;} } return best; }
   cv.addEventListener('click',function(e){ var r=cv.getBoundingClientRect();
     var i=pickAt(e.clientX-r.left,e.clientY-r.top); sel=(i===sel?-1:i); showPick(); });
   function showPick(){ var p=document.getElementById('pick'), h=document.getElementById('hint');
@@ -242,31 +253,33 @@ footer .mono{color:var(--mut);}
     pulses.push({li:li, t:0, sp:0.006+Math.random()*0.008, dir:Math.random()<0.5?1:-1, hue:NODES[LINKS[li][0]].c}); }
 
   function nodePos(i,t){ var n=NODES[i];
-    var dx=Math.sin(t*0.5+n.ph)*7 + tmx*(n.hub?10:22);
-    var dy=Math.cos(t*0.45+n.ph)*7 + tmy*(n.hub?10:22);
+    var dx=Math.sin(t*0.5+n.ph)*6 + tmx*(n.hub?9:20);
+    var dy=Math.cos(t*0.45+n.ph)*6 + tmy*(n.hub?9:20);
     return {x:n.px+dx, y:n.py+dy}; }
 
   function frame(t){
     t*=0.001; ctx.clearRect(0,0,W,H);
     mx+=(tmx-mx)*0.05; my+=(tmy-my)*0.05;
-    // background glow
-    var g=ctx.createRadialGradient(W*.68,H*.34,0,W*.68,H*.34,Math.max(W,H)*.7);
-    g.addColorStop(0,'rgba(24,40,66,.55)'); g.addColorStop(.5,'rgba(10,16,28,.25)'); g.addColorStop(1,'rgba(5,7,13,0)');
+    // background glow, biased to the network side
+    var gx=(W>=880)?W*.72:W*.5, gy=(W>=880)?H*.42:H*.24;
+    var g=ctx.createRadialGradient(gx,gy,0,gx,gy,Math.max(W,H)*.62);
+    g.addColorStop(0,'rgba(26,44,72,.55)'); g.addColorStop(.5,'rgba(10,16,28,.22)'); g.addColorStop(1,'rgba(5,7,13,0)');
     ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
     // stars
-    for(var s=0;s<stars.length;s++){ var st=stars[s]; var a=(0.15+0.25*st.z)*(0.6+0.4*Math.sin(t*1.2+st.tw));
+    for(var s=0;s<stars.length;s++){ var st=stars[s]; var a=(0.14+0.24*st.z)*(0.6+0.4*Math.sin(t*1.2+st.tw));
       ctx.fillStyle='rgba(150,170,210,'+a.toFixed(3)+')'; ctx.fillRect(st.x+mx*st.z*18, st.y+my*st.z*18, 1.2+st.z, 1.2+st.z); }
-    // links
-    ctx.lineWidth=1;
+    // links (emphasise the ones touching the selected node)
     LINKS.forEach(function(lk){ var a=nodePos(lk[0],t), b=nodePos(lk[1],t);
+      var hot=(sel>=0&&(lk[0]===sel||lk[1]===sel)), dim=(sel>=0&&!hot);
       var grad=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
-      grad.addColorStop(0,'rgba(90,120,180,.16)'); grad.addColorStop(.5,'rgba(120,150,220,.30)'); grad.addColorStop(1,'rgba(90,120,180,.16)');
+      if(hot){ grad.addColorStop(0,'rgba(120,150,220,.30)'); grad.addColorStop(.5,'rgba(150,180,240,.60)'); grad.addColorStop(1,'rgba(120,150,220,.30)'); ctx.lineWidth=1.6; }
+      else { var o=dim?'.09':'.20', o2=dim?'.14':'.34'; grad.addColorStop(0,'rgba(90,120,180,'+o+')'); grad.addColorStop(.5,'rgba(120,150,220,'+o2+')'); grad.addColorStop(1,'rgba(90,120,180,'+o+')'); ctx.lineWidth=1; }
       ctx.strokeStyle=grad; ctx.beginPath(); ctx.moveTo(a.x,a.y);
-      var mxp=(a.x+b.x)/2, myp=(a.y+b.y)/2 - 22; ctx.quadraticCurveTo(mxp,myp,b.x,b.y); ctx.stroke(); });
+      var mxp=(a.x+b.x)/2, myp=(a.y+b.y)/2 - 20; ctx.quadraticCurveTo(mxp,myp,b.x,b.y); ctx.stroke(); });
     // pulses along links
     for(var p=pulses.length-1;p>=0;p--){ var pu=pulses[p]; pu.t+=pu.sp; if(pu.t>=1){pulses.splice(p,1);continue;}
       var lk=LINKS[pu.li], a=nodePos(lk[0],t), b=nodePos(lk[1],t), tt=pu.dir>0?pu.t:1-pu.t;
-      var mxp=(a.x+b.x)/2, myp=(a.y+b.y)/2 - 22;
+      var mxp=(a.x+b.x)/2, myp=(a.y+b.y)/2 - 20;
       var x=(1-tt)*(1-tt)*a.x+2*(1-tt)*tt*mxp+tt*tt*b.x, y=(1-tt)*(1-tt)*a.y+2*(1-tt)*tt*myp+tt*tt*b.y;
       var gl=ctx.createRadialGradient(x,y,0,x,y,7); gl.addColorStop(0,pu.hue); gl.addColorStop(1,'rgba(0,0,0,0)');
       ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(x,y,7,0,6.28); ctx.fill();
@@ -274,37 +287,44 @@ footer .mono{color:var(--mut);}
     // nodes
     NODES.forEach(function(n,i){ var pos=nodePos(i,t); n._x=pos.x; n._y=pos.y;
       var on=(sel===i), off=(sel>=0&&!on), pr=n.r*(1+0.06*Math.sin(t*1.6+n.ph))*(on?1.25:1), gr=pr*(on?4.2:3.2);
-      ctx.globalAlpha=off?0.45:1;
+      ctx.globalAlpha=off?0.4:1;
       var gl=ctx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,gr);
       gl.addColorStop(0,n.c+(off?'55':(on?'ee':'cc'))); gl.addColorStop(.4,n.c+'33'); gl.addColorStop(1,'rgba(0,0,0,0)');
       ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(pos.x,pos.y,gr,0,6.28); ctx.fill();
       ctx.fillStyle=(n.hub||on)?'#eafffb':'#0b1220'; ctx.strokeStyle=n.c; ctx.lineWidth=on?3:2;
       ctx.beginPath(); ctx.arc(pos.x,pos.y,pr,0,6.28); ctx.fill(); ctx.stroke();
-      ctx.fillStyle=on?'#ffffff':'rgba(230,240,250,.92)'; ctx.font='500 '+((n.hub||on)?13:11.5)+'px "IBM Plex Mono",monospace';
-      ctx.textAlign='center'; ctx.fillText(n.l,pos.x,pos.y+pr+15); ctx.globalAlpha=1; });
+      // label with a soft dark halo so it stays legible over the starfield
+      ctx.save();
+      ctx.shadowColor='rgba(5,7,13,0.95)'; ctx.shadowBlur=8;
+      ctx.fillStyle=on?'#ffffff':'rgba(233,242,253,.94)';
+      ctx.font='500 '+((n.hub||on)?13:11.5)+'px "IBM Plex Mono",monospace'; ctx.textAlign='center';
+      ctx.fillText(n.l,pos.x,pos.y+pr+15);
+      ctx.restore();
+      ctx.globalAlpha=1; });
   }
   var last=0;
   function loop(ts){ requestAnimationFrame(loop);
     if(reduce){ frame(3000); return; }
-    if(ts-last>1200 && pulses.length<14){ spawn(); last=ts; }
+    if(ts-last>1200 && pulses.length<16){ spawn(); last=ts; }
     frame(ts); }
 
-  // ── live layer: receipts + console feed + HUD from state.json ──
+  // ── live layer: receipts + single-line feed + HUD from state.json ──
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   var FEEDLINES=[
+    'research · exploring several ideas in parallel',
+    'engineering · building a new feature',
+    'engineering · change reviewed → committed',
+    'comms · updating this website',
+    'reliability · caught an issue and fixed itself',
+    'operations · running live, around the clock',
     'manager · reviewing today’s priorities',
-    'research · testing a new idea',
-    'engineering · change reviewed and shipped',
     'safeguards · risk checks passed',
-    'reliability · all systems healthy',
-    'research · idea tested — didn’t work, moving on',
-    'operations · daily checks complete'
+    'research · idea tested — didn’t work, moving on'
   ];
-  function tickFeed(){ var f=document.getElementById('feed'); if(!f)return;
-    var line=FEEDLINES[(Math.random()*FEEDLINES.length)|0];
-    var parts=line.split(' · '); var el=document.createElement('div'); el.className='ln';
-    el.innerHTML='<b>'+esc(parts[0])+'</b> · '+esc(parts.slice(1).join(' · '));
-    f.appendChild(el); while(f.childNodes.length>4) f.removeChild(f.firstChild); }
+  function tickFeed(){ var el=document.getElementById('feedline'); if(!el)return;
+    var line=FEEDLINES[(Math.random()*FEEDLINES.length)|0]; var parts=line.split(' · ');
+    el.className='mono'; void el.offsetWidth; el.className='mono fade';
+    el.innerHTML='<b>'+esc(parts[0])+'</b> · '+esc(parts.slice(1).join(' · ')); }
   function loadState(){
     fetch('state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
       var hs=document.getElementById('hstate'); if(hs&&d.desk_label) hs.textContent='running';
@@ -314,9 +334,9 @@ footer .mono{color:var(--mut);}
     }).catch(function(){});
   }
 
-  try{ layout(); requestAnimationFrame(loop); }catch(e){ hero.style.background='radial-gradient(90% 60% at 70% 30%,#13233a,#05070d)'; }
+  try{ layout(); requestAnimationFrame(loop); }catch(e){ hero.style.background='radial-gradient(80% 60% at 72% 35%,#13233a,#05070d)'; }
   loadState(); setInterval(loadState,120000);
-  if(!reduce){ tickFeed(); setInterval(tickFeed,2600); } else { tickFeed(); }
+  tickFeed(); if(!reduce) setInterval(tickFeed,2600);
 })();
 </script>
 </body></html>
