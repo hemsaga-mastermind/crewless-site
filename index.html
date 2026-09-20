@@ -291,7 +291,7 @@ footer .mono{color:var(--mut);}
 <section id="receipts"><div class="wrap">
   <p class="kick">Progress</p>
   <p class="big">Built in the open — including the honest setbacks.</p>
-  <div class="receipts" id="receipts"></div>
+  <div class="receipts" id="receiptlog"></div>
 </div></section>
 
 <section id="contact"><div class="wrap">
@@ -473,7 +473,7 @@ footer .mono{color:var(--mut);}
   function loadState(){
     fetch('state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
       var hs=document.getElementById('hstate'); if(hs&&d.desk_label) hs.textContent='running';
-      var rc=document.getElementById('receipts');
+      var rc=document.getElementById('receiptlog');
       if(rc&&d.receipts&&d.receipts.length){ rc.innerHTML='<div class="timeline">'+d.receipts.slice(0,6).map(function(r){
         return '<div class="tl"><div class="d">'+esc(r.date)+'</div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div>';}).join('')+'</div>'; }
     }).catch(function(){});
