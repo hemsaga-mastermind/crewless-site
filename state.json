@@ -1,9 +1,9 @@
 {
- "built_utc": "2026-09-20T15:12:06Z",
+ "built_utc": "2026-09-20T15:13:08Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 25,
+ "changes_7d": 27,
  "active_days_7d": 1,
  "receipts": [
   {
