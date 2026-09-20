@@ -103,6 +103,20 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .creed b{background:linear-gradient(105deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;}
 footer{border-top:1px solid var(--line);padding:2.6rem 0 3.4rem;color:var(--dim);font-size:.82rem;}
 footer .mono{color:var(--mut);}
+.hint{position:absolute;top:70px;left:50%;transform:translateX(-50%);z-index:7;
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--mut);letter-spacing:.04em;
+  border:1px solid var(--line);background:var(--panel);border-radius:100px;padding:.32rem .85rem;
+  animation:fade 3s infinite;pointer-events:none;white-space:nowrap;}
+@keyframes fade{0%,100%{opacity:.55}50%{opacity:1}}
+.pick{position:absolute;top:70px;left:clamp(1.15rem,4vw,2rem);z-index:9;width:min(300px,76vw);
+  background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:.9rem 1rem;
+  backdrop-filter:blur(12px);box-shadow:0 14px 46px #000a;animation:rise .25s ease;}
+.pick .pk-h{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:1.02rem;margin-bottom:.45rem;}
+.pick .pk-dot{width:.62rem;height:.62rem;border-radius:50%;flex:none;}
+.pick .pk-x{margin-left:auto;background:none;border:none;color:var(--mut);font-size:1.25rem;line-height:1;cursor:pointer;padding:0 .1rem;}
+.pick .pk-x:hover{color:var(--ink);}
+.pick p{color:var(--mut);font-size:.88rem;line-height:1.55;}
+@media(max-width:720px){.pick{top:auto;bottom:1.1rem;left:1.1rem;right:1.1rem;width:auto;}.hint{top:66px;}}
 </style></head>
 <body>
 <header><div class="wrap bar">
@@ -113,6 +127,8 @@ footer .mono{color:var(--mut);}
 <div class="hero" id="hero">
   <canvas id="net"></canvas>
   <div class="scrim"></div>
+  <div class="hint" id="hint">◎ Tap an agent to see what it does</div>
+  <div class="pick" id="pick" hidden></div>
   <div class="console">
     <div class="ch"><span>the team · live</span><span class="lv">● running</span></div>
     <div class="feed" id="feed"></div>
@@ -124,7 +140,7 @@ footer .mono{color:var(--mut);}
       decisions. A team of AI agents does the rest — researching ideas, building the
       software, and running the day-to-day, around the clock. The network above is that
       team at work: each point is an agent, each moving light a piece of work passing between them.</p>
-    <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="#contact">Get in touch</a></div>
+    <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="mailto:hello@crewless.se?subject=Hello%20from%20crewless.se">Get in touch</a></div>
   </div>
 </div>
 
@@ -167,7 +183,7 @@ footer .mono{color:var(--mut);}
 <section id="contact"><div class="wrap">
   <p class="creed">If it works, one person with a clear idea and the right tools can build
     what used to take a crowd. <b>That's the story we're trying to earn the right to tell.</b></p>
-  <div class="cta"><a class="btn p" href="mailto:hello@crewless.se">hello@crewless.se</a></div>
+  <div class="cta"><a class="btn p" href="mailto:hello@crewless.se?subject=Hello%20from%20crewless.se">Email us at hello@crewless.se</a></div>
 </div></section>
 </main>
 
@@ -185,14 +201,15 @@ footer .mono{color:var(--mut);}
 
   // the agent organization — labels + relative layout (0..1 in a design box)
   var NODES=[
-    {l:'Manager',    x:.50,y:.46, r:15, c:'#4fe0d0', hub:1},
-    {l:'Research',   x:.24,y:.30, r:11, c:'#7c8cff'},
-    {l:'Engineering',x:.74,y:.28, r:11, c:'#b57bff'},
-    {l:'Operations', x:.80,y:.62, r:11, c:'#4fe0d0'},
-    {l:'Safeguards', x:.30,y:.66, r:11, c:'#ff9e64'},
-    {l:'Reliability',x:.56,y:.76, r:9,  c:'#7c8cff'},
-    {l:'Comms',      x:.14,y:.50, r:9,  c:'#b57bff'}
+    {l:'Manager',    x:.50,y:.46, r:15, c:'#4fe0d0', hub:1, role:'Keeps the company on track day to day and brings the founder only the decisions that genuinely need a person.'},
+    {l:'Research',   x:.24,y:.30, r:11, c:'#7c8cff', role:'Explores new ideas and tests them carefully, reporting honestly what works and what doesn’t.'},
+    {l:'Engineering',x:.74,y:.28, r:11, c:'#b57bff', role:'Builds and improves the software around the clock, with every change reviewed before it goes live.'},
+    {l:'Operations', x:.80,y:.62, r:11, c:'#4fe0d0', role:'Keeps everything running smoothly day to day and makes sure the numbers add up.'},
+    {l:'Safeguards', x:.30,y:.66, r:11, c:'#ff9e64', role:'Keeps risk small and controlled, and makes sure the important decisions are left to the founder.'},
+    {l:'Reliability',x:.56,y:.76, r:9,  c:'#7c8cff', role:'Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.'},
+    {l:'Comms',      x:.14,y:.50, r:9,  c:'#b57bff', role:'Prepares anything the company shares publicly — with a human giving final approval.'}
   ];
+  var sel=-1;
   var LINKS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,4],[2,3],[4,5],[1,2],[3,5]];
   var pulses=[], stars=[];
 
@@ -208,7 +225,18 @@ footer .mono{color:var(--mut);}
   }
   window.addEventListener('resize',layout);
   hero.addEventListener('pointermove',function(e){ var r=hero.getBoundingClientRect();
-    tmx=((e.clientX-r.left)/r.width-0.5); tmy=((e.clientY-r.top)/r.height-0.5); });
+    tmx=((e.clientX-r.left)/r.width-0.5); tmy=((e.clientY-r.top)/r.height-0.5);
+    cv.style.cursor=(pickAt(e.clientX-r.left,e.clientY-r.top)>=0)?'pointer':'default'; });
+  function pickAt(cx,cy){ var best=-1,bd=1e9; for(var i=0;i<NODES.length;i++){ var n=NODES[i];
+    if(n._x==null)continue; var d=Math.hypot(cx-n._x,cy-n._y);
+    if(d<Math.max(n.r*2.8,30)&&d<bd){bd=d;best=i;} } return best; }
+  cv.addEventListener('click',function(e){ var r=cv.getBoundingClientRect();
+    var i=pickAt(e.clientX-r.left,e.clientY-r.top); sel=(i===sel?-1:i); showPick(); });
+  function showPick(){ var p=document.getElementById('pick'), h=document.getElementById('hint');
+    if(h)h.style.display='none';
+    if(!p)return; if(sel<0){p.hidden=true;return;} var n=NODES[sel];
+    p.innerHTML='<div class="pk-h"><span class="pk-dot" style="background:'+n.c+'"></span>'+esc(n.l)+'<button class="pk-x" aria-label="Close">×</button></div><p>'+esc(n.role)+'</p>';
+    p.querySelector('.pk-x').onclick=function(){sel=-1;p.hidden=true;}; p.hidden=false; }
 
   function spawn(){ var li=(Math.random()*LINKS.length)|0;
     pulses.push({li:li, t:0, sp:0.006+Math.random()*0.008, dir:Math.random()<0.5?1:-1, hue:NODES[LINKS[li][0]].c}); }
@@ -244,14 +272,16 @@ footer .mono{color:var(--mut);}
       ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(x,y,7,0,6.28); ctx.fill();
       ctx.fillStyle='#eaf6ff'; ctx.beginPath(); ctx.arc(x,y,1.6,0,6.28); ctx.fill(); }
     // nodes
-    NODES.forEach(function(n,i){ var pos=nodePos(i,t), pr=n.r*(1+0.06*Math.sin(t*1.6+n.ph));
-      var gl=ctx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,pr*3.2);
-      gl.addColorStop(0,n.c+'cc'); gl.addColorStop(.4,n.c+'33'); gl.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(pos.x,pos.y,pr*3.2,0,6.28); ctx.fill();
-      ctx.fillStyle=n.hub?'#eafffb':'#0b1220'; ctx.strokeStyle=n.c; ctx.lineWidth=2;
+    NODES.forEach(function(n,i){ var pos=nodePos(i,t); n._x=pos.x; n._y=pos.y;
+      var on=(sel===i), off=(sel>=0&&!on), pr=n.r*(1+0.06*Math.sin(t*1.6+n.ph))*(on?1.25:1), gr=pr*(on?4.2:3.2);
+      ctx.globalAlpha=off?0.45:1;
+      var gl=ctx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,gr);
+      gl.addColorStop(0,n.c+(off?'55':(on?'ee':'cc'))); gl.addColorStop(.4,n.c+'33'); gl.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(pos.x,pos.y,gr,0,6.28); ctx.fill();
+      ctx.fillStyle=(n.hub||on)?'#eafffb':'#0b1220'; ctx.strokeStyle=n.c; ctx.lineWidth=on?3:2;
       ctx.beginPath(); ctx.arc(pos.x,pos.y,pr,0,6.28); ctx.fill(); ctx.stroke();
-      ctx.fillStyle='rgba(230,240,250,.92)'; ctx.font='500 '+(n.hub?13:11.5)+'px "IBM Plex Mono",monospace';
-      ctx.textAlign='center'; ctx.fillText(n.l,pos.x,pos.y+pr+15); });
+      ctx.fillStyle=on?'#ffffff':'rgba(230,240,250,.92)'; ctx.font='500 '+((n.hub||on)?13:11.5)+'px "IBM Plex Mono",monospace';
+      ctx.textAlign='center'; ctx.fillText(n.l,pos.x,pos.y+pr+15); ctx.globalAlpha=1; });
   }
   var last=0;
   function loop(ts){ requestAnimationFrame(loop);
