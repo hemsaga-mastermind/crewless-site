@@ -29,7 +29,7 @@ body{background:var(--bg);color:var(--ink);overflow-x:hidden;
 a{color:inherit;text-decoration:none;}
 
 header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px);
-  background:linear-gradient(#05070df2,#05070d55);border-bottom:1px solid var(--line);}
+  background:linear-gradient(#05070d,#05070de6);border-bottom:1px solid var(--line);}
 .bar{display:flex;align-items:center;justify-content:space-between;height:58px;}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.06rem;letter-spacing:.01em;}
 .brand .ac{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;
@@ -105,7 +105,15 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--c1);margin-bottom:1.1rem;}
 .big{font-size:clamp(1.55rem,3.8vw,2.35rem);font-weight:600;letter-spacing:-.02em;max-width:22ch;line-height:1.12;}
-.sub{color:var(--mut);max-width:54ch;margin-top:1rem;}
+.sub{color:var(--mut);max-width:60ch;margin-top:1rem;}
+.hl{color:var(--ink);font-weight:600;}
+section{scroll-margin-top:70px;}
+.pills{list-style:none;display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.9rem;padding:0;}
+.pills li{border:1px solid var(--line);border-radius:100px;padding:.5rem .95rem;font-size:.88rem;color:var(--mut);background:var(--panel);}
+.stats{display:flex;flex-wrap:wrap;gap:2.4rem;margin:1.8rem 0 .4rem;}
+.stat b{display:block;font-size:2.1rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1;}
+.stat b.ok{color:var(--c1);font-size:1.5rem;}
+.stat span{font-size:.82rem;color:var(--mut);}
 .grid{display:grid;gap:1rem;margin-top:2.2rem;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));}
 .card{border:1px solid var(--line);border-radius:15px;padding:1.35rem;
   background:linear-gradient(180deg,rgba(16,23,35,.7),rgba(10,15,24,.55));transition:.25s;position:relative;overflow:hidden;}
@@ -164,7 +172,7 @@ footer .mono{color:var(--mut);}
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac">⚓</span> Crewless</a>
-  <nav class="nav"><a href="#vision">Why</a><a href="#idea">How it works</a><a href="#org">The team</a><a href="#products">What's live</a><a href="#run">Safeguards</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
+  <nav class="nav"><a href="#idea">The idea</a><a href="#products">What's live</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -189,134 +197,46 @@ footer .mono{color:var(--mut);}
 </div>
 
 <main>
-<section id="vision"><div class="wrap">
-  <p class="kick">Why</p>
-  <p class="big">Can one person, with a team of AI agents, build and run a real company?</p>
-  <p class="sub">That's the honest question behind Crewless. The tools have finally reached the point
-    where a very small human core — even one person — can do work that used to take a crowd. We're
-    trying to find out how far that really goes, and to be candid about it the whole way.</p>
-  <div class="grid">
-    <div class="card"><h3>Our mission</h3><p>Build genuinely useful products with a tiny human core and a large team of AI agents — carefully, in the open, and without pretending things work before they do.</p></div>
-    <div class="card"><h3>Our vision</h3><p>A company that can take on a new line of work independently — each one run end to end by its own agents — while people stay responsible for the decisions that matter.</p></div>
-    <div class="card"><h3>Where we honestly are</h3><p>Early. One product is in a small live pilot; the rest is structure and intent. We'd rather show the real state of it — including what hasn't worked — than a polished story.</p></div>
-  </div>
-</div></section>
-
 <section id="idea"><div class="wrap">
-  <p class="kick">How it works</p>
-  <p class="big">One person sets the direction. AI agents do the work.</p>
-  <p class="sub">The founder decides what matters and keeps the final say on anything that
-    involves real money or real risk. Everything else — the research, the engineering, the
-    daily operations — is carried out by AI agents that work continuously and check each
-    other's work. The aim is simple: to see how much one person, with the right AI team,
-    can genuinely build and run.</p>
-  <div class="grid">
-    <div class="card"><div class="ix">01</div><h3>Careful by design</h3><p>Every new idea is tested thoroughly and measured against clear, honest results before it's ever acted on.</p></div>
-    <div class="card"><div class="ix">02</div><h3>Checked, then checked again</h3><p>Every piece of work is reviewed by another agent before it goes live, so quality is built into the process.</p></div>
-    <div class="card"><div class="ix">03</div><h3>Safe and gradual</h3><p>Nothing that carries real risk is scaled up until it has clearly proven itself on a small scale first.</p></div>
-  </div>
-
-  <p class="flowlabel">The real path — automated investing research</p>
-  <div class="flow">
-    <span class="st">Overnight research</span><span class="ar">→</span>
-    <span class="st">Candidate found</span><span class="ar">→</span>
-    <span class="st k">Safety checks</span><span class="ar">→</span>
-    <span class="st">Small, capped position</span><span class="ar">→</span>
-    <span class="st">Reconciled &amp; logged</span><span class="ar">→</span>
-    <span class="st">Reviewed honestly</span>
-  </div>
-
-  <p class="flowlabel">The real path — this website</p>
-  <div class="flow">
-    <span class="st">Idea</span><span class="ar">→</span>
-    <span class="st">Built by an agent</span><span class="ar">→</span>
-    <span class="st k">Independently reviewed</span><span class="ar">→</span>
-    <span class="st">Deployed</span><span class="ar">→</span>
-    <span class="st">Live &amp; monitored</span><span class="ar">→</span>
-    <span class="st">Fixes itself</span>
-  </div>
-</div></section>
-
-<section id="org"><div class="wrap">
-  <p class="kick">The team</p>
-  <p class="big">A board that grows the company. A swarm behind every product.</p>
-  <p class="sub">There are two layers, and more than a dozen roles between them. A board of agents grows the
-    company, keeps it secure, funds what's worth funding and holds it to its rules. Under the COO, each product
-    runs on its own team — research, engineering, operations and the rest — filled by dozens of agents. The
-    founder sets the direction and holds the decisions that matter.</p>
-
-  <p class="flowlabel">The board — growing &amp; protecting the company</p>
-  <div class="grid">
-    <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Strategy &amp; ventures</h3></div><p>Looks for the company's next products and honestly tests whether each new idea is worth doing. This is how Crewless grows.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Research &amp; horizon</h3></div><p>Scans the outside world for what's changing, and runs the early research behind new ideas.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#ff9e64"></span><h3>Security</h3></div><p>Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Governance</h3></div><p>Holds the company to its own rules: nothing ships without review, and anything involving money or real risk goes to the founder.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Finance &amp; operations</h3></div><p>Watches the money and resources — what things cost, what's worth funding, and keeping the company solvent.</p></div>
-  </div>
-
-  <p class="flowlabel">Inside every product — the swarm</p>
-  <div class="grid">
-    <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Research</h3></div><p>Explores new ideas and tests them carefully, reporting honestly what works and what doesn't.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Engineering</h3></div><p>Builds and ships the software around the clock, with every change reviewed before it goes live.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Operations</h3></div><p>Keeps everything running smoothly day to day and makes sure the numbers add up.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#ff9e64"></span><h3>Safeguards</h3></div><p>Keeps risk small and controlled, and makes sure the important decisions are left to the founder.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Reliability</h3></div><p>Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.</p></div>
-    <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Comms</h3></div><p>Prepares anything the company shares publicly — including this website — with a human giving final approval.</p></div>
-  </div>
+  <p class="kick">The idea</p>
+  <p class="big">Can one person, with a team of AI agents, build and run a real company?</p>
+  <p class="sub">One founder sets the direction and holds every decision that involves real money or real
+    risk. A board of agents grows and protects the company, a COO runs the day-to-day, and each product has
+    its own team of agents — dozens, working in parallel. Tap any agent in the network to see its part.</p>
+  <ul class="pills">
+    <li>Reviewed before it ships</li>
+    <li>People hold the money &amp; risk</li>
+    <li>It can't take over — one switch stops it</li>
+    <li>Proven small before it scales</li>
+    <li>No personal data held</li>
+    <li>Built in the open — setbacks included</li>
+  </ul>
 </div></section>
 
 <section id="products"><div class="wrap">
   <p class="kick">What's live</p>
-  <p class="big">One product — and this website, built and run by the agents.</p>
-  <p class="sub">We're deliberately doing one real product first, honestly, rather than announcing things
-    that don't exist yet. The clearest proof is already in front of you: this site is made and maintained
-    by the agents themselves. Nothing here is a promise of results.</p>
-  <div class="prod">
-    <span class="badge live"><span class="bd"></span>Live pilot</span>
-    <h3>Automated investing research</h3>
-    <p>Automated systems that study the markets and make careful, size-capped decisions. It runs live at a
-      deliberately small size, with a person holding the risk — and it's judged on what it actually does.</p>
-  </div>
-  <div class="prod" style="margin-top:1.1rem">
-    <span class="badge live"><span class="bd"></span>Live · self-maintained</span>
-    <h3>Crewless Website</h3>
-    <p>Everything you're looking at was written, designed, built and deployed by the agents themselves — and
-      they keep it up to date. It's the smallest, most visible example of the company at work: a baby of Crewless.</p>
-  </div>
-
-  <p class="flowlabel">In research — directions we're exploring, not products yet</p>
-  <p class="sub" style="margin-top:.4rem">We work like an R&amp;D lab: bring an idea and we build a small proof-of-concept to find out, honestly, whether it has a real edge — and we say so plainly when it doesn't. A "no" is a finding, not a failure.</p>
-  <div class="grid">
-    <div class="card"><span class="badge plan"><span class="bd"></span>Research</span><h3>Agents that can't take over</h3><p>The guardrails, kill-switches and human-held keys that let one person run a fleet of AI agents safely — without it ever running them. We built this for ourselves; we're exploring whether it helps others.</p></div>
-    <div class="card"><span class="badge plan"><span class="bd"></span>Research</span><h3>Getting the most from AI, honestly</h3><p>Practical, open-source-first ways to use AI well — real leverage without lock-in or hype. What actually works, shared plainly.</p></div>
-    <div class="card"><span class="badge plan"><span class="bd"></span>Research</span><h3>An AI OS for companies</h3><p>The idea behind Crewless, made portable: an AI operating system to quick-start a company — the agents, the guardrails and the self-reporting already wired — so you begin with a working company, not a blank page. We're exploring whether it's real.</p></div>
-  </div>
-</div></section>
-
-<section id="run"><div class="wrap">
-  <p class="kick">Safeguards</p>
-  <p class="big">Built with guardrails, not guesswork.</p>
-  <p class="sub">The same discipline runs behind everything here — so the work can move quickly
-    without moving carelessly. This is what an engineer or a security reviewer would want to know.</p>
-  <div class="grid">
-    <div class="card"><h3>It can't take over</h3><p>The agents research, build and recommend — but they can't move real money, grant themselves new powers, or act outside limits set in advance. A person holds those keys, and a single switch stops everything at once.</p></div>
-    <div class="card"><h3>Reviewed before it ships</h3><p>Every change is built by one agent, checked by a separate reviewer, and validated before it goes live. Nothing reaches production on a single agent's say-so.</p></div>
-    <div class="card"><h3>People hold the risk</h3><p>Anything involving real money or real risk stops and waits for the founder. Agents research, build and recommend — they don't cross that line on their own.</p></div>
-    <div class="card"><h3>Safe by default</h3><p>New ideas run in measurement-only mode first and are scaled up only once they've proven themselves at a small size. A single switch can pause everything at once.</p></div>
-    <div class="card"><h3>Careful with data</h3><p>We don't hold personal or customer data. Credentials are never exposed, sensitive numbers are automatically kept off anything public, and information from outside sources is treated as untrusted by default.</p></div>
-    <div class="card"><h3>Found a security issue?</h3><p>We want to hear about it. Email <a href="mailto:admin@dancing-flamingo.org?subject=Security%20report%20—%20crewless.se" style="color:var(--c1)">admin@dancing-flamingo.org</a>, or see our <a href="/.well-known/security.txt" style="color:var(--c1)">security.txt</a> for the disclosure contact.</p></div>
-  </div>
+  <p class="big">One real product — and this website, run by the agents.</p>
+  <p class="sub"><b class="hl">Automated investing research</b> — live in a small, capped pilot, a person
+    holding the risk, judged on what it actually does.&nbsp; <b class="hl">This website</b> — written,
+    deployed and kept up to date by the agents themselves. Nothing here is a promise of results.</p>
+  <p class="sub" style="margin-top:.7rem"><b class="hl">In research</b> — we work like an R&amp;D lab: bring
+    an idea, we build a proof-of-concept and say honestly whether it has an edge. Exploring: agents that
+    can't take over · getting the most from AI with open source · an AI OS to quick-start a company.</p>
 </div></section>
 
 <section id="receipts"><div class="wrap">
   <p class="kick">Progress</p>
-  <p class="big">Built in the open — including the honest setbacks.</p>
+  <div class="stats" id="stats">
+    <div class="stat"><b id="k-changes">—</b><span>changes shipped · last 7 days</span></div>
+    <div class="stat"><b id="k-receipts">—</b><span>receipts, in the open</span></div>
+    <div class="stat"><b class="ok">● live</b><span>built &amp; self-maintained</span></div>
+  </div>
   <div class="receipts" id="receiptlog"></div>
 </div></section>
 
 <section id="contact"><div class="wrap">
-  <p class="creed">If it works, one person with a clear idea and the right tools can build
-    what used to take a crowd. <b>That's the story we're trying to earn the right to tell.</b></p>
+  <p class="creed">One person with a clear idea and the right tools can build what used to take a crowd.
+    <b>That's the story we're trying to earn the right to tell.</b></p>
   <div class="fb">
     <p class="fbq">What do you make of this idea?</p>
     <div class="fbchips" id="fbchips">
@@ -335,7 +255,8 @@ footer .mono{color:var(--mut);}
 <footer><div class="wrap">
   <span class="mono">⚓ Crewless — a one-person company, run by agents.</span><br>
   <span class="mono" style="display:inline-block;margin-top:.5rem">Based in Sweden · working remotely</span><br>
-  <span style="margin-top:.5rem;display:inline-block">Built in the open. Nothing here is a promise of results — it's a record of how the work is done. © 2026</span>
+  <span style="margin-top:.5rem;display:inline-block">Built in the open. Nothing here is a promise of results — it's a record of how the work is done. © 2026</span><br>
+  <a href="/.well-known/security.txt" class="mono" style="color:var(--dim);margin-top:.5rem;display:inline-block">Security</a>
 </div></footer>
 
 <script>
@@ -502,7 +423,8 @@ footer .mono{color:var(--mut);}
     el.innerHTML='<b>'+esc(parts[0])+'</b> · '+esc(parts.slice(1).join(' · ')); }
   function loadState(){
     fetch('state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
-      var hs=document.getElementById('hstate'); if(hs&&d.desk_label) hs.textContent='running';
+      var kc=document.getElementById('k-changes'); if(kc&&d.changes_7d!=null) kc.textContent=d.changes_7d;
+      var kr=document.getElementById('k-receipts'); if(kr&&d.receipts_count!=null) kr.textContent=d.receipts_count;
       var rc=document.getElementById('receiptlog');
       if(rc&&d.receipts&&d.receipts.length){ rc.innerHTML='<div class="timeline">'+d.receipts.slice(0,6).map(function(r){
         return '<div class="tl"><div class="d">'+esc(r.date)+'</div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div>';}).join('')+'</div>'; }
