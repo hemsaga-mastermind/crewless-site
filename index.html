@@ -262,7 +262,7 @@ footer .mono{color:var(--mut);}
   </div>
   <div class="prod" style="margin-top:1.1rem">
     <span class="badge live"><span class="bd"></span>Live · self-maintained</span>
-    <h3>This very website</h3>
+    <h3>Crewless Website</h3>
     <p>Everything you're looking at was written, designed, built and deployed by the agents themselves — and
       they keep it up to date. It's the smallest, most visible example of the company at work: a baby of Crewless.</p>
   </div>
@@ -324,7 +324,7 @@ footer .mono{color:var(--mut);}
     {l:'Security', kind:'board', x:.50,y:.12, r:11, c:'#ff9e64', role:'Part of the board. Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.'},
     {l:'Governance', kind:'board', x:.78,y:.14, r:11, c:'#4fe0d0', role:'Part of the board. Holds the company to its own rules: nothing ships without review, and money or real-risk decisions always go to the founder.'},
     {l:'Investing research', kind:'out', x:.30,y:.80, r:13, c:'#4fe0d0', role:'The one product live today: automated investing research, run by its own swarm of agents at a small capped size, with a person holding the risk.'},
-    {l:'This website', kind:'out', x:.70,y:.80, r:13, c:'#ffd166', role:'Built, written and deployed by the agents themselves — and kept up to date by them. A baby of Crewless, run by its own swarm.'}
+    {l:'Crewless Website', kind:'out', x:.70,y:.80, r:13, c:'#ffd166', role:'Built, written and deployed by the agents themselves — and kept up to date by them. A baby of Crewless, run by its own network of agents.'}
   ];
   var sel=-1;
   var LINKS=[[1,0],[2,0],[3,0],[0,4],[0,5],[2,4],[2,5]];
@@ -390,10 +390,13 @@ footer .mono{color:var(--mut);}
     // stars
     for(var s=0;s<stars.length;s++){ var st=stars[s]; var a=(0.14+0.24*st.z)*(0.6+0.4*Math.sin(t*1.2+st.tw));
       ctx.fillStyle='rgba(150,170,210,'+a.toFixed(3)+')'; ctx.fillRect(st.x+mx*st.z*18, st.y+my*st.z*18, 1.2+st.z, 1.2+st.z); }
-    // agent swarm — the cluster of many agents working in parallel around each team hub
+    // agent network — a hub-and-spoke cluster of agents around each product (and small teams on the board)
     for(var wi=0;wi<WORKERS.length;wi++){ var wk=WORKERS[wi]; var hp=nodePos(wk.hub,t);
       var wx=hp.x+wk.ox+Math.sin(t*wk.sp+wk.ph)*3.5, wy=hp.y+wk.oy+Math.cos(t*wk.sp*0.9+wk.ph)*3.5;
-      var won=(sel===wk.hub), woff=(sel>=0&&!won), wbase=woff?0.10:(won?0.9:0.42);
+      var won=(sel===wk.hub), woff=(sel>=0&&!won);
+      if(NODES[wk.hub].kind==='out'){ ctx.globalAlpha=woff?0.04:(won?0.17:0.09); ctx.strokeStyle=NODES[wk.hub].c; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(hp.x,hp.y); ctx.lineTo(wx,wy); ctx.stroke(); }
+      var wbase=woff?0.10:(won?0.9:0.42);
       ctx.globalAlpha=wbase*(0.5+0.5*Math.sin(t*1.7+wk.tw)); ctx.fillStyle=NODES[wk.hub].c;
       ctx.beginPath(); ctx.arc(wx,wy,wk.r,0,6.28); ctx.fill(); }
     ctx.globalAlpha=1;
