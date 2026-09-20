@@ -150,7 +150,7 @@ footer .mono{color:var(--mut);}
   <div class="stage" id="stage">
     <canvas id="net"></canvas>
     <div class="scrim"></div>
-    <div class="hint" id="hint">◎ Tap the COO or the product to see more</div>
+    <div class="hint" id="hint">◎ Tap any agent to see what it does</div>
     <div class="pick" id="pick" hidden></div>
   </div>
   <div class="wrap hcontent">
@@ -159,9 +159,9 @@ footer .mono{color:var(--mut);}
     <p class="lede">One founder sets the direction and makes the important decisions. A team of
       AI agents does the rest — exploring ideas in parallel, building and shipping the software,
       keeping the systems healthy, and running the day-to-day around the clock. It even builds and
-      maintains this website. The network here shows how it's organised: a COO at the top and the one
-      product live today, run end to end by its own pod of agents — every point of light one of them,
-      working in parallel.</p>
+      maintains this website. The network here is the company at work: a COO, the teams of agents that do
+      the research, engineering, operations, safeguards, reliability and communications, and the things they
+      run — the one live product and this very website. Every point of light is an agent, working in parallel.</p>
     <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
     <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
   </div>
@@ -198,10 +198,10 @@ footer .mono{color:var(--mut);}
 
 <section id="org"><div class="wrap">
   <p class="kick">The team</p>
-  <p class="big">One COO. One live product. Dozens of agents.</p>
-  <p class="sub">Under the COO, the live product has its own manager that runs the whole lifecycle — from first idea to live — with its own pod of agents. The company is built so another product could later be run the same way, independently, without disturbing this one — but today, honestly, there's just the one. Its pod is staffed by these kinds of agents:</p>
+  <p class="big">One COO. Teams of agents doing the real work.</p>
+  <p class="sub">Under the COO, teams of AI agents run continuously — research, engineering, operations, safeguards, reliability and communications. Together they run the one live product and build and maintain everything you see here, including this website. The company is built so a second product could later be run the same way, independently — but today, honestly, there's just the one. These are the kinds of agents at work:</p>
   <div class="grid">
-    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>The manager</h3></div><p>Each line of work has one. It runs that line day to day and escalates only the decisions that genuinely need the founder.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>The COO</h3></div><p>Sits at the top. Runs the company day to day and brings the founder only the decisions that genuinely need a person.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Research</h3></div><p>Explores new ideas and tests them carefully, reporting honestly what works and what doesn't.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Engineering</h3></div><p>Builds and improves the software around the clock, with every change reviewed before it goes live.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Operations</h3></div><p>Keeps everything running smoothly day to day and makes sure the numbers add up.</p></div>
@@ -212,16 +212,22 @@ footer .mono{color:var(--mut);}
 </div></section>
 
 <section id="products"><div class="wrap">
-  <p class="kick">Our product</p>
-  <p class="big">One product, in a small live pilot.</p>
-  <p class="sub">We're deliberately doing one thing first, and doing it honestly, rather than spreading
-    thin or announcing things that don't exist yet. Nothing here is a promise of results.</p>
+  <p class="kick">What's live</p>
+  <p class="big">One product — and this website, built and run by the agents.</p>
+  <p class="sub">We're deliberately doing one real product first, honestly, rather than announcing things
+    that don't exist yet. The clearest proof is already in front of you: this site is made and maintained
+    by the agents themselves. Nothing here is a promise of results.</p>
   <div class="prod">
     <span class="badge live"><span class="bd"></span>Live pilot</span>
     <h3>Automated investing research</h3>
-    <p>Automated systems that study the markets and make careful, size-capped decisions. It runs live
-      at a deliberately small size, with a person holding the risk — and it's judged on what it actually
-      does, not on any promise. More lines of work will come only once this one has earned it.</p>
+    <p>Automated systems that study the markets and make careful, size-capped decisions. It runs live at a
+      deliberately small size, with a person holding the risk — and it's judged on what it actually does.</p>
+  </div>
+  <div class="prod" style="margin-top:1.1rem">
+    <span class="badge live"><span class="bd"></span>Live · self-maintained</span>
+    <h3>This very website</h3>
+    <p>Everything you're looking at was written, designed, built and deployed by the agents themselves — and
+      they keep it up to date. It's the smallest, most visible example of the company at work: a baby of Crewless.</p>
   </div>
 </div></section>
 
@@ -269,12 +275,21 @@ footer .mono{color:var(--mut);}
   // org model (candid): a COO over lines of work. ONE line runs live today (its own
   // independent pod of agents); the empty slots show the structure is built to add more
   // without disturbing it. x/y = desktop, mx/my = mobile.
+  // the whole company at work: a COO, the teams of agents that do the real work, and the two
+  // real things they produce and run — the one live product and this website itself.
   var NODES=[
-    {l:'COO', kind:'coo', x:.50,y:.16, mx:.50,my:.13, r:15, c:'#4fe0d0', hub:1, role:'Sits at the top of the company. Sets the day-to-day direction, keeps the founder’s key decisions in front of a person, and oversees the work.'},
-    {l:'Investing research', kind:'mgr', x:.50,y:.54, mx:.50,my:.54, r:13, c:'#4fe0d0', role:'The one product live today: a manager that runs the whole automated investing-research lifecycle end to end — at a small, capped size, with its own pod of agents and a person holding the risk.'}
+    {l:'COO', kind:'coo', x:.50,y:.08, r:15, c:'#4fe0d0', hub:1, role:'Sits at the top. Runs the company day to day and brings the founder only the decisions that genuinely need a person.'},
+    {l:'Research', kind:'team', x:.18,y:.30, r:11, c:'#7c8cff', role:'Explores new ideas and tests them carefully, reporting honestly what works and what doesn’t.'},
+    {l:'Engineering', kind:'team', x:.50,y:.26, r:11, c:'#b57bff', role:'Builds and ships the software around the clock, with every change reviewed before it goes live.'},
+    {l:'Operations', kind:'team', x:.82,y:.30, r:11, c:'#4fe0d0', role:'Keeps everything running smoothly day to day and makes sure the numbers add up.'},
+    {l:'Safeguards', kind:'team', x:.20,y:.54, r:11, c:'#ff9e64', role:'Keeps risk small and controlled, and makes sure the important decisions are left to the founder.'},
+    {l:'Reliability', kind:'team', x:.50,y:.56, r:11, c:'#7c8cff', role:'Monitors the systems, fixes problems automatically, and raises a flag only when it genuinely needs help.'},
+    {l:'Comms', kind:'team', x:.80,y:.54, r:11, c:'#b57bff', role:'Prepares everything the company shares publicly — including this website — with a human giving final approval.'},
+    {l:'Investing research', kind:'out', x:.32,y:.84, r:13, c:'#4fe0d0', role:'The one product live today: automated investing research, running at a small capped size with a person holding the risk.'},
+    {l:'This website', kind:'out', x:.70,y:.84, r:13, c:'#ffd166', role:'Built, written and deployed by the agents themselves — and kept up to date by them. What you’re reading is the company at work: a baby of Crewless.'}
   ];
   var sel=-1;
-  var LINKS=[[0,1]];
+  var LINKS=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,7],[2,7],[3,7],[4,7],[2,8],[5,8],[6,8]];
   var pulses=[], stars=[], WORKERS=[];
 
   function layout(){
@@ -292,12 +307,11 @@ footer .mono{color:var(--mut);}
     NODES.forEach(function(n){ var ux=(W<880&&n.mx!=null)?n.mx:n.x, uy=(W<880&&n.my!=null)?n.my:n.y;
       n.px=ox+ux*bw; n.py=oy+uy*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
     // the cluster: a swarm of agents, mostly around the one live pod (empty slots get none)
-    WORKERS=[]; var perHub=(W>=880)?[8,74]:[5,48];
-    var clusterR=Math.min(bw,bh)*(W>=880?0.30:0.24);
-    for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||0, big=(NODES[hi].kind==='mgr');
-      var cr=big?clusterR:clusterR*0.28, down=big?cr*0.18:0;
-      for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=cr*Math.sqrt(Math.random());
-        WORKERS.push({hub:hi, ox:Math.cos(ang)*rad, oy:Math.sin(ang)*rad*0.82+down,
+    WORKERS=[]; var perHub=(W>=880)?[6,11,11,11,11,11,11,0,0]:[4,7,7,7,7,7,7,0,0];
+    var clusterR=Math.min(bw,bh)*(W>=880?0.12:0.11);
+    for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||0;
+      for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=clusterR*Math.sqrt(Math.random());
+        WORKERS.push({hub:hi, ox:Math.cos(ang)*rad, oy:Math.sin(ang)*rad*0.82,
           ph:Math.random()*6.28, sp:0.4+Math.random()*0.7, r:1.1+Math.random()*1.6, tw:Math.random()*6.28}); } }
     var ce=document.getElementById('agentct'); if(ce) ce.textContent=(WORKERS.length+NODES.length);
     stars=[]; var count=Math.round(W*H/9000);
