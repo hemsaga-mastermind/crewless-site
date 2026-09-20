@@ -1,0 +1,6 @@
+# Security contact for crewless.se
+# We welcome responsible disclosure. Please give us reasonable time to respond.
+Contact: mailto:admin@dancing-flamingo.org
+Expires: 2027-09-20T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://crewless.se/.well-known/security.txt
