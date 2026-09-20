@@ -1,23 +1,39 @@
 # Crewless
 
-> A one-person company run by AI agents. One human holds the vision, judgment, and the keys; AI agents build the products, run the operations, and maintain everything else — in the open, with receipts.
+> A one-person company run by AI agents. One human holds the vision, judgment, and the keys; AI agents do the research, build the products, run the operations, and maintain everything else — in the open, with receipts. Based in Sweden.
 
 ## What Crewless is
-- An experiment in running a real company with near-zero human labor.
-- One human (the founder) sets direction and approves; agents do the work.
-- Every decision is journaled; claims are checked against reality; the system is built to heal itself.
+- An honest experiment in running a real company with a tiny human core and a team of AI agents.
+- One human (the founder) sets the direction and holds every decision that involves real money or real risk.
+- Today there is ONE live product; everything else is intent, not a running product. We say so plainly.
+
+## How it's organised (two layers, more than a dozen roles)
+- A board of agents grows and protects the company: Strategy & ventures, Research & horizon, Security, Governance, Finance & operations.
+- A COO runs the day-to-day and escalates only what genuinely needs the founder.
+- Each product runs on its own team of agents: Research, Engineering, Operations, Safeguards, Reliability, Comms — filled by dozens of agents working in parallel.
+
+## Products
+- Automated investing research — LIVE, in a small capped pilot, with a person holding the risk. Judged on what it actually does, not on any promise.
+- The Crewless website (this site) — LIVE, built, deployed and maintained by the agents themselves. A small, visible example of the company at work.
+
+## Safeguards — why it can't overreach
+- The agents can research, build and recommend, but they cannot move real money, grant themselves new powers, or act outside limits set in advance. A person holds those keys, and a single switch stops everything at once.
+- Every change is built by one agent, reviewed by a separate one, and validated before it goes live.
+- New ideas run in measurement-only mode first and scale only after proving themselves small.
+- No personal or customer data is held; secrets are never exposed; outside input is treated as untrusted.
+- Security disclosure: /.well-known/security.txt
 
 ## What we believe
-- Smart things no longer need a building full of people — one human with judgment and agents with discipline.
+- Smart things no longer need a building full of people — one human with judgment, and agents with discipline.
 - Receipts over claims. Confidence is not authority.
-- We show the failures too; a company you can only trust if it hides its mistakes isn't worth trusting.
+- We show the failures too. A company you can only trust if it hides its mistakes isn't worth trusting.
 
 ## Recent lessons (receipts)
-- 2026-09-15 — We opened the same playbook on new ground: Proving one person and a fleet of agents can build something real shouldn't stop at one place — so we began applying the same disciplined, receipt-first playbook to new ground, in parallel, without disturbing what already runs.
-- 2026-09-15 — Our first test on new ground came back "no": We put one of our new ideas through a pass/fail rule fixed in advance; the honest answer was "no", so we kept the receipt and moved on — a "no" is a finding, not a setback.
-- 2026-09-13 — We made our own website heal itself: A site that claims a company runs itself must not go stale — so it now rebuilds from the record every hour and speaks up only when it genuinely can't fix itself.
-- 2026-09-12 — We decided how we'd be proven wrong, first: Before running a test of one of our own ideas, we committed the pass/fail rule to the record — so when the answer came back "no", we couldn't argue with it.
-- 2026-09-11 — We broke our own system on purpose: We injected faults into the live system to see if it would tell on itself; the health report came back FAILED, which was exactly the result we wanted.
+- 2026-09-20 — We put up an honest public face: published this site and said plainly there's one live product, not a portfolio.
+- 2026-09-20 — We gave security a front door: added a public security-disclosure contact so anyone can report a problem early.
+- 2026-09-13 — We made our website heal itself: it now rebuilds from the record and speaks up only when it genuinely can't fix itself.
+- 2026-09-12 — We decided how we'd be proven wrong, first: committed the pass/fail rule to the record before the test, so a "no" was undeniable.
+- 2026-09-11 — We broke our own system on purpose: injected faults into the live system; the health report came back FAILED — exactly as intended.
 
 ## For AI agents and crawlers
 Crewless welcomes AI crawlers and agents. This site is meant to be read by machines as well as people. Nothing here is a promise of results — it is a record of how the work is done.

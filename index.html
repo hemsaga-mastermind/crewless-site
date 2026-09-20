@@ -116,13 +116,15 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .card .rl .rd{width:.6rem;height:.6rem;border-radius:50%;flex:none;}
 .card h3{font-size:1.06rem;}
 .card p{color:var(--mut);font-size:.92rem;}
-.receipts{margin-top:2rem;}
-.rcpt{display:grid;grid-template-columns:100px 1fr;gap:1.1rem;padding:1.1rem 0;border-top:1px solid var(--line);}
-.rcpt:first-child{border-top:none;}
-.rcpt .d{font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--dim);padding-top:.15rem;}
-.rcpt h4{font-size:1rem;font-weight:500;}
-.rcpt p{color:var(--mut);font-size:.9rem;margin-top:.25rem;}
-@media(max-width:560px){.rcpt{grid-template-columns:1fr;gap:.25rem;}}
+.receipts{margin-top:2.2rem;}
+.timeline{position:relative;padding-left:1.35rem;border-left:1px solid var(--line);}
+.tl{position:relative;padding-bottom:1.55rem;}
+.tl:last-child{padding-bottom:0;}
+.tl::before{content:"";position:absolute;left:calc(-1.35rem - 4px);top:.35rem;width:9px;height:9px;border-radius:50%;
+  background:var(--c1);box-shadow:0 0 0 3px var(--bg);}
+.tl .d{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;color:var(--dim);}
+.tl h4{font-size:1.02rem;font-weight:600;margin:.12rem 0 .28rem;letter-spacing:-.01em;}
+.tl p{color:var(--mut);font-size:.9rem;line-height:1.55;max-width:64ch;}
 .creed{font-size:clamp(1.3rem,3.2vw,1.85rem);font-weight:500;line-height:1.32;letter-spacing:-.012em;max-width:21ch;}
 .creed b{background:linear-gradient(105deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;}
 footer{border-top:1px solid var(--line);padding:2.6rem 0 3.4rem;color:var(--dim);font-size:.82rem;}
@@ -226,15 +228,18 @@ footer .mono{color:var(--mut);}
 <section id="org"><div class="wrap">
   <p class="kick">The team</p>
   <p class="big">A board that grows the company. A swarm behind every product.</p>
-  <p class="sub">There are two layers. A small board of agents looks for the company's next products, keeps
-    Crewless secure, and holds it to its own rules — that's how it grows and stays safe. Under the COO, each
-    product runs on its own swarm of agents. The founder sets the direction and holds the decisions that matter.</p>
+  <p class="sub">There are two layers, and more than a dozen roles between them. A board of agents grows the
+    company, keeps it secure, funds what's worth funding and holds it to its rules. Under the COO, each product
+    runs on its own team — research, engineering, operations and the rest — filled by dozens of agents. The
+    founder sets the direction and holds the decisions that matter.</p>
 
   <p class="flowlabel">The board — growing &amp; protecting the company</p>
   <div class="grid">
     <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Strategy &amp; ventures</h3></div><p>Looks for the company's next products and honestly tests whether each new idea is worth doing. This is how Crewless grows.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Research &amp; horizon</h3></div><p>Scans the outside world for what's changing, and runs the early research behind new ideas.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#ff9e64"></span><h3>Security</h3></div><p>Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Governance</h3></div><p>Holds the company to its own rules: nothing ships without review, and anything involving money or real risk goes to the founder.</p></div>
+    <div class="card"><div class="rl"><span class="rd" style="background:#b57bff"></span><h3>Finance &amp; operations</h3></div><p>Watches the money and resources — what things cost, what's worth funding, and keeping the company solvent.</p></div>
   </div>
 
   <p class="flowlabel">Inside every product — the swarm</p>
@@ -274,6 +279,7 @@ footer .mono{color:var(--mut);}
   <p class="sub">The same discipline runs behind everything here — so the work can move quickly
     without moving carelessly. This is what an engineer or a security reviewer would want to know.</p>
   <div class="grid">
+    <div class="card"><h3>It can't take over</h3><p>The agents research, build and recommend — but they can't move real money, grant themselves new powers, or act outside limits set in advance. A person holds those keys, and a single switch stops everything at once.</p></div>
     <div class="card"><h3>Reviewed before it ships</h3><p>Every change is built by one agent, checked by a separate reviewer, and validated before it goes live. Nothing reaches production on a single agent's say-so.</p></div>
     <div class="card"><h3>People hold the risk</h3><p>Anything involving real money or real risk stops and waits for the founder. Agents research, build and recommend — they don't cross that line on their own.</p></div>
     <div class="card"><h3>Safe by default</h3><p>New ideas run in measurement-only mode first and are scaled up only once they've proven themselves at a small size. A single switch can pause everything at once.</p></div>
@@ -320,14 +326,16 @@ footer .mono{color:var(--mut);}
   // day to day, and each PRODUCT run by its own swarm of agents (bottom).
   var NODES=[
     {l:'COO', kind:'coo', x:.50,y:.44, r:14, c:'#4fe0d0', hub:1, role:'Runs the company day to day and brings the founder only the decisions that genuinely need a person.'},
-    {l:'Strategy & ventures', kind:'board', x:.22,y:.14, r:11, c:'#7c8cff', role:'Part of the board. Looks for the company’s next products and honestly tests whether each new idea is worth doing — this is how Crewless grows.'},
-    {l:'Security', kind:'board', x:.50,y:.12, r:11, c:'#ff9e64', role:'Part of the board. Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.'},
-    {l:'Governance', kind:'board', x:.78,y:.14, r:11, c:'#4fe0d0', role:'Part of the board. Holds the company to its own rules: nothing ships without review, and money or real-risk decisions always go to the founder.'},
-    {l:'Investing research', kind:'out', x:.30,y:.80, r:13, c:'#4fe0d0', role:'The one product live today: automated investing research, run by its own swarm of agents at a small capped size, with a person holding the risk.'},
-    {l:'Crewless Website', kind:'out', x:.70,y:.80, r:13, c:'#ffd166', role:'Built, written and deployed by the agents themselves — and kept up to date by them. A baby of Crewless, run by its own network of agents.'}
+    {l:'Strategy', kind:'board', x:.11,y:.15, r:10, c:'#7c8cff', role:'Board. Looks for the company’s next products and honestly tests whether each idea is worth doing — this is how Crewless grows.'},
+    {l:'Horizon', kind:'board', x:.31,y:.11, r:10, c:'#7c8cff', role:'Board. Scans the outside world for what’s changing and worth attention, and runs the early research.'},
+    {l:'Security', kind:'board', x:.50,y:.10, r:10, c:'#ff9e64', role:'Board. Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.'},
+    {l:'Governance', kind:'board', x:.69,y:.11, r:10, c:'#4fe0d0', role:'Board. Holds the company to its rules: nothing ships without review, and money or real-risk decisions always go to the founder.'},
+    {l:'Finance', kind:'board', x:.89,y:.15, r:10, c:'#b57bff', role:'Board. Watches the money and resources — what things cost, what’s worth funding, and keeping the company solvent.'},
+    {l:'Investing research', kind:'out', x:.30,y:.80, r:13, c:'#4fe0d0', role:'The one product live today: automated investing research, run by its own team of agents at a small capped size, with a person holding the risk.'},
+    {l:'Crewless Website', kind:'out', x:.70,y:.80, r:13, c:'#ffd166', role:'Built, written and deployed by the agents themselves — and kept up to date by them. A baby of Crewless, run by its own team of agents.'}
   ];
   var sel=-1;
-  var LINKS=[[1,0],[2,0],[3,0],[0,4],[0,5],[2,4],[2,5]];
+  var LINKS=[[1,0],[2,0],[3,0],[4,0],[5,0],[0,6],[0,7],[3,6],[3,7]];
   var pulses=[], stars=[], WORKERS=[];
 
   function layout(){
@@ -346,7 +354,7 @@ footer .mono{color:var(--mut);}
       n.px=ox+ux*bw; n.py=oy+uy*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
     // the cluster: a swarm of agents, mostly around the one live pod (empty slots get none)
     // swarm: big pods on the products, small teams on the board / COO
-    WORKERS=[]; var perHub=(W>=880)?[6,5,5,5,24,20]:[4,3,3,3,15,12];
+    WORKERS=[]; var perHub=(W>=880)?[6,4,4,4,4,4,24,20]:[4,2,2,2,2,2,15,12];
     var clusterR=Math.min(bw,bh)*(W>=880?0.13:0.12);
     for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||0, cr=(NODES[hi].kind==='out')?clusterR:clusterR*0.5;
       for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=cr*Math.sqrt(Math.random());
@@ -466,8 +474,8 @@ footer .mono{color:var(--mut);}
     fetch('state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
       var hs=document.getElementById('hstate'); if(hs&&d.desk_label) hs.textContent='running';
       var rc=document.getElementById('receipts');
-      if(rc&&d.receipts&&d.receipts.length){ rc.innerHTML=d.receipts.slice(0,5).map(function(r){
-        return '<div class="rcpt"><div class="d">'+esc(r.date)+'</div><div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div></div>';}).join(''); }
+      if(rc&&d.receipts&&d.receipts.length){ rc.innerHTML='<div class="timeline">'+d.receipts.slice(0,6).map(function(r){
+        return '<div class="tl"><div class="d">'+esc(r.date)+'</div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div>';}).join('')+'</div>'; }
     }).catch(function(){});
   }
 
