@@ -382,7 +382,7 @@ footer .mono{color:var(--mut);}
       for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=cr*Math.sqrt(Math.random());
         WORKERS.push({hub:hi, ox:Math.cos(ang)*rad, oy:Math.sin(ang)*rad*0.82,
           ph:Math.random()*6.28, sp:0.4+Math.random()*0.7, r:1.1+Math.random()*1.6, tw:Math.random()*6.28}); } }
-    var ce=document.getElementById('agentct'); if(ce) ce.textContent=(WORKERS.length+NODES.length);
+    // (agent count is a consistent qualitative label, not the device-dependent dot count)
     stars=[]; var count=Math.round(W*H/9000);
     for(var i=0;i<count;i++) stars.push({x:Math.random()*W,y:Math.random()*H,z:Math.random(),tw:Math.random()*6.28});
   }
