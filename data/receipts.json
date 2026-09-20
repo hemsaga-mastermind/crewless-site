@@ -1,0 +1,30 @@
+{
+ "_note": "Source of truth for the Progress timeline. Real entries only — Styrman publishes these, it never invents them. Newest first.",
+ "receipts": [
+  {
+   "date": "2026-09-20",
+   "headline": "We put up an honest public face",
+   "lesson": "Published this site — and said plainly there's one live product, not a portfolio."
+  },
+  {
+   "date": "2026-09-20",
+   "headline": "We gave security a front door",
+   "lesson": "Added a public security-disclosure contact, so anyone can report a problem early."
+  },
+  {
+   "date": "2026-09-13",
+   "headline": "We made our website heal itself",
+   "lesson": "The site now rebuilds from the record and only speaks up when it genuinely can't fix itself."
+  },
+  {
+   "date": "2026-09-12",
+   "headline": "We decided how we'd be proven wrong, first",
+   "lesson": "Committed the pass/fail rule to the record before the test — so a \"no\" was undeniable."
+  },
+  {
+   "date": "2026-09-11",
+   "headline": "We broke our own system on purpose",
+   "lesson": "Injected faults into the live system; the health report came back FAILED — exactly as intended."
+  }
+ ]
+}
