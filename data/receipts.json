@@ -3,6 +3,11 @@
  "receipts": [
   {
    "date": "2026-09-20",
+   "headline": "We taught the site to run itself",
+   "lesson": "The site now publishes its own updates from the record and checks its own health every hour — and only calls a human when it genuinely can't cope."
+  },
+  {
+   "date": "2026-09-20",
    "headline": "We put up an honest public face",
    "lesson": "Published this site — and said plainly there's one live product, not a portfolio."
   },
