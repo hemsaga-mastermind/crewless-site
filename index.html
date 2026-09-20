@@ -150,7 +150,7 @@ footer .mono{color:var(--mut);}
   <div class="stage" id="stage">
     <canvas id="net"></canvas>
     <div class="scrim"></div>
-    <div class="hint" id="hint">◎ Tap the COO or a line to see more</div>
+    <div class="hint" id="hint">◎ Tap the COO or the product to see more</div>
     <div class="pick" id="pick" hidden></div>
   </div>
   <div class="wrap hcontent">
@@ -159,9 +159,9 @@ footer .mono{color:var(--mut);}
     <p class="lede">One founder sets the direction and makes the important decisions. A team of
       AI agents does the rest — exploring ideas in parallel, building and shipping the software,
       keeping the systems healthy, and running the day-to-day around the clock. It even builds and
-      maintains this website. The network here shows how it's organised: a COO at the top, one line of
-      work running live today, and room to add more — each line run end to end by its own pod of agents,
-      every point of light one of them, working in parallel.</p>
+      maintains this website. The network here shows how it's organised: a COO at the top and the one
+      product live today, run end to end by its own pod of agents — every point of light one of them,
+      working in parallel.</p>
     <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
     <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
   </div>
@@ -198,8 +198,8 @@ footer .mono{color:var(--mut);}
 
 <section id="org"><div class="wrap">
   <p class="kick">The team</p>
-  <p class="big">One COO. A manager for each line of work. Dozens of agents.</p>
-  <p class="sub">Under the COO, each line of work gets its own manager that runs the whole lifecycle — from first idea to live — with its own pod of agents. A new line can be added without disturbing the one already running. Today one line is live; the rest is honest, empty capacity. Every pod is staffed by the same kinds of agents:</p>
+  <p class="big">One COO. One live product. Dozens of agents.</p>
+  <p class="sub">Under the COO, the live product has its own manager that runs the whole lifecycle — from first idea to live — with its own pod of agents. The company is built so another product could later be run the same way, independently, without disturbing this one — but today, honestly, there's just the one. Its pod is staffed by these kinds of agents:</p>
   <div class="grid">
     <div class="card"><div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>The manager</h3></div><p>Each line of work has one. It runs that line day to day and escalates only the decisions that genuinely need the founder.</p></div>
     <div class="card"><div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Research</h3></div><p>Explores new ideas and tests them carefully, reporting honestly what works and what doesn't.</p></div>
@@ -270,13 +270,11 @@ footer .mono{color:var(--mut);}
   // independent pod of agents); the empty slots show the structure is built to add more
   // without disturbing it. x/y = desktop, mx/my = mobile.
   var NODES=[
-    {l:'COO', kind:'coo', x:.50,y:.13, mx:.50,my:.12, r:15, c:'#4fe0d0', hub:1, role:'Sits at the top of the company. Sets the day-to-day direction, keeps the founder’s key decisions in front of a person, and oversees every line of work.'},
-    {l:'Investing research', kind:'mgr', x:.50,y:.50, mx:.50,my:.50, r:13, c:'#4fe0d0', role:'The one line running today: a manager that runs the whole automated investing-research lifecycle end to end — at a small, capped size, with its own pod of agents and a person holding the risk.'},
-    {l:'＋ new line', kind:'ghost', x:.18,y:.53, mx:.20,my:.55, r:10, c:'#6b7690', role:'The company is built so a new line can be added here — its own manager and pod — without disturbing the one already running. None added yet; we say so honestly.'},
-    {l:'＋ new line', kind:'ghost', x:.82,y:.53, mx:.80,my:.55, r:10, c:'#6b7690', role:'The company is built so a new line can be added here — its own manager and pod — without disturbing the one already running. None added yet; we say so honestly.'}
+    {l:'COO', kind:'coo', x:.50,y:.16, mx:.50,my:.13, r:15, c:'#4fe0d0', hub:1, role:'Sits at the top of the company. Sets the day-to-day direction, keeps the founder’s key decisions in front of a person, and oversees the work.'},
+    {l:'Investing research', kind:'mgr', x:.50,y:.54, mx:.50,my:.54, r:13, c:'#4fe0d0', role:'The one product live today: a manager that runs the whole automated investing-research lifecycle end to end — at a small, capped size, with its own pod of agents and a person holding the risk.'}
   ];
   var sel=-1;
-  var LINKS=[[0,1],[0,2],[0,3]];
+  var LINKS=[[0,1]];
   var pulses=[], stars=[], WORKERS=[];
 
   function layout(){
@@ -294,7 +292,7 @@ footer .mono{color:var(--mut);}
     NODES.forEach(function(n){ var ux=(W<880&&n.mx!=null)?n.mx:n.x, uy=(W<880&&n.my!=null)?n.my:n.y;
       n.px=ox+ux*bw; n.py=oy+uy*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
     // the cluster: a swarm of agents, mostly around the one live pod (empty slots get none)
-    WORKERS=[]; var perHub=(W>=880)?[8,72,0,0]:[5,46,0,0];
+    WORKERS=[]; var perHub=(W>=880)?[8,74]:[5,48];
     var clusterR=Math.min(bw,bh)*(W>=880?0.30:0.24);
     for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||0, big=(NODES[hi].kind==='mgr');
       var cr=big?clusterR:clusterR*0.28, down=big?cr*0.18:0;
