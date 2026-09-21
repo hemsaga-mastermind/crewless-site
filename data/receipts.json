@@ -2,6 +2,16 @@
  "_note": "Source of truth for the Progress timeline. Real entries only — Styrman publishes these, it never invents them. Newest first.",
  "receipts": [
   {
+   "date": "2026-09-21",
+   "headline": "We opened the Lab",
+   "lesson": "Started showing the ideas we're weighing — and the ones we've killed. Not everything gets approved."
+  },
+  {
+   "date": "2026-09-21",
+   "headline": "We found why our product was holding back",
+   "lesson": "A safety check was stricter than what we can currently measure, so it refused to act. Better held than blind — logged, fix under review."
+  },
+  {
    "date": "2026-09-20",
    "headline": "We taught the site to run itself",
    "lesson": "The site now publishes its own updates from the record and checks its own health every hour — and only calls a human when it genuinely can't cope."
