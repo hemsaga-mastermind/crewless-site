@@ -1,12 +1,22 @@
 {
- "built_utc": "2026-09-21T00:14:54Z",
+ "built_utc": "2026-09-21T19:52:20Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 38,
- "active_days_7d": 1,
- "receipts_count": 6,
+ "changes_7d": 41,
+ "active_days_7d": 2,
+ "receipts_count": 8,
  "receipts": [
+  {
+   "date": "2026-09-21",
+   "headline": "We opened the Lab",
+   "lesson": "Started showing the ideas we're weighing — and the ones we've killed. Not everything gets approved."
+  },
+  {
+   "date": "2026-09-21",
+   "headline": "We found why our product was holding back",
+   "lesson": "A safety check was stricter than what we can currently measure, so it refused to act. Better held than blind — logged, fix under review."
+  },
   {
    "date": "2026-09-20",
    "headline": "We taught the site to run itself",
@@ -26,16 +36,6 @@
    "date": "2026-09-13",
    "headline": "We made our website heal itself",
    "lesson": "The site now rebuilds from the record and only speaks up when it genuinely can't fix itself."
-  },
-  {
-   "date": "2026-09-12",
-   "headline": "We decided how we'd be proven wrong, first",
-   "lesson": "Committed the pass/fail rule to the record before the test — so a \"no\" was undeniable."
-  },
-  {
-   "date": "2026-09-11",
-   "headline": "We broke our own system on purpose",
-   "lesson": "Injected faults into the live system; the health report came back FAILED — exactly as intended."
   }
  ]
 }
