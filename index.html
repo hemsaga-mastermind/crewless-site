@@ -114,6 +114,13 @@ section{scroll-margin-top:70px;}
 .stat b{display:block;font-size:2.1rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1;}
 .stat b.ok{color:var(--c1);font-size:1.5rem;}
 .stat span{font-size:.82rem;color:var(--mut);}
+.ideas{list-style:none;padding:0;margin:2rem 0 0;display:flex;flex-direction:column;gap:.9rem;max-width:66ch;}
+.ideas li{color:var(--mut);font-size:.95rem;line-height:1.5;}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.16rem .5rem;border-radius:100px;margin-right:.55rem;border:1px solid var(--line);}
+.tag.go{color:var(--c1);border-color:#1c5b53;}
+.tag.wt{color:#ffcf70;border-color:#5b4a1c;}
+.tag.no{color:var(--dim);}
 .grid{display:grid;gap:1rem;margin-top:2.2rem;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));}
 .card{border:1px solid var(--line);border-radius:15px;padding:1.35rem;
   background:linear-gradient(180deg,rgba(16,23,35,.7),rgba(10,15,24,.55));transition:.25s;position:relative;overflow:hidden;}
@@ -172,7 +179,7 @@ footer .mono{color:var(--mut);}
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac">⚓</span> Crewless</a>
-  <nav class="nav"><a href="#idea">The idea</a><a href="#products">What's live</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
+  <nav class="nav"><a href="#idea">The idea</a><a href="#products">What's live</a><a href="#lab">The Lab</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -219,9 +226,22 @@ footer .mono{color:var(--mut);}
   <p class="sub"><b class="hl">Automated investing research</b> — live in a small, capped pilot, a person
     holding the risk, judged on what it actually does.&nbsp; <b class="hl">This website</b> — written,
     deployed and kept up to date by the agents themselves. Nothing here is a promise of results.</p>
-  <p class="sub" style="margin-top:.7rem"><b class="hl">In research</b> — we work like an R&amp;D lab: bring
-    an idea, we build a proof-of-concept and say honestly whether it has an edge. Exploring: agents that
-    can't take over · getting the most from AI with open source · an AI OS to quick-start a company.</p>
+</div></section>
+
+<section id="lab"><div class="wrap">
+  <p class="kick">The Lab</p>
+  <p class="big">Ideas we're weighing — and the ones we've killed.</p>
+  <p class="sub">We work like an R&amp;D lab: bring an idea, we build a proof-of-concept and find out honestly
+    whether it has an edge. Not everything needs to be approved — we explore openly and drop what doesn't earn
+    its place. A "no" is a finding, not a failure.</p>
+  <ul class="ideas">
+    <li><span class="tag go">Exploring</span> A self-healing watchdog for small websites — the tech we already run for ourselves.</li>
+    <li><span class="tag go">Exploring</span> An AI OS to quick-start a company — the Crewless apparatus, made portable.</li>
+    <li><span class="tag go">Exploring</span> Getting the most from AI, honestly — open-source-first, no lock-in.</li>
+    <li><span class="tag wt">Weighing</span> AI that helps two people gauge genuine compatibility — privacy-first, anonymous, no personal data kept. A research question, not a product.</li>
+    <li><span class="tag no">Killed</span> Copying our approach onto other markets — tested, no real edge, dropped.</li>
+    <li><span class="tag no">Killed</span> A short-term reversal signal — looked promising, decayed under honest testing.</li>
+  </ul>
 </div></section>
 
 <section id="receipts"><div class="wrap">
