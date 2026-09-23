@@ -41,8 +41,12 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 /* ── hero: the big constellation is the centrepiece ── */
 .hero{position:relative;border-bottom:1px solid var(--line);
   background:radial-gradient(120% 90% at 50% -15%,rgba(79,224,208,.07),transparent 55%);}
-.herowrap{padding:clamp(1.5rem,4vw,2.6rem) 0 clamp(2rem,5vw,3.2rem);}
+/* mobile: single column — headline+intro, then the constellation, then actions */
+.herowrap{display:flex;flex-direction:column;gap:clamp(1.4rem,4vw,2rem);
+  padding:clamp(1.5rem,4vw,2.6rem) 0 clamp(2rem,5vw,3.2rem);}
 .herohead{max-width:46ch;}
+.heroactions{display:flex;flex-direction:column;}
+.heroactions .cta{margin-top:0;}
 .hud{display:inline-flex;align-items:center;gap:.55rem;
   padding:.4rem .85rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);
   font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
@@ -71,9 +75,9 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 .pulse .fade{animation:fadein .5s;}
 @keyframes fadein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 
-/* big hero constellation panel */
-.cst-hero{margin-top:clamp(1.4rem,3.4vw,2.2rem);}
-.cst.cst-hero canvas{height:clamp(420px,64vh,600px);}
+/* big hero constellation panel — bigger on mobile so it's a real attractor */
+.cst.cst-hero{margin-top:0;}
+.cst.cst-hero canvas{height:clamp(480px,70vh,620px);}
 .cst-bar{display:flex;align-items:center;justify-content:space-between;gap:.7rem 1rem;flex-wrap:wrap;
   padding:.8rem 1rem;border-bottom:1px solid var(--line);}
 .cst-bar .tnow-badge{margin-bottom:0;}
@@ -81,7 +85,18 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 .cst-foot .cst-legend{margin-top:0;}
 .cst-note{margin-top:1.1rem;font-size:.88rem;color:var(--mut);max-width:72ch;line-height:1.55;}
 .cst-note b{color:var(--ink);font-weight:600;}
-@media(min-width:760px){ .cst.cst-hero canvas{height:clamp(480px,68vh,680px);} }
+
+/* desktop: two columns — text (+actions) left, constellation filling the right, both centred */
+@media(min-width:920px){
+  .herowrap{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.12fr);
+    grid-template-areas:"head cst" "act cst";
+    column-gap:clamp(2rem,4.5vw,3.8rem);row-gap:0;align-items:center;}
+  .herohead{grid-area:head;align-self:end;max-width:34ch;}
+  .heroactions{grid-area:act;align-self:start;margin-top:1.6rem;}
+  .herocst{grid-area:cst;align-self:center;}
+  .cst.cst-hero canvas{height:clamp(460px,64vh,600px);}
+  .cst-note{max-width:none;}
+}
 
 section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
@@ -289,32 +304,35 @@ footer .mono{color:var(--mut);}
         direction. Here's the shape of it: how we work today, and where it's headed.</p>
     </div>
 
-    <div class="cst cst-hero">
-      <div class="cst-bar">
-        <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
-          <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now — how it looks today</button>
-          <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
+    <div class="herocst">
+      <div class="cst cst-hero">
+        <div class="cst-bar">
+          <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
+            <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now — how it looks today</button>
+            <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
+          </div>
+          <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Today — sparse on purpose</span>
         </div>
-        <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Today — sparse on purpose</span>
-      </div>
-      <canvas id="cstCanvas" role="img" aria-label="A radial map of the operating model. At the centre, a small team of AI agents that monitors the products. Around it sit independent products — today one is active and a couple more are just forming — each built from its own team of agents, its spine. Products never link to each other; the only links run from the central team out to each product. In the one-year vision more products and larger teams appear, evenly arranged. The products are shown generically here — the named ones are listed in the What's real section."></canvas>
-      <div class="cst-foot">
-        <div class="cst-legend" aria-hidden="true">
-          <span><i style="background:#8a94a8"></i>central team of AI agents — monitors the products</span>
-          <span><i style="background:#4fe0d0"></i>a product · its agents are its spine</span>
-          <span><i style="background:#b57bff"></i>+1yr placeholder — not committed</span>
-          <span><i style="background:#eef2f8"></i>each dot = one AI agent</span>
+        <canvas id="cstCanvas" role="img" aria-label="A radial map of the operating model. At the centre, a small team of AI agents that monitors the products. Around it sit independent products — today one is active and a couple more are just forming — each built from its own team of agents, its spine. Products never link to each other; the only links run from the central team out to each product. In the one-year vision more products and larger teams appear, evenly arranged. The products are shown generically here — the named ones are listed in the What's real section."></canvas>
+        <div class="cst-foot">
+          <div class="cst-legend" aria-hidden="true">
+            <span><i style="background:#8a94a8"></i>central team of AI agents — monitors the products</span>
+            <span><i style="background:#4fe0d0"></i>a product · its agents are its spine</span>
+            <span><i style="background:#b57bff"></i>+1yr placeholder — not committed</span>
+            <span><i style="background:#eef2f8"></i>each dot = one AI agent</span>
+          </div>
         </div>
       </div>
+      <p class="cst-note" id="cstFoot"><b>Today — sparse on purpose:</b> one product is active and a couple
+        more are just forming — each on its own small team of AI agents, with the central team of AI agents
+        monitoring. This shows <b>how we operate</b>, generically; the named products and their honest status
+        are in <a href="#real" style="color:var(--c1)">What's real</a>.</p>
     </div>
 
-    <p class="cst-note" id="cstFoot"><b>Today — sparse on purpose:</b> one product is active and a couple
-      more are just forming — each on its own small team of AI agents, with the central team of AI agents
-      monitoring. This shows <b>how we operate</b>, generically; the named products and their honest status
-      are in <a href="#real" style="color:var(--c1)">What's real</a>.</p>
-
-    <div class="cta"><a class="btn p" href="#brain">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
-    <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
+    <div class="heroactions">
+      <div class="cta"><a class="btn p" href="#brain">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
+      <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
+    </div>
   </div>
 </div>
 
