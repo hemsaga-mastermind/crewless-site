@@ -136,6 +136,20 @@ section{scroll-margin-top:70px;}
 .card h3{font-size:1.06rem;}
 .card p{color:var(--mut);font-size:.92rem;}
 .card .what{color:var(--ink);font-weight:500;font-size:.96rem;line-height:1.45;margin:.2rem 0 .7rem;}
+/* ── honest per-product confidence (populated from state.json products[]; empty ⇒ hidden) ── */
+.conf{margin-top:1rem;padding-top:.95rem;border-top:1px solid var(--line);}
+.conf:empty{display:none;}
+.conf-top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;margin-bottom:.5rem;}
+.conf-lab{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);}
+.conf-num{font-family:"IBM Plex Mono",monospace;font-size:.92rem;font-weight:500;color:var(--c1);letter-spacing:.02em;}
+.conf-bar{height:5px;border-radius:100px;background:var(--line);overflow:hidden;}
+.conf-bar i{display:block;height:100%;width:0;border-radius:100px;
+  background:linear-gradient(90deg,var(--c2),var(--c1));opacity:.85;transition:width 1.1s cubic-bezier(.22,.61,.36,1);}
+.conf-meas{color:var(--dim)!important;font-size:.78rem!important;line-height:1.4;margin-top:.6rem;}
+.conf-basis{color:var(--mut)!important;font-size:.82rem!important;line-height:1.45;margin-top:.35rem;}
+.conf-upd{display:inline-block;margin-top:.6rem;font-size:.62rem;letter-spacing:.06em;color:var(--dim);
+  border:1px solid var(--line);border-radius:100px;padding:.12rem .5rem;}
+@media(prefers-reduced-motion:reduce){.conf-bar i{transition:none;}}
 .receipts{margin-top:2.2rem;}
 .timeline{position:relative;padding-left:1.35rem;border-left:1px solid var(--line);}
 .tl{position:relative;padding-bottom:1.55rem;}
@@ -420,18 +434,21 @@ footer .mono{color:var(--mut);}
       <p class="what">An automated system that studies the Indian stock market and invests.</p>
       <span class="badge test"><span class="bd"></span>In research · paper</span>
       <p>Status: in paper testing — <b>no proven edge yet, and no real money live.</b></p>
+      <div class="conf" data-conf="agastya"></div>
     </div>
     <div class="card">
       <div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Keel</h3></div>
       <p class="what">The memory layer that lets our agents run things over time without forgetting or drifting.</p>
       <span class="badge live"><span class="bd"></span>Internal · working</span>
       <p>Status: internal and working — the backbone the rest is built on.</p>
+      <div class="conf" data-conf="keel"></div>
     </div>
     <div class="card">
       <div class="rl"><span class="rd" style="background:#ffd166"></span><h3>Beacon</h3></div>
       <p class="what">This website — built and kept up to date by the agents themselves.</p>
       <span class="badge live"><span class="bd"></span>Live</span>
       <p>Status: live. You're looking at it.</p>
+      <div class="conf" data-conf="beacon"></div>
     </div>
   </div>
 </div></section>
@@ -518,7 +535,30 @@ footer .mono{color:var(--mut);}
       var rc=document.getElementById('receiptlog');
       if(rc&&d.receipts&&d.receipts.length){ rc.innerHTML='<div class="timeline">'+d.receipts.slice(0,6).map(function(r){
         return '<div class="tl"><div class="d">'+esc(r.date)+'</div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div>';}).join('')+'</div>'; }
+      renderConfidence(d.products);
     }).catch(function(){});
+  }
+  // ── honest confidence indicator per product card — number comes ONLY from state.json ──
+  function renderConfidence(products){
+    var slots=document.querySelectorAll('.conf[data-conf]');
+    if(!slots.length) return;
+    if(!products||!products.length){ return; } // graceful: no products ⇒ cards render without confidence
+    var byKey={};
+    products.forEach(function(p){ if(p&&p.key) byKey[String(p.key).toLowerCase()]=p; });
+    slots.forEach(function(el){
+      var p=byKey[(el.getAttribute('data-conf')||'').toLowerCase()];
+      if(!p||p.confidence==null||isNaN(Number(p.confidence))){ el.innerHTML=''; return; }
+      var pct=Math.max(0,Math.min(100,Math.round(Number(p.confidence))));
+      var meas=p.measures?'<p class="conf-meas">'+esc(p.measures)+'</p>':'';
+      var basis=p.basis?'<p class="conf-basis">'+esc(p.basis)+'</p>':'';
+      var upd=p.updated?'<span class="conf-upd mono">updated '+esc(p.updated)+'</span>':'';
+      el.innerHTML='<div class="conf-top"><span class="conf-lab">Confidence</span>'+
+        '<span class="conf-num">'+pct+'%</span></div>'+
+        '<div class="conf-bar"><i></i></div>'+meas+basis+upd;
+      var fill=el.querySelector('.conf-bar i');
+      if(fill){ if(reduce){ fill.style.width=pct+'%'; }
+        else { requestAnimationFrame(function(){ requestAnimationFrame(function(){ fill.style.width=pct+'%'; }); }); } }
+    });
   }
   loadState(); setInterval(loadState,120000);
   tickFeed(); if(!reduce) setInterval(tickFeed,2600);
