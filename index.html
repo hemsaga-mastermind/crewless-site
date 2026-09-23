@@ -620,13 +620,15 @@ footer .mono{color:var(--mut);}
   // around it, clearly SMALLER & DIMMER, each a small core with its agents grouped as a tidy cluster.
   // Only links: hub→product. Angles fixed through the now→vision morph. b/team=[now,future].
   var CENTER={c:'#dffaf6', team:[5,7], spin:0.12};
+  // aN/aV = angle in the Now vs vision state. In Now only 3 products show, so they sit 120° apart
+  // AROUND the centred hub (balanced, not fanned above it); in vision all 5 settle evenly at 72°.
   var PROD=[
     // generic, unlabelled products — this map shows the operating MODEL, not named products
-    {ang:-90, c:'#4fe0d0', dim:false, b:[1,1],   team:[9,15], spin: 0.11},
-    {ang:-18, c:'#ffd166', dim:false, b:[.36,1], team:[4,12], spin:-0.10},
-    {ang: 54, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin: 0.09},
-    {ang:126, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin:-0.12},
-    {ang:198, c:'#7c8cff', dim:false, b:[.36,1], team:[4,12], spin: 0.10}
+    {aN:-90, aV:-90, c:'#4fe0d0', dim:false, b:[1,1],   team:[9,15], spin: 0.11},
+    {aN: 30, aV:-18, c:'#ffd166', dim:false, b:[.36,1], team:[4,12], spin:-0.10},
+    {aN: 54, aV: 54, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin: 0.09},
+    {aN:126, aV:126, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin:-0.12},
+    {aN:150, aV:198, c:'#7c8cff', dim:false, b:[.36,1], team:[4,12], spin: 0.10}
   ];
   // tidy packed cluster (phyllotaxis unit-disc offsets) so agents read as a GROUP, never an orbit ring
   function clus(n){var a=[],ga=2.399963;for(var i=0;i<n;i++){var r=Math.sqrt((i+0.5)/n),an=i*ga;
@@ -642,7 +644,7 @@ footer .mono{color:var(--mut);}
     DPR=Math.min(devicePixelRatio||1,2); cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
     sc=W<560?0.9:1; cx=W/2; cy=H*0.5; U=Math.min(W,H); ringR=U*(W<560?0.40:0.37);
   }
-  function ppos(p){var a=p.ang*Math.PI/180; return {x:cx+Math.cos(a)*ringR, y:cy+Math.sin(a)*ringR};}
+  function ppos(p){var a=lerp(p.aN,p.aV,g)*Math.PI/180; return {x:cx+Math.cos(a)*ringR, y:cy+Math.sin(a)*ringR};}
   function ringPts(px,py,rad,maxN,phase){var a=[];for(var i=0;i<maxN;i++){var an=phase+i/maxN*6.2832;
     a.push({x:px+Math.cos(an)*rad, y:py+Math.sin(an)*rad});}return a;}
   function label(txt,x,y,color,size,alpha,weight){
