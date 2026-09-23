@@ -309,7 +309,7 @@ footer .mono{color:var(--mut);}
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac">⚓</span> Crewless</a>
-  <nav class="nav"><a href="#idea">The idea</a><a href="#brain">The brain</a><a href="#horizon">What's real</a><a href="#lab">The Lab</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
+  <nav class="nav"><a href="#idea">The idea</a><a href="#brain">The brain</a><a href="#real">What's real</a><a href="#lab">The Lab</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -403,7 +403,7 @@ footer .mono{color:var(--mut);}
   <div class="brainrow">
     <div class="bcard k1">
       <p class="kx">The moat</p>
-      <h3>Keel</h3>
+      <h3>It doesn't forget</h3>
       <p>The reason our agents can be trusted to <b>run</b> things, not just answer — they don't
         forget, and they don't drift. Others reset every conversation; ours carry the company forward.
         <span class="tease">How we do it is our edge.</span></p>
@@ -416,11 +416,11 @@ footer .mono{color:var(--mut);}
         <span class="tease">What's in that gauntlet stays under the hood.</span></p>
     </div>
     <div class="bcard k3">
-      <p class="kx">The first product</p>
-      <h3>Agastya</h3>
-      <p>An automated investing researcher, learning how India's market moves together — built to be a
-        patient, diversified money-builder, not a gambler. <b>Today it's in research and paper testing:
-        no proven edge yet, and no real money riding on it.</b></p>
+      <p class="kx">The shape</p>
+      <h3>Independent products, one team each</h3>
+      <p>Every product we build runs on its <b>own team of agents</b> — its spine — and runs on its
+        own; a central team only watches over it. We add new products without disturbing the ones
+        already running. <span class="tease">What actually exists today is named in What's real.</span></p>
     </div>
   </div>
 
@@ -447,16 +447,16 @@ footer .mono{color:var(--mut);}
 
   <!-- NOW vs +1 YEAR — animated radial org map: central agent-team → independent products → agent spines (canvas, no media files) -->
   <div class="tnow" id="horizon">
-    <p class="flowlabel" style="margin-top:2.6rem">What's real today — and where it could go</p>
+    <p class="flowlabel" style="margin-top:2.6rem">The model — now vs the vision</p>
     <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
-      <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now — real today</button>
+      <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now — how it looks today</button>
       <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
     </div>
     <div class="tnow-badgewrap">
-      <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Real today — sparse on purpose</span>
+      <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Today — sparse on purpose</span>
     </div>
     <div class="cst">
-      <canvas id="cstCanvas" role="img" aria-label="A radial org map. At the centre, a small team of AI agents that monitors the products. Around it, independent products — today Agastya (a product in research) plus two internal layers forming, Keel and Beacon — each built from its own team of agents, its spine. Products never link to each other; the only links run from the central team out to each product. In the one-year vision more products and larger teams appear, evenly arranged."></canvas>
+      <canvas id="cstCanvas" role="img" aria-label="A radial map of the operating model. At the centre, a small team of AI agents that monitors the products. Around it sit independent products — today one is active and a couple more are just forming — each built from its own team of agents, its spine. Products never link to each other; the only links run from the central team out to each product. In the one-year vision more products and larger teams appear, evenly arranged. The products are shown generically here — the named ones are listed in the What's real section."></canvas>
     </div>
     <p class="cst-lead"><b>Each product runs on its own team of agents — its spine.</b> A central team of agents monitors them. The products run independently.</p>
     <div class="cst-legend" aria-hidden="true">
@@ -465,10 +465,37 @@ footer .mono{color:var(--mut);}
       <span><i style="background:#b57bff"></i>+1yr placeholder — not committed</span>
       <span><i style="background:#eef2f8"></i>each dot = one AI agent</span>
     </div>
-    <p class="tnow-foot" id="cstFoot"><b>Now — real today:</b> one product in research — <b>Agastya</b>,
-      in paper testing, with no proven edge yet and <b>no real money live</b>. Two internal layers are forming:
-      <b>Keel</b> (the continuity that lets agents run things, not just answer) and <b>Beacon</b> (this site —
-      the agents build and maintain it themselves). One live thing, not a portfolio.</p>
+    <p class="tnow-foot" id="cstFoot"><b>Today — sparse on purpose:</b> one product is active and a couple
+      more are just forming — each built on its own small team of agents, with the central team monitoring.
+      This shows <b>how we operate</b>, generically; the actual named products and their honest status are in
+      <a href="#real" style="color:var(--c1)">What's real</a> below.</p>
+  </div>
+</div></section>
+
+<section id="real"><div class="wrap">
+  <p class="kick">What's real</p>
+  <p class="big">What actually exists today — named, with honest status.</p>
+  <p class="sub">The model above is how we operate. Here are the real things behind it, with no spin —
+    one live thing, not a portfolio.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Agastya</h3></div>
+      <span class="badge test"><span class="bd"></span>In research · paper</span>
+      <p>Our first product — automated investing research, learning how India's market moves together.
+        In paper testing today: <b>no proven edge yet, and no real money live.</b></p>
+    </div>
+    <div class="card">
+      <div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Keel</h3></div>
+      <span class="badge live"><span class="bd"></span>Internal · working</span>
+      <p>The continuity that lets our agents run things over time without forgetting or drifting.
+        Runs internally today — the backbone the rest is built on.</p>
+    </div>
+    <div class="card">
+      <div class="rl"><span class="rd" style="background:#ffd166"></span><h3>Beacon</h3></div>
+      <span class="badge live"><span class="bd"></span>Live</span>
+      <p>This website — built, written, deployed and kept up to date by the agents themselves.
+        You're looking at it.</p>
+    </div>
   </div>
 </div></section>
 
@@ -548,8 +575,8 @@ footer .mono{color:var(--mut);}
     {l:'Security', kind:'board', x:.50,y:.10, mx:.83,my:.11, r:10, c:'#ff9e64', role:'Board. Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.'},
     {l:'Governance', kind:'board', x:.69,y:.11, mx:.32,my:.25, r:10, c:'#4fe0d0', role:'Board. Holds the company to its rules: nothing ships without review, and money or real-risk decisions always go to the founder.'},
     {l:'Finance', kind:'board', x:.89,y:.15, mx:.68,my:.25, r:10, c:'#b57bff', role:'Board. Watches the money and resources — what things cost, what’s worth funding, and keeping the company solvent.'},
-    {l:'Agastya', kind:'out', x:.30,y:.80, mx:.29,my:.73, r:13, c:'#4fe0d0', role:'Our first product: automated investing research, run by its own team of agents — its spine. In research and paper testing today: no proven edge yet, and no real money live.'},
-    {l:'Beacon', kind:'out', x:.70,y:.80, mx:.71,my:.73, r:13, c:'#ffd166', role:'This website: built, written, deployed and kept up to date by the agents themselves — run by its own team of agents. Crewless’s outward face.'}
+    {l:'A product', kind:'out', x:.30,y:.80, mx:.29,my:.73, r:13, c:'#4fe0d0', role:'A product, built and run by its own team of agents — its spine. It runs independently; the central team only monitors it. (What actually exists today is named in “What’s real”.)'},
+    {l:'A product', kind:'out', x:.70,y:.80, mx:.71,my:.73, r:13, c:'#ffd166', role:'Another product, on its own team of agents. New products slot in without disturbing the ones already running — that’s the model. (The named catalogue is in “What’s real”.)'}
   ];
   var sel=-1;
   var LINKS=[[1,0],[2,0],[3,0],[4,0],[5,0],[0,6],[0,7],[3,6],[3,7]];
@@ -814,14 +841,15 @@ footer .mono{color:var(--mut);}
   // Deliberate radial org. Centre = a small TEAM of agents (the COO + monitors). Products sit on an even
   // ring and are INDEPENDENT of each other — the ONLY links are centre→product (the central team watching
   // each). A product's agents are its SPINE: they frame the product, not orbit it. Angles fixed through morph.
-  // b/team=[now,future]. Today: Agastya bright + full spine; Keel/Beacon faint & forming; placeholders hidden.
+  // b/team=[now,future]. Today: one product bright + full spine; two faint & forming; placeholders hidden.
   var CENTER={c:'#aeb8cc', team:[5,7], spin:0.14};
   var PROD=[
-    {label:'Agastya',   ang:-90, c:'#4fe0d0', dim:false, b:[1,1],   team:[9,15], spin: 0.11},
-    {label:'Beacon',    ang:-18, c:'#ffd166', dim:false, b:[.36,1], team:[4,12], spin:-0.10},
-    {label:'Product 2', ang: 54, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin: 0.09},
-    {label:'Product 3', ang:126, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin:-0.12},
-    {label:'Keel',      ang:198, c:'#7c8cff', dim:false, b:[.36,1], team:[4,12], spin: 0.10}
+    // generic, unlabelled products — this map shows the operating MODEL, not named products
+    {ang:-90, c:'#4fe0d0', dim:false, b:[1,1],   team:[9,15], spin: 0.11},
+    {ang:-18, c:'#ffd166', dim:false, b:[.36,1], team:[4,12], spin:-0.10},
+    {ang: 54, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin: 0.09},
+    {ang:126, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin:-0.12},
+    {ang:198, c:'#7c8cff', dim:false, b:[.36,1], team:[4,12], spin: 0.10}
   ];
 
   var g=0, tg=0, W,H,DPR,cx,cy,ringR,sc;
@@ -867,8 +895,7 @@ footer .mono{color:var(--mut);}
     ctx.beginPath(); ctx.arc(pp.x,pp.y,core,0,6.28); ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
     ctx.globalAlpha=b*0.9; ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*0.42,0,6.28); ctx.fill();
     ctx.globalAlpha=1;
-    var la=p.dim?b:Math.max(b,0.72);
-    if(la>0.03) label(p.label,pp.x,pp.y+spineR+(W<520?13:15),p.dim?'rgba(197,178,232,.96)':'#eef2f8',W<520?10.5:13,la);
+    // no per-product name: these nodes represent the model (a product + its agent team), not a named product
   }
   function drawCenter(t){
     var teamN=Math.round(lerp(CENTER.team[0],CENTER.team[1],g));
@@ -902,11 +929,11 @@ footer .mono{color:var(--mut);}
     tabNext.setAttribute('aria-selected',future?'true':'false');
     badge.className='tnow-badge '+(future?'next':'now');
     badge.innerHTML='<span class="bd2"></span>'+(future
-      ? 'Vision — not a promise. None of this has happened yet.'
-      : 'Real today — sparse on purpose');
+      ? 'Vision — not a promise. None of this is built yet.'
+      : 'Today — sparse on purpose');
     foot.innerHTML=future
-      ? '<b>+1 year — the vision:</b> more products, each run by its own agent team with the central team monitoring them; strategies that earned their place; Agastya a live but disciplined money-builder. <b>Vision — not a promise. None of this has happened yet.</b>'
-      : '<b>Now — real today:</b> one product in research — <b>Agastya</b>, in paper testing, with no proven edge yet and <b>no real money live</b>. Two internal layers are forming: <b>Keel</b> (the continuity that lets agents run things, not just answer) and <b>Beacon</b> (this site — the agents build and maintain it themselves). One live thing, not a portfolio.';
+      ? '<b>+1 year — the vision:</b> several independent products, each run by its own team of agents, with the central team monitoring them — new products slotting in without disturbing the ones already running. <b>Vision — not a promise. None of this is built yet.</b>'
+      : '<b>Today — sparse on purpose:</b> one product is active and a couple more are just forming — each on its own small team of agents, with the central team monitoring. This shows <b>how we operate</b>, generically; the named products and their honest status are in <a href="#real" style="color:var(--c1)">What’s real</a> below.';
     if(reduce) draw(0);
   }
   tabNow.addEventListener('click',function(){ setState(false); });
