@@ -175,11 +175,112 @@ footer .mono{color:var(--mut);}
 #fbtext:focus{outline:none;border-color:#2a3a56;}
 .fbrow{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;}
 .fbnote{font-size:.82rem;color:var(--dim);}
+
+/* ══ the brain: concept + live simulation + now/next ══ */
+.brainrow{display:grid;gap:1rem;margin-top:2.3rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+.bcard{border:1px solid var(--line);border-radius:15px;padding:1.4rem;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(16,23,35,.7),rgba(10,15,24,.55));}
+.bcard::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;opacity:.65;}
+.bcard.k1::before{background:linear-gradient(90deg,var(--c1),transparent);}
+.bcard.k2::before{background:linear-gradient(90deg,var(--c2),transparent);}
+.bcard.k3::before{background:linear-gradient(90deg,var(--c3),transparent);}
+.bcard .kx{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem;}
+.bcard h3{font-size:1.12rem;margin-bottom:.45rem;letter-spacing:-.01em;}
+.bcard.k1 h3{color:var(--c1);} .bcard.k2 h3{color:var(--c2);} .bcard.k3 h3{color:var(--c3);}
+.bcard p{color:var(--mut);font-size:.92rem;line-height:1.55;}
+.bcard p b{color:var(--ink);font-weight:600;}
+
+/* simulation */
+.sim{margin-top:2.6rem;border:1px solid var(--line);border-radius:16px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(12,18,29,.82),rgba(8,12,20,.62));padding:clamp(1.1rem,3.4vw,1.7rem);}
+.sim::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--c2),var(--c1) 55%,transparent);opacity:.55;}
+.sim-head{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin-bottom:1.35rem;}
+.sim-title{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c1);}
+.sim-demo{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);
+  border:1px solid var(--line);border-radius:100px;padding:.2rem .55rem;}
+.sim-ctrl{margin-left:auto;display:flex;gap:.5rem;}
+.sim-ctrl button{font:inherit;font-size:.78rem;color:var(--mut);background:var(--panel);border:1px solid var(--line);
+  border-radius:9px;padding:.42rem .85rem;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:.4rem;}
+.sim-ctrl button:hover{border-color:#2a3a56;color:var(--ink);}
+.sim-ctrl button:focus-visible{outline:2px solid var(--c1);outline-offset:2px;}
+.sim-track{display:flex;align-items:stretch;gap:.35rem;}
+.st2{flex:1 1 0;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.7rem .55rem .75rem;cursor:pointer;
+  background:rgba(10,15,24,.5);transition:border-color .25s,background .25s,transform .25s;text-align:left;position:relative;}
+.st2:focus-visible{outline:2px solid var(--c1);outline-offset:2px;}
+.st2 .si{display:flex;align-items:center;gap:.4rem;margin-bottom:.42rem;}
+.st2 .sn{font-family:"IBM Plex Mono",monospace;font-size:.62rem;color:var(--dim);flex:none;}
+.st2 .sic{width:1.15rem;height:1.15rem;flex:none;color:var(--dim);transition:color .25s;}
+.st2 .sic svg{width:100%;height:100%;display:block;}
+.st2 .stt{font-size:.82rem;font-weight:600;letter-spacing:-.01em;line-height:1.2;}
+.st2 .sv{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.05em;margin-top:.3rem;min-height:.9em;color:var(--dim);}
+.st2.done{border-color:#22303f;}
+.st2.done .sic{color:var(--mut);}
+.st2.hot{border-color:var(--c1);background:rgba(79,224,208,.09);transform:translateY(-2px);box-shadow:0 8px 26px #000a;}
+.st2.hot .sic{color:var(--c1);}
+.st2.hot .stt{color:var(--ink);}
+.st2[data-k="verdict"].proven{border-color:var(--c1);background:rgba(79,224,208,.10);}
+.st2[data-k="verdict"].proven .sic{color:var(--c1);}
+.st2[data-k="verdict"].proven .sv{color:var(--c1);}
+.st2[data-k="verdict"].killed{border-color:#6b2f34;background:rgba(255,107,107,.08);}
+.st2[data-k="verdict"].killed .sic{color:#ff6b6b;}
+.st2[data-k="verdict"].killed .sv{color:#ff8b8b;}
+.st2 .agents{display:flex;gap:.24rem;margin-top:.34rem;height:.5rem;}
+.st2 .agents i{width:.4rem;height:.4rem;border-radius:50%;background:var(--dim);opacity:.4;transition:.2s;}
+.st2.hot[data-k="deliberate"] .agents i{background:var(--c2);animation:agi .9s infinite;}
+.st2.hot[data-k="deliberate"] .agents i:nth-child(2){animation-delay:.15s;}
+.st2.hot[data-k="deliberate"] .agents i:nth-child(3){animation-delay:.3s;}
+.st2.hot[data-k="deliberate"] .agents i:nth-child(4){animation-delay:.45s;}
+@keyframes agi{0%,100%{opacity:.35}50%{opacity:1}}
+.simlink{flex:none;align-self:center;width:14px;height:2px;border-radius:2px;background:var(--line);position:relative;overflow:hidden;}
+.simlink.on::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--c2),var(--c1));animation:swp .5s ease forwards;}
+@keyframes swp{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.sim-caption{margin-top:1.15rem;min-height:2.7em;color:var(--mut);font-size:.9rem;line-height:1.55;max-width:62ch;}
+.sim-caption b{color:var(--ink);font-weight:600;}
+.sim-tally{margin-top:1rem;display:flex;flex-wrap:wrap;gap:1.3rem;font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--dim);}
+.sim-tally b{color:var(--mut);font-weight:500;}
+.sim-tally .tp{color:var(--c1);} .sim-tally .tk{color:#ff8b8b;}
+.sim-note{margin-top:.75rem;font-size:.76rem;color:var(--dim);max-width:60ch;}
+@media(max-width:720px){
+  .sim-track{flex-direction:column;}
+  .st2{flex:none;}
+  .simlink{width:2px;height:12px;}
+  .simlink.on::after{background:linear-gradient(180deg,var(--c2),var(--c1));animation:swpv .5s ease forwards;}
+  @keyframes swpv{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+  .sim-ctrl{margin-left:0;width:100%;}
+  .sim-ctrl button{flex:1;justify-content:center;}
+}
+
+/* now / next */
+.tnow{margin-top:2.7rem;}
+.tnow-tabs{display:inline-flex;padding:.28rem;gap:.28rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);}
+.tnow-tabs button{font:inherit;font-size:.82rem;font-weight:500;color:var(--mut);background:none;border:none;cursor:pointer;
+  border-radius:100px;padding:.5rem 1.05rem;transition:.18s;display:inline-flex;align-items:center;gap:.45rem;}
+.tnow-tabs button .td{width:.5rem;height:.5rem;border-radius:50%;background:var(--dim);flex:none;transition:.18s;}
+.tnow-tabs button:focus-visible{outline:2px solid var(--c1);outline-offset:2px;}
+.tnow-tabs button[aria-selected="true"]{color:#04130f;background:linear-gradient(105deg,var(--c1),#3bc7cf);}
+.tnow-tabs button[aria-selected="true"] .td{background:#04130f;}
+.tnow-tabs button.fut[aria-selected="true"]{color:#0b1220;background:linear-gradient(105deg,var(--c3),var(--c2));}
+.tnow-panel{margin-top:1.6rem;max-width:70ch;}
+.tnow-badge{display:inline-flex;align-items:center;gap:.45rem;font-family:"IBM Plex Mono",monospace;font-size:.64rem;
+  letter-spacing:.12em;text-transform:uppercase;padding:.3rem .68rem;border-radius:100px;border:1px solid var(--line);margin-bottom:1.15rem;}
+.tnow-badge.now{color:var(--c1);border-color:#1c5b53;}
+.tnow-badge.next{color:var(--c3);border-color:#4a2f6b;}
+.tnow-badge .bd2{width:.5rem;height:.5rem;border-radius:50%;flex:none;}
+.tnow-badge.now .bd2{background:var(--c1);animation:blip 2.4s infinite;}
+.tnow-badge.next .bd2{background:var(--c3);}
+.tnow-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.85rem;}
+.tnow-list li{display:flex;gap:.7rem;color:var(--mut);font-size:.95rem;line-height:1.5;}
+.tnow-list li .mk{flex:none;width:1.15rem;height:1.15rem;margin-top:.12rem;}
+.tnow-list li .mk svg{width:100%;height:100%;}
+.tnow-list.now li .mk{color:var(--c1);}
+.tnow-list.next li .mk{color:var(--c3);opacity:.85;}
+.tnow-list li b{color:var(--ink);font-weight:600;}
+.tnow-foot{margin-top:1.4rem;font-size:.82rem;color:var(--dim);max-width:62ch;}
 </style></head>
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac">⚓</span> Crewless</a>
-  <nav class="nav"><a href="#idea">The idea</a><a href="#products">What's live</a><a href="#lab">The Lab</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
+  <nav class="nav"><a href="#idea">The idea</a><a href="#brain">The brain</a><a href="#products">What's live</a><a href="#lab">The Lab</a><a href="#receipts">Progress</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -218,6 +319,94 @@ footer .mono{color:var(--mut);}
     <li>No personal data held</li>
     <li>Built in the open — setbacks included</li>
   </ul>
+</div></section>
+
+<section id="brain"><div class="wrap">
+  <p class="kick">The brain</p>
+  <p class="big">An AI that runs things — not one that just answers.</p>
+  <p class="sub">Most AI forgets the moment you close the chat. Crewless is built the other way round:
+    the company keeps its memory, its rules and its judgement in files that reload every time an agent
+    wakes up. That's what lets a team of agents be trusted to run real things over days and months —
+    without forgetting, and without drifting.</p>
+
+  <div class="brainrow">
+    <div class="bcard k1">
+      <p class="kx">The moat</p>
+      <h3>Keel — it doesn't forget</h3>
+      <p>Every session, the agents reload who they are, what they've decided, and the rules they must
+        keep. Nothing important lives only in one conversation. That continuity is why they can
+        <b>run</b> a company, not just respond to it.</p>
+    </div>
+    <div class="bcard k2">
+      <p class="kx">The method</p>
+      <h3>Produce → prove → arm</h3>
+      <p>No idea goes live on a hunch. Each one is <b>written down before it's tested</b>, replayed
+        across roughly ten years of market data, then proven in paper trading. Only survivors get
+        armed — small, and only with a person's one-tap go.</p>
+    </div>
+    <div class="bcard k3">
+      <p class="kx">The first product</p>
+      <h3>Agastya</h3>
+      <p>An automated investing researcher, learning how India's market moves together — built to be a
+        patient, diversified money-builder, not a gambler. <b>Today it's in research and paper testing:
+        no proven edge yet, and no real money riding on it.</b></p>
+    </div>
+  </div>
+
+  <!-- LIVE SIMULATION — all motion is JS/DOM, no image/gif/video -->
+  <div class="sim" id="sim">
+    <div class="sim-head">
+      <span class="sim-title">The method, running</span>
+      <span class="sim-demo">Illustrative walkthrough — not a live scoreboard</span>
+      <div class="sim-ctrl">
+        <button type="button" id="simPlay" aria-label="Play or pause the walkthrough">Pause</button>
+        <button type="button" id="simStep">Step ▸</button>
+      </div>
+    </div>
+    <div class="sim-track" id="simTrack" role="list" aria-label="How an idea travels from spark to live"></div>
+    <p class="sim-caption" id="simCaption"></p>
+    <div class="sim-tally">
+      <span>ideas walked through <b id="tWalk">0</b></span>
+      <span>proven <b class="tp" id="tProve">0</b></span>
+      <span>retired <b class="tk" id="tKill">0</b></span>
+    </div>
+    <p class="sim-note">Most ideas don't survive — and that's the point. A "no" is a finding. Tap any
+      step to read what happens there, or step through it yourself.</p>
+  </div>
+
+  <!-- NOW vs +1 YEAR -->
+  <div class="tnow" id="horizon">
+    <p class="flowlabel" style="margin-top:2.6rem">Where it stands</p>
+    <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
+      <button role="tab" id="tabNow" aria-controls="panNow" aria-selected="true"><span class="td"></span>Now — true today</button>
+      <button role="tab" id="tabNext" class="fut" aria-controls="panNext" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
+    </div>
+
+    <div class="tnow-panel" id="panNow" role="tabpanel" aria-labelledby="tabNow">
+      <span class="tnow-badge now"><span class="bd2"></span>What's real, right now</span>
+      <ul class="tnow-list now">
+        <li><span class="mk" aria-hidden="true"></span><span>An <b>agent-run company is built and operating</b> — a board, a COO and product teams, working in parallel around the clock.</span></li>
+        <li><span class="mk" aria-hidden="true"></span><span><b>Keel works.</b> The continuity layer reloads the company's memory and rules every session, so the agents don't forget or drift.</span></li>
+        <li><span class="mk" aria-hidden="true"></span><span>The <b>production line and research lab run</b> — ideas are pre-registered, tested on years of data, and killed when they don't earn their place.</span></li>
+        <li><span class="mk" aria-hidden="true"></span><span><b>Agastya is in R&amp;D and paper testing.</b> No proven edge yet, and <b>no real money is live.</b></span></li>
+        <li><span class="mk" aria-hidden="true"></span><span>This <b>website maintains itself</b> — the agents write, deploy and health-check it, and only call a person when they genuinely can't cope.</span></li>
+      </ul>
+      <p class="tnow-foot">This list includes what is <b>not</b> done on purpose. We'd rather be plainly
+        early than quietly overstate.</p>
+    </div>
+
+    <div class="tnow-panel" id="panNext" role="tabpanel" aria-labelledby="tabNext" hidden>
+      <span class="tnow-badge next"><span class="bd2"></span>Vision — where this could go, not a promise</span>
+      <ul class="tnow-list next">
+        <li><span class="mk" aria-hidden="true"></span><span><b>Proven sleeves</b> — a handful of strategies that survived honest testing and earned a place, each with its edge shown in the open.</span></li>
+        <li><span class="mk" aria-hidden="true"></span><span>Agastya running as a <b>live, disciplined money-builder</b> — still small, still with a person holding the risk.</span></li>
+        <li><span class="mk" aria-hidden="true"></span><span><b>Keel and Beacon as products</b> — the continuity layer and this kind of honest public face, made portable for others.</span></li>
+        <li><span class="mk" aria-hidden="true"></span><span>Possibly a <b>first external deployment</b> — the Crewless apparatus running something beyond our own walls.</span></li>
+      </ul>
+      <p class="tnow-foot">None of this has happened yet. It's the direction we're working toward — and
+        we'll only claim it once the record here can prove it.</p>
+    </div>
+  </div>
 </div></section>
 
 <section id="products"><div class="wrap">
@@ -456,6 +645,126 @@ footer .mono{color:var(--mut);}
   try{ layout(); requestAnimationFrame(loop); }catch(e){ stage.style.background='radial-gradient(80% 60% at 72% 35%,#13233a,#05070d)'; }
   loadState(); setInterval(loadState,120000);
   tickFeed(); if(!reduce) setInterval(tickFeed,2600);
+})();
+</script>
+<script>
+/* ── brain simulation: produce → prove → arm (all motion is DOM/JS, no media files) ── */
+(function(){
+  "use strict";
+  var track=document.getElementById('simTrack');
+  if(!track) return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var IC={
+    idea:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10c.7.7 1 1.3 1 2h6c0-.7.3-1.3 1-2a6 6 0 0 0-4-10Z"/></svg>',
+    deliberate:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h8M8 14h5"/><path d="M21 12a8 8 0 0 1-11.3 7.3L3 21l1.7-6.7A8 8 0 1 1 21 12Z"/></svg>',
+    register:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M8 13h8M8 17h6"/></svg>',
+    test:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l3.5-4 3 3L21 7"/></svg>',
+    verdict:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M5 21h14"/><path d="M12 9 5 12l3 5a3.5 3.5 0 0 1-6 0Z"/><path d="M12 9l7 3-3 5a3.5 3.5 0 0 0 6 0Z"/></svg>',
+    arm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5 11 13.5 15.5 9"/><path d="M20 12c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3 8 3Z"/></svg>',
+    live:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 18.4a9 9 0 0 0 0-12.8M8.5 8.5a5 5 0 0 0 0 7M15.5 15.5a5 5 0 0 0 0-7"/></svg>'
+  };
+  var STAGES=[
+    {k:'idea', t:'Idea', a:false, c:'A pattern shows up in the market — a spark worth a look. On its own it means nothing yet.'},
+    {k:'deliberate', t:'Deliberate', a:true, c:'The agents argue it out. A prosecutor agent actively tries to <b>kill</b> the idea — if it can, the idea was never real.'},
+    {k:'register', t:'Pre-register', a:false, c:'The exact claim is <b>written down before any test</b>. No moving the goalposts once the results are in.'},
+    {k:'test', t:'Test · ~10 yrs', a:false, c:'The idea is replayed across roughly <b>ten years</b> of real market data — through crashes, calm and everything between.'},
+    {k:'verdict', t:'Prove or kill', a:false, c:'Most ideas die here — and that is the job. Only what genuinely held up survives; the rest are retired with a note on why.'},
+    {k:'arm', t:'One-tap go', a:false, c:'A survivor waits for a person. Nothing arms itself — a human gives the <b>one-tap go</b> and holds the risk.'},
+    {k:'live', t:'Live · small', a:false, c:'Armed small and watched closely, its real behaviour logged in the open — ready to be pulled at any time.'}
+  ];
+  var VERDICT_IDX=4;
+  var caption=document.getElementById('simCaption'),
+      tWalk=document.getElementById('tWalk'), tProve=document.getElementById('tProve'), tKill=document.getElementById('tKill'),
+      playBtn=document.getElementById('simPlay'), stepBtn=document.getElementById('simStep');
+  var nodes=[], links=[];
+  STAGES.forEach(function(s,i){
+    if(i>0){ var lk=document.createElement('span'); lk.className='simlink'; track.appendChild(lk); links.push(lk); }
+    var el=document.createElement('button'); el.type='button'; el.className='st2'; el.setAttribute('data-k',s.k);
+    el.setAttribute('role','listitem'); el.setAttribute('aria-label',s.t);
+    var ag=s.a?'<div class="agents"><i></i><i></i><i></i><i></i></div>':'';
+    el.innerHTML='<div class="si"><span class="sn">'+(i+1)+'</span><span class="sic">'+IC[s.k]+'</span></div>'+
+      '<div class="stt">'+s.t+'</div><div class="sv" data-v></div>'+ag;
+    el.addEventListener('mouseenter',function(){ say(i,true); });
+    el.addEventListener('focus',function(){ say(i,true); });
+    el.addEventListener('click',function(){ say(i,true); });
+    track.appendChild(el); nodes.push(el);
+  });
+  function say(i,hold){ caption.innerHTML='<b>'+STAGES[i].t+'.</b> '+STAGES[i].c; }
+  function verdictNode(){ return nodes[VERDICT_IDX]; }
+
+  var walk=0, prove=0, kill=0, cur=-1, proven=false, timer=null;
+  function reset(){
+    nodes.forEach(function(n){ n.classList.remove('hot','done','proven','killed');
+      n.querySelector('[data-v]').textContent=''; });
+    links.forEach(function(l){ l.classList.remove('on'); });
+    cur=-1;
+  }
+  function advance(){
+    if(cur>=0 && cur<VERDICT_IDX){ /* passing a resolved stage */ }
+    // stop conditions handled per-step below
+    if(cur===VERDICT_IDX && !proven){ // killed last cycle → restart a fresh idea
+      reset(); walk++; tWalk.textContent=walk;
+    }
+    cur++;
+    if(cur>=STAGES.length){ reset(); walk++; tWalk.textContent=walk; cur=0; }
+    // light current
+    nodes.forEach(function(n,idx){ n.classList.toggle('hot',idx===cur);
+      if(idx<cur) n.classList.add('done'); });
+    if(cur>0) links[cur-1].classList.add('on');
+    say(cur,false);
+
+    if(cur===VERDICT_IDX){
+      proven = Math.random()<0.62;
+      var v=verdictNode(), lbl=v.querySelector('[data-v]');
+      if(proven){ v.classList.add('proven'); lbl.textContent='✓ proven'; prove++; tProve.textContent=prove; }
+      else { v.classList.add('killed'); lbl.textContent='✕ retired'; kill++; tKill.textContent=kill;
+        caption.innerHTML='<b>Retired.</b> It didn’t hold up under honest testing — logged with the reason, and dropped. A new idea starts.'; }
+    }
+    if(cur===VERDICT_IDX && !proven){
+      // next call to advance() will restart; nothing continues past a kill
+    }
+  }
+  function tick(){
+    // when the previous step was a kill, advance() restarts; when proven, continue to arm→live
+    if(cur===VERDICT_IDX && !proven){ advance(); return; }
+    advance();
+  }
+  function play(){ if(timer) return; playBtn.textContent='Pause';
+    timer=setInterval(tick, 1750); }
+  function pause(){ if(timer){ clearInterval(timer); timer=null; } playBtn.textContent='Play'; }
+
+  playBtn.addEventListener('click',function(){ timer?pause():play(); });
+  stepBtn.addEventListener('click',function(){ pause(); tick(); });
+
+  if(reduce){
+    // static, honest end-state; user can step or read
+    nodes.forEach(function(n){ n.classList.add('done'); });
+    var v=verdictNode(); v.querySelector('[data-v]').textContent='✓ / ✕';
+    caption.innerHTML='<b>Produce → prove → arm.</b> Tap any step to read what happens there, or use Step to move the flow yourself. Most ideas are retired at the verdict — that’s the point.';
+    playBtn.textContent='Play';
+  } else {
+    say(0,false);
+    play();
+  }
+})();
+
+/* ── now / next tabs ── */
+(function(){
+  var tabNow=document.getElementById('tabNow'), tabNext=document.getElementById('tabNext'),
+      panNow=document.getElementById('panNow'), panNext=document.getElementById('panNext');
+  if(!tabNow) return;
+  var TICK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+  var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  document.querySelectorAll('.tnow-list.now .mk').forEach(function(m){ m.innerHTML=TICK; });
+  document.querySelectorAll('.tnow-list.next .mk').forEach(function(m){ m.innerHTML=ARROW; });
+  function show(which){
+    var isNow=(which==='now');
+    tabNow.setAttribute('aria-selected',isNow?'true':'false');
+    tabNext.setAttribute('aria-selected',isNow?'false':'true');
+    panNow.hidden=!isNow; panNext.hidden=isNow;
+  }
+  tabNow.addEventListener('click',function(){ show('now'); });
+  tabNext.addEventListener('click',function(){ show('next'); });
 })();
 </script>
 <script>
