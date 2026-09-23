@@ -189,6 +189,8 @@ footer .mono{color:var(--mut);}
 .bcard.k1 h3{color:var(--c1);} .bcard.k2 h3{color:var(--c2);} .bcard.k3 h3{color:var(--c3);}
 .bcard p{color:var(--mut);font-size:.92rem;line-height:1.55;}
 .bcard p b{color:var(--ink);font-weight:600;}
+.bcard .tease{display:block;margin-top:.6rem;font-size:.82rem;font-style:italic;color:var(--dim);}
+.bcard .tease::before{content:"↳ ";font-style:normal;}
 
 /* simulation */
 .sim{margin-top:2.6rem;border:1px solid var(--line);border-radius:16px;position:relative;overflow:hidden;
@@ -260,7 +262,6 @@ footer .mono{color:var(--mut);}
 .tnow-tabs button[aria-selected="true"]{color:#04130f;background:linear-gradient(105deg,var(--c1),#3bc7cf);}
 .tnow-tabs button[aria-selected="true"] .td{background:#04130f;}
 .tnow-tabs button.fut[aria-selected="true"]{color:#0b1220;background:linear-gradient(105deg,var(--c3),var(--c2));}
-.tnow-panel{margin-top:1.6rem;max-width:70ch;}
 .tnow-badge{display:inline-flex;align-items:center;gap:.45rem;font-family:"IBM Plex Mono",monospace;font-size:.64rem;
   letter-spacing:.12em;text-transform:uppercase;padding:.3rem .68rem;border-radius:100px;border:1px solid var(--line);margin-bottom:1.15rem;}
 .tnow-badge.now{color:var(--c1);border-color:#1c5b53;}
@@ -268,14 +269,17 @@ footer .mono{color:var(--mut);}
 .tnow-badge .bd2{width:.5rem;height:.5rem;border-radius:50%;flex:none;}
 .tnow-badge.now .bd2{background:var(--c1);animation:blip 2.4s infinite;}
 .tnow-badge.next .bd2{background:var(--c3);}
-.tnow-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.85rem;}
-.tnow-list li{display:flex;gap:.7rem;color:var(--mut);font-size:.95rem;line-height:1.5;}
-.tnow-list li .mk{flex:none;width:1.15rem;height:1.15rem;margin-top:.12rem;}
-.tnow-list li .mk svg{width:100%;height:100%;}
-.tnow-list.now li .mk{color:var(--c1);}
-.tnow-list.next li .mk{color:var(--c3);opacity:.85;}
-.tnow-list li b{color:var(--ink);font-weight:600;}
-.tnow-foot{margin-top:1.4rem;font-size:.82rem;color:var(--dim);max-width:62ch;}
+.tnow-badgewrap{margin-top:1.5rem;min-height:1.9em;}
+.tnow-foot{margin-top:1.35rem;font-size:.86rem;color:var(--mut);max-width:64ch;line-height:1.55;}
+.tnow-foot b{color:var(--ink);font-weight:600;}
+/* constellation */
+.cst{margin-top:1.15rem;border:1px solid var(--line);border-radius:16px;position:relative;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 30%,rgba(20,32,52,.5),rgba(8,12,20,.7));}
+.cst canvas{display:block;width:100%;height:clamp(300px,44vw,440px);}
+.cst-legend{display:flex;flex-wrap:wrap;gap:.5rem .95rem;margin-top:1rem;font-family:"IBM Plex Mono",monospace;
+  font-size:.66rem;letter-spacing:.03em;color:var(--dim);}
+.cst-legend span{display:inline-flex;align-items:center;gap:.4rem;}
+.cst-legend i{width:.55rem;height:.55rem;border-radius:50%;flex:none;}
 </style></head>
 <body>
 <header><div class="wrap bar">
@@ -324,25 +328,26 @@ footer .mono{color:var(--mut);}
 <section id="brain"><div class="wrap">
   <p class="kick">The brain</p>
   <p class="big">An AI that runs things — not one that just answers.</p>
-  <p class="sub">Most AI forgets the moment you close the chat. Crewless is built the other way round:
-    the company keeps its memory, its rules and its judgement in files that reload every time an agent
-    wakes up. That's what lets a team of agents be trusted to run real things over days and months —
-    without forgetting, and without drifting.</p>
+  <p class="sub">Most AI forgets the moment you close the chat — it can answer, but it can't be trusted
+    to <b class="hl">run</b> something over days and months. Crewless is built the other way round: its
+    agents carry the company with them and pick up exactly where they left off. That's the difference
+    between a tool you prompt and a company that runs itself — and how we do it is the part we keep
+    under the hood.</p>
 
   <div class="brainrow">
     <div class="bcard k1">
       <p class="kx">The moat</p>
-      <h3>Keel — it doesn't forget</h3>
-      <p>Every session, the agents reload who they are, what they've decided, and the rules they must
-        keep. Nothing important lives only in one conversation. That continuity is why they can
-        <b>run</b> a company, not just respond to it.</p>
+      <h3>Keel</h3>
+      <p>The reason our agents can be trusted to <b>run</b> things, not just answer — they don't
+        forget, and they don't drift. Others reset every conversation; ours carry the company forward.
+        <span class="tease">How we do it is our edge.</span></p>
     </div>
     <div class="bcard k2">
       <p class="kx">The method</p>
-      <h3>Produce → prove → arm</h3>
-      <p>No idea goes live on a hunch. Each one is <b>written down before it's tested</b>, replayed
-        across roughly ten years of market data, then proven in paper trading. Only survivors get
-        armed — small, and only with a person's one-tap go.</p>
+      <h3>Proven or killed — before real money moves</h3>
+      <p>No idea reaches real money on a hunch. Every one runs a gauntlet built to <b>break</b> it, and
+        most don't survive. Only the few that do get armed — small, and only with a person's one-tap go.
+        <span class="tease">What's in that gauntlet stays under the hood.</span></p>
     </div>
     <div class="bcard k3">
       <p class="kx">The first product</p>
@@ -374,38 +379,27 @@ footer .mono{color:var(--mut);}
       step to read what happens there, or step through it yourself.</p>
   </div>
 
-  <!-- NOW vs +1 YEAR -->
+  <!-- NOW vs +1 YEAR — animated constellation of products + agent-swarms (canvas, no media files) -->
   <div class="tnow" id="horizon">
     <p class="flowlabel" style="margin-top:2.6rem">Where it stands</p>
     <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
-      <button role="tab" id="tabNow" aria-controls="panNow" aria-selected="true"><span class="td"></span>Now — true today</button>
-      <button role="tab" id="tabNext" class="fut" aria-controls="panNext" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
+      <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now — real today</button>
+      <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
     </div>
-
-    <div class="tnow-panel" id="panNow" role="tabpanel" aria-labelledby="tabNow">
-      <span class="tnow-badge now"><span class="bd2"></span>What's real, right now</span>
-      <ul class="tnow-list now">
-        <li><span class="mk" aria-hidden="true"></span><span>An <b>agent-run company is built and operating</b> — a board, a COO and product teams, working in parallel around the clock.</span></li>
-        <li><span class="mk" aria-hidden="true"></span><span><b>Keel works.</b> The continuity layer reloads the company's memory and rules every session, so the agents don't forget or drift.</span></li>
-        <li><span class="mk" aria-hidden="true"></span><span>The <b>production line and research lab run</b> — ideas are pre-registered, tested on years of data, and killed when they don't earn their place.</span></li>
-        <li><span class="mk" aria-hidden="true"></span><span><b>Agastya is in R&amp;D and paper testing.</b> No proven edge yet, and <b>no real money is live.</b></span></li>
-        <li><span class="mk" aria-hidden="true"></span><span>This <b>website maintains itself</b> — the agents write, deploy and health-check it, and only call a person when they genuinely can't cope.</span></li>
-      </ul>
-      <p class="tnow-foot">This list includes what is <b>not</b> done on purpose. We'd rather be plainly
-        early than quietly overstate.</p>
+    <div class="tnow-badgewrap">
+      <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Real today — sparse on purpose</span>
     </div>
-
-    <div class="tnow-panel" id="panNext" role="tabpanel" aria-labelledby="tabNext" hidden>
-      <span class="tnow-badge next"><span class="bd2"></span>Vision — where this could go, not a promise</span>
-      <ul class="tnow-list next">
-        <li><span class="mk" aria-hidden="true"></span><span><b>Proven sleeves</b> — a handful of strategies that survived honest testing and earned a place, each with its edge shown in the open.</span></li>
-        <li><span class="mk" aria-hidden="true"></span><span>Agastya running as a <b>live, disciplined money-builder</b> — still small, still with a person holding the risk.</span></li>
-        <li><span class="mk" aria-hidden="true"></span><span><b>Keel and Beacon as products</b> — the continuity layer and this kind of honest public face, made portable for others.</span></li>
-        <li><span class="mk" aria-hidden="true"></span><span>Possibly a <b>first external deployment</b> — the Crewless apparatus running something beyond our own walls.</span></li>
-      </ul>
-      <p class="tnow-foot">None of this has happened yet. It's the direction we're working toward — and
-        we'll only claim it once the record here can prove it.</p>
+    <div class="cst">
+      <canvas id="cstCanvas" role="img" aria-label="A constellation of Crewless products: sparse today — one product in R&amp;D and two internal layers forming — growing to a fuller, connected company of products and agent-swarms in the one-year vision."></canvas>
     </div>
+    <div class="cst-legend" aria-hidden="true">
+      <span><i style="background:#4fe0d0"></i>Product in R&amp;D</span>
+      <span><i style="background:#7c8cff"></i>Internal layer, forming</span>
+      <span><i style="background:#b57bff"></i>Future placeholder — not committed</span>
+      <span><i style="background:#8a94a8"></i>each dot, an agent</span>
+    </div>
+    <p class="tnow-foot" id="cstFoot"><b>Now:</b> one product in research (Agastya) and two internal
+      layers just taking shape (Keel, Beacon) — one live thing, not a portfolio.</p>
   </div>
 </div></section>
 
@@ -664,13 +658,13 @@ footer .mono{color:var(--mut);}
     live:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 18.4a9 9 0 0 0 0-12.8M8.5 8.5a5 5 0 0 0 0 7M15.5 15.5a5 5 0 0 0 0-7"/></svg>'
   };
   var STAGES=[
-    {k:'idea', t:'Idea', a:false, c:'A pattern shows up in the market — a spark worth a look. On its own it means nothing yet.'},
-    {k:'deliberate', t:'Deliberate', a:true, c:'The agents argue it out. A prosecutor agent actively tries to <b>kill</b> the idea — if it can, the idea was never real.'},
-    {k:'register', t:'Pre-register', a:false, c:'The exact claim is <b>written down before any test</b>. No moving the goalposts once the results are in.'},
-    {k:'test', t:'Test · ~10 yrs', a:false, c:'The idea is replayed across roughly <b>ten years</b> of real market data — through crashes, calm and everything between.'},
-    {k:'verdict', t:'Prove or kill', a:false, c:'Most ideas die here — and that is the job. Only what genuinely held up survives; the rest are retired with a note on why.'},
-    {k:'arm', t:'One-tap go', a:false, c:'A survivor waits for a person. Nothing arms itself — a human gives the <b>one-tap go</b> and holds the risk.'},
-    {k:'live', t:'Live · small', a:false, c:'Armed small and watched closely, its real behaviour logged in the open — ready to be pulled at any time.'}
+    {k:'idea', t:'Idea', a:false, c:'A pattern shows up. On its own it’s worth nothing yet — the work is proving it isn’t just noise.'},
+    {k:'deliberate', t:'Deliberate', a:true, c:'The agents argue it out. One of them is built to <b>tear the idea apart</b> — survive that, or it was never real.'},
+    {k:'register', t:'Lock the claim', a:false, c:'The claim is <b>locked before any test</b>, so no one can quietly move the goalposts once the results are in.'},
+    {k:'test', t:'Stress-test', a:false, c:'Put through a gauntlet built to break it, across years of real markets. <b>What’s in the gauntlet is our edge.</b>'},
+    {k:'verdict', t:'Prove or kill', a:false, c:'Most ideas die right here — and that’s the job. Only genuine survivors go on; the rest are retired with a reason.'},
+    {k:'arm', t:'One-tap go', a:false, c:'A survivor waits for a person. Nothing arms itself — a human gives the go and holds the risk.'},
+    {k:'live', t:'Live · small', a:false, c:'Armed small and watched closely, ready to be pulled at any moment.'}
   ];
   var VERDICT_IDX=4;
   var caption=document.getElementById('simCaption'),
@@ -748,23 +742,97 @@ footer .mono{color:var(--mut);}
   }
 })();
 
-/* ── now / next tabs ── */
+/* ── now / +1yr constellation: products + orbiting agent-swarms, growth morph (canvas, no media files) ── */
 (function(){
+  "use strict";
+  var cv=document.getElementById('cstCanvas'); if(!cv) return;
+  var ctx=cv.getContext('2d'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var tabNow=document.getElementById('tabNow'), tabNext=document.getElementById('tabNext'),
-      panNow=document.getElementById('panNow'), panNext=document.getElementById('panNext');
-  if(!tabNow) return;
-  var TICK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
-  var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-  document.querySelectorAll('.tnow-list.now .mk').forEach(function(m){ m.innerHTML=TICK; });
-  document.querySelectorAll('.tnow-list.next .mk').forEach(function(m){ m.innerHTML=ARROW; });
-  function show(which){
-    var isNow=(which==='now');
-    tabNow.setAttribute('aria-selected',isNow?'true':'false');
-    tabNext.setAttribute('aria-selected',isNow?'false':'true');
-    panNow.hidden=!isNow; panNext.hidden=isNow;
+      badge=document.getElementById('cstBadge'), foot=document.getElementById('cstFoot');
+
+  // products in a normalized design box. r/b/s = [now, future] for radius, brightness, swarm size.
+  // real today: Agastya (product, R&D) bright; Keel + Beacon (internal layers) faint & forming.
+  // future: those matured + generic placeholders (dim=true) — deliberately not named products.
+  var NODES=[
+    {label:'Agastya',  x:.50,y:.50, r:[15,18], b:[1,1],   s:[10,22], c:'#4fe0d0', dim:false},
+    {label:'Keel',     x:.23,y:.31, r:[6,14],  b:[.32,1], s:[3,15],  c:'#7c8cff', dim:false},
+    {label:'Beacon',   x:.78,y:.32, r:[6,14],  b:[.32,1], s:[3,15],  c:'#ffd166', dim:false},
+    {label:'Product 2',x:.31,y:.77, r:[0,13],  b:[0,.85], s:[0,15],  c:'#b57bff', dim:true},
+    {label:'Product 3',x:.74,y:.75, r:[0,13],  b:[0,.85], s:[0,15],  c:'#b57bff', dim:true}
+  ];
+  var LINKS=[[0,1],[0,2],[0,3],[0,4],[1,3],[2,4],[1,2]];
+  NODES.forEach(function(n){ n.dots=[]; for(var i=0;i<n.s[1];i++) n.dots.push({
+    ang:Math.random()*6.28, rad:.55+Math.random()*.8, sp:(Math.random()<.5?-1:1)*(0.14+Math.random()*0.4),
+    ph:Math.random()*6.28, sz:1+Math.random()*1.4, act:Math.random()}); });
+
+  var g=0, tg=0, W,H,DPR,box,stars=[];
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function ah(a){a=a<0?0:a>1?1:a;var s=Math.round(a*255).toString(16);return s.length<2?'0'+s:s;}
+  function layout(){
+    var rect=cv.getBoundingClientRect(); W=rect.width; H=rect.height;
+    DPR=Math.min(devicePixelRatio||1,2); cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    var pad=Math.min(W,H)*0.15; box={x:pad,y:pad*0.7,w:W-pad*2,h:H-pad*1.5};
+    stars=[]; var cnt=Math.round(W*H/7000);
+    for(var i=0;i<cnt;i++) stars.push({x:Math.random()*W,y:Math.random()*H,z:Math.random(),tw:Math.random()*6.28});
   }
-  tabNow.addEventListener('click',function(){ show('now'); });
-  tabNext.addEventListener('click',function(){ show('next'); });
+  function npos(n){return {x:box.x+n.x*box.w, y:box.y+n.y*box.h};}
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    for(var s=0;s<stars.length;s++){var st=stars[s];var a=(0.07+0.15*st.z)*(0.6+0.4*Math.sin(t*1.1+st.tw));
+      ctx.fillStyle='rgba(150,170,210,'+a.toFixed(3)+')'; ctx.fillRect(st.x,st.y,1+st.z,1+st.z);}
+    // links grow in only as the company fills out (future)
+    LINKS.forEach(function(lk){ var a=NODES[lk[0]], b=NODES[lk[1]];
+      var va=lerp(a.b[0],a.b[1],g), vb=lerp(b.b[0],b.b[1],g), vis=Math.min(va,vb);
+      if(vis<=0.03||g<=0.02) return; var pa=npos(a), pb=npos(b), o=0.11*g*vis;
+      var gr=ctx.createLinearGradient(pa.x,pa.y,pb.x,pb.y);
+      gr.addColorStop(0,'rgba(120,150,220,'+o.toFixed(3)+')');
+      gr.addColorStop(.5,'rgba(150,180,240,'+(o*1.9).toFixed(3)+')');
+      gr.addColorStop(1,'rgba(120,150,220,'+o.toFixed(3)+')');
+      ctx.strokeStyle=gr; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(pa.x,pa.y); ctx.lineTo(pb.x,pb.y); ctx.stroke(); });
+    NODES.forEach(function(n){
+      var b=lerp(n.b[0],n.b[1],g); if(b<=0.012) return;
+      var p=npos(n), r=lerp(n.r[0],n.r[1],g);
+      var orbR=r*1.7+Math.min(box.w,box.h)*0.055;
+      var grow=n.s[1]>0?lerp(n.s[0]/n.s[1],1,g):0;
+      n.dots.forEach(function(d){ var on=(grow-d.act)/0.12; if(on<=0) return; if(on>1)on=1;
+        var ang=d.ang+t*d.sp, rr=orbR*d.rad, x=p.x+Math.cos(ang)*rr, y=p.y+Math.sin(ang)*rr*0.9;
+        var tw=0.55+0.45*Math.sin(t*1.6+d.ph);
+        ctx.globalAlpha=on*b*tw*0.9; ctx.fillStyle=n.c;
+        ctx.beginPath(); ctx.arc(x,y,d.sz,0,6.28); ctx.fill(); });
+      ctx.globalAlpha=1;
+      var gg=r*3.4, gl=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,gg);
+      gl.addColorStop(0,n.c+ah(b*0.85)); gl.addColorStop(.42,n.c+'22'); gl.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(p.x,p.y,gg,0,6.28); ctx.fill();
+      ctx.globalAlpha=b; ctx.fillStyle='#0b1220'; ctx.strokeStyle=n.c; ctx.lineWidth=2;
+      if(n.dim) ctx.setLineDash([4,3]);
+      ctx.beginPath(); ctx.arc(p.x,p.y,r,0,6.28); ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
+      ctx.save(); ctx.shadowColor='rgba(5,7,13,.98)'; ctx.shadowBlur=6; ctx.globalAlpha=b;
+      ctx.fillStyle=n.dim?'rgba(180,158,220,.92)':'rgba(233,242,253,.96)';
+      ctx.font='500 '+(W<520?10:12)+'px "IBM Plex Mono",monospace'; ctx.textAlign='center';
+      ctx.fillText(n.label,p.x,p.y+r+(W<520?13:16)); ctx.restore(); ctx.globalAlpha=1;
+    });
+  }
+  function setState(future){
+    tg=future?1:0; if(reduce) g=tg;
+    tabNow.setAttribute('aria-selected',future?'false':'true');
+    tabNext.setAttribute('aria-selected',future?'true':'false');
+    badge.className='tnow-badge '+(future?'next':'now');
+    badge.innerHTML='<span class="bd2"></span>'+(future
+      ? 'Vision — not a promise. None of this has happened yet.'
+      : 'Real today — sparse on purpose');
+    foot.innerHTML=future
+      ? '<b>+1 year — the vision:</b> strategies that earned their place, Agastya a live but disciplined money-builder, Keel and Beacon perhaps as products, and placeholders for products not yet chosen. <b>None of this has happened yet.</b>'
+      : '<b>Now:</b> one product in research (Agastya) and two internal layers just taking shape (Keel, Beacon) — one live thing, not a portfolio.';
+    if(reduce) draw(0);
+  }
+  tabNow.addEventListener('click',function(){ setState(false); });
+  tabNext.addEventListener('click',function(){ setState(true); });
+  window.addEventListener('resize',function(){ layout(); if(reduce) draw(g); });
+
+  try{ layout(); setState(false);
+    if(reduce){ draw(0); }
+    else { (function loop(ts){ requestAnimationFrame(loop); g+=(tg-g)*0.07; draw(ts*0.001); })(0); }
+  }catch(e){ cv.style.display='none'; }
 })();
 </script>
 <script>
