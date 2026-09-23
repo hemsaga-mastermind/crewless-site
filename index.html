@@ -38,13 +38,11 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 .nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
 @media(max-width:640px){.nav{display:none;}}
 
-/* ── hero ── mobile-first: network band on top, copy below ── */
-.hero{position:relative;}
-.stage{position:relative;width:100%;height:56svh;min-height:380px;overflow:hidden;}
-#net{position:absolute;inset:0;width:100%;height:100%;display:block;}
-.scrim{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(0deg,#05070d 1%,#05070d99 14%,transparent 40%);}
-.hcontent{padding:1.6rem 0 clamp(2.2rem,7vh,3.4rem);}
+/* ── hero: the big constellation is the centrepiece ── */
+.hero{position:relative;border-bottom:1px solid var(--line);
+  background:radial-gradient(120% 90% at 50% -15%,rgba(79,224,208,.07),transparent 55%);}
+.herowrap{padding:clamp(1.5rem,4vw,2.6rem) 0 clamp(2rem,5vw,3.2rem);}
+.herohead{max-width:46ch;}
 .hud{display:inline-flex;align-items:center;gap:.55rem;
   padding:.4rem .85rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);
   font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
@@ -56,7 +54,8 @@ h1{font-size:clamp(2.3rem,6.2vw,4.3rem);line-height:1.03;font-weight:600;letter-
   max-width:15ch;text-wrap:balance;}
 h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
   -webkit-background-clip:text;background-clip:text;color:transparent;}
-.lede{margin-top:1.1rem;max-width:40ch;color:var(--mut);font-size:clamp(1rem,2.1vw,1.13rem);}
+.hlede{margin-top:1rem;max-width:56ch;color:var(--mut);font-size:clamp(1rem,2.1vw,1.18rem);line-height:1.5;}
+.hlede b{color:var(--ink);font-weight:600;}
 .cta{margin-top:1.6rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;}
 .btn{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.2rem;border-radius:11px;
   font-weight:500;font-size:.92rem;transition:.2s;}
@@ -72,34 +71,17 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 .pulse .fade{animation:fadein .5s;}
 @keyframes fadein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 
-/* prompt + info card, anchored over the network */
-.hint{position:absolute;z-index:7;top:74px;left:50%;transform:translateX(-50%);
-  font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--mut);letter-spacing:.04em;
-  border:1px solid var(--line);background:var(--panel);border-radius:100px;padding:.34rem .9rem;
-  backdrop-filter:blur(6px);animation:fade 3s infinite;pointer-events:none;white-space:nowrap;}
-@keyframes fade{0%,100%{opacity:.5}50%{opacity:.95}}
-.pick{position:absolute;z-index:9;left:1.1rem;right:1.1rem;bottom:1.1rem;
-  background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.95rem 1.05rem;
-  backdrop-filter:blur(12px);box-shadow:0 16px 48px #000b;animation:rise .25s ease;}
-.pick .pk-h{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:1.02rem;margin-bottom:.45rem;}
-.pick .pk-dot{width:.62rem;height:.62rem;border-radius:50%;flex:none;}
-.pick .pk-x{margin-left:auto;background:none;border:none;color:var(--mut);font-size:1.3rem;line-height:1;cursor:pointer;padding:0 .15rem;}
-.pick .pk-x:hover{color:var(--ink);}
-.pick p{color:var(--mut);font-size:.88rem;line-height:1.55;}
-
-/* ── desktop: copy left, network right ── */
-@media(min-width:880px){
-  .hero{height:100svh;min-height:640px;overflow:hidden;}
-  .stage{position:absolute;inset:0;height:auto;min-height:0;}
-  .scrim{background:
-    linear-gradient(90deg,#05070d 2%,rgba(5,7,13,.74) 30%,rgba(5,7,13,.15) 52%,rgba(5,7,13,0) 66%),
-    linear-gradient(0deg,#05070d55,transparent 30%);}
-  .hcontent{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-    align-items:flex-start;padding:1.6rem 0 0;pointer-events:none;}
-  .lede{max-width:34ch;}
-  .hint{top:auto;bottom:clamp(1.8rem,6vh,3.2rem);left:72%;}
-  .pick{left:auto;right:clamp(1.6rem,4vw,2.6rem);bottom:clamp(1.6rem,4vw,2.6rem);width:min(322px,33vw);}
-}
+/* big hero constellation panel */
+.cst-hero{margin-top:clamp(1.4rem,3.4vw,2.2rem);}
+.cst.cst-hero canvas{height:clamp(360px,58vh,600px);}
+.cst-bar{display:flex;align-items:center;justify-content:space-between;gap:.7rem 1rem;flex-wrap:wrap;
+  padding:.8rem 1rem;border-bottom:1px solid var(--line);}
+.cst-bar .tnow-badge{margin-bottom:0;}
+.cst-foot{padding:.85rem 1rem 1rem;border-top:1px solid var(--line);}
+.cst-foot .cst-legend{margin-top:0;}
+.cst-note{margin-top:1.1rem;font-size:.88rem;color:var(--mut);max-width:72ch;line-height:1.55;}
+.cst-note b{color:var(--ink);font-weight:600;}
+@media(min-width:760px){ .cst.cst-hero canvas{height:clamp(420px,62vh,640px);} }
 
 section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
@@ -110,12 +92,19 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 section{scroll-margin-top:70px;}
 .pills{list-style:none;display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.9rem;padding:0;}
 .pills li{border:1px solid var(--line);border-radius:100px;padding:.5rem .95rem;font-size:.88rem;color:var(--mut);background:var(--panel);}
-.stats{display:flex;flex-wrap:wrap;gap:2.4rem;margin:1.8rem 0 .4rem;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.85rem;margin:1.9rem 0 .4rem;}
+.stat{border:1px solid var(--line);border-radius:13px;padding:1rem 1.1rem;
+  background:linear-gradient(180deg,rgba(16,23,35,.55),rgba(10,15,24,.42));}
 .stat b{display:block;font-size:2.1rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1;}
 .stat b.ok{color:var(--c1);font-size:1.5rem;}
 .stat span{font-size:.82rem;color:var(--mut);}
-.ideas{list-style:none;padding:0;margin:2rem 0 0;display:flex;flex-direction:column;gap:.9rem;max-width:66ch;}
-.ideas li{color:var(--mut);font-size:.95rem;line-height:1.5;}
+.labsum{margin-top:1.7rem;font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.04em;color:var(--dim);}
+.labsum b{font-weight:500;}.labsum .lg{color:var(--c1);}.labsum .lw{color:#ffcf70;}.labsum .ln{color:var(--mut);}
+.labgrid{list-style:none;padding:0;margin:1.15rem 0 0;display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));}
+.lab-item{border:1px solid var(--line);border-radius:13px;padding:.95rem 1.05rem;
+  background:linear-gradient(180deg,rgba(16,23,35,.55),rgba(10,15,24,.42));}
+.lab-item p{color:var(--mut);font-size:.9rem;line-height:1.5;margin-top:.5rem;}
+.lab-item.killed{opacity:.66;}
 .tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.08em;
   text-transform:uppercase;padding:.16rem .5rem;border-radius:100px;margin-right:.55rem;border:1px solid var(--line);}
 .tag.go{color:var(--c1);border-color:#1c5b53;}
@@ -131,13 +120,15 @@ section{scroll-margin-top:70px;}
 .card .rl .rd{width:.6rem;height:.6rem;border-radius:50%;flex:none;}
 .card h3{font-size:1.06rem;}
 .card p{color:var(--mut);font-size:.92rem;}
+.card .what{color:var(--ink);font-weight:500;font-size:.96rem;line-height:1.45;margin:.2rem 0 .7rem;}
 .receipts{margin-top:2.2rem;}
 .timeline{position:relative;padding-left:1.35rem;border-left:1px solid var(--line);}
 .tl{position:relative;padding-bottom:1.55rem;}
 .tl:last-child{padding-bottom:0;}
 .tl::before{content:"";position:absolute;left:calc(-1.35rem - 4px);top:.35rem;width:9px;height:9px;border-radius:50%;
   background:var(--c1);box-shadow:0 0 0 3px var(--bg);}
-.tl .d{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;color:var(--dim);}
+.tl .d{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--c1);border:1px solid var(--line);border-radius:100px;padding:.12rem .5rem;margin-bottom:.35rem;}
 .tl h4{font-size:1.02rem;font-weight:600;margin:.12rem 0 .28rem;letter-spacing:-.01em;}
 .tl p{color:var(--mut);font-size:.9rem;line-height:1.55;max-width:64ch;}
 .creed{font-size:clamp(1.3rem,3.2vw,1.85rem);font-weight:500;line-height:1.32;letter-spacing:-.012em;max-width:21ch;}
@@ -253,7 +244,6 @@ footer .mono{color:var(--mut);}
 }
 
 /* now / next */
-.tnow{margin-top:2.7rem;}
 .tnow-tabs{display:inline-flex;padding:.28rem;gap:.28rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);}
 .tnow-tabs button{font:inherit;font-size:.82rem;font-weight:500;color:var(--mut);background:none;border:none;cursor:pointer;
   border-radius:100px;padding:.5rem 1.05rem;transition:.18s;display:inline-flex;align-items:center;gap:.45rem;}
@@ -282,29 +272,6 @@ footer .mono{color:var(--mut);}
   font-size:.66rem;letter-spacing:.03em;color:var(--dim);}
 .cst-legend span{display:inline-flex;align-items:center;gap:.4rem;}
 .cst-legend i{width:.55rem;height:.55rem;border-radius:50%;flex:none;}
-
-/* core-vision teaser band — the thesis, front & centre under the hero (complements the horizon map) */
-.vision{border-top:1px solid var(--line);
-  background:radial-gradient(120% 160% at 10% 0%,rgba(79,224,208,.07),transparent 58%),linear-gradient(180deg,rgba(13,19,30,.55),rgba(5,7,13,0));}
-.vwrap{display:flex;gap:clamp(1.3rem,4vw,3rem);align-items:center;flex-wrap:wrap;
-  padding:clamp(1.5rem,4.2vw,2.5rem) 0;}
-.vtext{flex:1 1 320px;min-width:0;}
-.vk{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.75rem;}
-.vtag{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--c3);border:1px solid #4a2f6b;border-radius:100px;padding:.2rem .58rem;}
-.vlede{font-size:clamp(1.06rem,2.3vw,1.4rem);line-height:1.4;max-width:44ch;letter-spacing:-.012em;color:var(--ink);}
-.vlede b{font-weight:600;}
-.vlede .grad{background:linear-gradient(105deg,var(--c1),var(--c2) 60%,var(--c3));
-  -webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600;}
-.vmore{display:inline-block;margin-top:1rem;font-size:.85rem;color:var(--c1);border-bottom:1px solid transparent;transition:.18s;}
-.vmore:hover{border-bottom-color:var(--c1);}
-.vcue{flex:0 0 auto;width:min(240px,80vw);}
-.vcue svg{width:100%;height:auto;display:block;}
-.vcue .vcap{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
-  fill:var(--mut);}
-@media(prefers-reduced-motion:no-preference){.vcue .fu{animation:vpulse 3s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}}
-@keyframes vpulse{0%,100%{opacity:.85}50%{opacity:1}}
-@media(max-width:560px){.vcue{order:-1;width:min(220px,74vw);margin:0 auto;}}
 </style></head>
 <body>
 <header><div class="wrap bar">
@@ -313,64 +280,41 @@ footer .mono{color:var(--mut);}
 </div></header>
 
 <div class="hero" id="hero">
-  <div class="stage" id="stage">
-    <canvas id="net"></canvas>
-    <div class="scrim"></div>
-    <div class="hint" id="hint">◎ Tap any agent to see what it does</div>
-    <div class="pick" id="pick" hidden></div>
-  </div>
-  <div class="wrap hcontent">
-    <div class="hud"><span class="dot"></span> <b id="agentct">dozens of</b> agents · running in parallel</div>
-    <h1>A company run by <span class="g">AI agents.</span></h1>
-    <p class="lede">One founder sets the direction and makes the important decisions. A team of
-      AI agents does the rest — exploring ideas in parallel, building and shipping the software,
-      keeping the systems healthy, and running the day-to-day around the clock. It even builds and
-      maintains this website. The network here is the company at work: a central team of agents that
-      grows, protects and monitors Crewless, and each product run by its own team of agents. Every
-      point of light is an agent, working in parallel.</p>
-    <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
-    <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
-  </div>
-</div>
+  <div class="wrap herowrap">
+    <div class="herohead">
+      <div class="hud"><span class="dot"></span> <b id="agentct">dozens of</b> agents · running in parallel</div>
+      <h1>A company run by <span class="g">AI agents.</span></h1>
+      <p class="hlede">A <b>central team of AI agents</b> runs the company and watches over its products —
+        and <b>each product runs on its own team of AI agents</b>. The only human is the founder, who sets
+        direction. Here's the shape of it: how we work today, and where it's headed.</p>
+    </div>
 
-<!-- CORE-VISION teaser — the thesis up top; the full org map lives in #horizon below -->
-<div class="vision" id="vision">
-  <div class="wrap vwrap">
-    <div class="vtext">
-      <p class="kick vk">Where we're headed <span class="vtag">Vision · not yet built</span></p>
-      <p class="vlede">A company that builds and runs a growing set of <b>independent products</b> — each on
-        its own <b>team of AI agents</b>, with a <b>central team watching over them</b> — <span class="grad">AI you
-        can trust to run things over time</span>, not just answer. That's the multi-year direction we're building toward.</p>
-      <a class="vmore" href="#horizon">See where it actually stands today ↓</a>
+    <div class="cst cst-hero">
+      <div class="cst-bar">
+        <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
+          <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now — how it looks today</button>
+          <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
+        </div>
+        <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Today — sparse on purpose</span>
+      </div>
+      <canvas id="cstCanvas" role="img" aria-label="A radial map of the operating model. At the centre, a small team of AI agents that monitors the products. Around it sit independent products — today one is active and a couple more are just forming — each built from its own team of agents, its spine. Products never link to each other; the only links run from the central team out to each product. In the one-year vision more products and larger teams appear, evenly arranged. The products are shown generically here — the named ones are listed in the What's real section."></canvas>
+      <div class="cst-foot">
+        <div class="cst-legend" aria-hidden="true">
+          <span><i style="background:#8a94a8"></i>central team of AI agents — monitors the products</span>
+          <span><i style="background:#4fe0d0"></i>a product · its agents are its spine</span>
+          <span><i style="background:#b57bff"></i>+1yr placeholder — not committed</span>
+          <span><i style="background:#eef2f8"></i>each dot = one AI agent</span>
+        </div>
+      </div>
     </div>
-    <div class="vcue" aria-hidden="true">
-      <svg viewBox="0 0 240 96">
-        <!-- NOW: central team + one product -->
-        <g>
-          <line x1="32" y1="41" x2="32" y2="25" stroke="#8a94a8" stroke-width="1" stroke-dasharray="1 3"/>
-          <circle cx="32" cy="44" r="3" fill="#aeb8cc"/>
-          <circle cx="32" cy="20" r="5" fill="#0e1524" stroke="#4fe0d0" stroke-width="1.6"/>
-          <circle cx="32" cy="20" r="1.8" fill="#4fe0d0"/>
-          <circle cx="24" cy="15" r="1.4" fill="#4fe0d0"/><circle cx="40" cy="15" r="1.4" fill="#4fe0d0"/><circle cx="32" cy="10" r="1.4" fill="#4fe0d0"/>
-          <text x="32" y="82" text-anchor="middle" class="vcap">now</text>
-        </g>
-        <!-- arrow now → +1yr -->
-        <text x="81" y="24" text-anchor="middle" class="vcap" fill="#7c8cff">+1 yr</text>
-        <path d="M66 44 H94" stroke="#7c8cff" stroke-width="1.4" stroke-dasharray="3 3"/>
-        <path d="M92 40 L98 44 L92 48" fill="none" stroke="#7c8cff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        <!-- VISION: central team + several products (pulses gently, honoured by reduced-motion) -->
-        <g class="fu">
-          <line x1="150" y1="44" x2="150" y2="24" stroke="#8a94a8" stroke-width="1" stroke-dasharray="1 3"/>
-          <line x1="150" y1="44" x2="172" y2="55" stroke="#8a94a8" stroke-width="1" stroke-dasharray="1 3"/>
-          <line x1="150" y1="44" x2="128" y2="55" stroke="#8a94a8" stroke-width="1" stroke-dasharray="1 3"/>
-          <circle cx="150" cy="44" r="3" fill="#aeb8cc"/>
-          <g><circle cx="150" cy="20" r="4.6" fill="#0e1524" stroke="#4fe0d0" stroke-width="1.5"/><circle cx="150" cy="20" r="1.6" fill="#4fe0d0"/><circle cx="143" cy="15" r="1.3" fill="#4fe0d0"/><circle cx="157" cy="15" r="1.3" fill="#4fe0d0"/></g>
-          <g><circle cx="176" cy="58" r="4.6" fill="#0e1524" stroke="#ffd166" stroke-width="1.5"/><circle cx="176" cy="58" r="1.6" fill="#ffd166"/><circle cx="184" cy="54" r="1.3" fill="#ffd166"/><circle cx="183" cy="64" r="1.3" fill="#ffd166"/></g>
-          <g><circle cx="124" cy="58" r="4.6" fill="#0e1524" stroke="#b57bff" stroke-width="1.5"/><circle cx="124" cy="58" r="1.6" fill="#b57bff"/><circle cx="116" cy="54" r="1.3" fill="#b57bff"/><circle cx="117" cy="64" r="1.3" fill="#b57bff"/></g>
-          <text x="150" y="84" text-anchor="middle" class="vcap">vision</text>
-        </g>
-      </svg>
-    </div>
+
+    <p class="cst-note" id="cstFoot"><b>Today — sparse on purpose:</b> one product is active and a couple
+      more are just forming — each on its own small team of AI agents, with the central team of AI agents
+      monitoring. This shows <b>how we operate</b>, generically; the named products and their honest status
+      are in <a href="#real" style="color:var(--c1)">What's real</a>.</p>
+
+    <div class="cta"><a class="btn p" href="#brain">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
+    <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
   </div>
 </div>
 
@@ -379,8 +323,8 @@ footer .mono{color:var(--mut);}
   <p class="kick">The idea</p>
   <p class="big">Can one person, with a team of AI agents, build and run a real company?</p>
   <p class="sub">One founder sets the direction and holds every decision that involves real money or real
-    risk. A central team of agents grows, protects and monitors the company, and each product runs on its
-    own team of agents — its spine. The products run independently. Tap any agent in the network to see its part.</p>
+    risk. A central team of AI agents grows, protects and monitors the company, and each product runs on its
+    own team of AI agents — its spine. The products run independently.</p>
   <ul class="pills">
     <li>Reviewed before it ships</li>
     <li>People hold the money &amp; risk</li>
@@ -418,9 +362,9 @@ footer .mono{color:var(--mut);}
     <div class="bcard k3">
       <p class="kx">The shape</p>
       <h3>Independent products, one team each</h3>
-      <p>Every product we build runs on its <b>own team of agents</b> — its spine — and runs on its
-        own; a central team only watches over it. We add new products without disturbing the ones
-        already running. <span class="tease">What actually exists today is named in What's real.</span></p>
+      <p>Every product we build runs on its <b>own team of AI agents</b> — its spine — and runs on its
+        own; the central team of AI agents only watches over it. We add new products without disturbing
+        the ones already running. <span class="tease">What actually exists today is named in What's real.</span></p>
     </div>
   </div>
 
@@ -445,31 +389,6 @@ footer .mono{color:var(--mut);}
       step to read what happens there, or step through it yourself.</p>
   </div>
 
-  <!-- NOW vs +1 YEAR — animated radial org map: central agent-team → independent products → agent spines (canvas, no media files) -->
-  <div class="tnow" id="horizon">
-    <p class="flowlabel" style="margin-top:2.6rem">The model — now vs the vision</p>
-    <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
-      <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now — how it looks today</button>
-      <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
-    </div>
-    <div class="tnow-badgewrap">
-      <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Today — sparse on purpose</span>
-    </div>
-    <div class="cst">
-      <canvas id="cstCanvas" role="img" aria-label="A radial map of the operating model. At the centre, a small team of AI agents that monitors the products. Around it sit independent products — today one is active and a couple more are just forming — each built from its own team of agents, its spine. Products never link to each other; the only links run from the central team out to each product. In the one-year vision more products and larger teams appear, evenly arranged. The products are shown generically here — the named ones are listed in the What's real section."></canvas>
-    </div>
-    <p class="cst-lead"><b>Each product runs on its own team of agents — its spine.</b> A central team of agents monitors them. The products run independently.</p>
-    <div class="cst-legend" aria-hidden="true">
-      <span><i style="background:#8a94a8"></i>central team — monitors the products</span>
-      <span><i style="background:#4fe0d0"></i>a product · its agents are its spine</span>
-      <span><i style="background:#b57bff"></i>+1yr placeholder — not committed</span>
-      <span><i style="background:#eef2f8"></i>each dot = one AI agent</span>
-    </div>
-    <p class="tnow-foot" id="cstFoot"><b>Today — sparse on purpose:</b> one product is active and a couple
-      more are just forming — each built on its own small team of agents, with the central team monitoring.
-      This shows <b>how we operate</b>, generically; the actual named products and their honest status are in
-      <a href="#real" style="color:var(--c1)">What's real</a> below.</p>
-  </div>
 </div></section>
 
 <section id="real"><div class="wrap">
@@ -480,21 +399,21 @@ footer .mono{color:var(--mut);}
   <div class="grid">
     <div class="card">
       <div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Agastya</h3></div>
+      <p class="what">An automated system that studies the Indian stock market and invests.</p>
       <span class="badge test"><span class="bd"></span>In research · paper</span>
-      <p>Our first product — automated investing research, learning how India's market moves together.
-        In paper testing today: <b>no proven edge yet, and no real money live.</b></p>
+      <p>Status: in paper testing — <b>no proven edge yet, and no real money live.</b></p>
     </div>
     <div class="card">
       <div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Keel</h3></div>
+      <p class="what">The memory layer that lets our agents run things over time without forgetting or drifting.</p>
       <span class="badge live"><span class="bd"></span>Internal · working</span>
-      <p>The continuity that lets our agents run things over time without forgetting or drifting.
-        Runs internally today — the backbone the rest is built on.</p>
+      <p>Status: internal and working — the backbone the rest is built on.</p>
     </div>
     <div class="card">
       <div class="rl"><span class="rd" style="background:#ffd166"></span><h3>Beacon</h3></div>
+      <p class="what">This website — built and kept up to date by the agents themselves.</p>
       <span class="badge live"><span class="bd"></span>Live</span>
-      <p>This website — built, written, deployed and kept up to date by the agents themselves.
-        You're looking at it.</p>
+      <p>Status: live. You're looking at it.</p>
     </div>
   </div>
 </div></section>
@@ -502,16 +421,17 @@ footer .mono{color:var(--mut);}
 <section id="lab"><div class="wrap">
   <p class="kick">The Lab</p>
   <p class="big">Ideas we're weighing — and the ones we've killed.</p>
-  <p class="sub">We work like an R&amp;D lab: bring an idea, we build a proof-of-concept and find out honestly
-    whether it has an edge. Not everything needs to be approved — we explore openly and drop what doesn't earn
-    its place. A "no" is a finding, not a failure.</p>
-  <ul class="ideas">
-    <li><span class="tag go">Exploring</span> A self-healing watchdog for small websites — the tech we already run for ourselves.</li>
-    <li><span class="tag go">Exploring</span> An AI OS to quick-start a company — the Crewless apparatus, made portable.</li>
-    <li><span class="tag go">Exploring</span> Getting the most from AI, honestly — open-source-first, no lock-in.</li>
-    <li><span class="tag wt">Weighing</span> AI that helps two people gauge genuine compatibility — privacy-first, anonymous, no personal data kept. A research question, not a product.</li>
-    <li><span class="tag no">Killed</span> Copying our approach onto other markets — tested, no real edge, dropped.</li>
-    <li><span class="tag no">Killed</span> A short-term reversal signal — looked promising, decayed under honest testing.</li>
+  <p class="sub">We work like an R&amp;D lab: bring an idea, build a proof-of-concept, and find out honestly
+    whether it has an edge. Not everything gets approved — we explore openly and drop what doesn't earn its
+    place. A "no" is a finding, not a failure, and we leave it on the board.</p>
+  <p class="labsum"><b class="lg">3 exploring</b> · <b class="lw">1 weighing</b> · <b class="ln">2 killed</b> — and we show which is which.</p>
+  <ul class="labgrid">
+    <li class="lab-item"><span class="tag go">Exploring</span><p>A self-healing watchdog for small websites — the tech we already run for ourselves.</p></li>
+    <li class="lab-item"><span class="tag go">Exploring</span><p>An AI OS to quick-start a company — the Crewless apparatus, made portable.</p></li>
+    <li class="lab-item"><span class="tag go">Exploring</span><p>Getting the most from AI, honestly — open-source-first, no lock-in.</p></li>
+    <li class="lab-item"><span class="tag wt">Weighing</span><p>AI that helps two people gauge genuine compatibility — privacy-first, anonymous, no personal data kept. A research question, not a product.</p></li>
+    <li class="lab-item killed"><span class="tag no">Killed</span><p>Copying our approach onto other markets — tested, no real edge, dropped.</p></li>
+    <li class="lab-item killed"><span class="tag no">Killed</span><p>A short-term reversal signal — looked promising, decayed under honest testing.</p></li>
   </ul>
 </div></section>
 
@@ -556,164 +476,23 @@ footer .mono{color:var(--mut);}
 (function(){
   "use strict";
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var cv=document.getElementById('net'), ctx=cv.getContext('2d'),
-      hero=document.getElementById('hero'), stage=document.getElementById('stage');
-  var W,H,DPR,mx=0,my=0,tmx=0,tmy=0;
-
-  // the agent organization — labels + relative layout (0..1 in a design box)
-  // org model (candid): a COO over lines of work. ONE line runs live today (its own
-  // independent pod of agents); the empty slots show the structure is built to add more
-  // without disturbing it. x/y = desktop, mx/my = mobile.
-  // the whole company at work: a COO, the teams of agents that do the real work, and the two
-  // real things they produce and run — the one live product and this website itself.
-  // two layers: a BOARD of agents that grows & protects the company (top), a COO who runs it
-  // day to day, and each PRODUCT run by its own swarm of agents (bottom).
-  var NODES=[
-    {l:'COO', kind:'coo', x:.50,y:.44, mx:.50,my:.45, r:14, c:'#4fe0d0', hub:1, role:'Runs the company day to day and brings the founder only the decisions that genuinely need a person.'},
-    {l:'Strategy', kind:'board', x:.11,y:.15, mx:.17,my:.11, r:10, c:'#7c8cff', role:'Board. Looks for the company’s next products and honestly tests whether each idea is worth doing — this is how Crewless grows.'},
-    {l:'Horizon', kind:'board', x:.31,y:.11, mx:.50,my:.08, r:10, c:'#7c8cff', role:'Board. Scans the outside world for what’s changing and worth attention, and runs the early research.'},
-    {l:'Security', kind:'board', x:.50,y:.10, mx:.83,my:.11, r:10, c:'#ff9e64', role:'Board. Protects the company and its products — keeps risk small, guards data and secrets, and treats anything from outside as untrusted.'},
-    {l:'Governance', kind:'board', x:.69,y:.11, mx:.32,my:.25, r:10, c:'#4fe0d0', role:'Board. Holds the company to its rules: nothing ships without review, and money or real-risk decisions always go to the founder.'},
-    {l:'Finance', kind:'board', x:.89,y:.15, mx:.68,my:.25, r:10, c:'#b57bff', role:'Board. Watches the money and resources — what things cost, what’s worth funding, and keeping the company solvent.'},
-    {l:'A product', kind:'out', x:.30,y:.80, mx:.29,my:.73, r:13, c:'#4fe0d0', role:'A product, built and run by its own team of agents — its spine. It runs independently; the central team only monitors it. (What actually exists today is named in “What’s real”.)'},
-    {l:'A product', kind:'out', x:.70,y:.80, mx:.71,my:.73, r:13, c:'#ffd166', role:'Another product, on its own team of agents. New products slot in without disturbing the ones already running — that’s the model. (The named catalogue is in “What’s real”.)'}
-  ];
-  var sel=-1;
-  var LINKS=[[1,0],[2,0],[3,0],[4,0],[5,0],[0,6],[0,7],[3,6],[3,7]];
-  var pulses=[], stars=[], WORKERS=[];
-
-  function layout(){
-    var rect=stage.getBoundingClientRect(); W=rect.width; H=rect.height;
-    DPR=Math.min(devicePixelRatio||1,2);
-    cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
-    var bw,bh,ox,oy;
-    if(W>=880){                                   // desktop: network on the right half
-      bw=Math.min(W*0.44,560); bh=Math.min(H*0.72,560);
-      ox=W*0.50; oy=(H-bh)/2 - H*0.01;
-    }else{                                         // mobile: network fills its own band (below the header)
-      bw=Math.min(W*0.9,520); bh=H*0.62;
-      ox=(W-bw)/2; oy=H*0.22;
-    }
-    NODES.forEach(function(n){ var ux=(W<880&&n.mx!=null)?n.mx:n.x, uy=(W<880&&n.my!=null)?n.my:n.y;
-      n.px=ox+ux*bw; n.py=oy+uy*bh; if(n.ph==null)n.ph=Math.random()*6.28; });
-    // the cluster: a swarm of agents, mostly around the one live pod (empty slots get none)
-    // swarm: big pods on the products, small teams on the board / COO
-    WORKERS=[]; var perHub=(W>=880)?[6,4,4,4,4,4,24,20]:[3,2,2,2,2,2,9,8];
-    var clusterR=Math.min(bw,bh)*(W>=880?0.13:0.12);
-    for(var hi=0;hi<NODES.length;hi++){ var cnt=perHub[hi]||0, cr=(NODES[hi].kind==='out')?clusterR:clusterR*0.5;
-      for(var k=0;k<cnt;k++){ var ang=Math.random()*6.28, rad=cr*Math.sqrt(Math.random());
-        WORKERS.push({hub:hi, ox:Math.cos(ang)*rad, oy:Math.sin(ang)*rad*0.82,
-          ph:Math.random()*6.28, sp:0.4+Math.random()*0.7, r:1.1+Math.random()*1.6, tw:Math.random()*6.28}); } }
-    // (agent count is a consistent qualitative label, not the device-dependent dot count)
-    stars=[]; var count=Math.round(W*H/9000);
-    for(var i=0;i<count;i++) stars.push({x:Math.random()*W,y:Math.random()*H,z:Math.random(),tw:Math.random()*6.28});
-  }
-  window.addEventListener('resize',layout);
-  stage.addEventListener('pointermove',function(e){ var r=stage.getBoundingClientRect();
-    tmx=((e.clientX-r.left)/r.width-0.5); tmy=((e.clientY-r.top)/r.height-0.5);
-    cv.style.cursor=(pickAt(e.clientX-r.left,e.clientY-r.top)>=0)?'pointer':'default'; });
-  function pickAt(cx,cy){ var best=-1,bd=1e9; for(var i=0;i<NODES.length;i++){ var n=NODES[i];
-    if(n._x==null)continue; var d=Math.hypot(cx-n._x,cy-n._y);
-    if(d<Math.max(n.r*2.9,32)&&d<bd){bd=d;best=i;} } return best; }
-  cv.addEventListener('click',function(e){ var r=cv.getBoundingClientRect();
-    var i=pickAt(e.clientX-r.left,e.clientY-r.top); sel=(i===sel?-1:i); showPick(); });
-  function showPick(){ var p=document.getElementById('pick'), h=document.getElementById('hint');
-    if(h)h.style.display='none';
-    if(!p)return; if(sel<0){p.hidden=true;return;} var n=NODES[sel];
-    p.innerHTML='<div class="pk-h"><span class="pk-dot" style="background:'+n.c+'"></span>'+esc(n.l)+'<button class="pk-x" aria-label="Close">×</button></div><p>'+esc(n.role)+'</p>';
-    p.querySelector('.pk-x').onclick=function(){sel=-1;p.hidden=true;}; p.hidden=false; }
-
-  function spawn(){ var li=(Math.random()*LINKS.length)|0;
-    pulses.push({li:li, t:0, sp:0.006+Math.random()*0.008, dir:Math.random()<0.5?1:-1, hue:NODES[LINKS[li][0]].c}); }
-
-  function nodePos(i,t){ var n=NODES[i];
-    var dx=Math.sin(t*0.5+n.ph)*6 + tmx*(n.hub?9:20);
-    var dy=Math.cos(t*0.45+n.ph)*6 + tmy*(n.hub?9:20);
-    return {x:n.px+dx, y:n.py+dy}; }
-
-  function frame(t){
-    t*=0.001; ctx.clearRect(0,0,W,H);
-    mx+=(tmx-mx)*0.05; my+=(tmy-my)*0.05;
-    // background glow, biased to the network side
-    var gx=(W>=880)?W*.72:W*.5, gy=(W>=880)?H*.42:H*.24;
-    var g=ctx.createRadialGradient(gx,gy,0,gx,gy,Math.max(W,H)*.62);
-    g.addColorStop(0,'rgba(26,44,72,.55)'); g.addColorStop(.5,'rgba(10,16,28,.22)'); g.addColorStop(1,'rgba(5,7,13,0)');
-    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-    // stars
-    for(var s=0;s<stars.length;s++){ var st=stars[s]; var a=(0.14+0.24*st.z)*(0.6+0.4*Math.sin(t*1.2+st.tw));
-      ctx.fillStyle='rgba(150,170,210,'+a.toFixed(3)+')'; ctx.fillRect(st.x+mx*st.z*18, st.y+my*st.z*18, 1.2+st.z, 1.2+st.z); }
-    // agent network — a hub-and-spoke cluster of agents around each product (and small teams on the board)
-    for(var wi=0;wi<WORKERS.length;wi++){ var wk=WORKERS[wi]; var hp=nodePos(wk.hub,t);
-      var wx=hp.x+wk.ox+Math.sin(t*wk.sp+wk.ph)*3.5, wy=hp.y+wk.oy+Math.cos(t*wk.sp*0.9+wk.ph)*3.5;
-      var won=(sel===wk.hub), woff=(sel>=0&&!won);
-      if(NODES[wk.hub].kind==='out'){ ctx.globalAlpha=woff?0.04:(won?0.17:0.09); ctx.strokeStyle=NODES[wk.hub].c; ctx.lineWidth=1;
-        ctx.beginPath(); ctx.moveTo(hp.x,hp.y); ctx.lineTo(wx,wy); ctx.stroke(); }
-      var wbase=woff?0.10:(won?0.9:0.42);
-      ctx.globalAlpha=wbase*(0.5+0.5*Math.sin(t*1.7+wk.tw)); ctx.fillStyle=NODES[wk.hub].c;
-      ctx.beginPath(); ctx.arc(wx,wy,wk.r,0,6.28); ctx.fill(); }
-    ctx.globalAlpha=1;
-    // links (emphasise the ones touching the selected node)
-    LINKS.forEach(function(lk){ var a=nodePos(lk[0],t), b=nodePos(lk[1],t);
-      var hot=(sel>=0&&(lk[0]===sel||lk[1]===sel)), dim=(sel>=0&&!hot);
-      var grad=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
-      if(hot){ grad.addColorStop(0,'rgba(120,150,220,.30)'); grad.addColorStop(.5,'rgba(150,180,240,.60)'); grad.addColorStop(1,'rgba(120,150,220,.30)'); ctx.lineWidth=1.6; }
-      else { var o=dim?'.09':'.20', o2=dim?'.14':'.34'; grad.addColorStop(0,'rgba(90,120,180,'+o+')'); grad.addColorStop(.5,'rgba(120,150,220,'+o2+')'); grad.addColorStop(1,'rgba(90,120,180,'+o+')'); ctx.lineWidth=1; }
-      ctx.strokeStyle=grad; ctx.beginPath(); ctx.moveTo(a.x,a.y);
-      var mxp=(a.x+b.x)/2, myp=(a.y+b.y)/2 - 20; ctx.quadraticCurveTo(mxp,myp,b.x,b.y); ctx.stroke(); });
-    // pulses along links
-    for(var p=pulses.length-1;p>=0;p--){ var pu=pulses[p]; pu.t+=pu.sp; if(pu.t>=1){pulses.splice(p,1);continue;}
-      var lk=LINKS[pu.li], a=nodePos(lk[0],t), b=nodePos(lk[1],t), tt=pu.dir>0?pu.t:1-pu.t;
-      var mxp=(a.x+b.x)/2, myp=(a.y+b.y)/2 - 20;
-      var x=(1-tt)*(1-tt)*a.x+2*(1-tt)*tt*mxp+tt*tt*b.x, y=(1-tt)*(1-tt)*a.y+2*(1-tt)*tt*myp+tt*tt*b.y;
-      var gl=ctx.createRadialGradient(x,y,0,x,y,7); gl.addColorStop(0,pu.hue); gl.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(x,y,7,0,6.28); ctx.fill();
-      ctx.fillStyle='#eaf6ff'; ctx.beginPath(); ctx.arc(x,y,1.6,0,6.28); ctx.fill(); }
-    // nodes
-    NODES.forEach(function(n,i){ var pos=nodePos(i,t); n._x=pos.x; n._y=pos.y;
-      var on=(sel===i), off=(sel>=0&&!on), ghost=(n.kind==='ghost');
-      var pr=n.r*(1+0.06*Math.sin(t*1.6+n.ph))*(on?1.25:1), gr=pr*(on?4.2:3.2);
-      ctx.globalAlpha=off?0.4:(ghost&&!on?0.62:1);
-      if(!ghost){ var gl=ctx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,gr);
-        gl.addColorStop(0,n.c+(off?'55':(on?'ee':'cc'))); gl.addColorStop(.4,n.c+'33'); gl.addColorStop(1,'rgba(0,0,0,0)');
-        ctx.fillStyle=gl; ctx.beginPath(); ctx.arc(pos.x,pos.y,gr,0,6.28); ctx.fill(); }
-      if(ghost) ctx.setLineDash([4,4]);
-      ctx.fillStyle=ghost?'#080c14':((n.hub||on)?'#eafffb':'#0b1220'); ctx.strokeStyle=n.c; ctx.lineWidth=on?3:2;
-      ctx.beginPath(); ctx.arc(pos.x,pos.y,pr,0,6.28); ctx.fill(); ctx.stroke();
-      if(ghost) ctx.setLineDash([]);
-      // label with a soft dark halo — every agent is named, on desktop and mobile
-      {
-        ctx.save();
-        ctx.shadowColor='rgba(5,7,13,0.98)'; ctx.shadowBlur=7;
-        ctx.fillStyle=on?'#ffffff':(ghost?'rgba(160,172,196,.9)':'rgba(233,242,253,.94)');
-        ctx.font='500 '+((n.hub||on)?(W<880?11:13):(W<880?9.5:11.5))+'px "IBM Plex Mono",monospace'; ctx.textAlign='center';
-        ctx.fillText(n.l,pos.x,pos.y+pr+(W<880?12:15));
-        ctx.restore();
-      }
-      ctx.globalAlpha=1; });
-  }
-  var last=0;
-  function loop(ts){ requestAnimationFrame(loop);
-    if(reduce){ frame(3000); return; }
-    if(ts-last>1200 && pulses.length<16){ spawn(); last=ts; }
-    frame(ts); }
-
-  // ── live layer: receipts + single-line feed + HUD from state.json ──
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  // ── live layer: a one-line activity feed + Progress KPIs/receipts from state.json ──
   var FEEDLINES=[
-    'research · exploring several ideas in parallel',
-    'engineering · building a new feature',
-    'engineering · change reviewed → committed',
-    'comms · updating this website',
-    'reliability · caught an issue and fixed itself',
-    'operations · running live, around the clock',
-    'manager · reviewing today’s priorities',
-    'safeguards · risk checks passed',
-    'research · idea tested — didn’t work, moving on'
+    'research \u00b7 exploring several ideas in parallel',
+    'engineering \u00b7 building a new feature',
+    'engineering \u00b7 change reviewed \u2192 committed',
+    'comms \u00b7 updating this website',
+    'reliability \u00b7 caught an issue and fixed itself',
+    'operations \u00b7 running live, around the clock',
+    'manager \u00b7 reviewing today\u2019s priorities',
+    'safeguards \u00b7 risk checks passed',
+    'research \u00b7 idea tested \u2014 didn\u2019t work, moving on'
   ];
   function tickFeed(){ var el=document.getElementById('feedline'); if(!el)return;
-    var line=FEEDLINES[(Math.random()*FEEDLINES.length)|0]; var parts=line.split(' · ');
+    var line=FEEDLINES[(Math.random()*FEEDLINES.length)|0]; var parts=line.split(' \u00b7 ');
     el.className='mono'; void el.offsetWidth; el.className='mono fade';
-    el.innerHTML='<b>'+esc(parts[0])+'</b> · '+esc(parts.slice(1).join(' · ')); }
+    el.innerHTML='<b>'+esc(parts[0])+'</b> \u00b7 '+esc(parts.slice(1).join(' \u00b7 ')); }
   function loadState(){
     fetch('state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
       var kc=document.getElementById('k-changes'); if(kc&&d.changes_7d!=null) kc.textContent=d.changes_7d;
@@ -723,8 +502,6 @@ footer .mono{color:var(--mut);}
         return '<div class="tl"><div class="d">'+esc(r.date)+'</div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div>';}).join('')+'</div>'; }
     }).catch(function(){});
   }
-
-  try{ layout(); requestAnimationFrame(loop); }catch(e){ stage.style.background='radial-gradient(80% 60% at 72% 35%,#13233a,#05070d)'; }
   loadState(); setInterval(loadState,120000);
   tickFeed(); if(!reduce) setInterval(tickFeed,2600);
 })();
@@ -852,13 +629,14 @@ footer .mono{color:var(--mut);}
     {ang:198, c:'#7c8cff', dim:false, b:[.36,1], team:[4,12], spin: 0.10}
   ];
 
-  var g=0, tg=0, W,H,DPR,cx,cy,ringR,sc;
+  var g=0, tg=0, W,H,DPR,cx,cy,ringR,sc,U;
   function lerp(a,b,t){return a+(b-a)*t;}
+  function cl(v,a,b){return v<a?a:v>b?b:v;}
   function ah(a){a=a<0?0:a>1?1:a;var s=Math.round(a*255).toString(16);return s.length<2?'0'+s:s;}
   function layout(){
     var rect=cv.getBoundingClientRect(); W=rect.width; H=rect.height;
     DPR=Math.min(devicePixelRatio||1,2); cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
-    sc=W<520?0.82:1; cx=W/2; cy=H*0.5; ringR=Math.min(W,H)*(W<520?0.33:0.30);
+    sc=W<560?0.9:1; cx=W/2; cy=H*0.5; U=Math.min(W,H); ringR=U*(W<560?0.34:0.36);
   }
   function ppos(p){var a=p.ang*Math.PI/180; return {x:cx+Math.cos(a)*ringR, y:cy+Math.sin(a)*ringR};}
   function ringPts(px,py,rad,maxN,phase){var a=[];for(var i=0;i<maxN;i++){var an=phase+i/maxN*6.2832;
@@ -869,57 +647,80 @@ footer .mono{color:var(--mut);}
     ctx.font=(weight||'600')+' '+size+'px "Space Grotesk",-apple-system,Segoe UI,sans-serif';
     ctx.fillText(txt,x,y); ctx.restore(); ctx.globalAlpha=1;
   }
-  // a product = its agent SPINE (a frame of dots + spokes into a small core), not a decorative orbit
+  // a PRODUCT: a bright core ringed by its own team of agents (evenly spaced, spoked to the core)
   function drawProduct(p,t){
     var b=lerp(p.b[0],p.b[1],g); if(b<=0.012) return;
-    var pp=ppos(p), core=Math.max(3.6,6.2*sc), cnt=lerp(p.team[0],p.team[1],g), maxN=p.team[1];
-    var spineR=core*1.9+Math.min(W,H)*0.03*sc, ph=reduce?-1.15:t*p.spin;
-    var pts=ringPts(pp.x,pp.y,spineR,maxN,ph), ds=Math.max(1.6,2.2*sc);
-    var hg=ctx.createRadialGradient(pp.x,pp.y,core*0.5,pp.x,pp.y,spineR*1.5);
-    hg.addColorStop(0,p.c+ah(b*0.11)); hg.addColorStop(1,p.c+'00');
-    ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(pp.x,pp.y,spineR*1.5,0,6.28); ctx.fill(); ctx.globalAlpha=1;
+    var pp=ppos(p), core=cl(U*0.018,5,16), maxN=p.team[1], cnt=lerp(p.team[0],p.team[1],g);
+    var teamR=core*1.7+U*0.05, ph=reduce?-1.15:t*p.spin, ds=cl(U*0.007,1.8,5);
+    // soft team halo
+    var hg=ctx.createRadialGradient(pp.x,pp.y,core*0.4,pp.x,pp.y,teamR*1.45);
+    hg.addColorStop(0,p.c+ah(b*0.16)); hg.addColorStop(.7,p.c+ah(b*0.05)); hg.addColorStop(1,p.c+'00');
+    ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(pp.x,pp.y,teamR*1.45,0,6.28); ctx.fill(); ctx.globalAlpha=1;
+    // team boundary ring (thin, clean — "this product's team")
+    ctx.strokeStyle=p.c+ah(b*0.22); ctx.lineWidth=1; if(p.dim) ctx.setLineDash([3,4]);
+    ctx.beginPath(); ctx.arc(pp.x,pp.y,teamR,0,6.28); ctx.stroke(); ctx.setLineDash([]);
     var full=Math.floor(cnt+1e-6), frac=cnt-full;
     function onOf(i){ return i<full?1:(i===full?frac:0); }
-    // spokes core→agent, then frame agent→next: the agents literally build the product's structure
-    ctx.strokeStyle=p.c+ah(b*0.34); ctx.lineWidth=1;
+    var pts=ringPts(pp.x,pp.y,teamR,maxN,ph);
+    // spokes core→agent: the team that builds the product
+    ctx.strokeStyle=p.c+ah(b*0.26); ctx.lineWidth=1;
     for(var i=0;i<maxN;i++){ var s1=onOf(i); if(s1<=0) continue;
       ctx.globalAlpha=s1*b; ctx.beginPath(); ctx.moveTo(pp.x,pp.y); ctx.lineTo(pts[i].x,pts[i].y); ctx.stroke(); }
-    ctx.strokeStyle=p.c+ah(b*0.22);
-    for(var j=0;j<maxN;j++){ var k=(j+1)%maxN, s2=Math.min(onOf(j),onOf(k)); if(s2<=0) continue;
-      ctx.globalAlpha=s2*b; ctx.beginPath(); ctx.moveTo(pts[j].x,pts[j].y); ctx.lineTo(pts[k].x,pts[k].y); ctx.stroke(); }
-    ctx.globalAlpha=1; ctx.fillStyle=p.c;
-    for(var m=0;m<maxN;m++){ var s3=onOf(m); if(s3<=0) continue;
-      ctx.globalAlpha=s3*b*0.95; ctx.beginPath(); ctx.arc(pts[m].x,pts[m].y,ds,0,6.28); ctx.fill(); }
-    ctx.globalAlpha=b; ctx.fillStyle='#0e1524'; ctx.strokeStyle=p.c; ctx.lineWidth=2;
-    if(p.dim) ctx.setLineDash([3,3]);
-    ctx.beginPath(); ctx.arc(pp.x,pp.y,core,0,6.28); ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
-    ctx.globalAlpha=b*0.9; ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*0.42,0,6.28); ctx.fill();
     ctx.globalAlpha=1;
-    // no per-product name: these nodes represent the model (a product + its agent team), not a named product
+    // agent dots
+    ctx.fillStyle=p.c;
+    for(var m=0;m<maxN;m++){ var s3=onOf(m); if(s3<=0) continue;
+      ctx.globalAlpha=s3*b; ctx.beginPath(); ctx.arc(pts[m].x,pts[m].y,ds,0,6.28); ctx.fill(); }
+    ctx.globalAlpha=1;
+    // product core with glow
+    var cgl=ctx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,core*2.4);
+    cgl.addColorStop(0,p.c+ah(b*0.55)); cgl.addColorStop(1,p.c+'00');
+    ctx.fillStyle=cgl; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*2.4,0,6.28); ctx.fill();
+    ctx.globalAlpha=b; ctx.fillStyle='#0b1220'; ctx.strokeStyle=p.c; ctx.lineWidth=cl(U*0.004,1.6,3.2);
+    if(p.dim) ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.arc(pp.x,pp.y,core,0,6.28); ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
+    ctx.globalAlpha=b*0.95; ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*0.4,0,6.28); ctx.fill();
+    ctx.globalAlpha=1;
+    // no per-product name: these nodes represent the model, not a named product
   }
+  // the CENTRAL TEAM: a bigger neutral hub ringed by its agents, that monitors the products
   function drawCenter(t){
     var teamN=Math.round(lerp(CENTER.team[0],CENTER.team[1],g));
-    var cR=Math.max(15,Math.min(W,H)*0.055*sc), ph=reduce?-0.6:t*CENTER.spin, ds=Math.max(1.7,2.4*sc);
+    var cR=cl(U*0.075,22,56), ph=reduce?-0.6:t*CENTER.spin, ds=cl(U*0.009,2.2,6), hubR=cl(U*0.02,6,15);
+    var cg=ctx.createRadialGradient(cx,cy,0,cx,cy,cR*2.2);
+    cg.addColorStop(0,'rgba(150,170,210,.20)'); cg.addColorStop(.6,'rgba(150,170,210,.06)'); cg.addColorStop(1,'rgba(150,170,210,0)');
+    ctx.fillStyle=cg; ctx.beginPath(); ctx.arc(cx,cy,cR*2.2,0,6.28); ctx.fill();
     var pts=ringPts(cx,cy,cR,Math.max(teamN,1),ph);
-    var cg=ctx.createRadialGradient(cx,cy,0,cx,cy,cR*2.1);
-    cg.addColorStop(0,'rgba(150,170,210,.16)'); cg.addColorStop(1,'rgba(150,170,210,0)');
-    ctx.fillStyle=cg; ctx.beginPath(); ctx.arc(cx,cy,cR*2.1,0,6.28); ctx.fill();
-    ctx.strokeStyle='rgba(174,184,204,.34)'; ctx.lineWidth=1;
-    for(var i=0;i<teamN;i++){ var k=(i+1)%teamN; ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[k].x,pts[k].y); ctx.stroke(); }
-    ctx.fillStyle='rgba(207,224,255,.9)'; ctx.beginPath(); ctx.arc(cx,cy,Math.max(2.5,3.2*sc),0,6.28); ctx.fill();
+    ctx.strokeStyle='rgba(174,184,204,.26)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.arc(cx,cy,cR,0,6.28); ctx.stroke();
+    ctx.strokeStyle='rgba(174,184,204,.30)';
+    for(var i=0;i<teamN;i++){ ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(pts[i].x,pts[i].y); ctx.stroke(); }
+    var hglow=ctx.createRadialGradient(cx,cy,0,cx,cy,hubR*2.2);
+    hglow.addColorStop(0,'rgba(207,224,255,.45)'); hglow.addColorStop(1,'rgba(207,224,255,0)');
+    ctx.fillStyle=hglow; ctx.beginPath(); ctx.arc(cx,cy,hubR*2.2,0,6.28); ctx.fill();
+    ctx.fillStyle='#131d30'; ctx.strokeStyle='#aeb8cc'; ctx.lineWidth=cl(U*0.005,2,3.4);
+    ctx.beginPath(); ctx.arc(cx,cy,hubR,0,6.28); ctx.fill(); ctx.stroke();
+    ctx.fillStyle='#cfe0ff'; ctx.beginPath(); ctx.arc(cx,cy,hubR*0.42,0,6.28); ctx.fill();
     ctx.fillStyle=CENTER.c;
     for(var m=0;m<teamN;m++){ ctx.beginPath(); ctx.arc(pts[m].x,pts[m].y,ds,0,6.28); ctx.fill(); }
-    var ly=cy+cR+(W<520?15:18);
-    label('Crewless — central team',cx,ly,'#f2f6fd',W<520?11:13.5,1,'700');
-    label('monitors the products',cx,ly+(W<520?13:15),'rgba(138,148,168,.95)',W<520?8.5:10,1,'500');
+    var ly=cy+cR+cl(U*0.045,16,30);
+    label('Crewless · a team of AI agents',cx,ly,'#f2f6fd',cl(U*0.025,10.5,16),1,'700');
+    label('runs & monitors every product',cx,ly+cl(U*0.03,13,18),'rgba(138,148,168,.95)',cl(U*0.02,8.5,12),1,'500');
   }
   function draw(t){
     ctx.clearRect(0,0,W,H);
-    // monitoring links: centre → each product ONLY (products never link to each other)
-    PROD.forEach(function(p){ var b=lerp(p.b[0],p.b[1],g); if(b<=0.04) return;
+    // faint company ring — the orbit the products sit on (gives the radial structure a spine)
+    ctx.strokeStyle='rgba(138,148,168,'+(0.05+0.05*g).toFixed(3)+')'; ctx.lineWidth=1; ctx.setLineDash([2,7]);
+    ctx.beginPath(); ctx.arc(cx,cy,ringR,0,6.28); ctx.stroke(); ctx.setLineDash([]);
+    // monitoring links + a pulse travelling centre→product (the central team polling each): centre→product ONLY
+    PROD.forEach(function(p,idx){ var b=lerp(p.b[0],p.b[1],g); if(b<=0.04) return;
       var pp=ppos(p);
-      ctx.strokeStyle='rgba(138,148,168,'+(0.12+0.12*b).toFixed(3)+')'; ctx.lineWidth=1; ctx.setLineDash([1,4]);
-      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(pp.x,pp.y); ctx.stroke(); ctx.setLineDash([]); });
+      ctx.strokeStyle='rgba(138,148,168,'+(0.10+0.14*b).toFixed(3)+')'; ctx.lineWidth=cl(U*0.002,1,1.6);
+      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(pp.x,pp.y); ctx.stroke();
+      if(!reduce){ var fr=(t*0.16+idx*0.21)%1, px=lerp(cx,pp.x,fr), py=lerp(cy,pp.y,fr), pr=cl(U*0.012,4,9);
+        var pg=ctx.createRadialGradient(px,py,0,px,py,pr);
+        pg.addColorStop(0,'rgba(207,224,255,'+(0.55*b).toFixed(3)+')'); pg.addColorStop(1,'rgba(207,224,255,0)');
+        ctx.fillStyle=pg; ctx.beginPath(); ctx.arc(px,py,pr,0,6.28); ctx.fill(); } });
     PROD.forEach(function(p){ drawProduct(p,t); });
     drawCenter(t);
   }
@@ -932,8 +733,8 @@ footer .mono{color:var(--mut);}
       ? 'Vision — not a promise. None of this is built yet.'
       : 'Today — sparse on purpose');
     foot.innerHTML=future
-      ? '<b>+1 year — the vision:</b> several independent products, each run by its own team of agents, with the central team monitoring them — new products slotting in without disturbing the ones already running. <b>Vision — not a promise. None of this is built yet.</b>'
-      : '<b>Today — sparse on purpose:</b> one product is active and a couple more are just forming — each on its own small team of agents, with the central team monitoring. This shows <b>how we operate</b>, generically; the named products and their honest status are in <a href="#real" style="color:var(--c1)">What’s real</a> below.';
+      ? '<b>+1 year — the vision:</b> several independent products, each run by its own team of AI agents, with the central team of AI agents monitoring them — new products slotting in without disturbing the ones already running. <b>Vision — not a promise. None of this is built yet.</b>'
+      : '<b>Today — sparse on purpose:</b> one product is active and a couple more are just forming — each on its own small team of AI agents, with the central team of AI agents monitoring. This shows <b>how we operate</b>, generically; the named products and their honest status are in <a href="#real" style="color:var(--c1)">What’s real</a> below.';
     if(reduce) draw(0);
   }
   tabNow.addEventListener('click',function(){ setState(false); });
