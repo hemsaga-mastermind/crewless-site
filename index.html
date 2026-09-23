@@ -73,7 +73,7 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 
 /* big hero constellation panel */
 .cst-hero{margin-top:clamp(1.4rem,3.4vw,2.2rem);}
-.cst.cst-hero canvas{height:clamp(360px,58vh,600px);}
+.cst.cst-hero canvas{height:clamp(420px,64vh,600px);}
 .cst-bar{display:flex;align-items:center;justify-content:space-between;gap:.7rem 1rem;flex-wrap:wrap;
   padding:.8rem 1rem;border-bottom:1px solid var(--line);}
 .cst-bar .tnow-badge{margin-bottom:0;}
@@ -81,7 +81,7 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 .cst-foot .cst-legend{margin-top:0;}
 .cst-note{margin-top:1.1rem;font-size:.88rem;color:var(--mut);max-width:72ch;line-height:1.55;}
 .cst-note b{color:var(--ink);font-weight:600;}
-@media(min-width:760px){ .cst.cst-hero canvas{height:clamp(420px,62vh,640px);} }
+@media(min-width:760px){ .cst.cst-hero canvas{height:clamp(480px,68vh,680px);} }
 
 section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
@@ -615,11 +615,11 @@ footer .mono{color:var(--mut);}
   var tabNow=document.getElementById('tabNow'), tabNext=document.getElementById('tabNext'),
       badge=document.getElementById('cstBadge'), foot=document.getElementById('cstFoot');
 
-  // Deliberate radial org. Centre = a small TEAM of agents (the COO + monitors). Products sit on an even
-  // ring and are INDEPENDENT of each other — the ONLY links are centre→product (the central team watching
-  // each). A product's agents are its SPINE: they frame the product, not orbit it. Angles fixed through morph.
-  // b/team=[now,future]. Today: one product bright + full spine; two faint & forming; placeholders hidden.
-  var CENTER={c:'#aeb8cc', team:[5,7], spin:0.14};
+  // Deliberate radial ORG DIAGRAM (not a galaxy). Centre = the DOMINANT hub: the team of AI agents that
+  // runs & monitors everything — largest & brightest, dead-centre in every state. Products sit on a ring
+  // around it, clearly SMALLER & DIMMER, each a small core with its agents grouped as a tidy cluster.
+  // Only links: hub→product. Angles fixed through the now→vision morph. b/team=[now,future].
+  var CENTER={c:'#dffaf6', team:[5,7], spin:0.12};
   var PROD=[
     // generic, unlabelled products — this map shows the operating MODEL, not named products
     {ang:-90, c:'#4fe0d0', dim:false, b:[1,1],   team:[9,15], spin: 0.11},
@@ -628,6 +628,10 @@ footer .mono{color:var(--mut);}
     {ang:126, c:'#b57bff', dim:true,  b:[0,.9],  team:[0,11], spin:-0.12},
     {ang:198, c:'#7c8cff', dim:false, b:[.36,1], team:[4,12], spin: 0.10}
   ];
+  // tidy packed cluster (phyllotaxis unit-disc offsets) so agents read as a GROUP, never an orbit ring
+  function clus(n){var a=[],ga=2.399963;for(var i=0;i<n;i++){var r=Math.sqrt((i+0.5)/n),an=i*ga;
+    a.push({x:Math.cos(an)*r,y:Math.sin(an)*r});}return a;}
+  PROD.forEach(function(p){p.pack=clus(p.team[1]);}); CENTER.pack=clus(CENTER.team[1]);
 
   var g=0, tg=0, W,H,DPR,cx,cy,ringR,sc,U;
   function lerp(a,b,t){return a+(b-a)*t;}
@@ -636,7 +640,7 @@ footer .mono{color:var(--mut);}
   function layout(){
     var rect=cv.getBoundingClientRect(); W=rect.width; H=rect.height;
     DPR=Math.min(devicePixelRatio||1,2); cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
-    sc=W<560?0.9:1; cx=W/2; cy=H*0.5; U=Math.min(W,H); ringR=U*(W<560?0.34:0.36);
+    sc=W<560?0.9:1; cx=W/2; cy=H*0.5; U=Math.min(W,H); ringR=U*(W<560?0.40:0.37);
   }
   function ppos(p){var a=p.ang*Math.PI/180; return {x:cx+Math.cos(a)*ringR, y:cy+Math.sin(a)*ringR};}
   function ringPts(px,py,rad,maxN,phase){var a=[];for(var i=0;i<maxN;i++){var an=phase+i/maxN*6.2832;
@@ -647,79 +651,66 @@ footer .mono{color:var(--mut);}
     ctx.font=(weight||'600')+' '+size+'px "Space Grotesk",-apple-system,Segoe UI,sans-serif';
     ctx.fillText(txt,x,y); ctx.restore(); ctx.globalAlpha=1;
   }
-  // a PRODUCT: a bright core ringed by its own team of agents (evenly spaced, spoked to the core)
+  // a PRODUCT: a small dim core with its agents grouped as a tidy CLUSTER (never an orbit). Subordinate to the hub.
   function drawProduct(p,t){
     var b=lerp(p.b[0],p.b[1],g); if(b<=0.012) return;
-    var pp=ppos(p), core=cl(U*0.018,5,16), maxN=p.team[1], cnt=lerp(p.team[0],p.team[1],g);
-    var teamR=core*1.7+U*0.05, ph=reduce?-1.15:t*p.spin, ds=cl(U*0.007,1.8,5);
-    // soft team halo
-    var hg=ctx.createRadialGradient(pp.x,pp.y,core*0.4,pp.x,pp.y,teamR*1.45);
-    hg.addColorStop(0,p.c+ah(b*0.16)); hg.addColorStop(.7,p.c+ah(b*0.05)); hg.addColorStop(1,p.c+'00');
-    ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(pp.x,pp.y,teamR*1.45,0,6.28); ctx.fill(); ctx.globalAlpha=1;
-    // team boundary ring (thin, clean — "this product's team")
-    ctx.strokeStyle=p.c+ah(b*0.22); ctx.lineWidth=1; if(p.dim) ctx.setLineDash([3,4]);
-    ctx.beginPath(); ctx.arc(pp.x,pp.y,teamR,0,6.28); ctx.stroke(); ctx.setLineDash([]);
-    var full=Math.floor(cnt+1e-6), frac=cnt-full;
-    function onOf(i){ return i<full?1:(i===full?frac:0); }
-    var pts=ringPts(pp.x,pp.y,teamR,maxN,ph);
-    // spokes core→agent: the team that builds the product
-    ctx.strokeStyle=p.c+ah(b*0.26); ctx.lineWidth=1;
-    for(var i=0;i<maxN;i++){ var s1=onOf(i); if(s1<=0) continue;
-      ctx.globalAlpha=s1*b; ctx.beginPath(); ctx.moveTo(pp.x,pp.y); ctx.lineTo(pts[i].x,pts[i].y); ctx.stroke(); }
-    ctx.globalAlpha=1;
-    // agent dots
+    var pp=ppos(p), core=cl(U*0.017,5,13), maxN=p.team[1], cnt=lerp(p.team[0],p.team[1],g);
+    var packR=core*1.5+U*0.02, ph=reduce?0:t*p.spin*0.5, cs=Math.cos(ph), sn=Math.sin(ph);
+    var ds=cl(U*0.0062,1.6,4.2), full=Math.floor(cnt+1e-6), frac=cnt-full;
+    // very soft, tight halo (team map — not deep space)
+    var hg=ctx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,packR*1.4);
+    hg.addColorStop(0,p.c+ah(b*0.09)); hg.addColorStop(1,p.c+'00');
+    ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(pp.x,pp.y,packR*1.4,0,6.28); ctx.fill(); ctx.globalAlpha=1;
+    // agent CLUSTER (packed disc), dimmer than the hub
     ctx.fillStyle=p.c;
-    for(var m=0;m<maxN;m++){ var s3=onOf(m); if(s3<=0) continue;
-      ctx.globalAlpha=s3*b; ctx.beginPath(); ctx.arc(pts[m].x,pts[m].y,ds,0,6.28); ctx.fill(); }
+    for(var i=0;i<maxN;i++){ var on=i<full?1:(i===full?frac:0); if(on<=0) continue;
+      var o=p.pack[i], ox=(o.x*cs-o.y*sn)*packR, oy=(o.x*sn+o.y*cs)*packR;
+      ctx.globalAlpha=on*b*0.8; ctx.beginPath(); ctx.arc(pp.x+ox,pp.y+oy,ds,0,6.28); ctx.fill(); }
     ctx.globalAlpha=1;
-    // product core with glow
-    var cgl=ctx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,core*2.4);
-    cgl.addColorStop(0,p.c+ah(b*0.55)); cgl.addColorStop(1,p.c+'00');
-    ctx.fillStyle=cgl; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*2.4,0,6.28); ctx.fill();
-    ctx.globalAlpha=b; ctx.fillStyle='#0b1220'; ctx.strokeStyle=p.c; ctx.lineWidth=cl(U*0.004,1.6,3.2);
+    // small product core (clearly smaller & dimmer than the hub)
+    ctx.globalAlpha=b*0.9; ctx.fillStyle='#0b1220'; ctx.strokeStyle=p.c; ctx.lineWidth=cl(U*0.0032,1.3,2.4);
     if(p.dim) ctx.setLineDash([4,3]);
     ctx.beginPath(); ctx.arc(pp.x,pp.y,core,0,6.28); ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
-    ctx.globalAlpha=b*0.95; ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*0.4,0,6.28); ctx.fill();
+    ctx.globalAlpha=b*0.8; ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*0.4,0,6.28); ctx.fill();
     ctx.globalAlpha=1;
     // no per-product name: these nodes represent the model, not a named product
   }
-  // the CENTRAL TEAM: a bigger neutral hub ringed by its agents, that monitors the products
+  // the CENTRAL HUB: the team of AI agents that runs & monitors — DOMINANT, brightest, dead-centre.
   function drawCenter(t){
     var teamN=Math.round(lerp(CENTER.team[0],CENTER.team[1],g));
-    var cR=cl(U*0.075,22,56), ph=reduce?-0.6:t*CENTER.spin, ds=cl(U*0.009,2.2,6), hubR=cl(U*0.02,6,15);
-    var cg=ctx.createRadialGradient(cx,cy,0,cx,cy,cR*2.2);
-    cg.addColorStop(0,'rgba(150,170,210,.20)'); cg.addColorStop(.6,'rgba(150,170,210,.06)'); cg.addColorStop(1,'rgba(150,170,210,0)');
-    ctx.fillStyle=cg; ctx.beginPath(); ctx.arc(cx,cy,cR*2.2,0,6.28); ctx.fill();
-    var pts=ringPts(cx,cy,cR,Math.max(teamN,1),ph);
-    ctx.strokeStyle='rgba(174,184,204,.26)'; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.arc(cx,cy,cR,0,6.28); ctx.stroke();
-    ctx.strokeStyle='rgba(174,184,204,.30)';
-    for(var i=0;i<teamN;i++){ ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(pts[i].x,pts[i].y); ctx.stroke(); }
-    var hglow=ctx.createRadialGradient(cx,cy,0,cx,cy,hubR*2.2);
-    hglow.addColorStop(0,'rgba(207,224,255,.45)'); hglow.addColorStop(1,'rgba(207,224,255,0)');
-    ctx.fillStyle=hglow; ctx.beginPath(); ctx.arc(cx,cy,hubR*2.2,0,6.28); ctx.fill();
-    ctx.fillStyle='#131d30'; ctx.strokeStyle='#aeb8cc'; ctx.lineWidth=cl(U*0.005,2,3.4);
-    ctx.beginPath(); ctx.arc(cx,cy,hubR,0,6.28); ctx.fill(); ctx.stroke();
-    ctx.fillStyle='#cfe0ff'; ctx.beginPath(); ctx.arc(cx,cy,hubR*0.42,0,6.28); ctx.fill();
-    ctx.fillStyle=CENTER.c;
-    for(var m=0;m<teamN;m++){ ctx.beginPath(); ctx.arc(pts[m].x,pts[m].y,ds,0,6.28); ctx.fill(); }
-    var ly=cy+cR+cl(U*0.045,16,30);
-    label('Crewless · a team of AI agents',cx,ly,'#f2f6fd',cl(U*0.025,10.5,16),1,'700');
-    label('runs & monitors every product',cx,ly+cl(U*0.03,13,18),'rgba(138,148,168,.95)',cl(U*0.02,8.5,12),1,'500');
+    var core=cl(U*0.036,13,30), packR=core*1.35+U*0.055, ph=reduce?0:t*CENTER.spin*0.5;
+    var cs=Math.cos(ph), sn=Math.sin(ph), ds=cl(U*0.0085,2.2,5.6);
+    // moderate hub glow (dialled back — not deep-space)
+    var cg=ctx.createRadialGradient(cx,cy,0,cx,cy,packR*1.5);
+    cg.addColorStop(0,'rgba(90,210,200,.20)'); cg.addColorStop(.5,'rgba(90,210,200,.07)'); cg.addColorStop(1,'rgba(90,210,200,0)');
+    ctx.fillStyle=cg; ctx.beginPath(); ctx.arc(cx,cy,packR*1.5,0,6.28); ctx.fill();
+    // hub agent cluster — larger & brighter than any product's
+    ctx.fillStyle='#dffaf6';
+    for(var i=0;i<teamN;i++){ var o=CENTER.pack[i], ox=(o.x*cs-o.y*sn)*packR, oy=(o.x*sn+o.y*cs)*packR;
+      ctx.globalAlpha=0.92; ctx.beginPath(); ctx.arc(cx+ox,cy+oy,ds,0,6.28); ctx.fill(); }
+    ctx.globalAlpha=1;
+    // hub core — biggest & brightest node on the canvas
+    var hg=ctx.createRadialGradient(cx-core*0.28,cy-core*0.28,core*0.1,cx,cy,core);
+    hg.addColorStop(0,'#f2fffd'); hg.addColorStop(.55,'#6fe6db'); hg.addColorStop(1,'#26a99c');
+    ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(cx,cy,core,0,6.28); ctx.fill();
+    ctx.lineWidth=cl(U*0.006,2.4,4.4); ctx.strokeStyle='#eafffb'; ctx.stroke();
+    var ly=cy+packR+cl(U*0.035,15,26);
+    label('Crewless · a team of AI agents',cx,ly,'#f6faff',cl(U*0.028,12,18),1,'700');
+    label('runs & monitors every product',cx,ly+cl(U*0.032,14,20),'rgba(150,160,182,.95)',cl(U*0.021,9,13),1,'500');
   }
   function draw(t){
     ctx.clearRect(0,0,W,H);
-    // faint company ring — the orbit the products sit on (gives the radial structure a spine)
-    ctx.strokeStyle='rgba(138,148,168,'+(0.05+0.05*g).toFixed(3)+')'; ctx.lineWidth=1; ctx.setLineDash([2,7]);
+    // ONE subtle company ring (the only ring in the diagram) — radial structure, not an orbit-field
+    ctx.strokeStyle='rgba(138,148,168,'+(0.06+0.04*g).toFixed(3)+')'; ctx.lineWidth=1; ctx.setLineDash([2,8]);
     ctx.beginPath(); ctx.arc(cx,cy,ringR,0,6.28); ctx.stroke(); ctx.setLineDash([]);
-    // monitoring links + a pulse travelling centre→product (the central team polling each): centre→product ONLY
+    // clean org spokes: hub → each product (the ONLY links), with a subtle monitoring pulse
     PROD.forEach(function(p,idx){ var b=lerp(p.b[0],p.b[1],g); if(b<=0.04) return;
       var pp=ppos(p);
-      ctx.strokeStyle='rgba(138,148,168,'+(0.10+0.14*b).toFixed(3)+')'; ctx.lineWidth=cl(U*0.002,1,1.6);
+      ctx.strokeStyle='rgba(150,160,182,'+(0.12+0.16*b).toFixed(3)+')'; ctx.lineWidth=cl(U*0.0022,1,1.8);
       ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(pp.x,pp.y); ctx.stroke();
-      if(!reduce){ var fr=(t*0.16+idx*0.21)%1, px=lerp(cx,pp.x,fr), py=lerp(cy,pp.y,fr), pr=cl(U*0.012,4,9);
+      if(!reduce){ var fr=(t*0.14+idx*0.21)%1, px=lerp(cx,pp.x,fr), py=lerp(cy,pp.y,fr), pr=cl(U*0.01,3.5,7);
         var pg=ctx.createRadialGradient(px,py,0,px,py,pr);
-        pg.addColorStop(0,'rgba(207,224,255,'+(0.55*b).toFixed(3)+')'); pg.addColorStop(1,'rgba(207,224,255,0)');
+        pg.addColorStop(0,'rgba(210,240,238,'+(0.5*b).toFixed(3)+')'); pg.addColorStop(1,'rgba(210,240,238,0)');
         ctx.fillStyle=pg; ctx.beginPath(); ctx.arc(px,py,pr,0,6.28); ctx.fill(); } });
     PROD.forEach(function(p){ drawProduct(p,t); });
     drawCenter(t);
