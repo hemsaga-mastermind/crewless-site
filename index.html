@@ -282,6 +282,29 @@ footer .mono{color:var(--mut);}
   font-size:.66rem;letter-spacing:.03em;color:var(--dim);}
 .cst-legend span{display:inline-flex;align-items:center;gap:.4rem;}
 .cst-legend i{width:.55rem;height:.55rem;border-radius:50%;flex:none;}
+
+/* core-vision teaser band — the thesis, front & centre under the hero (complements the horizon map) */
+.vision{border-top:1px solid var(--line);
+  background:radial-gradient(120% 160% at 10% 0%,rgba(79,224,208,.07),transparent 58%),linear-gradient(180deg,rgba(13,19,30,.55),rgba(5,7,13,0));}
+.vwrap{display:flex;gap:clamp(1.3rem,4vw,3rem);align-items:center;flex-wrap:wrap;
+  padding:clamp(1.5rem,4.2vw,2.5rem) 0;}
+.vtext{flex:1 1 320px;min-width:0;}
+.vk{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.75rem;}
+.vtag{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--c3);border:1px solid #4a2f6b;border-radius:100px;padding:.2rem .58rem;}
+.vlede{font-size:clamp(1.06rem,2.3vw,1.4rem);line-height:1.4;max-width:44ch;letter-spacing:-.012em;color:var(--ink);}
+.vlede b{font-weight:600;}
+.vlede .grad{background:linear-gradient(105deg,var(--c1),var(--c2) 60%,var(--c3));
+  -webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600;}
+.vmore{display:inline-block;margin-top:1rem;font-size:.85rem;color:var(--c1);border-bottom:1px solid transparent;transition:.18s;}
+.vmore:hover{border-bottom-color:var(--c1);}
+.vcue{flex:0 0 auto;width:min(240px,80vw);}
+.vcue svg{width:100%;height:auto;display:block;}
+.vcue .vcap{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  fill:var(--mut);}
+@media(prefers-reduced-motion:no-preference){.vcue .fu{animation:vpulse 3s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}}
+@keyframes vpulse{0%,100%{opacity:.85}50%{opacity:1}}
+@media(max-width:560px){.vcue{order:-1;width:min(220px,74vw);margin:0 auto;}}
 </style></head>
 <body>
 <header><div class="wrap bar">
@@ -307,6 +330,47 @@ footer .mono{color:var(--mut);}
       point of light is an agent, working in parallel.</p>
     <div class="cta"><a class="btn p" href="#idea">How it works ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Get in touch</a></div>
     <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
+  </div>
+</div>
+
+<!-- CORE-VISION teaser — the thesis up top; the full org map lives in #horizon below -->
+<div class="vision" id="vision">
+  <div class="wrap vwrap">
+    <div class="vtext">
+      <p class="kick vk">Where we're headed <span class="vtag">Vision · not yet built</span></p>
+      <p class="vlede">A company that builds and runs a growing set of <b>independent products</b> — each on
+        its own <b>team of AI agents</b>, with a <b>central team watching over them</b> — <span class="grad">AI you
+        can trust to run things over time</span>, not just answer. That's the multi-year direction we're building toward.</p>
+      <a class="vmore" href="#horizon">See where it actually stands today ↓</a>
+    </div>
+    <div class="vcue" aria-hidden="true">
+      <svg viewBox="0 0 240 96">
+        <!-- NOW: central team + one product -->
+        <g>
+          <line x1="32" y1="41" x2="32" y2="25" stroke="#8a94a8" stroke-width="1" stroke-dasharray="1 3"/>
+          <circle cx="32" cy="44" r="3" fill="#aeb8cc"/>
+          <circle cx="32" cy="20" r="5" fill="#0e1524" stroke="#4fe0d0" stroke-width="1.6"/>
+          <circle cx="32" cy="20" r="1.8" fill="#4fe0d0"/>
+          <circle cx="24" cy="15" r="1.4" fill="#4fe0d0"/><circle cx="40" cy="15" r="1.4" fill="#4fe0d0"/><circle cx="32" cy="10" r="1.4" fill="#4fe0d0"/>
+          <text x="32" y="82" text-anchor="middle" class="vcap">now</text>
+        </g>
+        <!-- arrow now → +1yr -->
+        <text x="81" y="24" text-anchor="middle" class="vcap" fill="#7c8cff">+1 yr</text>
+        <path d="M66 44 H94" stroke="#7c8cff" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <path d="M92 40 L98 44 L92 48" fill="none" stroke="#7c8cff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- VISION: central team + several products (pulses gently, honoured by reduced-motion) -->
+        <g class="fu">
+          <line x1="150" y1="44" x2="150" y2="24" stroke="#8a94a8" stroke-width="1" stroke-dasharray="1 3"/>
+          <line x1="150" y1="44" x2="172" y2="55" stroke="#8a94a8" stroke-width="1" stroke-dasharray="1 3"/>
+          <line x1="150" y1="44" x2="128" y2="55" stroke="#8a94a8" stroke-width="1" stroke-dasharray="1 3"/>
+          <circle cx="150" cy="44" r="3" fill="#aeb8cc"/>
+          <g><circle cx="150" cy="20" r="4.6" fill="#0e1524" stroke="#4fe0d0" stroke-width="1.5"/><circle cx="150" cy="20" r="1.6" fill="#4fe0d0"/><circle cx="143" cy="15" r="1.3" fill="#4fe0d0"/><circle cx="157" cy="15" r="1.3" fill="#4fe0d0"/></g>
+          <g><circle cx="176" cy="58" r="4.6" fill="#0e1524" stroke="#ffd166" stroke-width="1.5"/><circle cx="176" cy="58" r="1.6" fill="#ffd166"/><circle cx="184" cy="54" r="1.3" fill="#ffd166"/><circle cx="183" cy="64" r="1.3" fill="#ffd166"/></g>
+          <g><circle cx="124" cy="58" r="4.6" fill="#0e1524" stroke="#b57bff" stroke-width="1.5"/><circle cx="124" cy="58" r="1.6" fill="#b57bff"/><circle cx="116" cy="54" r="1.3" fill="#b57bff"/><circle cx="117" cy="64" r="1.3" fill="#b57bff"/></g>
+          <text x="150" y="84" text-anchor="middle" class="vcap">vision</text>
+        </g>
+      </svg>
+    </div>
   </div>
 </div>
 
