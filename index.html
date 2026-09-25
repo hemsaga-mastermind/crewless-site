@@ -36,7 +36,20 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
   background:radial-gradient(circle at 35% 30%,var(--c1),#0b7d70);color:#04120f;font-size:.85rem;}
 .nav{display:flex;gap:1.15rem;font-size:.8rem;color:var(--mut);}
 .nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
-@media(max-width:640px){.nav{display:none;}}
+.navtoggle{display:none;}
+@media(max-width:640px){
+  .bar{position:relative;}
+  .nav{display:none;}
+  .navtoggle{display:inline-flex;align-items:center;justify-content:center;width:2.3rem;height:2.3rem;
+    border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);
+    font-size:1.05rem;line-height:1;cursor:pointer;}
+  .navtoggle:focus-visible{outline:2px solid var(--c1);outline-offset:2px;}
+  .nav.open{display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;
+    padding:.3rem clamp(1.15rem,4vw,2.2rem) .9rem;background:#070a12f5;backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);box-shadow:0 14px 26px #000a;}
+  .nav.open a{padding:.85rem 0;border-top:1px solid var(--line);font-size:.94rem;color:var(--ink);}
+  .nav.open a:first-child{border-top:none;}
+}
 
 /* ── hero: the big constellation is the centrepiece ── */
 .hero{position:relative;border-bottom:1px solid var(--line);
@@ -283,10 +296,15 @@ footer .mono{color:var(--mut);}
 .sim-tally .tp{color:var(--c1);} .sim-tally .tk{color:#ff8b8b;}
 .sim-note{margin-top:.75rem;font-size:.76rem;color:var(--dim);max-width:60ch;}
 @media(max-width:720px){
-  .sim-track{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;
-    scroll-snap-type:x mandatory;padding-bottom:.5rem;gap:.5rem;}
-  .st2{flex:0 0 74%;scroll-snap-align:start;}
-  .simlink{width:14px;height:2px;}
+  /* compact vertical list — tight rows, no horizontal swipe (was confusing per Founder review) */
+  .sim-track{flex-direction:column;gap:.4rem;}
+  .st2{flex:1 1 auto;display:flex;align-items:center;gap:.6rem;padding:.5rem .65rem;}
+  .st2:hover,.st2.hot{transform:none;}
+  .st2 .si{margin-bottom:0;flex:none;}
+  .st2 .stt{font-size:.85rem;margin:0;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .st2 .sv{margin-top:0;flex:none;max-width:5.4rem;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .st2 .agents{display:none;}
+  .simlink{display:none;}
   .sim-ctrl{margin-left:0;width:100%;}
   .sim-ctrl button{flex:1;justify-content:center;}
 }
@@ -324,7 +342,8 @@ footer .mono{color:var(--mut);}
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac">⚓</span> Crewless</a>
-  <nav class="nav"><a href="#idea">The idea</a><a href="#brain">The brain</a><a href="#real">What's real</a><a href="#lab">The Lab</a><a href="#receipts">Progress</a><a href="/brief/">Briefs</a><a href="#contact">Contact</a></nav>
+  <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
+  <nav class="nav" id="siteNav"><a href="#idea">The idea</a><a href="#brain">The brain</a><a href="#real">What's real</a><a href="#lab">The Lab</a><a href="#receipts">Progress</a><a href="/brief/">Briefs</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -372,9 +391,9 @@ footer .mono{color:var(--mut);}
 <section id="idea"><div class="wrap">
   <p class="kick">The idea</p>
   <p class="big">Can one person, with a team of AI agents, build and run a real company?</p>
-  <p class="sub">One founder sets the direction and holds every decision that involves real money or real
-    risk. A central team of AI agents grows, protects and monitors the company, and each product runs on its
-    own team of AI agents — its spine. The products run independently.</p>
+  <p class="sub">One founder holds every decision on real money or real risk. A central team of AI agents
+    grows, protects and monitors the company; each product runs on its own team of AI agents — its spine —
+    and stands independently.</p>
   <ul class="pills">
     <li>Reviewed before it ships</li>
     <li>People hold the money &amp; risk</li>
@@ -388,11 +407,10 @@ footer .mono{color:var(--mut);}
 <section id="brain"><div class="wrap">
   <p class="kick">The brain</p>
   <p class="big">An AI that runs things — not one that just answers.</p>
-  <p class="sub">Most AI forgets the moment you close the chat — it can answer, but it can't be trusted
-    to <b class="hl">run</b> something over days and months. Crewless is built the other way round: its
-    agents carry the company with them and pick up exactly where they left off. That's the difference
-    between a tool you prompt and a company that runs itself — and how we do it is the part we keep
-    under the hood.</p>
+  <p class="sub">Most AI forgets the moment you close the chat — useful for answers, not for
+    <b class="hl">running</b> something over months. Crewless agents carry the company forward and pick up
+    exactly where they left off. That's the gap between a tool you prompt and a company that runs itself —
+    how we do it stays under the hood.</p>
 
   <div class="brainrow">
     <div class="bcard k1">
@@ -404,15 +422,15 @@ footer .mono{color:var(--mut);}
     <div class="bcard k2">
       <p class="kx">The method</p>
       <h3>Proven or killed — before real money moves</h3>
-      <p>No idea reaches real money on a hunch. Every one runs a gauntlet built to <b>break</b> it, and
-        most don't survive. Only the few that do get armed — small, and only with a person's one-tap go.
+      <p>No idea reaches real money on a hunch. It runs a gauntlet built to <b>break</b> it — most
+        don't survive. Survivors get armed small, only with a person's one-tap go.
         <span class="tease">What's in that gauntlet stays under the hood.</span></p>
     </div>
     <div class="bcard k3">
       <p class="kx">The shape</p>
       <h3>Independent products, one team each</h3>
-      <p>Every product we build runs on its <b>own team of AI agents</b> — its spine — and runs on its
-        own; the central team of AI agents only watches over it. We add new products without disturbing
+      <p>Every product runs on its <b>own team of AI agents</b> — its spine — and stands on its
+        own; the central team only watches over it. New products slot in without disturbing
         the ones already running. <span class="tease">What actually exists today is named in What's real.</span></p>
     </div>
   </div>
@@ -443,7 +461,7 @@ footer .mono{color:var(--mut);}
 <section id="real"><div class="wrap">
   <p class="kick">What's real</p>
   <p class="big">What actually exists today — named, with honest status.</p>
-  <p class="sub">The model above is how we operate. Here are the real things behind it, with no spin —
+  <p class="sub">The model above is how we operate. Below are the real things behind it, no spin —
     one live thing, not a portfolio.</p>
   <div class="grid">
     <div class="card">
@@ -473,9 +491,9 @@ footer .mono{color:var(--mut);}
 <section id="lab"><div class="wrap">
   <p class="kick">The Lab</p>
   <p class="big">Ideas we're weighing — and the ones we've killed.</p>
-  <p class="sub">We work like an R&amp;D lab: bring an idea, build a proof-of-concept, and find out honestly
-    whether it has an edge. Not everything gets approved — we explore openly and drop what doesn't earn its
-    place. A "no" is a finding, not a failure, and we leave it on the board.</p>
+  <p class="sub">We work like an R&amp;D lab: bring an idea, build a proof-of-concept, and test it honestly.
+    Not everything gets approved — we drop what doesn't earn its place, openly. A "no" is a finding,
+    not a failure, and stays on the board.</p>
   <p class="labsum"><b class="lg">3 exploring</b> · <b class="lw">1 weighing</b> · <b class="ln">2 killed</b> — and we show which is which.</p>
   <ul class="labgrid">
     <li class="lab-item"><span class="tag go">Exploring</span><p>A self-healing watchdog for small websites — the tech we already run for ourselves.</p></li>
@@ -490,7 +508,7 @@ footer .mono{color:var(--mut);}
 <section id="receipts"><div class="wrap">
   <p class="kick">Progress</p>
   <p class="big">A dated, honest record of what we've actually done.</p>
-  <p class="sub">Every entry below is something that really happened — wins and setbacks alike, timestamped and left in place. No polish, no hindsight.</p>
+  <p class="sub">Every entry below really happened — wins and setbacks, timestamped and left in place. No polish, no hindsight.</p>
   <div class="stats" id="stats">
     <div class="stat"><b id="k-changes">—</b><span>changes shipped · last 7 days</span></div>
     <div class="stat"><b id="k-receipts">—</b><span>updates logged, in the open</span></div>
@@ -600,6 +618,16 @@ footer .mono{color:var(--mut);}
   }
   loadState(); setInterval(loadState,120000);
   tickFeed(); if(!reduce) setInterval(tickFeed,2600);
+  // ── mobile hamburger nav ──
+  var navBtn=document.getElementById('navToggle'), nav=document.getElementById('siteNav');
+  if(navBtn&&nav){
+    var closeNav=function(){ nav.classList.remove('open'); navBtn.setAttribute('aria-expanded','false'); navBtn.textContent='☰'; };
+    var openNav=function(){ nav.classList.add('open'); navBtn.setAttribute('aria-expanded','true'); navBtn.textContent='✕'; };
+    navBtn.addEventListener('click',function(e){ e.stopPropagation(); nav.classList.contains('open') ? closeNav() : openNav(); });
+    nav.addEventListener('click',function(e){ if(e.target.closest('a')) closeNav(); });
+    document.addEventListener('click',function(e){ if(nav.classList.contains('open') && !nav.contains(e.target) && e.target!==navBtn) closeNav(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeNav(); });
+  }
 })();
 </script>
 <script>
