@@ -1,0 +1,5 @@
+# Cloudflare Pages headers. state.json is live data (confidence/targets) — never
+# cache it at the edge, or the site shows stale/blank confidence after a refresh.
+/state.json
+  Cache-Control: no-store, max-age=0
+  Content-Type: application/json
