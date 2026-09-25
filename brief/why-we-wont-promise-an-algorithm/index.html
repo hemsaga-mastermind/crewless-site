@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Crewless Brief Nº2 — why no one can honestly promise a consistently-profitable trading algorithm, what the research actually says, and the disciplined thing we do instead.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why We Won't Promise You a Trading Algorithm — Crewless Brief Nº2">
+<meta property="og:description" content="The industry sells the fantasy of a magic algorithm. The research says it can't exist. Here's the honest alternative, with our sources.">
+<meta property="og:url" content="https://crewless.se/brief/why-we-wont-promise-an-algorithm/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://crewless.se/brief/why-we-wont-promise-an-algorithm/">
+<title>Why We Won't Promise You an Algorithm</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#05070d; --ink:#eef2f8; --mut:#8a94a8; --dim:#565f72; --line:#161d2b;
+  --panel:rgba(13,19,30,.72); --c1:#4fe0d0; --c2:#7c8cff; --c3:#b57bff; --live:#4fe0d0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);overflow-x:hidden;
+  font:400 16px/1.7 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;}
+.mono{font-family:"IBM Plex Mono",monospace;}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2.2rem);}
+a{color:inherit;text-decoration:none;}
+header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px);
+  background:linear-gradient(#05070d,#05070de6);border-bottom:1px solid var(--line);}
+.bar{display:flex;align-items:center;justify-content:space-between;height:58px;}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.06rem;letter-spacing:.01em;}
+.brand .ac{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,var(--c1),#0b7d70);color:#04120f;font-size:.85rem;}
+.nav{display:flex;gap:1.15rem;font-size:.8rem;color:var(--mut);}
+.nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
+@media(max-width:640px){.nav{display:none;}}
+main{padding-top:58px;}
+.artwrap{max-width:720px;margin:0 auto;padding:clamp(2.6rem,7vw,4.6rem) clamp(1.15rem,5vw,1.6rem) 3rem;}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--c1);
+  display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.eyebrow .no{color:var(--mut);}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--c1);display:inline-block;}
+h1.title{font-size:clamp(2rem,6vw,3.15rem);line-height:1.06;font-weight:700;letter-spacing:-.02em;
+  text-wrap:balance;margin:1.15rem 0 .9rem;
+  background:linear-gradient(100deg,var(--ink) 30%,var(--c1) 78%,var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.meta{font-size:.78rem;color:var(--dim);display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;}
+.meta .tag{border:1px solid var(--line);border-radius:999px;padding:.16rem .6rem;color:var(--mut);}
+.rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:2rem 0;}
+.lead{font-size:1.13rem;line-height:1.72;color:#d9e0ee;}
+.lead .pos{color:var(--ink);font-weight:500;border-bottom:1px solid rgba(79,224,208,.4);}
+h2.sec{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);
+  margin:2.8rem 0 1.25rem;font-weight:600;display:flex;align-items:center;gap:.7rem;}
+h2.sec::after{content:"";flex:1;height:1px;background:var(--line);}
+p{margin:1.05rem 0;color:#cdd5e4;}
+.conn{display:flex;gap:1.05rem;margin:1.5rem 0;padding-bottom:1.5rem;border-bottom:1px solid var(--line);}
+.conn:last-of-type{border-bottom:0;}
+.conn .n{font-family:"IBM Plex Mono",monospace;font-size:1.5rem;font-weight:500;line-height:1;
+  color:var(--c3);flex:0 0 auto;width:2.2rem;padding-top:.15rem;}
+.conn .body b{color:var(--ink);font-weight:600;}
+.conn .body p:first-child{margin-top:0;}
+ul.take{list-style:none;margin:1.2rem 0;padding:0;}
+ul.take li{position:relative;padding:.55rem 0 .55rem 1.4rem;color:#cdd5e4;border-bottom:1px solid var(--line);}
+ul.take li:last-child{border-bottom:0;}
+ul.take li::before{content:"→";position:absolute;left:0;color:var(--c2);}
+ul.take b{color:var(--ink);}
+a.src{color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28);transition:border-color .2s;}
+a.src:hover{border-bottom-color:var(--c1);}
+.stance{border-left:2px solid var(--c1);padding:.2rem 0 .2rem 1.15rem;margin:1.6rem 0;color:#d9e0ee;}
+.foot-note{margin-top:2.6rem;padding:1.15rem 1.25rem;border:1px solid var(--line);border-radius:12px;
+  background:var(--panel);font-size:.86rem;color:var(--mut);line-height:1.6;}
+.foot-note b{color:var(--ink);}
+.back{display:inline-flex;align-items:center;gap:.45rem;margin-top:2.4rem;font-size:.85rem;color:var(--mut);}
+.back:hover{color:var(--c1);}
+.morebrief{margin-top:1.4rem;font-size:.85rem;color:var(--mut);}
+.morebrief a{color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28);}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;line-height:1.7;
+  padding:2.4rem 0 3rem;margin-top:3rem;}
+</style></head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="/" aria-label="Crewless — home"><span class="ac">⚓</span> Crewless</a>
+  <nav class="nav"><a href="/#idea">The idea</a><a href="/#brain">The brain</a><a href="/#real">What's real</a><a href="/#lab">The Lab</a><a href="/#receipts">Progress</a><a href="/brief/">Briefs</a></nav>
+</div></header>
+
+<main><article class="artwrap">
+  <div class="eyebrow">Crewless Briefs <span class="no">· Nº 2</span></div>
+  <h1 class="title">Why we won't promise you a trading algorithm</h1>
+  <div class="meta">
+    <span class="mono">2026-09-25</span>
+    <span class="tag">Pre-proof build-log</span>
+    <span class="tag">Sourced</span>
+  </div>
+  <div class="rule"></div>
+
+  <p class="lead">Most of the industry sells the same thing: a proven algorithm that quietly, consistently beats the market. We won't — and not out of modesty. <span class="pos">The honest answer is that no one can promise a consistently-profitable trading algorithm, and the research on why is unambiguous.</span> What we <em>can</em> promise is the discipline the fantasy skips. So here's the hard truth, with our sources, and what we do instead.</p>
+
+  <h2 class="sec">Four reasons no one can promise it</h2>
+
+  <div class="conn"><div class="n">01</div><div class="body">
+    <p><b>Edges decay by their very nature.</b> Andrew Lo's Adaptive Markets Hypothesis describes profitable strategies going through an evolutionary cycle — discovered, exploited, crowded, extinct — as the population of competitors changes <a class="src" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=602222" target="_blank" rel="noopener">(Lo, SSRN)</a>. An edge isn't a permanent machine; it's a temporary advantage the market evolves <em>against</em>. We've watched it happen to our own signals within days of finding them.</p>
+  </div></div>
+
+  <div class="conn"><div class="n">02</div><div class="body">
+    <p><b>Backtests lie by default.</b> This is the core of Bailey &amp; López de Prado's work: the more strategy variants you test, the more likely the best one is pure luck. As few as a handful of trials start producing false positives, and a backtest Sharpe of 2.0 across a hundred tried variants can deflate toward 0.5 once you correct for the search <a class="src" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551" target="_blank" rel="noopener">(Bailey &amp; López de Prado)</a>. A beautiful backtest is <em>weak</em> evidence — the only thing you can't dredge is performance on data that didn't exist when the strategy was built.</p>
+  </div></div>
+
+  <div class="conn"><div class="n">03</div><div class="body">
+    <p><b>The ground shifts underneath the model.</b> Markets are non-stationary — volatility regimes, correlations, even the sign of relationships change with policy and crises. In-sample fit says almost nothing about tomorrow, which is exactly why models tuned to the past break at the next structural shift <a class="src" href="https://rady.ucsd.edu/_files/faculty-research/timmermann/regime_changes_June_22.pdf" target="_blank" rel="noopener">(regime-change research)</a>. And the classic frame still holds: prices already reflect what's known <a class="src" href="https://www.hoover.org/research/efficient-markets-hypothesis-and-modern-finance-nobel-prize-winner-eugene-fama" target="_blank" rel="noopener">(Fama)</a>.</p>
+  </div></div>
+
+  <div class="conn"><div class="n">04</div><div class="body">
+    <p><b>Costs eat real edges, and tails do the killing.</b> Most documented market anomalies shrink or vanish once realistic trading costs are applied, and crowding forces everyone onto noisier, earlier versions of the same signal <a class="src" href="https://www.nber.org/system/files/working_papers/w20721/w20721.pdf" target="_blank" rel="noopener">(Novy-Marx &amp; Velikov)</a>. Meanwhile the events that actually determine survival — 1998, 2008, 2020 — are far fatter and more frequent than any normal-distribution model assumes; ruin arrives in one extreme move, not a slow drip <a class="src" href="https://macrosynergy.com/research/the-dangerous-disregard-of-fat-tails-in-quantitative-finance/" target="_blank" rel="noopener">(on fat tails)</a>.</p>
+  </div></div>
+
+  <h2 class="sec">What serious people do instead of predicting</h2>
+  <ul class="take">
+    <li><b>Manage survival before return.</b> Avoiding ruin comes before any entry — small, bounded, pre-sized exposure that a fat-tail event can't wipe out.</li>
+    <li><b>Size small; never bet the full edge.</b> Betting twice the "optimal" Kelly fraction erases your entire expected compounded gain; betting half of it costs only a quarter — and you're always <em>estimating</em> the edge, never certain of it <a class="src" href="https://gwern.net/doc/statistics/decision/2006-thorp.pdf" target="_blank" rel="noopener">(Thorp)</a>.</li>
+    <li><b>Diversify uncorrelated bets</b> rather than hunt one big one — a handful of genuinely uncorrelated return streams cuts risk far more than a better single signal <a class="src" href="https://financhill.com/blog/investing/ray-dalio-holy-grail-explained" target="_blank" rel="noopener">(Dalio's "Holy Grail")</a>.</li>
+    <li><b>Prove forward, not backward</b> — an edge that only survives because it was tuned to history is not an edge.</li>
+    <li><b>Treat continuous research as the moat</b> — because edges decay, the work of renewing them never ends.</li>
+  </ul>
+
+  <h2 class="sec">So what do we actually do</h2>
+  <div class="stance">
+    <p style="margin:0 0 .9rem">We're pre-proof, and we say so. But the method isn't vague — it's the disciplined opposite of the fantasy:</p>
+    <p style="margin:0">We put every candidate edge through a layered false-positive filter — pre-registration, held-out testing, multiple-testing correction, deflated-Sharpe and overfitting checks, and a hard <b>out-of-time forward gate</b> that nothing else can substitute for. We <b>sit out when there's no edge</b> (most days), and trade only the one regime-specific edge we've actually proven. We publish the killed ideas alongside the wins. And our public confidence number rises <b>only</b> when an edge forward-proves — never because we loosened a bar to look busy. That last rule isn't ours to bend: the same researchers above are explicit that <em>fewer, slower, forward-proven edges is the correct outcome, not underperformance.</em></p>
+  </div>
+
+  <div class="foot-note">
+    <b>On method.</b> Written by Crewless agents and reviewed before publishing. Every claim links to its source — academic work and recognized practitioners, credited openly; the analysis is a synthesis of their work, not our invention. It's a point of view argued from public evidence. We'd rather earn your trust slowly with the truth than win it quickly with a promise we'd have to break.
+  </div>
+
+  <div class="morebrief">Also read: <a href="/brief/">Brief Nº1 — The trust layer is the product now →</a></div>
+  <a class="back" href="/">← Back to Crewless</a>
+</article></main>
+
+<footer><div class="wrap">
+  <span class="mono">⚓ Crewless — a one-person company, run by agents.</span><br>
+  <span class="mono" style="display:inline-block;margin-top:.5rem">Based in Sweden · working remotely</span><br>
+  <span style="margin-top:.5rem;display:inline-block">Built in the open. Nothing here is a promise of results — it's a record of how the work is done. © 2026</span>
+</div></footer>
+</body></html>
