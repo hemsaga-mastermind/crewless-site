@@ -99,6 +99,13 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 }
 
 section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
+/* mobile declutter (Content Manager 2026-09-25) — clarity + breathing room; brand unchanged */
+@media(max-width:640px){
+  .cst.cst-hero canvas{height:clamp(300px,42vh,380px);}
+  section{padding:clamp(2.6rem,9vw,4rem) 0;}
+  .fbchips button{padding:.62rem 1.1rem;}
+  .st2{padding:.6rem .5rem .65rem;}
+}
 .kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--c1);margin-bottom:1.1rem;}
 .big{font-size:clamp(1.55rem,3.8vw,2.35rem);font-weight:600;letter-spacing:-.02em;max-width:22ch;line-height:1.12;}
@@ -276,11 +283,10 @@ footer .mono{color:var(--mut);}
 .sim-tally .tp{color:var(--c1);} .sim-tally .tk{color:#ff8b8b;}
 .sim-note{margin-top:.75rem;font-size:.76rem;color:var(--dim);max-width:60ch;}
 @media(max-width:720px){
-  .sim-track{flex-direction:column;}
-  .st2{flex:none;}
-  .simlink{width:2px;height:12px;}
-  .simlink.on::after{background:linear-gradient(180deg,var(--c2),var(--c1));animation:swpv .5s ease forwards;}
-  @keyframes swpv{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+  .sim-track{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;padding-bottom:.5rem;gap:.5rem;}
+  .st2{flex:0 0 74%;scroll-snap-align:start;}
+  .simlink{width:14px;height:2px;}
   .sim-ctrl{margin-left:0;width:100%;}
   .sim-ctrl button{flex:1;justify-content:center;}
 }
@@ -328,15 +334,15 @@ footer .mono{color:var(--mut);}
       <h1>A company run by <span class="g">AI agents.</span></h1>
       <p class="hlede">A <b>central team of AI agents</b> runs the company and watches over its products —
         and <b>each product runs on its own team of AI agents</b>. The only human is the founder, who sets
-        direction. Here's the shape of it: how we work today, and where it's headed.</p>
+        direction.</p>
     </div>
 
     <div class="herocst">
       <div class="cst cst-hero">
         <div class="cst-bar">
           <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
-            <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now — how it looks today</button>
-            <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year — the vision</button>
+            <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now</button>
+            <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year</button>
           </div>
           <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Today — sparse on purpose</span>
         </div>
@@ -350,10 +356,9 @@ footer .mono{color:var(--mut);}
           </div>
         </div>
       </div>
-      <p class="cst-note" id="cstFoot"><b>Today — sparse on purpose:</b> one product is active and a couple
-        more are just forming — each on its own small team of AI agents, with the central team of AI agents
-        monitoring. This shows <b>how we operate</b>, generically; the named products and their honest status
-        are in <a href="#real" style="color:var(--c1)">What's real</a>.</p>
+      <p class="cst-note" id="cstFoot"><b>Sparse on purpose:</b> one product is active, a couple more just
+        forming — each its own small team of AI agents. Named products and honest status in
+        <a href="#real" style="color:var(--c1)">What's real</a>.</p>
     </div>
 
     <div class="heroactions">
@@ -393,8 +398,7 @@ footer .mono{color:var(--mut);}
     <div class="bcard k1">
       <p class="kx">The moat</p>
       <h3>It doesn't forget</h3>
-      <p>The reason our agents can be trusted to <b>run</b> things, not just answer — they don't
-        forget, and they don't drift. Others reset every conversation; ours carry the company forward.
+      <p>They don't forget, and they don't drift. Others reset every conversation; ours carry the company forward.
         <span class="tease">How we do it is our edge.</span></p>
     </div>
     <div class="bcard k2">
