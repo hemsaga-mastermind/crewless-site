@@ -3,3 +3,10 @@
 /state.json
   Cache-Control: no-store, max-age=0
   Content-Type: application/json
+
+# HTML pages: revalidate against origin so a new deploy shows immediately on every
+# device, instead of the edge serving a stale landing/brief for minutes after a push.
+/
+  Cache-Control: no-cache
+/brief/*
+  Cache-Control: no-cache
