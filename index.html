@@ -116,6 +116,7 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 @media(max-width:640px){
   .cst.cst-hero canvas{height:clamp(300px,42vh,380px);}
   section{padding:clamp(2.6rem,9vw,4rem) 0;}
+  .stats{grid-template-columns:1fr;}
   .fbchips button{padding:.62rem 1.1rem;}
   .st2{padding:.6rem .5rem .65rem;}
 }
@@ -146,8 +147,9 @@ section{scroll-margin-top:70px;}
 .tag.wt{color:#ffcf70;border-color:#5b4a1c;}
 .tag.no{color:var(--dim);}
 .grid{display:grid;gap:1rem;margin-top:2.2rem;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));}
-.card{border:1px solid var(--line);border-radius:15px;padding:1.35rem;
+.card{border:1px solid var(--line);border-radius:15px;padding:1.35rem;display:flex;flex-direction:column;
   background:linear-gradient(180deg,rgba(16,23,35,.7),rgba(10,15,24,.55));transition:.25s;position:relative;overflow:hidden;}
+.card .conf{margin-top:auto;}
 .card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--c1),transparent);opacity:.5;}
 .card:hover{border-color:#28374f;transform:translateY(-3px);}
 .card .ix{font-family:"IBM Plex Mono",monospace;color:var(--c2);font-size:.75rem;margin-bottom:.65rem;}
@@ -191,6 +193,10 @@ section{scroll-margin-top:70px;}
 .bynum{margin-top:1.3rem;}
 .bynum-kick{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem;}
 .bynum-kick span{text-transform:none;letter-spacing:0;}
+.bynum-foot{margin-top:.9rem;color:var(--mut);font-size:.76rem;line-height:1.5;}
+.bynum-foot a{color:var(--mut);}
+.labmerge{margin-top:2.6rem;padding-top:2rem;border-top:1px solid var(--line);}
+.labmerge-kick{margin-bottom:.2rem;}
 .receipts{margin-top:2.2rem;}
 .timeline{position:relative;padding-left:1.35rem;border-left:1px solid var(--line);}
 .tl{position:relative;padding-bottom:1.55rem;}
@@ -352,7 +358,7 @@ footer .mono{color:var(--mut);}
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <a href="/sv/" aria-label="Läs på svenska" style="font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:.16rem .46rem;margin-left:.7rem;text-decoration:none">SV</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
-  <nav class="nav" id="siteNav"><a href="#idea">The idea</a><a href="#brain">The brain</a><a href="#real">What's real</a><a href="#lab">The Lab</a><a href="#receipts">Progress</a><a href="/brief/">Briefs</a><a href="#contact">Contact</a></nav>
+  <nav class="nav" id="siteNav"><a href="#idea">The idea</a><a href="#brain">The brain</a><a href="#real">What's real</a><a href="#receipts">Progress</a><a href="/brief/">Briefs</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -471,17 +477,16 @@ footer .mono{color:var(--mut);}
   <p class="kick">What's real</p>
   <p class="big">What actually exists today — named, with honest status.</p>
   <p class="sub">The model above is how we operate. Below are the real things behind it, no spin —
-    one live thing, not a portfolio.</p>
+    one product live, the rest still early — not a portfolio.</p>
   <div class="co-conf" id="companyConf"></div>
   <div class="bynum">
     <p class="bynum-kick">By the numbers <span>— as of Sep 2026</span></p>
     <div class="stats">
       <div class="stat"><b>~6</b><span>standing AI agents — specialists, a governor, the research lane, the COO</span></div>
       <div class="stat"><b>~12</b><span>specialized agents defined inside Agastya (a subset active by mode)</span></div>
-      <div class="stat"><b>~70</b><span>scheduled jobs (scripts, not agents)</span></div>
-      <div class="stat"><b>14</b><span>running services</span></div>
-      <div class="stat"><b>85</b><span>code changes in the last 7 days</span></div>
+      <div class="stat"><b>~70</b><span>scheduled jobs + 14 always-on services — the plumbing, not agents</span></div>
     </div>
+    <p class="bynum-foot mono">A “team of AI agents” means a handful of specialists that each own one job — not hundreds.</p>
   </div>
   <div class="grid">
     <div class="card">
@@ -506,21 +511,17 @@ footer .mono{color:var(--mut);}
       <div class="conf" data-conf="beacon"></div>
     </div>
   </div>
-</div></section>
 
-<section id="lab"><div class="wrap">
-  <p class="kick">The Lab</p>
-  <p class="big">Ideas we're weighing — and the ones we've killed.</p>
-  <p class="sub">We work like an R&amp;D lab: bring an idea, build a proof-of-concept, and test it honestly.
-    Not everything gets approved — we drop what doesn't earn its place, openly. A "no" is a finding,
-    not a failure, and stays on the board.</p>
-  <p class="labsum"><b class="lg">2 exploring</b> · <b class="ln">2 killed</b> — and we show which is which.</p>
-  <ul class="labgrid">
-    <li class="lab-item"><span class="tag go">Exploring</span><p>A self-healing watchdog for small websites — the tech we already run for ourselves.</p></li>
-    <li class="lab-item"><span class="tag go">Exploring</span><p>An AI OS to quick-start a company — the Crewless apparatus, made portable.</p></li>
-    <li class="lab-item killed"><span class="tag no">Killed</span><p>Copying our approach onto other markets — tested, no real edge, dropped.</p></li>
-    <li class="lab-item killed"><span class="tag no">Killed</span><p>A short-term reversal signal — looked promising, decayed under honest testing.</p></li>
-  </ul>
+  <div class="labmerge">
+    <p class="bynum-kick labmerge-kick">Also on the board <span>— what we're weighing, and what we've killed</span></p>
+    <p class="labsum"><b class="lg">2 exploring</b> · <b class="ln">2 killed</b> — a “no” is a finding, kept in the open.</p>
+    <ul class="labgrid">
+      <li class="lab-item"><span class="tag go">Exploring</span><p>A self-healing watchdog for small websites — the tech we already run for ourselves.</p></li>
+      <li class="lab-item"><span class="tag go">Exploring</span><p>An AI OS to quick-start a company — the Crewless apparatus, made portable.</p></li>
+      <li class="lab-item killed"><span class="tag no">Killed</span><p>Copying our approach onto other markets — tested, no real edge, dropped.</p></li>
+      <li class="lab-item killed"><span class="tag no">Killed</span><p>A short-term reversal signal — looked promising, decayed under honest testing.</p></li>
+    </ul>
+  </div>
 </div></section>
 
 <section id="receipts"><div class="wrap">
@@ -598,12 +599,10 @@ footer .mono{color:var(--mut);}
     if(!company||company.confidence==null||isNaN(Number(company.confidence))){ el.innerHTML=''; return; }
     var pct=Math.max(0,Math.min(100,Math.round(Number(company.confidence))));
     var name=company.name?esc(company.name):'Crewless';
-    var basis=company.basis?'<p class="conf-basis">'+esc(company.basis)+'</p>':'';
     el.innerHTML='<div class="conf-top"><span class="conf-lab">'+name+' — overall confidence</span>'+
       '<span class="conf-num">'+pct+'%</span></div>'+
       '<div class="conf-bar"><i></i></div>'+
-      '<p class="conf-need">Our own honest read on whether we’ll prove the thesis and survive. Pre-proof — it rises only when earned.</p>'+
-      basis;
+      '<p class="conf-need">Our own honest read on whether one founder plus AI agents can run a real company — and survive. Pre-proof — it rises only when earned.</p>';
     var fill=el.querySelector('.conf-bar i');
     if(fill){ if(reduce){ fill.style.width=pct+'%'; }
       else { requestAnimationFrame(function(){ requestAnimationFrame(function(){ fill.style.width=pct+'%'; }); }); } }
@@ -643,9 +642,11 @@ footer .mono{color:var(--mut);}
           (when?' by '+esc(when):'')+'</span>'+chip+'</div>';
         if(t.status_note){ need='<p class="conf-need">'+esc(t.status_note)+'</p>'; }
       }
+      // public card = overall STATE only (confidence + your target + updated); the internal
+      // "why/needs/basis" detail lives in the briefs, not the shopfront.
       el.innerHTML='<div class="conf-top"><span class="conf-lab">Confidence</span>'+
         '<span class="conf-num">'+pct+'%</span></div>'+
-        '<div class="conf-bar"><i></i>'+tick+'</div>'+targetLine+need+meas+basis+upd;
+        '<div class="conf-bar"><i></i>'+tick+'</div>'+targetLine+upd;
       var fill=el.querySelector('.conf-bar i');
       if(fill){ if(reduce){ fill.style.width=pct+'%'; }
         else { requestAnimationFrame(function(){ requestAnimationFrame(function(){ fill.style.width=pct+'%'; }); }); } }
@@ -810,6 +811,7 @@ footer .mono{color:var(--mut);}
     ctx.save(); ctx.shadowColor='rgba(9,13,22,.94)'; ctx.shadowBlur=5; ctx.globalAlpha=alpha;
     ctx.fillStyle=color; ctx.textAlign='center';
     ctx.font=(weight||'600')+' '+size+'px "Space Grotesk",-apple-system,Segoe UI,sans-serif';
+    var hw=ctx.measureText(txt).width/2; x=Math.min(Math.max(x,hw+6),W-hw-6); // keep edge labels on-canvas
     ctx.fillText(txt,x,y); ctx.restore(); ctx.globalAlpha=1;
   }
   // a PRODUCT: a small dim core with its agents grouped as a tidy CLUSTER (never an orbit). Subordinate to the hub.
@@ -834,7 +836,13 @@ footer .mono{color:var(--mut);}
     ctx.beginPath(); ctx.arc(pp.x,pp.y,core,0,6.28); ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
     ctx.globalAlpha=b*0.8; ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*0.4,0,6.28); ctx.fill();
     ctx.globalAlpha=1;
-    // no per-product name: these nodes represent the model, not a named product
+    // teach the structure (generic, not a named product): each cluster is a whole product
+    // running on its OWN small team of agents. Label sits just OUTSIDE the cluster, away from the hub.
+    if(b>0.12){
+      var dx=pp.x-cx, dy=pp.y-cy, dl=Math.sqrt(dx*dx+dy*dy)||1, off=packR*1.15+cl(U*0.022,10,16);
+      label('a product · its own team', pp.x+dx/dl*off, pp.y+dy/dl*off+3,
+        'rgba(168,178,198,.94)', cl(U*0.018,8,12), b*0.95, '600');
+    }
   }
   // the CENTRAL HUB: the team of AI agents that runs & monitors — DOMINANT, brightest, dead-centre.
   function drawCenter(t){

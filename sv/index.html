@@ -116,6 +116,7 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 @media(max-width:640px){
   .cst.cst-hero canvas{height:clamp(300px,42vh,380px);}
   section{padding:clamp(2.6rem,9vw,4rem) 0;}
+  .stats{grid-template-columns:1fr;}
   .fbchips button{padding:.62rem 1.1rem;}
   .st2{padding:.6rem .5rem .65rem;}
 }
@@ -146,8 +147,9 @@ section{scroll-margin-top:70px;}
 .tag.wt{color:#ffcf70;border-color:#5b4a1c;}
 .tag.no{color:var(--dim);}
 .grid{display:grid;gap:1rem;margin-top:2.2rem;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));}
-.card{border:1px solid var(--line);border-radius:15px;padding:1.35rem;
+.card{border:1px solid var(--line);border-radius:15px;padding:1.35rem;display:flex;flex-direction:column;
   background:linear-gradient(180deg,rgba(16,23,35,.7),rgba(10,15,24,.55));transition:.25s;position:relative;overflow:hidden;}
+.card .conf{margin-top:auto;}
 .card::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--c1),transparent);opacity:.5;}
 .card:hover{border-color:#28374f;transform:translateY(-3px);}
 .card .ix{font-family:"IBM Plex Mono",monospace;color:var(--c2);font-size:.75rem;margin-bottom:.65rem;}
@@ -191,6 +193,10 @@ section{scroll-margin-top:70px;}
 .bynum{margin-top:1.3rem;}
 .bynum-kick{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem;}
 .bynum-kick span{text-transform:none;letter-spacing:0;}
+.bynum-foot{margin-top:.9rem;color:var(--mut);font-size:.76rem;line-height:1.5;}
+.bynum-foot a{color:var(--mut);}
+.labmerge{margin-top:2.6rem;padding-top:2rem;border-top:1px solid var(--line);}
+.labmerge-kick{margin-bottom:.2rem;}
 .receipts{margin-top:2.2rem;}
 .timeline{position:relative;padding-left:1.35rem;border-left:1px solid var(--line);}
 .tl{position:relative;padding-bottom:1.55rem;}
@@ -352,7 +358,7 @@ footer .mono{color:var(--mut);}
   <a class="brand" href="/" aria-label="Crewless — hem"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <a href="/" aria-label="Read in English" style="font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:.16rem .46rem;margin-left:.7rem;text-decoration:none">EN</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Öppna meny">☰</button>
-  <nav class="nav" id="siteNav"><a href="#idea">Idén</a><a href="#brain">Hjärnan</a><a href="#real">Vad som är verkligt</a><a href="#lab">Labbet</a><a href="#receipts">Framsteg</a><a href="/brief/">Rapporter</a><a href="#contact">Kontakt</a></nav>
+  <nav class="nav" id="siteNav"><a href="#idea">Idén</a><a href="#brain">Hjärnan</a><a href="#real">Vad som är verkligt</a><a href="#receipts">Framsteg</a><a href="/brief/">Rapporter</a><a href="#contact">Kontakt</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -471,17 +477,16 @@ footer .mono{color:var(--mut);}
   <p class="kick">Vad som är verkligt</p>
   <p class="big">Det som faktiskt finns idag — namngivet, med ärlig status.</p>
   <p class="sub">Modellen ovan är hur vi arbetar. Nedan är det verkliga bakom den, utan spinn —
-    en enda sak i drift, inte en portfölj.</p>
+    en produkt i drift, resten tidiga — inte en portfölj.</p>
   <div class="co-conf" id="companyConf"></div>
   <div class="bynum">
     <p class="bynum-kick">I siffror <span>— per september 2026</span></p>
     <div class="stats">
       <div class="stat"><b>~6</b><span>fasta AI-agenter — specialister, en guvernör, forskningsspåret och COO:n</span></div>
       <div class="stat"><b>~12</b><span>specialiserade agenter definierade i Agastya (en delmängd aktiv)</span></div>
-      <div class="stat"><b>~70</b><span>schemalagda jobb (skript, inte agenter)</span></div>
-      <div class="stat"><b>14</b><span>igångkörda tjänster</span></div>
-      <div class="stat"><b>85</b><span>kodändringar de senaste 7 dagarna</span></div>
+      <div class="stat"><b>~70</b><span>schemalagda jobb + 14 alltid-igång-tjänster — infrastrukturen, inte agenter</span></div>
     </div>
+    <p class="bynum-foot mono">”Ett team av AI-agenter” betyder en handfull specialister som var och en äger en uppgift — inte hundratals.</p>
   </div>
   <div class="grid">
     <div class="card">
@@ -506,21 +511,17 @@ footer .mono{color:var(--mut);}
       <div class="conf" data-conf="beacon"></div>
     </div>
   </div>
-</div></section>
 
-<section id="lab"><div class="wrap">
-  <p class="kick">Labbet</p>
-  <p class="big">Idéer vi väger — och de vi har avlivat.</p>
-  <p class="sub">Vi jobbar som ett FoU-labb: ta in en idé, bygg en proof-of-concept, och testa den ärligt.
-    Inte allt godkänns — vi lägger ner det som inte förtjänar sin plats, öppet. Ett "nej" är ett resultat,
-    inte ett misslyckande, och stannar kvar på tavlan.</p>
-  <p class="labsum"><b class="lg">2 utforskas</b> · <b class="ln">2 avlivade</b> — och vi visar vilken som är vilken.</p>
-  <ul class="labgrid">
-    <li class="lab-item"><span class="tag go">Utforskas</span><p>En självläkande vakthund för mindre webbplatser — tekniken vi redan kör för egen del.</p></li>
-    <li class="lab-item"><span class="tag go">Utforskas</span><p>Ett AI-OS för att snabbstarta ett företag — Crewless-apparaten, gjord portabel.</p></li>
-    <li class="lab-item killed"><span class="tag no">Avlivad</span><p>Att kopiera vårt angreppssätt till andra marknader — testat, ingen verklig edge, nedlagt.</p></li>
-    <li class="lab-item killed"><span class="tag no">Avlivad</span><p>En kortsiktig reverseringssignal — såg lovande ut, falnade under ärlig testning.</p></li>
-  </ul>
+  <div class="labmerge">
+    <p class="bynum-kick labmerge-kick">Även på tavlan <span>— det vi väger, och det vi avlivat</span></p>
+    <p class="labsum"><b class="lg">2 utforskas</b> · <b class="ln">2 avlivade</b> — ett ”nej” är ett resultat, kvar i öppen dager.</p>
+    <ul class="labgrid">
+      <li class="lab-item"><span class="tag go">Utforskas</span><p>En självläkande vakthund för mindre webbplatser — tekniken vi redan kör för egen del.</p></li>
+      <li class="lab-item"><span class="tag go">Utforskas</span><p>Ett AI-OS för att snabbstarta ett företag — Crewless-apparaten, gjord portabel.</p></li>
+      <li class="lab-item killed"><span class="tag no">Avlivad</span><p>Att kopiera vårt angreppssätt till andra marknader — testat, ingen verklig edge, nedlagt.</p></li>
+      <li class="lab-item killed"><span class="tag no">Avlivad</span><p>En kortsiktig reverseringssignal — såg lovande ut, falnade under ärlig testning.</p></li>
+    </ul>
+  </div>
 </div></section>
 
 <section id="receipts"><div class="wrap">
@@ -582,7 +583,7 @@ footer .mono{color:var(--mut);}
     el.className='mono'; void el.offsetWidth; el.className='mono fade';
     el.innerHTML='<b>'+esc(parts[0])+'</b> \u00b7 '+esc(parts.slice(1).join(' \u00b7 ')); }
   function loadState(){
-    fetch('state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+    fetch('/state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
       var kc=document.getElementById('k-changes'); if(kc&&d.changes_7d!=null) kc.textContent=d.changes_7d;
       var kr=document.getElementById('k-receipts'); if(kr&&d.receipts_count!=null) kr.textContent=d.receipts_count;
       var rc=document.getElementById('receiptlog');
@@ -598,12 +599,10 @@ footer .mono{color:var(--mut);}
     if(!company||company.confidence==null||isNaN(Number(company.confidence))){ el.innerHTML=''; return; }
     var pct=Math.max(0,Math.min(100,Math.round(Number(company.confidence))));
     var name=company.name?esc(company.name):'Crewless';
-    var basis=company.basis?'<p class="conf-basis">'+esc(company.basis)+'</p>':'';
     el.innerHTML='<div class="conf-top"><span class="conf-lab">'+name+' — total konfidens</span>'+
       '<span class="conf-num">'+pct+'%</span></div>'+
       '<div class="conf-bar"><i></i></div>'+
-      '<p class="conf-need">Vår egen ärliga bedömning av om vi kommer bevisa tesen och överleva. Före bevis — den stiger bara när den förtjänas.</p>'+
-      basis;
+      '<p class="conf-need">Vår egen ärliga bedömning av om en grundare plus AI-agenter kan driva ett riktigt företag — och överleva. Före bevis — den stiger bara när den förtjänas.</p>';
     var fill=el.querySelector('.conf-bar i');
     if(fill){ if(reduce){ fill.style.width=pct+'%'; }
       else { requestAnimationFrame(function(){ requestAnimationFrame(function(){ fill.style.width=pct+'%'; }); }); } }
@@ -643,9 +642,11 @@ footer .mono{color:var(--mut);}
           (when?' by '+esc(when):'')+'</span>'+chip+'</div>';
         if(t.status_note){ need='<p class="conf-need">'+esc(t.status_note)+'</p>'; }
       }
+      // public card = overall STATE only (confidence + your target + updated); the internal
+      // "why/needs/basis" detail lives in the briefs, not the shopfront.
       el.innerHTML='<div class="conf-top"><span class="conf-lab">Confidence</span>'+
         '<span class="conf-num">'+pct+'%</span></div>'+
-        '<div class="conf-bar"><i></i>'+tick+'</div>'+targetLine+need+meas+basis+upd;
+        '<div class="conf-bar"><i></i>'+tick+'</div>'+targetLine+upd;
       var fill=el.querySelector('.conf-bar i');
       if(fill){ if(reduce){ fill.style.width=pct+'%'; }
         else { requestAnimationFrame(function(){ requestAnimationFrame(function(){ fill.style.width=pct+'%'; }); }); } }
@@ -810,6 +811,7 @@ footer .mono{color:var(--mut);}
     ctx.save(); ctx.shadowColor='rgba(9,13,22,.94)'; ctx.shadowBlur=5; ctx.globalAlpha=alpha;
     ctx.fillStyle=color; ctx.textAlign='center';
     ctx.font=(weight||'600')+' '+size+'px "Space Grotesk",-apple-system,Segoe UI,sans-serif';
+    var hw=ctx.measureText(txt).width/2; x=Math.min(Math.max(x,hw+6),W-hw-6); // keep edge labels on-canvas
     ctx.fillText(txt,x,y); ctx.restore(); ctx.globalAlpha=1;
   }
   // a PRODUCT: a small dim core with its agents grouped as a tidy CLUSTER (never an orbit). Subordinate to the hub.
@@ -834,7 +836,13 @@ footer .mono{color:var(--mut);}
     ctx.beginPath(); ctx.arc(pp.x,pp.y,core,0,6.28); ctx.fill(); ctx.stroke(); ctx.setLineDash([]);
     ctx.globalAlpha=b*0.8; ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(pp.x,pp.y,core*0.4,0,6.28); ctx.fill();
     ctx.globalAlpha=1;
-    // no per-product name: these nodes represent the model, not a named product
+    // teach the structure (generic, not a named product): each cluster is a whole product
+    // running on its OWN small team of agents. Label sits just OUTSIDE the cluster, away from the hub.
+    if(b>0.12){
+      var dx=pp.x-cx, dy=pp.y-cy, dl=Math.sqrt(dx*dx+dy*dy)||1, off=packR*1.15+cl(U*0.022,10,16);
+      label('en produkt · eget team', pp.x+dx/dl*off, pp.y+dy/dl*off+3,
+        'rgba(168,178,198,.94)', cl(U*0.018,8,12), b*0.95, '600');
+    }
   }
   // the CENTRAL HUB: the team of AI agents that runs & monitors — DOMINANT, brightest, dead-centre.
   function drawCenter(t){
