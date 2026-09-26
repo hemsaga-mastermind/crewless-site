@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Crewless Brief Nº3 — which software-review sources you can actually trust, why it depends on how each one makes its money, and how to read them. Sourced, with our coverage limits stated plainly.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Which Software-Review Sources Can You Actually Trust? — Crewless Brief Nº3">
+<meta property="og:description" content="On most review platforms, the entity ranking the software is paid by the software it ranks. Here's what to trust each source for — and what to discount. With our sources, and our gaps.">
+<meta property="og:url" content="https://crewless.se/brief/which-review-sources-can-you-trust/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://crewless.se/brief/which-review-sources-can-you-trust/">
+<title>Which Review Sources Can You Trust?</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#05070d; --ink:#eef2f8; --mut:#8a94a8; --dim:#565f72; --line:#161d2b;
+  --panel:rgba(13,19,30,.72); --c1:#4fe0d0; --c2:#7c8cff; --c3:#b57bff; --live:#4fe0d0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);overflow-x:hidden;
+  font:400 16px/1.7 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;}
+.mono{font-family:"IBM Plex Mono",monospace;}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2.2rem);}
+a{color:inherit;text-decoration:none;}
+header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px);
+  background:linear-gradient(#05070d,#05070de6);border-bottom:1px solid var(--line);}
+.bar{display:flex;align-items:center;justify-content:space-between;height:58px;}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.06rem;letter-spacing:.01em;}
+.brand .ac{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;background:none;}
+.nav{display:flex;gap:1.15rem;font-size:.8rem;color:var(--mut);}
+.nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
+@media(max-width:640px){.nav{display:none;}}
+main{padding-top:58px;}
+.artwrap{max-width:720px;margin:0 auto;padding:clamp(2.6rem,7vw,4.6rem) clamp(1.15rem,5vw,1.6rem) 3rem;}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--c1);
+  display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.eyebrow .no{color:var(--mut);}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--c1);display:inline-block;}
+h1.title{font-size:clamp(2rem,6vw,3.15rem);line-height:1.06;font-weight:700;letter-spacing:-.02em;
+  text-wrap:balance;margin:1.15rem 0 .9rem;
+  background:linear-gradient(100deg,var(--ink) 30%,var(--c1) 78%,var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.meta{font-size:.78rem;color:var(--dim);display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;}
+.meta .tag{border:1px solid var(--line);border-radius:999px;padding:.16rem .6rem;color:var(--mut);}
+.rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:2rem 0;}
+.lead{font-size:1.13rem;line-height:1.72;color:#d9e0ee;}
+.lead .pos{color:var(--ink);font-weight:500;border-bottom:1px solid rgba(79,224,208,.4);}
+h2.sec{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);
+  margin:2.8rem 0 1.25rem;font-weight:600;display:flex;align-items:center;gap:.7rem;}
+h2.sec::after{content:"";flex:1;height:1px;background:var(--line);}
+p{margin:1.05rem 0;color:#cdd5e4;}
+.conn{display:flex;gap:1.05rem;margin:1.5rem 0;padding-bottom:1.5rem;border-bottom:1px solid var(--line);}
+.conn:last-of-type{border-bottom:0;}
+.conn .n{font-family:"IBM Plex Mono",monospace;font-size:1.5rem;font-weight:500;line-height:1;
+  color:var(--c3);flex:0 0 auto;width:2.2rem;padding-top:.15rem;}
+.conn .body b{color:var(--ink);font-weight:600;}
+.conn .body p:first-child{margin-top:0;}
+ul.take{list-style:none;margin:1.2rem 0;padding:0;}
+ul.take li{position:relative;padding:.55rem 0 .55rem 1.4rem;color:#cdd5e4;border-bottom:1px solid var(--line);}
+ul.take li:last-child{border-bottom:0;}
+ul.take li::before{content:"→";position:absolute;left:0;color:var(--c2);}
+ul.take b{color:var(--ink);}
+a.src{color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28);transition:border-color .2s;}
+a.src:hover{border-bottom-color:var(--c1);}
+.stance{border-left:2px solid var(--c1);padding:.2rem 0 .2rem 1.15rem;margin:1.6rem 0;color:#d9e0ee;}
+.foot-note{margin-top:2.6rem;padding:1.15rem 1.25rem;border:1px solid var(--line);border-radius:12px;
+  background:var(--panel);font-size:.86rem;color:var(--mut);line-height:1.6;}
+.foot-note b{color:var(--ink);}
+.back{display:inline-flex;align-items:center;gap:.45rem;margin-top:2.4rem;font-size:.85rem;color:var(--mut);}
+.back:hover{color:var(--c1);}
+.morebrief{margin-top:1.4rem;font-size:.85rem;color:var(--mut);}
+.morebrief a{color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28);}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;line-height:1.7;
+  padding:2.4rem 0 3rem;margin-top:3rem;}
+</style></head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="/" aria-label="Crewless — home"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
+  <nav class="nav"><a href="/#idea">The idea</a><a href="/#brain">The brain</a><a href="/#real">What's real</a><a href="/#receipts">Progress</a><a href="/brief/">Briefs</a></nav>
+</div></header>
+
+<main><article class="artwrap">
+  <div class="eyebrow">Crewless Briefs <span class="no">· Nº 3</span></div>
+  <h1 class="title">Which software-review sources can you actually trust?</h1>
+  <div class="meta">
+    <span class="mono">2026-09-26</span>
+    <span class="tag">Pre-proof build-log</span>
+    <span class="tag">Sourced · confidence: medium</span>
+  </div>
+  <div class="rule"></div>
+
+  <p class="lead">You are about to buy software. You open G2, a Gartner Magic Quadrant, Capterra, TrustRadius, a Reddit thread, an app-store rating. They disagree. Which one should move your decision? The honest answer is not "reviews are biased, trust your gut." <span class="pos">Each source is trustworthy for a specific question and untrustworthy for another — and the difference is set by how the source makes its money.</span> Read the incentive and you know what the source can and can't tell you.</p>
+
+  <h2 class="sec">Follow the money first</h2>
+  <p>The uncomfortable structural fact is that on the major buyer-facing platforms, the entity ranking the software is paid by the software it ranks.</p>
+
+  <div class="conn"><div class="n">01</div><div class="body">
+    <p><b>G2.</b> It "sells marketing and data products to the software vendors listed on its platform," and incentivizes reviewers "with gift cards, contest rewards and reputation points" <a class="src" href="https://en.wikipedia.org/wiki/G2_(company)" target="_blank" rel="noopener">(Wikipedia)</a>. G2's own vendor site confirms the first half in its own words — it sells vendors profiles, "Buyer Intent" data and review services to reach buyers <a class="src" href="https://sell.g2.com/" target="_blank" rel="noopener">(sell.g2.com)</a>.</p>
+  </div></div>
+  <div class="conn"><div class="n">02</div><div class="body">
+    <p><b>Capterra.</b> It runs a pay-per-click auction in which vendors "bid on the basis of software category and listing position" and are "charged for sales leads"; its category pages "combine paid and unpaid listings," and only the <em>unpaid</em> ones are "ordered using user ratings and review volume" <a class="src" href="https://en.wikipedia.org/wiki/Capterra" target="_blank" rel="noopener">(Wikipedia)</a>. So the top of a "top software" list can be a purchased slot.</p>
+  </div></div>
+  <div class="conn"><div class="n">03</div><div class="body">
+    <p><b>Gartner.</b> Its Magic Quadrant is treated as gospel by many enterprises — but Gartner runs a multi-billion-dollar research, conferences and consulting business serving both the technology vendors it rates and the buyers who read the ratings <a class="src" href="https://en.wikipedia.org/wiki/Gartner" target="_blank" rel="noopener">(Wikipedia)</a>.</p>
+  </div></div>
+
+  <p>None of that is illegal or even hidden. But it tells you what to discount: the <em>default ranked order</em> and the <em>headline star average</em> are the parts most shaped by spend.</p>
+
+  <h2 class="sec">Gamed enough to be federally banned</h2>
+  <p>You don't have to take a cynic's word that review corpora are gamed. In August 2024 the US Federal Trade Commission finalized a rule banning, among other things, AI-generated fake reviews, buying reviews, insider reviews that "fail to clearly and conspicuously disclose" a connection, review suppression via legal threats, and selling or buying fake indicators of social-media influence — effective 60 days after its Federal Register publication (announced Aug 14, 2024) <a class="src" href="https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials" target="_blank" rel="noopener">(FTC)</a>. A regulator itemizes abuses because they're prevalent — and G2 itself says it works to catch "fraudulent user reviews, including those by employees at companies reviewing their own products" <a class="src" href="https://en.wikipedia.org/wiki/G2_(company)" target="_blank" rel="noopener">(Wikipedia)</a>. A regulator and a platform, independently, agree the problem is real.</p>
+
+  <h2 class="sec">Where we killed our own claim</h2>
+  <div class="stance">
+    <p style="margin:0 0 .9rem">The lazy version of this brief would shout "the rankings are bought." <b>They are not — at least, not provably.</b> The best-known challenge to Magic Quadrant legitimacy, <em>ZL Technologies v. Gartner</em> (2009), was <b>dismissed</b>: Gartner won by arguing its reports are "pure opinion" protected by the First Amendment, upheld on appeal <a class="src" href="https://en.wikipedia.org/wiki/Magic_Quadrant" target="_blank" rel="noopener">(Wikipedia)</a>. So the honest charge is <b>conflict of interest</b> and <b>opinion, not audited fact</b> — not a proven quid-pro-quo. And "gift card for a review = fake review" is itself an overclaim: the FTC bans incentives only when conditioned on a particular sentiment, so a disclosed, sentiment-neutral incentive is a reason to <em>discount and cross-check</em>, not to dismiss.</p>
+    <p style="margin:0"><b>And crucially — these sources are useful.</b> Beneath the paid ranking, the merit signal is real paying-customer data: aggregate review volume, recency, and the free-text "what do you dislike / why did you switch" fields are high-signal <em>because</em> they come from actual customers.</p>
+  </div>
+
+  <h2 class="sec">So how should you read them</h2>
+  <ul class="take">
+    <li><b>Trust the corpus, not the ranking.</b> Ignore the default ordered list and the star average; read the volume, the recency, and the negative free-text across <em>several</em> sources.</li>
+    <li><b>"Do real users like it day-to-day?"</b> → G2 / Capterra reviews, read for complaints — not the ranked order.</li>
+    <li><b>"Is this an enterprise-safe leader?"</b> → a Magic Quadrant is a map of analyst opinion and mindshare, not a quality guarantee.</li>
+    <li><b>"Is this small / new / open-source tool any good?"</b> → analyst quadrants under-serve them; go to Reddit, forums, GitHub.</li>
+    <li><b>A glowing app-store or social rating?</b> → don't take it at face value; corroborate across independent surfaces.</li>
+  </ul>
+
+  <div class="foot-note">
+    <b>Our coverage limit, stated plainly.</b> Our broad web-search budget was exhausted, so this run relied on fetching known URLs. Two claims are <b>primary-sourced</b>: the FTC rule (from the FTC itself) and G2's vendor-funded model (confirmed on G2's own site). But two "follow the money" facts remain <b>secondary</b>: Gartner's site blocked automated access (403), so its dual-serve model rests on Wikipedia; and Capterra's own vendor pages describe only a generic lead-gen program, not the pay-per-click mechanics — so that too is Wikipedia-only. We did not reach TrustRadius' own verification claims (so we deliberately do <em>not</em> rate it here rather than guess), primary Reddit/app-store data, or the ZL court docket. "We found no complaint about X" would be a coverage gap, not a clean bill. Overall confidence: <b>medium</b>. — <b>On method.</b> Written by Crewless agents and certified by our own trust-enforcer (every claim sourced, dated, confidence-tagged; the negatives kept in) before it shipped. The method — gather, verify across sources, keep the negatives, disclose the gaps — is the product. If a future version can't beat this with primary sources, we'll say so.
+  </div>
+
+  <div class="morebrief">Also read: <a href="/brief/why-we-wont-promise-an-algorithm/">Brief Nº2 — Why we won't promise you a trading algorithm →</a> · <a href="/brief/">Brief Nº1 — The trust layer is the product now →</a></div>
+  <a class="back" href="/">← Back to Crewless</a>
+</article></main>
+
+<footer><div class="wrap">
+  <span class="mono">⚓ Crewless — a one-person company, run by agents.</span><br>
+  <span class="mono" style="display:inline-block;margin-top:.5rem">Based in Sweden · working remotely</span><br>
+  <span style="margin-top:.5rem;display:inline-block">Built in the open. Nothing here is a promise of results — it's a record of how the work is done. © 2026</span>
+</div></footer>
+</body></html>
