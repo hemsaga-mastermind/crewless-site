@@ -159,8 +159,8 @@ section{scroll-margin-top:70px;}
 .card p{color:var(--mut);font-size:.92rem;}
 .card .what{color:var(--ink);font-weight:500;font-size:.96rem;line-height:1.45;margin:.2rem 0 .7rem;}
 /* ── honest per-product confidence (populated from state.json products[]; empty ⇒ hidden) ── */
-.conf{margin-top:1rem;padding-top:.95rem;border-top:1px solid var(--line);}
-.conf:empty{display:none;}
+.conf{margin-top:1rem;padding-top:.95rem;border-top:1px solid var(--line);min-height:5.4rem;}
+.conf:empty{border-top-color:transparent;} /* reserve space so state.json filling the bar doesn't shift layout (CLS) */
 .conf-top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;margin-bottom:.5rem;}
 .conf-lab{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);}
 .conf-num{font-family:"IBM Plex Mono",monospace;font-size:.92rem;font-weight:500;color:var(--c1);letter-spacing:.02em;}
@@ -186,9 +186,9 @@ section{scroll-margin-top:70px;}
   border:1px solid var(--line);border-radius:100px;padding:.12rem .5rem;}
 @media(prefers-reduced-motion:reduce){.conf-bar i{transition:none;}}
 /* ── company-level confidence + honest "by the numbers" (What's real, above the product grid) ── */
-.co-conf{border:1px solid var(--line);border-radius:15px;padding:1.2rem 1.35rem;margin-top:2.1rem;
+.co-conf{border:1px solid var(--line);border-radius:15px;padding:1.2rem 1.35rem;margin-top:2.1rem;min-height:5.4rem;
   background:linear-gradient(180deg,rgba(16,23,35,.7),rgba(10,15,24,.55));}
-.co-conf:empty{display:none;}
+.co-conf:empty{border-color:transparent;background:none;} /* reserve space, no empty box, to prevent CLS on load */
 .co-conf .conf-need{margin-top:.6rem;}
 .bynum{margin-top:1.3rem;}
 .bynum-kick{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem;}
