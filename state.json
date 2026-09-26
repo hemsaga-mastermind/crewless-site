@@ -91,10 +91,44 @@
  "company": {
   "key": "company",
   "name": "Crewless",
-  "confidence": 44,
+  "confidence": 47,
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
-  "basis": "pre-proof company stage — no revenue, no customers, no external validation yet; product apparatus real and internally scored; public presence live and honest; first real money live; live track record just starting; guard-stack discipline in place",
-  "updated": "2026-09-26"
+  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence live and honest; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
+  "updated": "2026-09-26",
+  "items": {
+   "recon_defined": 3,
+   "deploy_reproducible": 3,
+   "failover_liveness": 0,
+   "git_identity": 3,
+   "recon_proven": 0,
+   "failover_proven": 0,
+   "tests_green": 0,
+   "boot_contract_present": 4,
+   "governor_alive": 4,
+   "memory_hygiene": 0,
+   "continuity_drill": 0,
+   "agastya_ok": 4,
+   "beacon_ok": 4,
+   "keel_ok": 4,
+   "discipline_exercised": 6,
+   "presence_live": 3,
+   "honesty_ledger_exists": 2,
+   "honesty_proven": 2,
+   "internal_track": 2,
+   "first_money": 3,
+   "external_validation": 0
+  },
+  "dimensions": {
+   "D1_foundations": 9,
+   "D2_keel": 8,
+   "D3_products": 18,
+   "D4_presence_honesty": 7,
+   "D5_track_record": 5
+  },
+  "raw": 47,
+  "penalty": 0,
+  "ceiling": 55,
+  "itemized": "D1 9/32; D2 8/20; D3 18/18; D4 7/10; D5 5/20; raw 47; ceiling 55"
  },
  "mistakes": [
   {
