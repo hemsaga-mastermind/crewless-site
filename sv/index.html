@@ -183,6 +183,14 @@ section{scroll-margin-top:70px;}
 .conf-upd{display:inline-block;margin-top:.6rem;font-size:.62rem;letter-spacing:.06em;color:var(--dim);
   border:1px solid var(--line);border-radius:100px;padding:.12rem .5rem;}
 @media(prefers-reduced-motion:reduce){.conf-bar i{transition:none;}}
+/* ── company-level confidence + honest "by the numbers" (What's real, above the product grid) ── */
+.co-conf{border:1px solid var(--line);border-radius:15px;padding:1.2rem 1.35rem;margin-top:2.1rem;
+  background:linear-gradient(180deg,rgba(16,23,35,.7),rgba(10,15,24,.55));}
+.co-conf:empty{display:none;}
+.co-conf .conf-need{margin-top:.6rem;}
+.bynum{margin-top:1.3rem;}
+.bynum-kick{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem;}
+.bynum-kick span{text-transform:none;letter-spacing:0;}
 .receipts{margin-top:2.2rem;}
 .timeline{position:relative;padding-left:1.35rem;border-left:1px solid var(--line);}
 .tl{position:relative;padding-bottom:1.55rem;}
@@ -350,7 +358,7 @@ footer .mono{color:var(--mut);}
 <div class="hero" id="hero">
   <div class="wrap herowrap">
     <div class="herohead">
-      <div class="hud"><span class="dot"></span> <b id="agentct">dussintals</b> agenter · körs parallellt</div>
+      <div class="hud"><span class="dot"></span> <b id="agentct">ett team av</b> AI-agenter · driver företaget</div>
       <h1>Ett företag som drivs av <span class="g">AI-agenter.</span></h1>
       <p class="hlede">Ett <b>centralt team av AI-agenter</b> driver företaget och vakar över dess produkter —
         och <b>varje produkt drivs av sitt eget team av AI-agenter</b>. Den enda människan är grundaren, som
@@ -464,6 +472,17 @@ footer .mono{color:var(--mut);}
   <p class="big">Det som faktiskt finns idag — namngivet, med ärlig status.</p>
   <p class="sub">Modellen ovan är hur vi arbetar. Nedan är det verkliga bakom den, utan spinn —
     en enda sak i drift, inte en portfölj.</p>
+  <div class="co-conf" id="companyConf"></div>
+  <div class="bynum">
+    <p class="bynum-kick">I siffror <span>— per september 2026</span></p>
+    <div class="stats">
+      <div class="stat"><b>~6</b><span>fasta AI-agenter — specialister, en guvernör, forskningsspåret och COO:n</span></div>
+      <div class="stat"><b>~12</b><span>specialiserade agenter definierade i Agastya (en delmängd aktiv)</span></div>
+      <div class="stat"><b>~70</b><span>schemalagda jobb (skript, inte agenter)</span></div>
+      <div class="stat"><b>14</b><span>igångkörda tjänster</span></div>
+      <div class="stat"><b>85</b><span>kodändringar de senaste 7 dagarna</span></div>
+    </div>
+  </div>
   <div class="grid">
     <div class="card">
       <div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Agastya</h3></div>
@@ -495,12 +514,10 @@ footer .mono{color:var(--mut);}
   <p class="sub">Vi jobbar som ett FoU-labb: ta in en idé, bygg en proof-of-concept, och testa den ärligt.
     Inte allt godkänns — vi lägger ner det som inte förtjänar sin plats, öppet. Ett "nej" är ett resultat,
     inte ett misslyckande, och stannar kvar på tavlan.</p>
-  <p class="labsum"><b class="lg">3 utforskas</b> · <b class="lw">1 vägs</b> · <b class="ln">2 avlivade</b> — och vi visar vilken som är vilken.</p>
+  <p class="labsum"><b class="lg">2 utforskas</b> · <b class="ln">2 avlivade</b> — och vi visar vilken som är vilken.</p>
   <ul class="labgrid">
     <li class="lab-item"><span class="tag go">Utforskas</span><p>En självläkande vakthund för mindre webbplatser — tekniken vi redan kör för egen del.</p></li>
     <li class="lab-item"><span class="tag go">Utforskas</span><p>Ett AI-OS för att snabbstarta ett företag — Crewless-apparaten, gjord portabel.</p></li>
-    <li class="lab-item"><span class="tag go">Utforskas</span><p>Att få ut det mesta av AI, ärligt — open source i första hand, ingen inlåsning.</p></li>
-    <li class="lab-item"><span class="tag wt">Vägs</span><p>AI som hjälper två personer bedöma äkta kompatibilitet — integritet först, anonymt, ingen personlig data sparas. En forskningsfråga, inte en produkt.</p></li>
     <li class="lab-item killed"><span class="tag no">Avlivad</span><p>Att kopiera vårt angreppssätt till andra marknader — testat, ingen verklig edge, nedlagt.</p></li>
     <li class="lab-item killed"><span class="tag no">Avlivad</span><p>En kortsiktig reverseringssignal — såg lovande ut, falnade under ärlig testning.</p></li>
   </ul>
@@ -572,7 +589,24 @@ footer .mono{color:var(--mut);}
       if(rc&&d.receipts&&d.receipts.length){ rc.innerHTML='<div class="timeline">'+d.receipts.slice(0,6).map(function(r){
         return '<div class="tl"><div class="d">'+esc(r.date)+'</div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div>';}).join('')+'</div>'; }
       renderConfidence(d.products);
+      renderCompany(d.company);
     }).catch(function(){});
+  }
+  // ── ärlig konfidens på företagsnivå — siffran kommer ENDAST från state.json; saknas ⇒ dold ──
+  function renderCompany(company){
+    var el=document.getElementById('companyConf'); if(!el) return;
+    if(!company||company.confidence==null||isNaN(Number(company.confidence))){ el.innerHTML=''; return; }
+    var pct=Math.max(0,Math.min(100,Math.round(Number(company.confidence))));
+    var name=company.name?esc(company.name):'Crewless';
+    var basis=company.basis?'<p class="conf-basis">'+esc(company.basis)+'</p>':'';
+    el.innerHTML='<div class="conf-top"><span class="conf-lab">'+name+' — total konfidens</span>'+
+      '<span class="conf-num">'+pct+'%</span></div>'+
+      '<div class="conf-bar"><i></i></div>'+
+      '<p class="conf-need">Vår egen ärliga bedömning av om vi kommer bevisa tesen och överleva. Före bevis — den stiger bara när den förtjänas.</p>'+
+      basis;
+    var fill=el.querySelector('.conf-bar i');
+    if(fill){ if(reduce){ fill.style.width=pct+'%'; }
+      else { requestAnimationFrame(function(){ requestAnimationFrame(function(){ fill.style.width=pct+'%'; }); }); } }
   }
   // human-friendly target date ("2026-11-23" → "Nov 2026"); defensive on junk/missing input
   var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
