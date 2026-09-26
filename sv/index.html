@@ -62,8 +62,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 .heroactions .cta{margin-top:0;}
 .hud{display:inline-flex;align-items:center;gap:.55rem;
   padding:.4rem .85rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);
-  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--mut);margin-bottom:1.3rem;}
+  font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mut);margin-bottom:1.3rem;max-width:100%;}
 .hud .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);animation:blip 2.4s infinite;}
 .hud b{color:var(--ink);font-weight:500;letter-spacing:.04em;}
 @keyframes blip{0%{box-shadow:0 0 0 0 #4fe0d088}70%{box-shadow:0 0 0 7px #4fe0d000}100%{box-shadow:0 0 0 0 #4fe0d000}}
@@ -207,6 +207,18 @@ section{scroll-margin-top:70px;}
   text-transform:uppercase;color:var(--c1);border:1px solid var(--line);border-radius:100px;padding:.12rem .5rem;margin-bottom:.35rem;}
 .tl h4{font-size:1.02rem;font-weight:600;margin:.12rem 0 .28rem;letter-spacing:-.01em;}
 .tl p{color:var(--mut);font-size:.9rem;line-height:1.55;max-width:64ch;}
+/* ── "Vad vi hade fel om" — ärlighetsflexen, lättare än produktkorten; från state.mistakes[] ── */
+#wrong[hidden]{display:none;}
+.wrongs{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.85rem;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));}
+.wrong-item{border:1px solid var(--line);border-radius:13px;padding:1.05rem 1.15rem;
+  background:linear-gradient(180deg,rgba(16,23,35,.5),rgba(10,15,24,.4));}
+.wrong-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.55rem;}
+.wrong-date{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.08em;color:var(--dim);}
+.wrong-item h4{font-size:1rem;font-weight:600;letter-spacing:-.01em;line-height:1.32;margin:.1rem 0 .3rem;}
+.wrong-item dl{margin:0;}
+.wrong-item dt{font-family:"IBM Plex Mono",monospace;font-size:.57rem;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);margin-top:.55rem;}
+.wrong-item dd{margin:.16rem 0 0;color:var(--mut);font-size:.86rem;line-height:1.5;}
+.wrong-item dd.lesson{color:var(--ink);}
 .creed{font-size:clamp(1.3rem,3.2vw,1.85rem);font-weight:500;line-height:1.32;letter-spacing:-.012em;max-width:21ch;}
 .creed b{background:linear-gradient(105deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;}
 footer{border-top:1px solid var(--line);padding:2.6rem 0 3.4rem;color:var(--dim);font-size:.82rem;}
@@ -358,7 +370,7 @@ footer .mono{color:var(--mut);}
   <a class="brand" href="/" aria-label="Crewless — hem"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <a href="/" aria-label="Read in English" style="font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:.16rem .46rem;margin-left:.7rem;text-decoration:none">EN</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Öppna meny">☰</button>
-  <nav class="nav" id="siteNav"><a href="#idea">Idén</a><a href="#brain">Hjärnan</a><a href="#real">Vad som är verkligt</a><a href="#receipts">Framsteg</a><a href="/brief/">Rapporter</a><a href="#contact">Kontakt</a></nav>
+  <nav class="nav" id="siteNav"><a href="#idea">Idén</a><a href="#brain">Hjärnan</a><a href="#real">Vad som är verkligt</a><a href="#receipts">Framsteg</a><a href="#wrong">Vad vi hade fel om</a><a href="/brief/">Rapporter</a><a href="#contact">Kontakt</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
@@ -536,6 +548,13 @@ footer .mono{color:var(--mut);}
   <div class="receipts" id="receiptlog"></div>
 </div></section>
 
+<section id="wrong" hidden><div class="wrap">
+  <p class="kick">Vad vi hade fel om</p>
+  <p class="big">Idéerna vi lade ner och resultaten som kom tillbaka negativa.</p>
+  <p class="sub">Vi bygger ett förtroendelager, så våra misslyckanden hör också hemma i det öppna. Ett "nej" är ett resultat. Inget här redigeras bort — det bara växer.</p>
+  <ul class="wrongs" id="mistakelog"></ul>
+</div></section>
+
 <section id="contact"><div class="wrap">
   <p class="creed">En person med en tydlig idé och rätt verktyg kan bygga det som tidigare krävde ett helt team.
     <b>Det är berättelsen vi försöker förtjäna rätten att berätta.</b></p>
@@ -591,7 +610,28 @@ footer .mono{color:var(--mut);}
         return '<div class="tl"><div class="d">'+esc(r.date)+'</div><h4>'+esc(r.headline)+'</h4><p>'+esc(r.lesson)+'</p></div>';}).join('')+'</div>'; }
       renderConfidence(d.products);
       renderCompany(d.company);
+      renderMistakes(d.mistakes);
     }).catch(function(){});
+  }
+  // ── "Vad vi hade fel om" — bara från state.mistakes; tomt/saknas ⇒ hela avsnittet döljs ──
+  function renderMistakes(mistakes){
+    var sec=document.getElementById('wrong'), list=document.getElementById('mistakelog');
+    if(!sec||!list) return;
+    if(!mistakes||!mistakes.length){ sec.hidden=true; list.innerHTML=''; return; }
+    var LABEL={killed_idea:'Dödad idé',negative_finding:'Negativt resultat',incident:'Incident'};
+    var TAG={killed_idea:'no',negative_finding:'wt',incident:'no'};
+    list.innerHTML=mistakes.map(function(m){
+      var cat=String(m.category||'');
+      var chip='<span class="tag '+(TAG[cat]||'no')+'">'+esc(LABEL[cat]||cat||'Notering')+'</span>';
+      var dl='';
+      if(m.what_we_believed) dl+='<dt>Vad vi trodde</dt><dd>'+esc(m.what_we_believed)+'</dd>';
+      if(m.what_happened)    dl+='<dt>Vad som hände</dt><dd>'+esc(m.what_happened)+'</dd>';
+      if(m.lesson)           dl+='<dt>Lärdom</dt><dd class="lesson">'+esc(m.lesson)+'</dd>';
+      return '<li class="wrong-item"><div class="wrong-top">'+chip+
+        '<span class="wrong-date">'+esc(m.date)+'</span></div>'+
+        '<h4>'+esc(m.title)+'</h4><dl>'+dl+'</dl></li>';
+    }).join('');
+    sec.hidden=false;
   }
   // ── ärlig konfidens på företagsnivå — siffran kommer ENDAST från state.json; saknas ⇒ dold ──
   function renderCompany(company){

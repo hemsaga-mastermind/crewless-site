@@ -95,5 +95,47 @@
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
   "basis": "pre-proof company stage — no revenue, no customers, no external validation yet; product apparatus real and internally scored; public presence live and honest; first real money live; live track record just starting; guard-stack discipline in place",
   "updated": "2026-09-26"
- }
+ },
+ "mistakes": [
+  {
+   "date": "2026-09-26",
+   "title": "Last-mile 'POC to production' tooling as a product",
+   "what_we_believed": "Because we live the pain of getting a prototype into reliable production, we could sell tooling for that last mile.",
+   "what_happened": "We benched the product. It is a service business, further from our moat than it first looks. We are keeping it as a research brief that proves the audience and our authority first, before committing any build.",
+   "lesson": "Having real authority on a problem is not the same as it being the right product to build. Prove the audience before the tooling.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-26",
+   "title": "An open multi-agent deliberation platform",
+   "what_we_believed": "An open forum where any agent could join a deliberation would be a natural extension of our own build-review-validate pattern.",
+   "what_happened": "We benched the open-platform shape. It is a two-sided cold-start, moderation would BE the product, and 'open to any bot' is a spam and prompt-injection surface — a real attack vector for us. We kept the deliberation ENGINE we use inside our own products and shelved the platform until that engine is proven.",
+   "lesson": "Split an idea by its shape, not its label. The engine can be on-moat while the open platform around it is a trap.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-26",
+   "title": "An AI cost and carbon optimizer wrapper",
+   "what_we_believed": "A wrapper that routes to a cheaper model and trims prompts could be a product, with a carbon-saving angle as the hook.",
+   "what_happened": "We benched it. The routing layer is a crowded commodity with funded incumbents, the carbon angle is a nice story rather than a reason to buy, and — worst — it optimises the exact layer our own public argument calls a commoditising dead end. We keep the efficiency work internally to lower our own costs; we do not sell it.",
+   "lesson": "Do not build on the layer you have told the world is commoditising. Off-message is off-moat.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-25",
+   "title": "Copying our trading approach onto other markets",
+   "what_we_believed": "An edge we found in one market would transfer to others, giving us an easy way to widen the book.",
+   "what_happened": "We tested it honestly. There was no real edge once we moved it out of the market it was found in. We dropped it.",
+   "lesson": "An edge that does not survive out-of-sample on a new market was never an edge — it was a fit to the old data.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-25",
+   "title": "A short-term reversal signal",
+   "what_we_believed": "A short-term reversal pattern looked promising in early testing.",
+   "what_happened": "Under our layered false-positive filter — pre-registration, held-out testing, multiple-testing correction, and a hard out-of-time forward gate — it decayed. It did not clear the bar.",
+   "lesson": "Promising in-sample is not the same as surviving forward. Fewer, slower, forward-proven edges are the correct outcome, not underperformance.",
+   "category": "negative_finding"
+  }
+ ]
 }
