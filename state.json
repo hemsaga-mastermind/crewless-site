@@ -1,10 +1,10 @@
 {
- "built_utc": "2026-09-28T06:16:26Z",
+ "built_utc": "2026-09-28T06:16:44Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 60,
- "active_days_7d": 6,
+ "changes_7d": 61,
+ "active_days_7d": 7,
  "receipts_count": 8,
  "receipts": [
   {
@@ -74,26 +74,26 @@
   {
    "key": "keel",
    "name": "Keel",
-   "confidence": 62,
+   "confidence": 70,
    "measures": "our confidence the continuity layer keeps agents on course, from internal use",
-   "basis": "continuity layer under every product; internal-working, no external track record yet — durable identity in git, reconstitution defined, governor heartbeat stale",
+   "basis": "continuity layer under every product; internal-working, no external track record yet — durable identity in git, reconstitution defined, self-correcting governor running",
    "updated": "2026-09-28"
   },
   {
    "key": "beacon",
    "name": "Beacon",
-   "confidence": 73,
+   "confidence": 83,
    "measures": "our confidence the site stays live and honest, from its own health checks",
-   "basis": "this website; live and serving, self-maintenance loop stalled, leak-gated, locked template",
+   "basis": "this website; live and serving, self-maintaining hourly, leak-gated, locked template",
    "updated": "2026-09-28"
   }
  ],
  "company": {
   "key": "company",
   "name": "Crewless",
-  "confidence": 35,
+  "confidence": 43,
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
-  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence live and honest; reconstitution and reproducible deploy defined; durable git identity and boot contract; governor heartbeat stale; honesty ledger incomplete; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
+  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence live and honest; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; honesty ledger incomplete; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
   "updated": "2026-09-28",
   "items": {
    "recon_defined": 3,
@@ -104,12 +104,12 @@
    "failover_proven": 0,
    "tests_green": 0,
    "boot_contract_present": 4,
-   "governor_alive": 0,
+   "governor_alive": 4,
    "memory_hygiene": 0,
    "continuity_drill": 0,
    "agastya_ok": 4,
    "beacon_ok": 4,
-   "keel_ok": 0,
+   "keel_ok": 4,
    "discipline_exercised": 6,
    "presence_live": 3,
    "honesty_ledger_exists": 0,
@@ -120,14 +120,14 @@
   },
   "dimensions": {
    "D1_foundations": 9,
-   "D2_keel": 4,
-   "D3_products": 14,
+   "D2_keel": 8,
+   "D3_products": 18,
    "D4_presence_honesty": 3,
    "D5_track_record": 5
   },
-  "raw": 35,
+  "raw": 43,
   "penalty": 0,
   "ceiling": 55,
-  "itemized": "D1 9/32; D2 4/20; D3 14/18; D4 3/10; D5 5/20; raw 35; ceiling 55"
+  "itemized": "D1 9/32; D2 8/20; D3 18/18; D4 3/10; D5 5/20; raw 43; ceiling 55"
  }
 }
