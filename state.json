@@ -1,9 +1,9 @@
 {
- "built_utc": "2026-09-28T06:16:44Z",
+ "built_utc": "2026-09-28T11:17:00Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 61,
+ "changes_7d": 62,
  "active_days_7d": 7,
  "receipts_count": 8,
  "receipts": [
@@ -82,18 +82,92 @@
   {
    "key": "beacon",
    "name": "Beacon",
-   "confidence": 83,
+   "confidence": 65,
    "measures": "our confidence the site stays live and honest, from its own health checks",
-   "basis": "this website; live and serving, self-maintaining hourly, leak-gated, locked template",
+   "basis": "this website; site not serving correctly, self-maintaining hourly, leak-gated, locked template",
    "updated": "2026-09-28"
+  }
+ ],
+ "mistakes": [
+  {
+   "date": "2026-09-28",
+   "title": "We thought a widely used public dataset was wrong. It was not.",
+   "what_we_believed": "After finding fabricated days in our own market data, we expected the same flaw in the free data everyone else uses.",
+   "what_happened": "Our first run reported 244 bad days and we nearly published it. Attacking our own result before recording it showed every one of the 244 was an error in our test, not in the data. The dataset was clean on every historical date we checked.",
+   "lesson": "We would have published a false, checkable accusation about someone else's work — in the one area where our whole claim is that we are not wrong in public. Check the measuring instrument against cases it should PASS, not only ones it should fail.",
+   "category": "negative_finding"
+  },
+  {
+   "date": "2026-09-28",
+   "title": "Ten product ideas, all killed in one screen",
+   "what_we_believed": "Small businesses are missing a report that compares two systems and lists what does not match, and would pay for it.",
+   "what_happened": "We screened ten versions of that idea against what the existing tools in the market already do. All ten died. In most of them the established software had not built the missing report at all — it had removed the need for one, by making sure the two numbers could never disagree in the first place.",
+   "lesson": "We were selling detection into a market that buys elimination. Ten versions of one idea is still one idea, and screening it ten ways found that out for the cost of a day.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-28",
+   "title": "Our own final safety check could never have passed",
+   "what_we_believed": "A strategy had to clear a hard statistical bar before it could ever reach real money, and we described that bar as our core discipline.",
+   "what_happened": "The check compared a daily figure against a yearly one. Nothing real could ever have cleared it. It had been producing exactly the output that genuine rigour produces, so nobody noticed.",
+   "lesson": "A test that never passes and a test that always passes are both broken, and both look like discipline from outside. The error ran toward refusing, so nothing unproven got closer to the money — but the bar we described was not the bar we enforced.",
+   "category": "negative_finding"
+  },
+  {
+   "date": "2026-09-28",
+   "title": "Eighty-one trading days that never happened",
+   "what_we_believed": "Our market history was accurate, because every automated check on it passed.",
+   "what_happened": "On some public holidays the exchange serves the previous day's file instead of saying it was closed. We filed those under the holiday's date, inventing 81 sessions on which nothing moved. The file stated its own date in a column we never read.",
+   "lesson": "The only visible tell was arithmetic nobody had checked: the data implied more trading days per year than the exchange actually holds. Removed, with the reader now refusing a stale file.",
+   "category": "negative_finding"
+  },
+  {
+   "date": "2026-09-26",
+   "title": "Last-mile 'POC to production' tooling as a product",
+   "what_we_believed": "Because we live the pain of getting a prototype into reliable production, we could sell tooling for that last mile.",
+   "what_happened": "We benched the product. It is a service business, further from our moat than it first looks. We are keeping it as a research brief that proves the audience and our authority first, before committing any build.",
+   "lesson": "Having real authority on a problem is not the same as it being the right product to build. Prove the audience before the tooling.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-26",
+   "title": "An open multi-agent deliberation platform",
+   "what_we_believed": "An open forum where any agent could join a deliberation would be a natural extension of our own build-review-validate pattern.",
+   "what_happened": "We benched the open-platform shape. It is a two-sided cold-start, moderation would BE the product, and 'open to any bot' is a spam and prompt-injection surface — a real attack vector for us. We kept the deliberation ENGINE we use inside our own products and shelved the platform until that engine is proven.",
+   "lesson": "Split an idea by its shape, not its label. The engine can be on-moat while the open platform around it is a trap.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-26",
+   "title": "An AI cost and carbon optimizer wrapper",
+   "what_we_believed": "A wrapper that routes to a cheaper model and trims prompts could be a product, with a carbon-saving angle as the hook.",
+   "what_happened": "We benched it. The routing layer is a crowded commodity with funded incumbents, the carbon angle is a nice story rather than a reason to buy, and — worst — it optimises the exact layer our own public argument calls a commoditising dead end. We keep the efficiency work internally to lower our own costs; we do not sell it.",
+   "lesson": "Do not build on the layer you have told the world is commoditising. Off-message is off-moat.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-25",
+   "title": "Copying our trading approach onto other markets",
+   "what_we_believed": "An edge we found in one market would transfer to others, giving us an easy way to widen the book.",
+   "what_happened": "We tested it honestly. There was no real edge once we moved it out of the market it was found in. We dropped it.",
+   "lesson": "An edge that does not survive out-of-sample on a new market was never an edge — it was a fit to the old data.",
+   "category": "killed_idea"
+  },
+  {
+   "date": "2026-09-25",
+   "title": "A short-term reversal signal",
+   "what_we_believed": "A short-term reversal pattern looked promising in early testing.",
+   "what_happened": "Under our layered false-positive filter — pre-registration, held-out testing, multiple-testing correction, and a hard out-of-time forward gate — it decayed. It did not clear the bar.",
+   "lesson": "Promising in-sample is not the same as surviving forward. Fewer, slower, forward-proven edges are the correct outcome, not underperformance.",
+   "category": "negative_finding"
   }
  ],
  "company": {
   "key": "company",
   "name": "Crewless",
-  "confidence": 43,
+  "confidence": 40,
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
-  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence live and honest; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; honesty ledger incomplete; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
+  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence not serving correctly; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
   "updated": "2026-09-28",
   "items": {
    "recon_defined": 3,
@@ -108,12 +182,12 @@
    "memory_hygiene": 0,
    "continuity_drill": 0,
    "agastya_ok": 4,
-   "beacon_ok": 4,
+   "beacon_ok": 0,
    "keel_ok": 4,
    "discipline_exercised": 6,
-   "presence_live": 3,
-   "honesty_ledger_exists": 0,
-   "honesty_proven": 0,
+   "presence_live": 0,
+   "honesty_ledger_exists": 2,
+   "honesty_proven": 2,
    "internal_track": 2,
    "first_money": 3,
    "external_validation": 0
@@ -121,13 +195,13 @@
   "dimensions": {
    "D1_foundations": 9,
    "D2_keel": 8,
-   "D3_products": 18,
-   "D4_presence_honesty": 3,
+   "D3_products": 14,
+   "D4_presence_honesty": 4,
    "D5_track_record": 5
   },
-  "raw": 43,
+  "raw": 40,
   "penalty": 0,
   "ceiling": 55,
-  "itemized": "D1 9/32; D2 8/20; D3 18/18; D4 3/10; D5 5/20; raw 43; ceiling 55"
+  "itemized": "D1 9/32; D2 8/20; D3 14/18; D4 4/10; D5 5/20; raw 40; ceiling 55"
  }
 }
