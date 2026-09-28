@@ -1,9 +1,9 @@
 {
- "built_utc": "2026-09-28T11:17:00Z",
+ "built_utc": "2026-09-28T12:18:04Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 62,
+ "changes_7d": 63,
  "active_days_7d": 7,
  "receipts_count": 8,
  "receipts": [
@@ -82,9 +82,9 @@
   {
    "key": "beacon",
    "name": "Beacon",
-   "confidence": 65,
+   "confidence": 83,
    "measures": "our confidence the site stays live and honest, from its own health checks",
-   "basis": "this website; site not serving correctly, self-maintaining hourly, leak-gated, locked template",
+   "basis": "this website; live and serving, self-maintaining hourly, leak-gated, locked template",
    "updated": "2026-09-28"
   }
  ],
@@ -165,9 +165,9 @@
  "company": {
   "key": "company",
   "name": "Crewless",
-  "confidence": 40,
+  "confidence": 47,
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
-  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence not serving correctly; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
+  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence live and honest; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
   "updated": "2026-09-28",
   "items": {
    "recon_defined": 3,
@@ -182,10 +182,10 @@
    "memory_hygiene": 0,
    "continuity_drill": 0,
    "agastya_ok": 4,
-   "beacon_ok": 0,
+   "beacon_ok": 4,
    "keel_ok": 4,
    "discipline_exercised": 6,
-   "presence_live": 0,
+   "presence_live": 3,
    "honesty_ledger_exists": 2,
    "honesty_proven": 2,
    "internal_track": 2,
@@ -195,13 +195,13 @@
   "dimensions": {
    "D1_foundations": 9,
    "D2_keel": 8,
-   "D3_products": 14,
-   "D4_presence_honesty": 4,
+   "D3_products": 18,
+   "D4_presence_honesty": 7,
    "D5_track_record": 5
   },
-  "raw": 40,
+  "raw": 47,
   "penalty": 0,
   "ceiling": 55,
-  "itemized": "D1 9/32; D2 8/20; D3 14/18; D4 4/10; D5 5/20; raw 40; ceiling 55"
+  "itemized": "D1 9/32; D2 8/20; D3 18/18; D4 7/10; D5 5/20; raw 47; ceiling 55"
  }
 }
