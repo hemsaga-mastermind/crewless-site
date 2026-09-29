@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Job scan — Crewless</title>
+<meta name="description" content="We read the open job market for you and tell you which roles are worth your time — and which are not, with the reason.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#05070d; --ink:#eef2f8; --mut:#8a94a8; --dim:#565f72; --line:#161d2b;
+  --panel:rgba(13,19,30,.72); --live:#4fe0d0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.65 "Space Grotesk",ui-sans-serif,system-ui,sans-serif;
+ -webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:64px 24px 120px}
+a{color:var(--live)}
+.eyebrow{font:500 11px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.18em;
+ text-transform:uppercase;color:var(--live);margin:0 0 18px}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.08;letter-spacing:-.025em;margin:0 0 16px;
+ text-wrap:balance;font-weight:600}
+.lede{font-size:18px;color:var(--mut);margin:0 0 44px;max-width:60ch}
+h2{font-size:20px;letter-spacing:-.015em;margin:44px 0 12px;font-weight:600}
+p{margin:0 0 14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+ padding:26px 24px;margin:22px 0}
+.mono{font:400 13px/1.6 "IBM Plex Mono",ui-monospace,monospace;color:var(--mut)}
+ul{margin:0 0 14px;padding-left:20px}li{margin:0 0 9px}
+.terms li{margin:0 0 13px}
+.terms b{color:var(--ink)}
+.cta{display:inline-block;background:var(--live);color:#04211f;font-weight:600;
+ text-decoration:none;padding:13px 24px;border-radius:9px;margin-top:6px}
+.cta:hover{opacity:.9}
+.small{font-size:13.5px;color:var(--dim)}
+.rule{border:0;border-top:1px solid var(--line);margin:52px 0}
+.tag{display:inline-block;font:500 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;
+ text-transform:uppercase;color:var(--live);border:1px solid var(--line);
+ padding:5px 9px;border-radius:99px;margin:0 6px 6px 0}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0 0 14px}
+td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--mut);width:42%;padding-right:16px}
+.warn{border-left:2px solid var(--live);padding-left:16px;margin:20px 0;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">Crewless · job scan</p>
+<h1>We read the open job market so you don&rsquo;t have to</h1>
+<p class="lede">Most job tools show you more listings. Listings are free and infinite.
+What actually costs you is the evenings spent applying to roles that were never
+going to say yes. So this is built to tell you which ones to skip, and why.</p>
+
+<div class="panel">
+<p class="mono">What you get back</p>
+<ul>
+<li>A ranked shortlist of roles you can <b>actually take</b> &mdash; location and
+right-to-work checked, not just keyword-matched.</li>
+<li>For each one: why it fits, the line in the posting that says so, and
+<b>the reason they might turn you down</b>.</li>
+<li>The roles we think you should <b>not</b> apply for, with the disqualifier named.</li>
+<li>If you send your LinkedIn export: which of these companies you already
+know someone at. A referral beats a better-scoring cold application.</li>
+</ul>
+<p class="small">Often the honest answer is &ldquo;nothing this week&rdquo;. We will say that
+rather than pad a list.</p>
+</div>
+
+<h2>Where we look</h2>
+<p>Every source below is a public API published for programmatic reading.
+Nothing is scraped, no account is used, and we never ask for your password.</p>
+<p>
+<span class="tag">37 company career boards</span>
+<span class="tag">JobTech · all of Sweden</span>
+<span class="tag">Arbeitnow · Europe</span>
+<span class="tag">RemoteOK</span>
+<span class="tag">Remotive</span>
+<span class="tag">Himalayas</span>
+</p>
+<div class="warn">
+<p class="small" style="margin:0"><b>What we cannot see.</b> LinkedIn, Naukri and
+Indeed cannot be read without breaking their terms, so we do not. If you want
+those covered, set up their own job alerts to your inbox &mdash; that is their
+product, working for you, and it costs you nothing.</p>
+</div>
+
+<hr class="rule">
+
+<h2>What we do with your CV</h2>
+<p>Plainly, because this is the part that matters and most services bury it.</p>
+<ul class="terms">
+<li><b>You email it to us directly.</b> There is no upload form on this page and
+no CV database. We did not build one, on purpose.</li>
+<li><b>We use it for one thing:</b> reading your skills and experience so we can
+match roles. Nothing else.</li>
+<li><b>We delete it when the scan is done.</b> The working copy lives only for
+the length of the run. We keep the shortlist we sent you, and nothing more.</li>
+<li><b>We never sell it, share it, or send it to an employer.</b> No recruiter
+gets your details from us. You apply yourself, on your own terms.</li>
+<li><b>It is not used to train anything.</b></li>
+<li><b>Ask us to delete everything and we will</b>, same day, and confirm it.</li>
+<li><b>Take out anything you would rather we never saw</b> &mdash; photo, date of
+birth, address, ID numbers. We do not need any of it to match a job.</li>
+</ul>
+
+<table>
+<tr><td>Who is asking</td><td>Crewless</td></tr>
+<tr><td>Why we can process it</td><td>Your consent, given in the email you send. You can withdraw it at any time.</td></tr>
+<tr><td>How long we keep the CV</td><td>Only for the run &mdash; then deleted</td></tr>
+<tr><td>Who else sees it</td><td>Nobody</td></tr>
+<tr><td>Automated decisions</td><td>None that affect you. A person sends you the shortlist; nothing is decided about you, and no employer is contacted.</td></tr>
+</table>
+
+<hr class="rule">
+
+<h2>Ask for a scan</h2>
+<p>Right now a person runs each one and replies to you &mdash; so it is a handful
+at a time, not instant. Tell us three things:</p>
+<ul>
+<li><b>Where you want to work.</b> Countries or cities. This is your choice, not
+wherever you happen to live &mdash; searching India or the US from Sweden is normal.</li>
+<li><b>What role you want next.</b> It may not be the one you have now.</li>
+<li><b>Anything that rules a job out</b> &mdash; a notice period, no relocation,
+no night shifts, a visa you would need sponsored.</li>
+</ul>
+
+<div class="warn" style="margin:22px 0">
+<p class="small" style="margin:0"><b>Private testing.</b> Scans are run by
+invitation while we find out whether the output is any good &mdash; a person runs
+each one by hand. If you were not invited, the reply address below is not
+receiving mail yet.</p>
+</div>
+<p><a class="cta" href="mailto:hello@crewless.se?subject=Job%20scan%20request&body=I%27d%20like%20a%20job%20scan.%0A%0AWhere%20I%20want%20to%20work%3A%20%0AThe%20role%20I%20want%20next%3A%20%0AThings%20that%20rule%20a%20job%20out%3A%20%0A%0AI%20have%20read%20the%20terms%20on%20the%20scan%20page%20and%20I%27m%20attaching%20my%20CV%20so%20you%20can%20match%20roles%20for%20me.%20I%20understand%20you%20delete%20it%20after%20the%20run.%0A">Email us your request</a></p>
+
+<p class="small">Attach your CV to that email. Sending it is how you give consent
+&mdash; the draft says so, and you can edit it before you send. Optionally attach your
+LinkedIn data export (Settings &rarr; Data Privacy &rarr; Get a copy of your data)
+and we will show you where you already know someone. No password, ever.</p>
+
+<hr class="rule">
+<p class="small"><a href="/">&larr; Crewless</a></p>
+
+</div>
+</body>
+</html>
