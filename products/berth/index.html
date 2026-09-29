@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Berth — Crewless</title>
+<meta name="description" content="Reads the open job market and tells you which roles are worth your time — and which are not, with the reason.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#05070d; --ink:#eef2f8; --mut:#8a94a8; --dim:#565f72; --line:#161d2b;
+  --panel:rgba(13,19,30,.72); --live:#4fe0d0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.65 "Space Grotesk",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:56px 24px 120px}
+a{color:var(--live)}
+.back{font:500 12px/1 "IBM Plex Mono",monospace;color:var(--dim);text-decoration:none;
+ letter-spacing:.1em;text-transform:uppercase}
+.head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:30px 0 4px}
+h1{font-size:clamp(34px,6vw,50px);line-height:1;letter-spacing:-.03em;margin:0;font-weight:600}
+.kind{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;
+ color:var(--live);border:1px solid var(--line);padding:6px 10px;border-radius:99px}
+.lede{font-size:18.5px;color:var(--mut);margin:14px 0 40px;max-width:58ch}
+h2{font-size:19px;letter-spacing:-.015em;margin:44px 0 12px;font-weight:600}
+p{margin:0 0 14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;margin:20px 0}
+.mono{font:400 12px/1.5 "IBM Plex Mono",monospace;color:var(--dim);
+ letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px}
+.conf{display:flex;align-items:flex-end;gap:12px;margin:0 0 10px}
+.num{font:600 46px/1 "Space Grotesk",sans-serif;letter-spacing:-.03em}
+.den{font:400 15px/1 "IBM Plex Mono",monospace;color:var(--dim);padding-bottom:6px}
+.bar{height:5px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0 12px}
+.bar>i{display:block;height:100%;width:22%;background:var(--live);border-radius:99px}
+.small{font-size:13.5px;color:var(--dim)}
+ul{margin:0 0 14px;padding-left:20px}li{margin:0 0 9px}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:6px 0 14px}
+td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--mut);width:46%;padding-right:18px}
+td.n{font:500 14px/1.5 "IBM Plex Mono",monospace;color:var(--ink)}
+.rule{border:0;border-top:1px solid var(--line);margin:48px 0}
+.no{border-left:2px solid var(--live);padding-left:16px;color:var(--mut);margin:18px 0}
+.cta{display:inline-block;background:var(--live);color:#04211f;font-weight:600;
+ text-decoration:none;padding:12px 22px;border-radius:9px}
+.tag{display:inline-block;font:500 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--mut);border:1px solid var(--line);
+ padding:5px 9px;border-radius:99px;margin:0 6px 6px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="/">&larr; Crewless</a>
+
+<div class="head">
+  <h1>Berth</h1>
+  <span class="kind">Product · private</span>
+</div>
+<p class="lede">Reads the open job market and tells you which roles are worth
+your time &mdash; and, mostly, which are not, with the reason named.</p>
+
+<div class="panel">
+  <p class="mono">Confidence</p>
+  <div class="conf"><span class="num">22</span><span class="den">/ 100</span></div>
+  <div class="bar"><i></i></div>
+  <p class="small" style="margin:0">Our confidence it does what it claims, from
+  internal testing. The machinery is proven end to end and measured. Nothing
+  about <b>demand</b> is proven: it has had no users, and it was killed on our
+  own product screen. A working tool and a business are different claims.</p>
+</div>
+
+<h2>The idea</h2>
+<p>Job boards compete to show you <em>more</em>. But listings are free and
+infinite &mdash; what actually costs you is the evenings spent applying to roles
+that were never going to say yes.</p>
+<p>So Berth is built to say no. It reads thousands of live postings, throws out
+the ones you cannot take or will not get, and explains each rejection. Most runs
+end with a handful of roles, and some end with none. That is the product
+working, not failing.</p>
+
+<h2>What it does</h2>
+<ul>
+<li>Reads a CV and extracts what it <b>proves</b> &mdash; skills, seniority,
+right-to-work &mdash; never what it guesses.</li>
+<li>Asks <b>you</b> where you want to work. A CV says where you live, which is a
+different question. Searching India from Sweden is normal.</li>
+<li>Fans out across six public job sources in parallel, merges and de-duplicates.</li>
+<li>Judges each role on its own, citing the line in the posting that decided it,
+and names <b>why they might turn you down</b>.</li>
+<li>If you give it your own LinkedIn export, it shows which of those companies
+you already know someone at. A referral beats a better-scoring cold application.</li>
+</ul>
+
+<h2>Measured, not asserted</h2>
+<table>
+<tr><td>Live postings read in one run</td><td class="n">7,141</td></tr>
+<tr><td>Public sources, run in parallel</td><td class="n">6</td></tr>
+<tr><td>Model judgements that survive the fabrication check</td><td class="n">83%</td></tr>
+<tr><td>Roles that cleared the bar for one real CV</td><td class="n">4</td></tr>
+<tr><td>Cost per scan</td><td class="n">0 &mdash; open-weight model, our own hardware</td></tr>
+</table>
+<p class="small">Every judgement must quote the posting it came from, and the
+quote is checked against that posting. When a model invents its evidence, the
+judgement is discarded rather than shown. An earlier build silently attributed
+one company&rsquo;s text to another; that is exactly what the check now catches.</p>
+
+<h2>Where it looks</h2>
+<p>
+<span class="tag">37 company career boards</span>
+<span class="tag">JobTech &middot; all of Sweden</span>
+<span class="tag">Arbeitnow</span>
+<span class="tag">RemoteOK</span>
+<span class="tag">Remotive</span>
+<span class="tag">Himalayas</span>
+</p>
+<p class="small">Every one is a public API published for programmatic reading.
+Nothing is scraped, no account is used, no password is ever asked for.</p>
+
+<h2>What it will not do</h2>
+<div class="no">
+<p style="margin:0 0 10px"><b>It will not take your LinkedIn password.</b> Using
+someone&rsquo;s credentials breaks LinkedIn&rsquo;s terms and gets <em>their</em>
+account restricted. If you want your own profile and network read, you export
+your own data and hand us the file.</p>
+<p style="margin:0 0 10px"><b>It will not keep your CV.</b> It is read on our own
+machine and deleted when the run ends &mdash; including when the run fails. There
+is no CV database. We did not build one, deliberately.</p>
+<p style="margin:0"><b>It will not pad a list.</b> If nothing fits this week it
+says so.</p>
+</div>
+
+<h2>What it cannot see</h2>
+<p>LinkedIn, Naukri and Indeed cannot be read without breaking their terms, so
+we do not read them. Berth covers what it covers and says so. If you want those
+included, set up their own job alerts to your inbox &mdash; that is their product,
+working for you, at no cost.</p>
+
+<hr class="rule">
+
+<h2>Status</h2>
+<p><b>Private.</b> Not open to the public, not sold, and not listed. It runs on
+our own hardware, behind a password, for a handful of people at a time while we
+find out whether the output is any good.</p>
+<p class="small">It remains killed on our product board. The kill condition is
+recorded and cheap to test, and it is about demand rather than capability: the
+tool working has never been the open question.</p>
+<p style="margin-top:22px"><a class="cta" href="/scan/">Request a scan</a></p>
+
+<hr class="rule">
+<p class="small"><a href="/">&larr; Crewless</a></p>
+
+</div>
+</body>
+</html>
