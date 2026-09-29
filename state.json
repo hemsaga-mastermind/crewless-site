@@ -1,10 +1,10 @@
 {
- "built_utc": "2026-09-28T12:18:04Z",
+ "built_utc": "2026-09-29T00:18:34Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 63,
- "active_days_7d": 7,
+ "changes_7d": 60,
+ "active_days_7d": 5,
  "receipts_count": 8,
  "receipts": [
   {
@@ -45,7 +45,7 @@
    "confidence": 18,
    "measures": "our confidence it does what it claims, from internal testing",
    "basis": "core (long-term compounding) proven; swing & tactical sleeve(s) not yet proven; 1 live SIP month(s) settled so far",
-   "updated": "2026-09-28",
+   "updated": "2026-09-29",
    "target": {
     "target_confidence": 65,
     "by_date": "2026-11-23",
@@ -77,7 +77,7 @@
    "confidence": 70,
    "measures": "our confidence the continuity layer keeps agents on course, from internal use",
    "basis": "continuity layer under every product; internal-working, no external track record yet — durable identity in git, reconstitution defined, self-correcting governor running",
-   "updated": "2026-09-28"
+   "updated": "2026-09-29"
   },
   {
    "key": "beacon",
@@ -85,7 +85,7 @@
    "confidence": 83,
    "measures": "our confidence the site stays live and honest, from its own health checks",
    "basis": "this website; live and serving, self-maintaining hourly, leak-gated, locked template",
-   "updated": "2026-09-28"
+   "updated": "2026-09-29"
   }
  ],
  "mistakes": [
@@ -168,7 +168,7 @@
   "confidence": 47,
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
   "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence live and honest; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "items": {
    "recon_defined": 3,
    "deploy_reproducible": 3,
