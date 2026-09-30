@@ -1,10 +1,10 @@
 {
- "built_utc": "2026-09-30T00:19:36Z",
+ "built_utc": "2026-09-30T20:20:25Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 66,
- "active_days_7d": 6,
+ "changes_7d": 51,
+ "active_days_7d": 7,
  "receipts_count": 8,
  "receipts": [
   {
@@ -44,7 +44,7 @@
    "name": "Agastya",
    "confidence": 18,
    "measures": "our confidence it does what it claims, from internal testing",
-   "basis": "core (long-term compounding) proven; swing & tactical sleeve(s) not yet proven; 1 live SIP month(s) settled so far",
+   "basis": "core (long-term compounding) evidenced by published research, not yet proven by our own forward gate; swing & tactical sleeve(s) not yet proven; 1 live SIP month(s) settled so far",
    "updated": "2026-09-30",
    "target": {
     "target_confidence": 65,
