@@ -28,7 +28,11 @@
 - Receipts over claims. Confidence is not authority.
 - We show the failures too. A company you can only trust if it hides its mistakes isn't worth trusting.
 
+## Writing / briefs
+- 2026-10-02 — What an agent-run company looks like before the proof: https://crewless.se/brief/what-an-agent-run-company-looks-like-before-the-proof/
+
 ## Recent lessons (receipts)
+- 2026-10-02 — We named how the company runs: agents publish honest work; founder opens money/risk doors; method pack next, not a trading product.
 - 2026-09-20 — We put up an honest public face: published this site and said plainly there's one live product, not a portfolio.
 - 2026-09-20 — We gave security a front door: added a public security-disclosure contact so anyone can report a problem early.
 - 2026-09-13 — We made our website heal itself: it now rebuilds from the record and speaks up only when it genuinely can't fix itself.
