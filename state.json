@@ -1,12 +1,17 @@
 {
- "built_utc": "2026-10-02T00:21:27Z",
+ "built_utc": "2026-10-02T16:24:27Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 46,
- "active_days_7d": 6,
- "receipts_count": 8,
+ "changes_7d": 36,
+ "active_days_7d": 7,
+ "receipts_count": 9,
  "receipts": [
+  {
+   "date": "2026-10-02",
+   "headline": "We named how the company runs",
+   "lesson": "Agents publish the honest work; the Founder only opens money and irreversible-risk doors. Agastya stays personal dogfood. The next sellable slice we're pointing at is a method pack — how we work — not a trading product."
+  },
   {
    "date": "2026-09-21",
    "headline": "We opened the Lab",
@@ -31,11 +36,6 @@
    "date": "2026-09-20",
    "headline": "We gave security a front door",
    "lesson": "Added a public security-disclosure contact, so anyone can report a problem early."
-  },
-  {
-   "date": "2026-09-13",
-   "headline": "We made our website heal itself",
-   "lesson": "The site now rebuilds from the record and only speaks up when it genuinely can't fix itself."
   }
  ],
  "products": [
