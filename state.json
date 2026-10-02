@@ -1,12 +1,17 @@
 {
- "built_utc": "2026-10-02T16:24:27Z",
+ "built_utc": "2026-10-02T17:22:07Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 36,
+ "changes_7d": 37,
  "active_days_7d": 7,
- "receipts_count": 9,
+ "receipts_count": 10,
  "receipts": [
+  {
+   "date": "2026-10-02",
+   "headline": "We locked a three-year direction",
+   "lesson": "Through 2029: ship end-user craft on tools anyone can rent — method pack and honesty tools first. Not a trading product. Not an AI foundry. Pre-proof; under-claim."
+  },
   {
    "date": "2026-10-02",
    "headline": "We named how the company runs",
@@ -31,27 +36,63 @@
    "date": "2026-09-20",
    "headline": "We put up an honest public face",
    "lesson": "Published this site — and said plainly there's one live product, not a portfolio."
-  },
-  {
-   "date": "2026-09-20",
-   "headline": "We gave security a front door",
-   "lesson": "Added a public security-disclosure contact, so anyone can report a problem early."
   }
  ],
+ "confidence_policy": "legacy_percent_demoted",
+ "compounding_confidence": {
+  "model": "compounding_confidence",
+  "vanity_percent": "demoted",
+  "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)",
+  "checks": [
+   {
+    "id": "core_ledger_truth",
+    "status": "UNVERIFIED",
+    "note": "needs VM SIP/capital ledgers — no fiction"
+   },
+   {
+    "id": "rails_green",
+    "status": "PASS",
+    "note": "publish-host guard ok"
+   },
+   {
+    "id": "alpha_vs_niftybees_weeks",
+    "status": "UNVERIFIED",
+    "note": "weekly alpha ritual is the success metric (internal)"
+   },
+   {
+    "id": "freeze_compliance",
+    "status": "PASS",
+    "note": "handover freeze doc present"
+   },
+   {
+    "id": "public_claim_honesty",
+    "status": "UNVERIFIED",
+    "note": "legacy percent demoted; no on-track vanity claims"
+   }
+  ],
+  "verdict": "UNVERIFIED",
+  "updated": "2026-10-02"
+ },
  "products": [
   {
    "key": "agastya",
    "name": "Agastya",
    "confidence": 18,
-   "measures": "our confidence it does what it claims, from internal testing",
+   "measures": "legacy internal percent — not a success metric; does not mean on track",
    "basis": "core (long-term compounding) evidenced by published research, not yet proven by our own forward gate; swing & tactical sleeve(s) not yet proven; 1 live SIP month(s) settled so far",
    "updated": "2026-10-02",
+   "score_kind": "legacy_percent",
+   "not_success_metric": true,
+   "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)",
    "target": {
     "target_confidence": 65,
     "by_date": "2026-11-23",
     "gap": 47,
     "on_track": true,
-    "status_note": "on track — 47 to earn by 2026-11-23; still needs: swing sleeve coded + forward-tested (paper) + proven; tactical edge re-simulated as a real option, survives net-of-cost; live SIP months settling (track record)",
+    "status_note": "legacy percent gap 47 toward 65 by 2026-11-23; still needs: swing sleeve coded + forward-tested (paper) + proven; tactical edge re-simulated as a real option, survives net-of-cost; live SIP months settling (track record); not a success metric — use weekly alpha vs NIFTYBEES (internal)",
+    "legacy_percent": true,
+    "not_success_metric": true,
+    "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)",
     "decomposition": [
      {
       "item": "swing sleeve coded + forward-tested (paper) + proven",
@@ -75,17 +116,23 @@
    "key": "keel",
    "name": "Keel",
    "confidence": 70,
-   "measures": "our confidence the continuity layer keeps agents on course, from internal use",
+   "measures": "legacy internal percent for continuity hygiene — not a money success metric",
    "basis": "continuity layer under every product; internal-working, no external track record yet — durable identity in git, reconstitution defined, self-correcting governor running",
-   "updated": "2026-10-02"
+   "updated": "2026-10-02",
+   "score_kind": "legacy_percent",
+   "not_success_metric": true,
+   "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
   },
   {
    "key": "beacon",
    "name": "Beacon",
    "confidence": 83,
-   "measures": "our confidence the site stays live and honest, from its own health checks",
+   "measures": "legacy internal percent for site liveness — not a money success metric",
    "basis": "this website; live and serving, self-maintaining hourly, leak-gated, locked template",
-   "updated": "2026-10-02"
+   "updated": "2026-10-02",
+   "score_kind": "legacy_percent",
+   "not_success_metric": true,
+   "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
   }
  ],
  "mistakes": [
@@ -202,6 +249,9 @@
   "raw": 47,
   "penalty": 0,
   "ceiling": 55,
-  "itemized": "D1 9/32; D2 8/20; D3 18/18; D4 7/10; D5 5/20; raw 47; ceiling 55"
+  "itemized": "D1 9/32; D2 8/20; D3 18/18; D4 7/10; D5 5/20; raw 47; ceiling 55",
+  "score_kind": "legacy_percent",
+  "not_success_metric": true,
+  "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
  }
 }
