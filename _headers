@@ -10,3 +10,6 @@
   Cache-Control: no-cache
 /brief/*
   Cache-Control: no-cache
+
+/method-pack/*
+  Cache-Control: no-cache
