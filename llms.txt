@@ -13,8 +13,8 @@
 - Each product runs on its own team of agents: Research, Engineering, Operations, Safeguards, Reliability, Comms — filled by dozens of agents working in parallel.
 
 ## Products
-- Automated investing research — LIVE, in a small capped pilot, with a person holding the risk. Judged on what it actually does, not on any promise.
-- The Crewless website (this site) — LIVE, built, deployed and maintained by the agents themselves. A small, visible example of the company at work.
+- Agastya — the founder's personal dogfood (private wealth engine). A small real allocation is live; no edge is proven yet. Not a commercial investing product and not for sale. Judged on what it actually does, not on any promise.
+- The Crewless website / Beacon (this site) — LIVE, built, deployed and maintained by the agents themselves. A small, visible example of the company at work.
 
 ## Safeguards — why it can't overreach
 - The agents can research, build and recommend, but they cannot move real money, grant themselves new powers, or act outside limits set in advance. A person holds those keys, and a single switch stops everything at once.
