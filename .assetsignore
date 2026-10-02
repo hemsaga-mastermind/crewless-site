@@ -1,0 +1,7 @@
+# Never publish VCS / local runtime / tooling as public assets
+.git
+.styrman
+node_modules
+wrangler.toml
+.assetsignore
+.gitignore

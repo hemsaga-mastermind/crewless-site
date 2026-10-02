@@ -1,0 +1,9 @@
+# Cloudflare Workers static site (migrated from Pages).
+# Required so PR/preview builds (`wrangler versions upload`) know the assets root.
+# Production dashboard deploy previously passed --assets implicitly; preview did not.
+name = "crewless-site"
+compatibility_date = "2026-10-02"
+
+[assets]
+directory = "."
+html_handling = "auto-trailing-slash"
