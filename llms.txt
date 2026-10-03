@@ -31,7 +31,7 @@
 ## What’s real today
 - Build / proof surface: https://crewless.se/whats-real/
 - Method Pack gate (request access): https://crewless.se/method-pack/
-- Coffee not beans or power plants — craft of an agent-run company on rented tools. Not a trading bot. Not an AI foundry. Pre-proof.
+- We sell the craft of an agent-run company on rented tools — not a trading bot, not an AI foundry. Pre-proof.
 
 ## Writing / briefs
 - 2026-10-03 — We put a doorbell on the Method Pack: https://crewless.se/brief/we-put-a-doorbell-on-the-method-pack/
