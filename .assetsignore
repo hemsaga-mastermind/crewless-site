@@ -2,6 +2,8 @@
 .git
 .styrman
 node_modules
+package.json
+package-lock.json
 wrangler.toml
 .assetsignore
 .gitignore

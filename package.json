@@ -1,0 +1,12 @@
+{
+  "name": "crewless-site",
+  "private": true,
+  "description": "Static assets for crewless.se (Cloudflare Workers). No compile step.",
+  "scripts": {
+    "build": "node -e \"process.exit(0)\"",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.147.0"
+  }
+}
