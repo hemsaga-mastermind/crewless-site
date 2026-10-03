@@ -22,8 +22,7 @@
     btn.addEventListener("click", () => applyTheme(btn.dataset.themeBtn));
   });
 
-  /** Paraphrase finding details so static crawlers / noscript stay clean;
-   *  the live cup still shows category + severity + a safe summary. */
+  /** Paraphrase finding details so static crawlers / noscript stay clean. */
   function summarizeFinding(finding) {
     const detail = String(finding.detail || "");
     if (detail.startsWith("currency/number figure")) {
@@ -44,7 +43,15 @@
     if (detail.includes("independence")) {
       return "Independence / employer-link phrasing flagged";
     }
-    return "Honesty risk flagged (see JSON artifact for exact match)";
+    return "Honesty risk flagged (see report details for the match)";
+  }
+
+  function humanCategory(finding) {
+    const cat = String(finding.category || "").toLowerCase();
+    if (cat.includes("money") || cat.includes("claim")) return "Risky claim";
+    if (cat.includes("denial")) return "Check this denial";
+    if (cat.includes("independence")) return "Check this link";
+    return "Needs a look";
   }
 
   function renderReport(targetId, report, kind) {
@@ -59,34 +66,33 @@
 
     if (badge) {
       badge.className = `badge ${isClean ? "pass" : "fail"}`;
-      badge.textContent = isClean ? "exit 0 · clean" : `exit 1 · ${report.risk_count} risks`;
+      badge.textContent = isClean ? "Clean" : "Needs fix";
     }
 
     if (verdict) {
       verdict.className = `verdict ${isClean ? "pass" : "fail"}`;
       verdict.textContent = isClean
-        ? "Clean — no honesty risks flagged (still owes human review)."
-        : "Fail-closed — planted money-claim shapes blocked publish.";
+        ? "Clean — nothing risky flagged. A person should still review before publish."
+        : "Blocked — risky claim shapes caught. Do not publish as-is.";
     }
 
     if (meta) {
-      meta.innerHTML = `
-        <div><strong>source</strong> ${escapeHtml((report.sources || []).join(", ") || "—")}</div>
-        <div><strong>sku</strong> ${escapeHtml(report.sku || "site-honesty-scanner")} ${escapeHtml(report.sku_version || "")}</div>
-        <div><strong>risk_count</strong> ${Number(report.risk_count) || 0}</div>
-        <div><strong>mode</strong> static demo · pre-rendered fixture</div>
-      `;
+      const n = Number(report.risk_count) || 0;
+      meta.textContent = isClean
+        ? "Sample page with careful wording. Nothing risky flagged."
+        : `Sample page written on purpose with overconfident claim shapes${n ? ` (${n} flags)` : ""}.`;
     }
 
     if (findings) {
       const list = Array.isArray(report.findings) ? report.findings : [];
       if (!list.length) {
-        findings.innerHTML = `<p class="empty">No findings. Human review still required before publish.</p>`;
+        findings.innerHTML =
+          `<p class="empty">No issues found. Still have a person read it before it goes live.</p>`;
       } else {
         findings.innerHTML = `<ul class="findings">${list
           .map(
             (f) => `<li>
-              <span class="cat">${escapeHtml(f.category)} / ${escapeHtml(f.severity)}</span>
+              <span class="cat">${escapeHtml(humanCategory(f))}</span>
               <span class="detail">${escapeHtml(summarizeFinding(f))}</span>
             </li>`
           )
@@ -119,11 +125,11 @@
     const fail = document.getElementById("report-fail");
     if (clean) {
       const v = clean.querySelector("[data-verdict]");
-      if (v) v.textContent = "Demo artifacts unavailable — open demo/clean.json directly.";
+      if (v) v.textContent = "Demo files unavailable — open the report details below.";
     }
     if (fail) {
       const v = fail.querySelector("[data-verdict]");
-      if (v) v.textContent = "Demo artifacts unavailable — open demo/fail.json directly.";
+      if (v) v.textContent = "Demo files unavailable — open the report details below.";
     }
   });
 })();
