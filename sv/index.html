@@ -812,7 +812,7 @@ footer .mono{color:var(--mut);}
         var r=contactSec.getBoundingClientRect();
         var vh=window.innerHeight||0;
         var atEnd=(window.scrollY+vh) >= (document.documentElement.scrollHeight-8);
-        var active=(r.top < 140 && r.bottom > Math.min(vh*0.3, 220)) || (atEnd && r.top < vh);
+        var active=(r.top < 200 && r.bottom > Math.min(vh*0.25, 180)) || (atEnd && r.top < vh);
         contactLink.classList.toggle('is-active', active);
       };
       syncContact();

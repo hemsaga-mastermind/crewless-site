@@ -656,12 +656,6 @@ footer .mono{color:var(--mut);}
   <div class="receipts" id="receiptlog"></div>
 </div></section>
 
-<section id="wrong" hidden><div class="wrap">
-  <p class="kick">What we got wrong</p>
-  <p class="sub">Killed ideas and negative findings — kept short on purpose. We don't hide kills.</p>
-  <ul class="wrongs" id="mistakelog"></ul>
-</div></section>
-
 <section id="contact"><div class="wrap">
   <p class="kick">Write to us</p>
   <p class="creed">One person with a clear idea and the right tools can build what used to take a crowd.
@@ -678,6 +672,13 @@ footer .mono{color:var(--mut);}
   </div>
   <div class="cta"><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Or just email us</a></div>
   <p class="mono" style="color:var(--dim);margin-top:1.3rem;font-size:.82rem">◉ Based in Sweden · working remotely</p>
+</div></section>
+
+<!-- after Contact so #contact can sit under the sticky bar (enough scroll room below) -->
+<section id="wrong" hidden><div class="wrap">
+  <p class="kick">What we got wrong</p>
+  <p class="sub">Killed ideas and negative findings — kept short on purpose. We don't hide kills.</p>
+  <ul class="wrongs" id="mistakelog"></ul>
 </div></section>
 </main>
 
@@ -816,7 +817,7 @@ footer .mono{color:var(--mut);}
         var vh=window.innerHeight||0;
         var atEnd=(window.scrollY+vh) >= (document.documentElement.scrollHeight-8);
         // active under sticky bar, or pinned at page end (mobile short tail)
-        var active=(r.top < 140 && r.bottom > Math.min(vh*0.3, 220)) || (atEnd && r.top < vh);
+        var active=(r.top < 200 && r.bottom > Math.min(vh*0.25, 180)) || (atEnd && r.top < vh);
         contactLink.classList.toggle('is-active', active);
       };
       syncContact();
