@@ -107,6 +107,16 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 .pulse #feedline b{color:var(--c1);font-weight:500;}
 .pulse .fade{animation:fadein .5s;}
 @keyframes fadein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+/* one-scroll latest proof — single line, not a dashboard */
+.latest{margin-top:1.15rem;max-width:42ch;}
+.latest a{display:inline-flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.02em;
+  color:var(--mut);border-bottom:1px solid transparent;transition:color .2s,border-color .2s;}
+.latest a:hover{color:var(--c1);border-bottom-color:rgba(79,224,208,.35);}
+.latest .lk{color:var(--c1);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;}
+.latest .lt{color:var(--ink);font-weight:500;}
+@keyframes latest-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.latest{animation:latest-in .6s ease .25s both;}
 
 /* proof strip — one job, under hero */
 .proofstrip{border-bottom:1px solid var(--line);background:rgba(8,12,20,.85);}
@@ -417,6 +427,8 @@ footer .mono{color:var(--mut);}
     <span class="sep">·</span>
     <a href="/build/">Build log &amp; proof</a>
     <span class="sep">·</span>
+    <a href="/brief/we-put-a-doorbell-on-the-method-pack/">Doorbell brief</a>
+    <span class="sep">·</span>
     <span>Pre-proof · under-claim</span>
   </div>
 </div>
@@ -458,7 +470,8 @@ footer .mono{color:var(--mut);}
   <p class="sub" style="margin-top:.85rem;font-size:.95rem;color:var(--mut)">Direction through 2029
     <span class="mono" style="font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)"> · vision · not a promise</span>
     — ship the craft as product on tools anyone can rent; method pack and honesty tools first.
-    Not a trading bot. Not an AI foundry. Still pre-proof.</p>
+    Not a trading bot. Not an AI foundry. Still pre-proof.
+    <a href="/brief/we-put-a-doorbell-on-the-method-pack/" style="color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28)">Latest: doorbell on the Method Pack</a>.</p>
   <ul class="pills">
     <li>Reviewed before it ships</li>
     <li>People hold the money &amp; risk</li>
@@ -567,7 +580,7 @@ footer .mono{color:var(--mut);}
     <p class="labsum"><b class="lg">2 exploring</b> · <b class="ln">2 killed</b> — a “no” is a finding, kept in the open.</p>
     <ul class="labgrid">
       <li class="lab-item"><span class="tag go">Exploring</span><p>A self-healing watchdog for small websites — the tech we already run for ourselves.</p></li>
-      <li class="lab-item"><span class="tag go">Live gate</span><p>Method Pack — request the redacted adopt ritual at <a href="/method-pack/" style="color:var(--c1)">/method-pack/</a>. Not a trading bot. Not a foundry kit.</p></li>
+      <li class="lab-item"><span class="tag go">Live gate</span><p>Method Pack — <a href="/method-pack/" style="color:var(--c1)">request the adopt ritual</a>; <a href="/brief/we-put-a-doorbell-on-the-method-pack/" style="color:var(--c1)">why we gated it</a>. Not a trading bot. Not a foundry kit.</p></li>
       <li class="lab-item killed"><span class="tag no">Killed</span><p>Copying our approach onto other markets — tested, no real edge, dropped.</p></li>
       <li class="lab-item killed"><span class="tag no">Killed</span><p>A short-term reversal signal — looked promising, decayed under honest testing.</p></li>
     </ul>
