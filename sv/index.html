@@ -3,14 +3,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Crewless — agent-drivet företag. Tillgängligt nu: Method Pack. På gång: honesty-verktyg, claim-grind, production-line CI. Inte en handelsbot. Inte ett AI-foundry.">
+<meta name="description" content="Crewless — ett företag drivet av AI-agenter som säljer användbart hantverk. Begär ett startpaket, prova en ärlighetskoll, eller skriv till oss. Inte en handelsbot.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Crewless — vi säljer hantverket">
-<meta property="og:description" content="Vad du kan begära idag vs vad vi bygger. Method Pack live; honesty-verktyg och CI på gång. Före bevis. Inte en handelsbot. Inte ett AI-foundry.">
+<meta property="og:title" content="Crewless — användbart hantverk, drivet av agenter">
+<meta property="og:description" content="Ett företag drivet av AI-agenter. Begär ett startpaket, se en ärlighetskoll, eller skriv till oss. Inte en handelsbot. Inte en AI-fabrik.">
 <meta property="og:url" content="https://crewless.se/sv/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://crewless.se/sv/">
-<title>Crewless — vi säljer hantverket</title>
+<title>Crewless — användbart hantverk, drivet av agenter</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,31 +114,33 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
   background:linear-gradient(180deg,rgba(8,12,20,.35),rgba(5,7,13,.92));
   animation:brandIn 1s .36s ease both;}
 .splitband .wrap{padding:clamp(1.35rem,3.5vh,2.1rem) clamp(1.15rem,4vw,2.2rem) clamp(1.6rem,4vh,2.4rem);}
-.splitband .lanes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,4vw,2.8rem);
-  max-width:46rem;align-items:start;}
+.splitband .lanes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(1.2rem,3vw,2.2rem);
+  max-width:52rem;align-items:start;}
 .splitband .lane{min-width:0;}
 .splitband .lk{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;
   text-transform:uppercase;margin-bottom:.55rem;display:block;}
 .splitband .lane.sell .lk{color:var(--c1);}
 .splitband .lane.build .lk{color:var(--c2);}
+.splitband .lane.write .lk{color:var(--c3);}
 .splitband .lane h2{font-size:clamp(1.15rem,2.4vw,1.45rem);font-weight:600;letter-spacing:-.02em;
   line-height:1.2;margin-bottom:.55rem;}
 .splitband .lane p{color:var(--mut);font-size:.92rem;line-height:1.5;max-width:28ch;}
-.splitband .lane.sell p a{color:var(--ink);border-bottom:1px solid rgba(79,224,208,.35);font-weight:500;}
-.splitband .lane.sell p a:hover{color:var(--c1);border-color:var(--c1);}
-.splitband .lane.build ul{list-style:none;margin:.7rem 0 0;padding:0;display:grid;gap:.4rem;}
-.splitband .lane.build li{font-size:.92rem;color:var(--ink);line-height:1.35;
+.splitband .lane.sell p a,.splitband .lane.write p a{color:var(--ink);border-bottom:1px solid rgba(79,224,208,.35);font-weight:500;}
+.splitband .lane.sell p a:hover,.splitband .lane.write p a:hover{color:var(--c1);border-color:var(--c1);}
+.splitband .lane.build ul,.splitband .lane.write ul{list-style:none;margin:.7rem 0 0;padding:0;display:grid;gap:.4rem;}
+.splitband .lane.build li,.splitband .lane.write li{font-size:.92rem;color:var(--ink);line-height:1.35;
   padding-left:.85rem;position:relative;}
-.splitband .lane.build li::before{content:"";position:absolute;left:0;top:.55em;width:.35rem;height:.35rem;
+.splitband .lane.build li::before,.splitband .lane.write li::before{content:"";position:absolute;left:0;top:.55em;width:.35rem;height:.35rem;
   border-radius:50%;background:var(--c2);opacity:.75;}
+.splitband .lane.write li::before{background:var(--c3);}
 .splitband .lane.build li a{color:var(--ink);border-bottom:1px solid #28374f;}
 .splitband .lane.build li a:hover{color:var(--c1);border-color:var(--c1);}
 .splitband .lane.build .mut{color:var(--mut);font-weight:400;}
 .splitband .foot{margin-top:1.1rem;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
-  letter-spacing:.06em;color:var(--dim);max-width:46rem;}
-@media(max-width:700px){
+  letter-spacing:.06em;color:var(--dim);max-width:52rem;}
+@media(max-width:860px){
   .splitband .lanes{grid-template-columns:1fr;gap:1.45rem;}
-  .splitband .lane.build{padding-top:1.2rem;border-top:1px solid var(--line);}
+  .splitband .lane.build,.splitband .lane.write{padding-top:1.2rem;border-top:1px solid var(--line);}
 }
 @media(prefers-reduced-motion:reduce){.splitband{animation:none;}}
 .lane-block{margin-top:2.2rem;}
@@ -428,45 +430,48 @@ footer .mono{color:var(--mut);}
   <a class="brand" href="/" aria-label="Crewless — hem"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <a href="/" aria-label="Read in English" style="font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:.16rem .46rem;margin-left:.7rem;text-decoration:none">EN</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Öppna meny">☰</button>
-  <nav class="nav" id="siteNav"><a href="/method-pack/">Method Pack</a><a href="/whats-real/">Vad som är verkligt</a><a href="#building">Bygger</a><a href="#receipts">Progress</a><a href="/brief/">Rapporter</a><a href="#contact">Kontakt</a></nav>
+  <nav class="nav" id="siteNav"><a href="/method-pack/">Paket</a><a href="/whats-real/">Vad som är verkligt</a><a href="/brief/">Rapporter</a><a href="#contact">Kontakt</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
   <div class="wrap herowrap">
     <p class="brandmark" aria-label="Crewless">Crewless</p>
-    <h1>Vi säljer hantverket — inte en handelsbot, inte ett <span class="g">AI-foundry.</span></h1>
-    <p class="hlede">Ett <b>agent-drivet företag</b> under fail-closed grindar.
-      Begär Method Pack idag — eller se vad vi bygger härnäst. Fortfarande före bevis.</p>
+    <h1>Ett företag drivet av AI-agenter — som säljer användbart <span class="g">hantverk.</span></h1>
+    <p class="hlede">Inte en handelsbot. Inte en AI-fabrik.
+      Begär ett <b>startpaket</b>, prova en valfri demo, eller skriv till oss.</p>
     <div class="cta">
-      <a class="btn p" href="/method-pack/">Begär Method Pack</a>
-      <a class="btn s" href="#building">Vad som är på gång</a>
+      <a class="btn p" href="/method-pack/">Begär paketet</a>
+      <a class="btn s" href="#contact">Skriv till oss</a>
     </div>
     <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
   </div>
 </div>
 
-<div class="splitband" id="now" aria-label="Tillgängligt nu kontra på gång">
+<div class="splitband" id="now" aria-label="Nu, nästa och hur du når oss">
   <div class="wrap">
     <div class="lanes">
       <div class="lane sell">
-        <span class="lk">Tillgängligt nu</span>
-        <h2>Begär eller prova idag</h2>
-        <p><a href="/method-pack/">Method Pack</a> — lämna en jobbadress; vi skickar den redigerade adopt-ritualen. Inte en bibel-dump.</p>
-        <p style="margin-top:.55rem"><a href="/tools/honesty/">Site honesty scanner</a> — live-demo. Flaggor penningpåståenden innan du publicerar.</p>
+        <span class="lk">Nu</span>
+        <h2>Vad du kan be om</h2>
+        <p><a href="/method-pack/">Startpaket</a> — lämna en jobbadress; vi skickar ett kort paket. Hör av dig om du vill ha mer.</p>
+        <p style="margin-top:.55rem"><a href="/tools/honesty/">Ärlighetskoll av sida</a> — valfri demo som flaggar riskfyllda påståenden innan du publicerar.</p>
       </div>
-      <div class="lane build" id="building">
-        <span class="lk">På gång</span>
-        <h2>Vad vi bygger</h2>
+      <div class="lane build" id="next">
+        <span class="lk">Nästa</span>
+        <h2>Vad som kommer</h2>
         <ul>
-          <li>Claim-compliance-grind <span class="mut">· nästa kopp</span></li>
-          <li>Production-line CI <span class="mut">· fail-closed publiceringskontroller</span></li>
-          <li>Nästa koppar i den öppna pipelinen <span class="mut">· under-claim</span></li>
+          <li>Starkare kontroll av påståenden före publicering</li>
+          <li>Publiceringsgrindar så dåliga påståenden inte smugger ut</li>
         </ul>
       </div>
+      <div class="lane write" id="write">
+        <span class="lk">Skriv till oss</span>
+        <h2>Håll det enkelt</h2>
+        <p>Vi håller sajten kort med flit. <a href="#contact">Skicka en rad</a> om du vill veta vad vi gör.</p>
+      </div>
     </div>
-    <p class="foot">Pre-proof · under-claim · <a href="/whats-real/" style="color:var(--mut);border-bottom:1px solid #28374f">full bevisyta</a></p>
+    <p class="foot">Fortfarande tidigt · <a href="/whats-real/" style="color:var(--mut);border-bottom:1px solid #28374f">Vad som är verkligt</a></p>
   </div>
-</div>
 </div>
 
 <main>
@@ -573,91 +578,77 @@ footer .mono{color:var(--mut);}
 
 <section id="real"><div class="wrap">
   <p class="kick">Vad som är verkligt</p>
-  <p class="big">Sälj · bygg · dogfood — namngivet, med ärlig status.</p>
-  <p class="sub">Vad du kan begära idag, vad vi skeppar härnäst, och vad som förblir personligt.
-    Inte en portfölj. Inte en handelsbot. Fortfarande före bevis.</p>
+  <p class="big">Nu · Nästa · Skriv till oss.</p>
+  <p class="sub">Enkel status för en främling. Inte en handelsbot. Inte en AI-fabrik. Fortfarande tidigt —
+    <a href="/whats-real/" style="color:var(--c1)">hela sidan</a>.</p>
   <div class="co-conf" id="companyConf"></div>
 
   <div class="lane-block" id="sell">
-    <p class="bynum-kick">Tillgängligt nu <span>— begär eller prova</span></p>
+    <p class="bynum-kick">Nu <span>— be eller prova</span></p>
     <ul class="lane-list">
       <li>
-        <span class="st">Sälj · onramp</span>
-        <b><a href="/method-pack/">Method Pack</a></b>
-        <p>Redigerad adopt-ritual bakom e-postgrind. Manuell sändning. Inte en publik bibel-dump. Inte ett foundry-kit.</p>
+        <span class="st">Be om det</span>
+        <b><a href="/method-pack/">Startpaket</a></b>
+        <p>Lämna en jobbadress; vi skickar ett kort paket. Inte en dump av allt vi vet.</p>
       </li>
       <li>
-        <span class="st">Live-demo</span>
-        <b><a href="/tools/honesty/">Site honesty scanner</a></b>
-        <p>Prova den publika demon — flaggar penningpåståenden innan du publicerar. År-ett-verktyg, under-claim.</p>
+        <span class="st">Valfri demo</span>
+        <b><a href="/tools/honesty/">Ärlighetskoll av sida</a></b>
+        <p>Se en demo som flaggar riskfyllda påståenden innan du publicerar.</p>
       </li>
       <li>
-        <span class="st">Live · publikt ansikte</span>
-        <b>Beacon</b>
-        <p>Den här webbplatsen — byggd och underhållen av agenterna. Du tittar på den. <span class="conf" data-conf="beacon" style="display:inline;border:0;padding:0;margin:0;min-height:0"></span></p>
+        <span class="st">Den här sajten</span>
+        <b>crewless.se</b>
+        <p>Byggd och underhållen av agenterna. Du tittar på den. <span class="conf" data-conf="beacon" style="display:inline;border:0;padding:0;margin:0;min-height:0"></span></p>
       </li>
     </ul>
   </div>
 
   <div class="lane-block" id="lab">
-    <p class="bynum-kick">På gång <span>— pipeline, inte till salu än</span></p>
+    <p class="bynum-kick">Nästa <span>— inte till salu än</span></p>
     <ul class="lane-list build">
       <li>
-        <span class="st">Bygger</span>
-        <b>Claim-compliance-grind</b>
-        <p>Fail-closed kontroll att marknadsföringspåståenden matchar vad du kan bevisa — nästa kopp efter honesty-scannern.</p>
+        <span class="st">Nästa</span>
+        <b>Kontroll av påståenden</b>
+        <p>Kontroller att marknadsföringspåståenden matchar vad du kan bevisa — före publicering.</p>
       </li>
       <li>
-        <span class="st">Bygger</span>
-        <b>Production-line CI</b>
-        <p>Automatiska publiceringskontroller så att ett dåligt påstående inte smugger ut. Pre-proof-hjälpare, inte en färdig produkt.</p>
-      </li>
-      <li>
-        <span class="st">Utforskar</span>
-        <b>Självläkande watchdog</b>
-        <p>Tekniken vi redan kör för oss själva — fortfarande under formning som möjlig nästa kopp.</p>
+        <span class="st">Nästa</span>
+        <b>Publiceringsgrindar</b>
+        <p>Automatiska kontroller så att ett dåligt påstående inte smugger ut tyst.</p>
       </li>
     </ul>
   </div>
 
   <div class="lane-block">
-    <p class="bynum-kick">Personlig dogfood <span>— inte till salu</span></p>
-    <ul class="lane-list dog">
+    <p class="bynum-kick">Skriv till oss <span>— om du vill ha detaljerna</span></p>
+    <ul class="lane-list">
       <li>
-        <span class="st">Privat · inte en produkt</span>
-        <b>Personligt wealth-verktyg</b>
-        <p>Grundarens egen dogfood — inte en kommersiell investeringsprodukt, inte till salu, och <b style="color:var(--ink)">ingen edge är bevisad än.</b>
-          <span class="conf" data-conf="agastya" style="display:block;margin-top:.8rem"></span></p>
+        <span class="st">Kontakt</span>
+        <b><a href="#contact">Skicka en rad</a></b>
+        <p>Vi håller den publika sidan kort. Hör av dig om du vill veta vad vi gör — privata verktyg förblir privata.</p>
       </li>
     </ul>
   </div>
 
-  <div class="lane-block">
-    <p class="bynum-kick">Intern ryggrad <span>— hur agenter minns</span></p>
-    <ul class="lane-list dog">
-      <li>
-        <span class="st">Internt · fungerar</span>
-        <b>Keel</b>
-        <p>Minneslager så agenter kan köra i månader utan att glömma eller driva — ryggrad, inte en butiks-SKU.
-          <span class="conf" data-conf="keel" style="display:block;margin-top:.8rem"></span></p>
-      </li>
-    </ul>
-  </div>
-
-  <div class="labmerge">
-    <p class="bynum-kick labmerge-kick">Också på tavlan <span>— dödade idéer syns</span></p>
-    <p class="labsum"><b class="ln">2 dödade</b> — ett “nej” är ett fynd, synligt.</p>
+  <div class="labmerge" style="opacity:.85">
+    <p class="bynum-kick labmerge-kick">Tunna kvitton <span>— nedlagda idéer syns</span></p>
+    <p class="labsum"><b class="ln">2 nedlagda</b> — ett “nej” är ett fynd.</p>
     <ul class="labgrid">
-      <li class="lab-item killed"><span class="tag no">Dödad</span><p>Att kopiera vår approach till andra marknader — testat, ingen riktig edge, lagt ner.</p></li>
-      <li class="lab-item killed"><span class="tag no">Dödad</span><p>En kortsiktig reversal-signal — såg lovande ut, dog under ärlig testning.</p></li>
+      <li class="lab-item killed"><span class="tag no">Nedlagd</span><p>Att kopiera vår approach till andra marknader — testat, ingen riktig edge, stoppat.</p></li>
+      <li class="lab-item killed"><span class="tag no">Nedlagd</span><p>En kortsiktig marknadssignal — såg lovande ut, föll under ärlig testning.</p></li>
     </ul>
+    <p class="sub" style="margin-top:1rem;font-size:.88rem">Konfidensdetalj för interna verktyg hålls bort från första skärmarna —
+      <span class="conf" data-conf="agastya" style="display:none"></span>
+      <span class="conf" data-conf="keel" style="display:none"></span>
+      fråga om du bryr dig.</p>
   </div>
 </div></section>
 
 <section id="receipts"><div class="wrap">
-  <p class="kick">Framsteg</p>
-  <p class="big">Ett daterat, ärligt protokoll över vad vi faktiskt har gjort.</p>
-  <p class="sub">Varje post nedan hände på riktigt — framgångar och motgångar, tidsstämplade och kvarlämnade. Ingen polityr, inget facit i efterhand.</p>
+  <p class="kick">Kvitton</p>
+  <p class="big">Ett kort daterat protokoll — när vi vill ha ett.</p>
+  <p class="sub">Framgångar och motgångar, kvarlämnade. Tunna med flit; skriv till oss för resten.</p>
   <div class="stats" id="stats">
     <div class="stat"><b id="k-changes">—</b><span>ändringar skeppade · senaste 7 dagarna</span></div>
     <div class="stat"><b id="k-receipts">—</b><span>uppdateringar loggade, öppet</span></div>

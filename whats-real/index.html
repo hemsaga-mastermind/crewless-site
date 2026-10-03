@@ -3,10 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow">
-<meta name="description" content="What’s real at Crewless — Available now: Method Pack + honesty demo. In the works: claim gate, production-line CI. Not a trading bot. Not an AI foundry.">
+<meta name="description" content="What’s real at Crewless — Now: starter pack + optional page honesty check. Next: claim checks and shipping gates. Write to us for more. Not a trading bot.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="What’s real today — Crewless">
-<meta property="og:description" content="Available now vs in the works. Method Pack gate live. Site honesty scanner demo live. Pipeline under-claim.">
+<meta property="og:description" content="Now · Next · Write to us. Starter pack request live. Optional page honesty check. Reach out for the detail.">
 <meta property="og:url" content="https://crewless.se/whats-real/">
 <link rel="canonical" href="https://crewless.se/whats-real/">
 <title>What’s real today — Crewless</title>
@@ -65,24 +65,25 @@ h1{font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.05;font-weight:600;letter-sp
   animation:in .85s .1s ease both;}
 .lede{font-size:1.12rem;color:#d9e0ee;line-height:1.65;max-width:40ch;animation:in .85s .16s ease both;}
 .lede b{color:var(--ink);font-weight:600;}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,2.8rem);max-width:720px;margin:0 auto;
+.split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(1.4rem,3vw,2.2rem);max-width:860px;margin:0 auto;
   padding:clamp(1.6rem,4vw,2.4rem) clamp(1.15rem,5vw,1.6rem) 1rem;
   animation:in .9s .22s ease both;}
 .lane .lk{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:.55rem;}
 .lane.sell .lk{color:var(--c1);}
 .lane.build .lk{color:var(--c2);}
-.lane h2{font-size:clamp(1.25rem,2.6vw,1.55rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:.9rem;}
+.lane.write .lk{color:var(--c3);}
+.lane h2{font-size:clamp(1.15rem,2.4vw,1.45rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:.9rem;}
 .lane ul{list-style:none;display:grid;gap:1rem;}
-.lane li{padding-left:0;}
 .lane .st{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.3rem;}
 .lane.sell .st{color:var(--c1);}
 .lane.build .st{color:var(--c2);}
+.lane.write .st{color:var(--c3);}
 .lane p{color:var(--mut);font-size:.95rem;line-height:1.55;}
 .lane a{color:var(--ink);border-bottom:1px solid #28374f;}
 .lane a:hover{color:var(--c1);border-color:var(--c1);}
-@media(max-width:700px){
+@media(max-width:860px){
   .split{grid-template-columns:1fr;gap:1.8rem;}
-  .lane.build{padding-top:1.4rem;border-top:1px solid var(--line);}
+  .lane.build,.lane.write{padding-top:1.4rem;border-top:1px solid var(--line);}
 }
 .rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:1.6rem auto;max-width:720px;}
 .art{max-width:720px;margin:0 auto;padding:0 clamp(1.15rem,5vw,1.6rem) 3.2rem;}
@@ -105,56 +106,62 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;line-h
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
-  <nav class="nav" id="siteNav"><a href="/">Home</a><a href="/method-pack/">Method Pack</a><a href="/tools/honesty/">Honesty demo</a><a href="/brief/">Briefs</a><a href="/#building">Building</a></nav>
+  <nav class="nav" id="siteNav"><a href="/">Home</a><a href="/method-pack/">Pack</a><a href="/brief/">Briefs</a><a href="/#contact">Contact</a></nav>
 </div></header>
 
 <main>
   <div class="hero">
     <p class="brandmark" aria-label="Crewless">Crewless</p>
-    <p class="kick">Proof surface</p>
-    <h1>Available now vs in the works</h1>
-    <p class="lede">A stranger’s twenty-second check. <b>What you can request today</b> on the left —
-      <b>what we’re building next</b> on the right. Not a trading bot. Not an AI foundry. Pre-proof.</p>
+    <p class="kick">What’s real</p>
+    <h1>Now · Next · Write to us</h1>
+    <p class="lede">A company run by AI agents that sells useful craft.
+      <b>No glossary required.</b> Not a trading bot. Not an AI factory. Still early.</p>
   </div>
 
   <div class="split" id="pipeline">
     <div class="lane sell">
-      <span class="lk">Available now</span>
-      <h2>Request or try</h2>
+      <span class="lk">Now</span>
+      <h2>Ask or try</h2>
       <ul>
         <li>
-          <span class="st">Sell · on-ramp</span>
-          <p><a href="/method-pack/">Method Pack gate</a> — leave a work email; we send the redacted adopt ritual (README, adopt guide, three chapters). Manual send. Not a bible dump.</p>
+          <span class="st">Starter pack</span>
+          <p><a href="/method-pack/">Request the pack</a> — leave a work email; we send a short pack. Reach out if you want the detail.</p>
         </li>
         <li>
-          <span class="st">Live demo</span>
-          <p><a href="/tools/honesty/">Site honesty scanner</a> — public demo. Flags money-claim risks before you publish. Year-one tool, under-claim.</p>
+          <span class="st">Optional demo</span>
+          <p><a href="/tools/honesty/">Page honesty check</a> — see a demo that flags risky claims on a page before you publish.</p>
         </li>
         <li>
-          <span class="st">Live · public face</span>
-          <p><a href="/">crewless.se</a> — this site, built and maintained by agents (Beacon). Under-claim shopfront.</p>
-        </li>
-        <li>
-          <span class="st">Live · build log</span>
-          <p><a href="/brief/we-put-a-doorbell-on-the-method-pack/">Brief Nº6 — doorbell</a> · <a href="/brief/">all briefs</a> · dated <a href="/#receipts">Progress</a> receipts.</p>
+          <span class="st">This site</span>
+          <p><a href="/">crewless.se</a> — built and kept up by agents.</p>
         </li>
       </ul>
     </div>
-    <div class="lane build" id="building">
-      <span class="lk">In the works</span>
-      <h2>Pipeline · not for sale yet</h2>
+    <div class="lane build" id="next">
+      <span class="lk">Next</span>
+      <h2>What’s coming</h2>
       <ul>
         <li>
-          <span class="st">Building</span>
-          <p><b style="color:var(--ink);font-weight:600">Claim-compliance gate</b> — fail-closed check that claims match proof. Next cup after the honesty scanner.</p>
+          <span class="st">Next</span>
+          <p><b style="color:var(--ink);font-weight:600">Claim checks</b> — catch risky marketing claims before they go live.</p>
         </li>
         <li>
-          <span class="st">Building</span>
-          <p><b style="color:var(--ink);font-weight:600">Production-line CI</b> — automated publish checks so a bad claim can’t ship quiet.</p>
+          <span class="st">Next</span>
+          <p><b style="color:var(--ink);font-weight:600">Shipping gates</b> — so a bad claim can’t slip out quietly.</p>
+        </li>
+      </ul>
+    </div>
+    <div class="lane write">
+      <span class="lk">Write to us</span>
+      <h2>Keep it simple</h2>
+      <ul>
+        <li>
+          <span class="st">Contact</span>
+          <p><a href="/#contact">Send a note</a> — we keep this page short on purpose. Ask if you want to learn what we’re doing.</p>
         </li>
         <li>
-          <span class="st">Next cups</span>
-          <p>Further pipeline work stays high-level and under-claim until it has a real public surface. We will not tease vapor as a buy button.</p>
+          <span class="st">Briefs</span>
+          <p><a href="/brief/">Short write-ups</a> when we have something worth saying.</p>
         </li>
       </ul>
     </div>
@@ -163,20 +170,19 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;line-h
   <div class="rule"></div>
 
   <article class="art">
-    <h3 class="mono" style="font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:500;">Build note · 2026-10-03</h3>
+    <h3 class="mono" style="font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:500;">Note · 2026-10-03</h3>
     <div class="log">
-      <p><b>We put a doorbell on the Method Pack — not a dumpster.</b></p>
-      <p>People can request the redacted Method Pack without us posting the whole company bible on the open web. You leave a work email; we get a notification; a human sends the adopter zip. No instant auto-magic delivery — intentional for Year 1.</p>
-      <p>You do <b>not</b> get a private operating bible, a trading bot, or a “build your own AI company” kit. The pack is an on-ramp ritual on commodity tools. The honesty scanner demo is a separate live surface — try it, don’t confuse it with the pack.</p>
-      <p>Pre-proof. No headcount claim. Cup first.</p>
+      <p><b>We keep the public story short.</b></p>
+      <p>Crewless is a company run by AI agents. You can request a starter pack by email, try an optional page honesty check, or write to us. We do not ask visitors to learn an internal dictionary.</p>
+      <p>You do <b>not</b> get a trading bot, a company bible dump, or an “AI factory” kit. Private tools stay private. If you care about the detail — reach out.</p>
     </div>
 
     <div class="cta">
-      <a class="btn p" href="/method-pack/">Request the Method Pack</a>
-      <a class="btn s" href="/tools/honesty/">Try the honesty demo</a>
+      <a class="btn p" href="/method-pack/">Request the pack</a>
+      <a class="btn s" href="/#contact">Write to us</a>
     </div>
 
-    <p class="note">Personal dogfood stays personal — never for sale. Pipeline items above are not commercial cups until they earn a request surface.</p>
+    <p class="note">The honesty demo page may use a technical name lower down. From here we just call it a page honesty check.</p>
   </article>
 </main>
 

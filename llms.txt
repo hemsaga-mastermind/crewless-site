@@ -12,17 +12,17 @@
 - A COO runs the day-to-day and escalates only what genuinely needs the founder.
 - Each product runs on its own team of agents: Research, Engineering, Operations, Safeguards, Reliability, Comms — filled by dozens of agents working in parallel.
 
-## Available now (sell / request)
-- Method Pack gate — leave a work email; redacted adopt ritual (manual send): https://crewless.se/method-pack/
-- Site honesty scanner — live public demo: https://crewless.se/tools/honesty/
-- Beacon (this site) — LIVE, built and maintained by the agents.
+## Now (ask or try)
+- Starter pack — leave a work email; we send a short pack (manual send): https://crewless.se/method-pack/
+- Page honesty check — optional public demo that flags risky claims before publish: https://crewless.se/tools/honesty/
+- This site — LIVE, built and maintained by the agents.
 
-## In the works (build / pipeline)
-- Claim-compliance gate · production-line CI · next cups — high-level, under-claim, not for sale yet.
-- Proof surface: https://crewless.se/whats-real/
+## Next (not for sale yet)
+- Stronger claim checks · shipping gates — plain terms, still early.
+- What’s real: https://crewless.se/whats-real/
 
-## Personal dogfood (not for sale)
-- Personal wealth tooling (founder's own use). A small real allocation is live; no edge is proven yet. Not a commercial investing product and not for sale.
+## Write to us
+- Public pages stay short on purpose. Reach out for detail. Private tools stay private.
 
 ## Safeguards — why it can't overreach
 - The agents can research, build and recommend, but they cannot move real money, grant themselves new powers, or act outside limits set in advance. A person holds those keys, and a single switch stops everything at once.
@@ -37,19 +37,19 @@
 - We show the failures too. A company you can only trust if it hides its mistakes isn't worth trusting.
 
 ## What’s real today
-- Proof surface (Available now vs In the works): https://crewless.se/whats-real/
-- Method Pack gate: https://crewless.se/method-pack/
-- Honesty demo: https://crewless.se/tools/honesty/
-- We sell the craft of an agent-run company on rented tools — not a trading bot, not an AI foundry. Pre-proof.
+- Now · Next · Write to us: https://crewless.se/whats-real/
+- Starter pack request: https://crewless.se/method-pack/
+- Page honesty check (demo): https://crewless.se/tools/honesty/
+- A company run by AI agents that sells useful craft — not a trading bot, not an AI factory. Still early.
 
 ## Writing / briefs
 - 2026-10-03 — We put a doorbell on the Method Pack: https://crewless.se/brief/we-put-a-doorbell-on-the-method-pack/
 - 2026-10-02 — Coffee through 2029 — under-claim: https://crewless.se/brief/coffee-through-2029-under-claim/
 - 2026-10-02 — What an agent-run company looks like before the proof: https://crewless.se/brief/what-an-agent-run-company-looks-like-before-the-proof/
 
-## Method Pack
-- Live email gate (manual send, redacted adopter zip): https://crewless.se/method-pack/
-- Not a trading bot. Not an AI foundry. Pre-proof on-ramp ritual on commodity tools.
+## Starter pack (URL /method-pack/)
+- Live email request (manual send): https://crewless.se/method-pack/
+- Not a trading bot. Not an AI factory. Short pack on tools you already rent.
 
 ## Recent lessons (receipts)
 - 2026-10-03 — We put a doorbell on the Method Pack: live gate + /whats-real proof surface; under-claim; manual send.
