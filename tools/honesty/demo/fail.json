@@ -1,0 +1,51 @@
+{
+  "sources": [
+    "demo/money_claims.html"
+  ],
+  "independence_terms_loaded": 0,
+  "independence_check_ran": true,
+  "risk_count": 6,
+  "findings": [
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "currency/number figure: 'rs.5'",
+      "source": "demo/money_claims.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "money/broker vocabulary: 'broker'",
+      "source": "demo/money_claims.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "money/broker vocabulary: 'profit'",
+      "source": "demo/money_claims.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "unproven performance claim: 'profitable'",
+      "source": "demo/money_claims.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "unproven performance claim: 'proven edge'",
+      "source": "demo/money_claims.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "return-percentage claim: '12% annual'",
+      "source": "demo/money_claims.html"
+    }
+  ],
+  "clean": false,
+  "sku": "site-honesty-scanner",
+  "sku_version": "0.1.0",
+  "demo": true,
+  "note": "Static pre-rendered demo from planted fixtures. Not a live site scan."
+}

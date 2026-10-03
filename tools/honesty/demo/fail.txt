@@ -1,0 +1,10 @@
+sources: demo/money_claims.html
+independence_terms_loaded: 0
+risk_count: 6
+findings:
+  - [money_claim/risk] [demo/money_claims.html] currency/number figure: 'rs.5'
+  - [money_claim/risk] [demo/money_claims.html] money/broker vocabulary: 'broker'
+  - [money_claim/risk] [demo/money_claims.html] money/broker vocabulary: 'profit'
+  - [money_claim/risk] [demo/money_claims.html] unproven performance claim: 'profitable'
+  - [money_claim/risk] [demo/money_claims.html] unproven performance claim: 'proven edge'
+  - [money_claim/risk] [demo/money_claims.html] return-percentage claim: '12% annual'
