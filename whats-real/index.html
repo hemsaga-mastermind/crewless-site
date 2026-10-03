@@ -52,6 +52,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
   .nav.open a:first-child{border-top:none;}
 }
 main{padding-top:58px;}
+/* sticky header — keep in-page anchors clear of the bar */
+[id="pipeline"],[id="next"]{scroll-margin-top:72px;}
 .hero{padding:clamp(2.6rem,8vw,4.4rem) 0 clamp(1.6rem,4vw,2.2rem);max-width:720px;margin:0 auto;
   padding-left:clamp(1.15rem,5vw,1.6rem);padding-right:clamp(1.15rem,5vw,1.6rem);}
 .brandmark{font-size:clamp(1.05rem,2.4vw,1.3rem);font-weight:700;letter-spacing:.18em;text-transform:uppercase;

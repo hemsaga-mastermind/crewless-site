@@ -35,7 +35,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 .brand .ac{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;
   background:none;}
 .nav{display:flex;gap:1.15rem;font-size:.8rem;color:var(--mut);}
-.nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
+.nav a{transition:color .2s;} .nav a:hover,.nav a.is-active{color:var(--c1);}
 .navtoggle{display:none;}
 @media(max-width:640px){
   .bar{position:relative;}
@@ -185,7 +185,8 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .big{font-size:clamp(1.55rem,3.8vw,2.35rem);font-weight:600;letter-spacing:-.02em;max-width:22ch;line-height:1.12;}
 .sub{color:var(--mut);max-width:60ch;margin-top:1rem;}
 .hl{color:var(--ink);font-weight:600;}
-section{scroll-margin-top:70px;}
+/* sticky header (~58px) — keep hash targets + kicks visible under the bar */
+section,[id="now"],[id="next"],[id="write"],[id="building"],[id="real"],[id="receipts"],[id="contact"],[id="idea"],[id="brain"],[id="shape"],[id="sell"],[id="lab"]{scroll-margin-top:72px;}
 .pills{list-style:none;display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.9rem;padding:0;}
 .pills li{border:1px solid var(--line);border-radius:100px;padding:.5rem .95rem;font-size:.88rem;color:var(--mut);background:var(--panel);}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.85rem;margin:1.9rem 0 .4rem;}
@@ -451,6 +452,8 @@ footer .mono{color:var(--mut);}
         <p style="margin-top:.55rem"><a href="/tools/honesty/">Ärlighetskoll av sida</a> — valfri demo som flaggar riskfyllda påståenden innan du publicerar.</p>
       </div>
       <div class="lane build" id="next">
+        <!-- alias for pre-rewrite /#building links (briefs, bookmarks) -->
+        <span id="building" aria-hidden="true"></span>
         <span class="lk">Nästa</span>
         <h2>Vad som kommer</h2>
         <ul>
@@ -658,6 +661,7 @@ footer .mono{color:var(--mut);}
 </div></section>
 
 <section id="contact"><div class="wrap">
+  <p class="kick">Skriv till oss</p>
   <p class="creed">En person med en tydlig idé och rätt verktyg kan bygga det som tidigare krävde ett helt team.
     <b>Det är berättelsen vi försöker förtjäna rätten att berätta.</b></p>
   <div class="fb">
@@ -799,6 +803,17 @@ footer .mono{color:var(--mut);}
     nav.addEventListener('click',function(e){ if(e.target.closest('a')) closeNav(); });
     document.addEventListener('click',function(e){ if(nav.classList.contains('open') && !nav.contains(e.target) && e.target!==navBtn) closeNav(); });
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeNav(); });
+  }
+  // ── scroll-spy: only in-page Kontakt (other nav items leave the page) ──
+  if(nav){
+    var contactLink=nav.querySelector('a[href="#contact"]');
+    var contactSec=document.getElementById('contact');
+    if(contactLink&&contactSec&&'IntersectionObserver' in window){
+      var spy=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ contactLink.classList.toggle('is-active', en.isIntersecting); });
+      },{rootMargin:'-72px 0px -55% 0px',threshold:0});
+      spy.observe(contactSec);
+    }
   }
 })();
 </script>
