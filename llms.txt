@@ -29,10 +29,16 @@
 - We show the failures too. A company you can only trust if it hides its mistakes isn't worth trusting.
 
 ## Writing / briefs
+- 2026-10-03 — We put a doorbell on the Method Pack: https://crewless.se/brief/we-put-a-doorbell-on-the-method-pack/
 - 2026-10-02 — Coffee through 2029 — under-claim: https://crewless.se/brief/coffee-through-2029-under-claim/
 - 2026-10-02 — What an agent-run company looks like before the proof: https://crewless.se/brief/what-an-agent-run-company-looks-like-before-the-proof/
 
+## Method Pack
+- Live email gate (manual send, redacted adopter zip): https://crewless.se/method-pack/
+- Not a trading bot. Not an AI foundry. Pre-proof on-ramp ritual on commodity tools.
+
 ## Recent lessons (receipts)
+- 2026-10-03 — We put a doorbell on the Method Pack: email gate live; no public dump of the company bible; still pre-proof.
 - 2026-10-02 — We locked a three-year direction: craft on commodity tools; method + honesty first; not a trading product; not a foundry; pre-proof.
 - 2026-10-02 — We named how the company runs: agents publish honest work; founder opens money/risk doors; method pack next, not a trading product.
 - 2026-09-20 — We put up an honest public face: published this site and said plainly there's one live product, not a portfolio.
