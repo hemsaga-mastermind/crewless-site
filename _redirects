@@ -3,3 +3,8 @@
 /build /whats-real/ 301
 /build/ /whats-real/ 301
 /build/* /whats-real/:splat 301
+
+# Claim check alias → canonical short path
+/tools/claim-check /tools/claims/ 301
+/tools/claim-check/ /tools/claims/ 301
+/tools/claim-check/* /tools/claims/:splat 301
