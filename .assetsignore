@@ -1,9 +1,11 @@
 # Never publish VCS / local runtime / tooling as public assets
-.git
-.styrman
-node_modules
+.git/
+.styrman/
+.wrangler/
+node_modules/
 package.json
 package-lock.json
+npm-debug.log*
 wrangler.toml
 .assetsignore
 .gitignore
