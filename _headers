@@ -16,3 +16,6 @@
 
 /tools/honesty/*
   Cache-Control: no-cache
+
+/tools/claims/*
+  Cache-Control: no-cache

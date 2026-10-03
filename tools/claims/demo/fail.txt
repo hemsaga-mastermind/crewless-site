@@ -1,0 +1,7 @@
+advisory: SCREENING ONLY — flags claim shapes for human review. Not legal advice.
+sample: wellness-landing.html
+result: Blocked
+findings:
+  - Health claim — “treat anxiety disorder”
+  - Proof or guarantee wording — “Clinically proven”
+note: Demo only. Do not publish as-is. A person still reviews.

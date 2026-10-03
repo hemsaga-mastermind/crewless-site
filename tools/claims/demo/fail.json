@@ -1,0 +1,21 @@
+{
+  "demo": true,
+  "sample": "wellness-landing.html",
+  "result": "Blocked",
+  "badge": "Needs fix",
+  "summary": "2 claim shapes need a human look before publish.",
+  "note": "Demo only — screening sample, not legal advice.",
+  "clean": false,
+  "findings": [
+    {
+      "kind": "Health claim",
+      "line": "Flagged wording: “treat anxiety disorder”",
+      "why": "Sounds like a disease treatment or cure claim."
+    },
+    {
+      "kind": "Proof or guarantee wording",
+      "line": "Flagged wording: “Clinically proven”",
+      "why": "Sounds like clinical proof or guaranteed results without support."
+    }
+  ]
+}

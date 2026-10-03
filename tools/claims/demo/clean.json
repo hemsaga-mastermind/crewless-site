@@ -1,0 +1,10 @@
+{
+  "demo": true,
+  "sample": "outdoor-storefront.md",
+  "result": "Passes",
+  "badge": "Clean",
+  "summary": "Sample page with careful wording. Nothing risky flagged.",
+  "note": "Demo only — screening sample, not legal advice.",
+  "clean": true,
+  "findings": []
+}

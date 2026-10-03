@@ -1,0 +1,5 @@
+advisory: SCREENING ONLY — flags claim shapes for human review. Not legal advice.
+sample: outdoor-storefront.md
+result: Passes
+findings: none
+note: Demo only. A person should still review before publish.

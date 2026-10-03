@@ -38,6 +38,7 @@ KEY_ROUTES = [
     "/whats-real/",
     "/method-pack/",
     "/tools/honesty/",
+    "/tools/claims/",
     "/brief/",
     "/brief/we-put-a-doorbell-on-the-method-pack/",
     "/llms.txt",
@@ -114,7 +115,14 @@ def ids_in(html: str) -> set[str]:
 
 
 def check_atf_jargon(path: str, html: str, fails: list[str]) -> None:
-    if path not in ("/", "/sv/", "/whats-real/", "/method-pack/", "/tools/honesty/"):
+    if path not in (
+        "/",
+        "/sv/",
+        "/whats-real/",
+        "/method-pack/",
+        "/tools/honesty/",
+        "/tools/claims/",
+    ):
         return
     chunk = first_scroll_chunk(html)
     text = strip_tags(chunk)
@@ -152,15 +160,15 @@ def check_home(html: str, fails: list[str], notes: list[str]) -> None:
         notes.append("#wrong present (JS fills ≤3 from state.mistakes)")
 
 
-def check_honesty(html: str, fails: list[str]) -> None:
+def check_honesty(html: str, fails: list[str], label: str = "honesty") -> None:
     if not re.search(r"<h2>\s*Passes\s*</h2>", html):
-        fails.append("P0 honesty missing Passes column")
+        fails.append(f"P0 {label} missing Passes column")
     if not re.search(r"<h2>\s*Blocked\s*</h2>", html):
-        fails.append("P0 honesty missing Blocked column")
+        fails.append(f"P0 {label} missing Blocked column")
     atf = strip_tags(first_scroll_chunk(html))
     for bad in ("sku", "risk_count", "exit"):
         if bad in atf.lower():
-            fails.append(f"P0 honesty ATF engineer term: {bad}")
+            fails.append(f"P0 {label} ATF engineer term: {bad}")
 
 
 def check_hashes(path: str, html: str, home_ids: set[str], fails: list[str]) -> None:
@@ -192,6 +200,7 @@ def main() -> int:
         "/whats-real/": "whats-real/index.html",
         "/method-pack/": "method-pack/index.html",
         "/tools/honesty/": "tools/honesty/index.html",
+        "/tools/claims/": "tools/claims/index.html",
         "/brief/": "brief/index.html",
     }
 
@@ -210,7 +219,9 @@ def main() -> int:
         if path == "/":
             check_home(html, fails, notes)
         if path == "/tools/honesty/":
-            check_honesty(html, fails)
+            check_honesty(html, fails, "honesty")
+        if path == "/tools/claims/":
+            check_honesty(html, fails, "claims")
 
     if args.live:
         print(f"Live probe {args.base} …")
@@ -220,13 +231,22 @@ def main() -> int:
                 fails.append(f"P0 live HTTP {code} {route}")
                 continue
             print(f"  {code} {route}")
-            if route in ("/", "/sv/", "/whats-real/", "/method-pack/", "/tools/honesty/"):
+            if route in (
+                "/",
+                "/sv/",
+                "/whats-real/",
+                "/method-pack/",
+                "/tools/honesty/",
+                "/tools/claims/",
+            ):
                 check_atf_jargon(route, body, fails)
             if route == "/":
                 check_home(body, fails, notes)
                 home_ids = ids_in(body)
             if route == "/tools/honesty/":
-                check_honesty(body, fails)
+                check_honesty(body, fails, "honesty")
+            if route == "/tools/claims/":
+                check_honesty(body, fails, "claims")
         # quick link sample from home
         code, home = fetch_live(args.base + "/")
         if code == 200:
