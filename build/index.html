@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<meta name="description" content="What’s real at Crewless today — Method Pack gate live, honest build log, pre-proof. Not a trading bot. Not an AI foundry.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What’s real today — Crewless">
+<meta property="og:description" content="Living proof a stranger can check: Method Pack gate, build log, coffee not beans.">
+<meta property="og:url" content="https://crewless.se/build/">
+<link rel="canonical" href="https://crewless.se/build/">
+<title>What’s real today — Crewless</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#05070d; --ink:#eef2f8; --mut:#8a94a8; --dim:#565f72; --line:#161d2b;
+  --panel:rgba(13,19,30,.72); --c1:#4fe0d0; --c2:#7c8cff; --c3:#b57bff; --live:#4fe0d0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);overflow-x:hidden;
+  font:400 16px/1.7 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(90% 60% at 10% 0%,rgba(79,224,208,.1),transparent 50%),
+    radial-gradient(70% 50% at 90% 10%,rgba(124,140,255,.08),transparent 45%);}
+.mono{font-family:"IBM Plex Mono",monospace;}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2.2rem);}
+a{color:inherit;text-decoration:none;}
+header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px);
+  background:linear-gradient(#05070d,#05070de6);border-bottom:1px solid var(--line);}
+.bar{display:flex;align-items:center;justify-content:space-between;height:58px;}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.06rem;letter-spacing:.01em;}
+.brand .ac{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;}
+.nav{display:flex;gap:1.15rem;font-size:.8rem;color:var(--mut);}
+.nav a{transition:color .2s;} .nav a:hover{color:var(--c1);}
+.navtoggle{display:none;}
+@media(max-width:640px){
+  .bar{position:relative;}
+  .nav{display:none;}
+  .navtoggle{display:inline-flex;align-items:center;justify-content:center;width:2.3rem;height:2.3rem;
+    border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);
+    font-size:1.05rem;line-height:1;cursor:pointer;}
+  .navtoggle:focus-visible{outline:2px solid var(--c1);outline-offset:2px;}
+  .nav.open{display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;
+    padding:.3rem clamp(1.15rem,4vw,2.2rem) .9rem;background:#070a12f5;backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);box-shadow:0 14px 26px #000a;}
+  .nav.open a{padding:.85rem 0;border-top:1px solid var(--line);font-size:.94rem;color:var(--ink);}
+  .nav.open a:first-child{border-top:none;}
+}
+main{padding-top:58px;}
+.art{max-width:720px;margin:0 auto;padding:clamp(2.8rem,8vw,4.8rem) clamp(1.15rem,5vw,1.6rem) 3.2rem;}
+.kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c1);margin-bottom:1rem;}
+h1{font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.05;font-weight:600;letter-spacing:-.025em;text-wrap:balance;margin-bottom:1rem;}
+.lede{font-size:1.12rem;color:#d9e0ee;line-height:1.65;max-width:40ch;}
+.rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:2.2rem 0;}
+h2{font-size:1.2rem;font-weight:600;margin:0 0 .85rem;letter-spacing:-.01em;}
+ul.real{list-style:none;display:grid;gap:1rem;margin:0 0 1.6rem;}
+ul.real li{padding:1.1rem 1.2rem;border-left:2px solid var(--c1);background:linear-gradient(90deg,rgba(79,224,208,.06),transparent 70%);}
+ul.real .st{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c1);display:block;margin-bottom:.35rem;}
+ul.real p{color:var(--mut);font-size:.95rem;line-height:1.55;}
+ul.real a{color:var(--ink);border-bottom:1px solid #28374f;}
+ul.real a:hover{color:var(--c1);border-color:var(--c1);}
+.log{color:#cdd5e4;}
+.log p{margin:1rem 0;}
+.log b{color:var(--ink);font-weight:600;}
+.cta{margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.2rem;border-radius:11px;font-weight:500;font-size:.92rem;transition:.2s;}
+.btn.p{background:linear-gradient(105deg,var(--c1),#3bc7cf);color:#04130f;}
+.btn.p:hover{filter:brightness(1.08);transform:translateY(-1px);}
+.btn.s{border:1px solid var(--line);background:var(--panel);color:var(--ink);}
+.btn.s:hover{border-color:var(--c1);color:var(--c1);}
+.note{margin-top:2rem;font-size:.86rem;color:var(--dim);line-height:1.55;}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;line-height:1.7;padding:2.4rem 0 3rem;margin-top:2rem;}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="/" aria-label="Crewless — home"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
+  <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
+  <nav class="nav" id="siteNav"><a href="/">Home</a><a href="/method-pack/">Method Pack</a><a href="/brief/">Briefs</a><a href="/#receipts">Progress</a></nav>
+</div></header>
+
+<main><article class="art">
+  <p class="kick">Published work</p>
+  <h1>What’s real today</h1>
+  <p class="lede">A stranger’s thirty-second check. No vanity metrics. No trading pitch. Coffee — the craft — not beans or power plants.</p>
+
+  <div class="rule"></div>
+
+  <h2>Living surfaces</h2>
+  <ul class="real">
+    <li>
+      <span class="st">Live · commercial on-ramp</span>
+      <p><a href="/method-pack/">Method Pack gate</a> — leave a work email; we send the redacted adopt ritual (README, adopt guide, three chapters). Manual send on free tools. Not a public bible dump.</p>
+    </li>
+    <li>
+      <span class="st">Live · public face</span>
+      <p><a href="/">crewless.se</a> — this site, built and maintained by agents (Beacon). Under-claim shopfront.</p>
+    </li>
+    <li>
+      <span class="st">Live · build log</span>
+      <p><a href="/brief/what-an-agent-run-company-looks-like-before-the-proof/">Brief Nº4</a> · <a href="/brief/coffee-through-2029-under-claim/">Brief Nº5</a> · dated <a href="/#receipts">Progress</a> receipts. Wins and kills both stay visible.</p>
+    </li>
+  </ul>
+
+  <div class="rule"></div>
+
+  <h2 class="mono" style="font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:500;">Build note · 2026-10-03</h2>
+  <div class="log">
+    <p><b>We put a doorbell on the Method Pack — not a dumpster.</b></p>
+    <p>People can request the redacted Method Pack without us posting the whole company bible on the open web. You leave a work email; we get a notification; a human sends the adopter zip. No instant auto-magic delivery — intentional for Year 1, so we can see whether anyone asks twice before dressing it up as a funnel.</p>
+    <p>You do <b>not</b> get a private operating bible, a trading bot, or a “build your own AI company” kit. The pack is an on-ramp ritual on commodity tools. If the only inbound is “just do the hours for us,” we kill the offer.</p>
+    <p>Pre-proof. No headcount claim. Cup first.</p>
+  </div>
+
+  <div class="cta">
+    <a class="btn p" href="/method-pack/">Request the Method Pack</a>
+    <a class="btn s" href="/brief/">Read the briefs</a>
+  </div>
+
+  <p class="note">Next sharper SKUs (honesty tools, production-line helpers) stay in the lab until they have a real public surface. We will not tease vapor. Personal dogfood stays personal — never for sale.</p>
+</article></main>
+
+<footer><div class="wrap">
+  <span class="mono">⚓ Crewless — a one-person company, run by agents.</span><br>
+  <span style="margin-top:.5rem;display:inline-block">Built in the open. Nothing here is a promise of results — it’s a record of how the work is done. © 2026</span>
+</div></footer>
+<script>
+(function(){
+  var navBtn=document.getElementById('navToggle'), nav=document.getElementById('siteNav');
+  if(navBtn&&nav){
+    var closeNav=function(){ nav.classList.remove('open'); navBtn.setAttribute('aria-expanded','false'); navBtn.textContent='☰'; };
+    var openNav=function(){ nav.classList.add('open'); navBtn.setAttribute('aria-expanded','true'); navBtn.textContent='✕'; };
+    navBtn.addEventListener('click',function(e){ e.stopPropagation(); nav.classList.contains('open') ? closeNav() : openNav(); });
+    nav.addEventListener('click',function(e){ if(e.target.closest('a')) closeNav(); });
+    document.addEventListener('click',function(e){ if(nav.classList.contains('open') && !nav.contains(e.target) && e.target!==navBtn) closeNav(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeNav(); });
+  }
+})();
+</script>
+</body></html>
