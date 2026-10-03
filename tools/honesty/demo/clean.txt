@@ -1,0 +1,4 @@
+sources: demo/clean.html
+independence_terms_loaded: 0
+risk_count: 0
+clean — no honesty risks flagged (still owe human review)

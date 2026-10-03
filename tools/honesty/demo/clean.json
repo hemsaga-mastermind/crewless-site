@@ -1,0 +1,14 @@
+{
+  "sources": [
+    "demo/clean.html"
+  ],
+  "independence_terms_loaded": 0,
+  "independence_check_ran": true,
+  "risk_count": 0,
+  "findings": [],
+  "clean": true,
+  "sku": "site-honesty-scanner",
+  "sku_version": "0.1.0",
+  "demo": true,
+  "note": "Static pre-rendered demo from planted fixtures. Not a live site scan."
+}

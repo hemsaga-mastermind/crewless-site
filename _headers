@@ -13,3 +13,6 @@
 
 /method-pack/*
   Cache-Control: no-cache
+
+/tools/honesty/*
+  Cache-Control: no-cache
