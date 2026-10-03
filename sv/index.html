@@ -51,46 +51,76 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
   .nav.open a:first-child{border-top:none;}
 }
 
-/* ── hero: the big constellation is the centrepiece ── */
-.hero{position:relative;border-bottom:1px solid var(--line);
-  background:radial-gradient(120% 90% at 50% -15%,rgba(79,224,208,.07),transparent 55%);}
-/* mobile: single column — headline+intro, then the constellation, then actions */
-.herowrap{display:flex;flex-direction:column;gap:clamp(1.4rem,4vw,2rem);
-  padding:clamp(1.5rem,4vw,2.6rem) 0 clamp(2rem,5vw,3.2rem);}
-.herohead{max-width:46ch;}
-.heroactions{display:flex;flex-direction:column;}
-.heroactions .cta{margin-top:0;}
+/* ── hero: one composition — brand, headline, sentence, CTAs ── */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  border-bottom:1px solid var(--line);overflow:hidden;
+  background:
+    radial-gradient(90% 70% at 18% 20%,rgba(79,224,208,.16),transparent 55%),
+    radial-gradient(80% 60% at 88% 15%,rgba(124,140,255,.14),transparent 50%),
+    radial-gradient(70% 50% at 60% 95%,rgba(181,123,255,.1),transparent 55%),
+    linear-gradient(180deg,#060912 0%,#05070d 55%,#05070d 100%);}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(115deg,transparent 40%,rgba(79,224,208,.04) 50%,transparent 60%),
+    repeating-linear-gradient(-12deg,transparent 0 18px,rgba(238,242,248,.015) 18px 19px);
+  animation:heroDrift 18s ease-in-out infinite alternate;}
+.hero::after{content:"";position:absolute;inset:auto -20% -30% -20%;height:55%;pointer-events:none;
+  background:radial-gradient(50% 60% at 50% 0%,rgba(79,224,208,.09),transparent 70%);
+  animation:heroGlow 12s ease-in-out infinite alternate;}
+@keyframes heroDrift{from{transform:translate3d(-1.5%,0,0)}to{transform:translate3d(1.5%,0,0)}}
+@keyframes heroGlow{from{opacity:.55;transform:scale(1)}to{opacity:1;transform:scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after{animation:none;}}
+.herowrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;
+  gap:0;padding:calc(58px + clamp(2.4rem,8vh,4.5rem)) 0 clamp(2.4rem,6vh,3.8rem);max-width:42rem;}
+.brandmark{font-size:clamp(1.05rem,2.4vw,1.35rem);font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);margin-bottom:1.35rem;
+  background:linear-gradient(105deg,var(--ink),var(--c1));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:brandIn .9s ease both;}
+@keyframes brandIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .hud{display:inline-flex;align-items:center;gap:.55rem;
   padding:.4rem .85rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);
   font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--mut);margin-bottom:1.3rem;max-width:100%;}
+  color:var(--mut);margin-bottom:1.15rem;max-width:100%;}
 .hud .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);animation:blip 2.4s infinite;}
 .hud b{color:var(--ink);font-weight:500;letter-spacing:.04em;}
 @keyframes blip{0%{box-shadow:0 0 0 0 #4fe0d088}70%{box-shadow:0 0 0 7px #4fe0d000}100%{box-shadow:0 0 0 0 #4fe0d000}}
-h1{font-size:clamp(2.3rem,6.2vw,4.3rem);line-height:1.03;font-weight:600;letter-spacing:-.025em;
-  max-width:15ch;text-wrap:balance;}
+h1{font-size:clamp(2.45rem,7vw,4.55rem);line-height:1.02;font-weight:600;letter-spacing:-.03em;
+  max-width:14ch;text-wrap:balance;animation:brandIn 1s .08s ease both;}
 h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
   -webkit-background-clip:text;background-clip:text;color:transparent;}
-.hlede{margin-top:1rem;max-width:56ch;color:var(--mut);font-size:clamp(1rem,2.1vw,1.18rem);line-height:1.5;}
+.hlede{margin-top:1.15rem;max-width:36ch;color:var(--mut);font-size:clamp(1.05rem,2.2vw,1.25rem);line-height:1.5;
+  animation:brandIn 1s .16s ease both;}
 .hlede b{color:var(--ink);font-weight:600;}
-.cta{margin-top:1.6rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;}
-.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.2rem;border-radius:11px;
-  font-weight:500;font-size:.92rem;transition:.2s;}
+.cta{margin-top:1.85rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;
+  animation:brandIn 1s .24s ease both;}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.78rem 1.25rem;border-radius:11px;
+  font-weight:500;font-size:.95rem;transition:.2s;}
 .btn.p{background:linear-gradient(105deg,var(--c1),#3bc7cf);color:#04130f;}
 .btn.p:hover{filter:brightness(1.08);transform:translateY(-1px);}
 .btn.s{border:1px solid var(--line);background:var(--panel);color:var(--ink);}
 .btn.s:hover{border-color:var(--c1);color:var(--c1);}
-/* one-line live pulse under the buttons (replaces the panel) */
-.pulse{margin-top:1.45rem;display:flex;align-items:center;gap:.55rem;min-height:1.2em;
-  font-family:"IBM Plex Mono",monospace;font-size:.73rem;color:var(--mut);pointer-events:none;}
+.pulse{margin-top:1.55rem;display:flex;align-items:center;gap:.55rem;min-height:1.2em;
+  font-family:"IBM Plex Mono",monospace;font-size:.73rem;color:var(--mut);pointer-events:none;
+  animation:brandIn 1s .32s ease both;}
 .pulse .pdot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);flex:none;animation:blip 2.4s infinite;}
 .pulse #feedline b{color:var(--c1);font-weight:500;}
 .pulse .fade{animation:fadein .5s;}
 @keyframes fadein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 
-/* big hero constellation panel — bigger on mobile so it's a real attractor */
+/* proof strip — one job, under hero */
+.proofstrip{border-bottom:1px solid var(--line);background:rgba(8,12,20,.85);}
+.proofstrip .wrap{display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem 1.1rem;
+  padding:1rem 0;font-size:.92rem;color:var(--mut);}
+.proofstrip .pk{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--c1);margin-right:.2rem;}
+.proofstrip a{color:var(--ink);border-bottom:1px solid #28374f;transition:color .2s,border-color .2s;}
+.proofstrip a:hover{color:var(--c1);border-color:var(--c1);}
+.proofstrip .sep{color:var(--dim);}
+
+/* constellation lives below the fold now */
 .cst.cst-hero{margin-top:0;}
-.cst.cst-hero canvas{height:clamp(480px,70vh,620px);}
+.cst.cst-hero canvas{height:clamp(320px,48vh,520px);}
 .cst-bar{display:flex;align-items:center;justify-content:space-between;gap:.7rem 1rem;flex-wrap:wrap;
   padding:.8rem 1rem;border-bottom:1px solid var(--line);}
 .cst-bar .tnow-badge{margin-bottom:0;}
@@ -98,17 +128,8 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 .cst-foot .cst-legend{margin-top:0;}
 .cst-note{margin-top:1.1rem;font-size:.88rem;color:var(--mut);max-width:72ch;line-height:1.55;}
 .cst-note b{color:var(--ink);font-weight:600;}
-
-/* desktop: two columns — text (+actions) left, constellation filling the right, both centred */
-@media(min-width:920px){
-  .herowrap{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.12fr);
-    grid-template-areas:"head cst" "act cst";
-    column-gap:clamp(2rem,4.5vw,3.8rem);row-gap:0;align-items:center;}
-  .herohead{grid-area:head;align-self:end;max-width:34ch;}
-  .heroactions{grid-area:act;align-self:start;margin-top:1.6rem;}
-  .herocst{grid-area:cst;align-self:center;}
-  .cst.cst-hero canvas{height:clamp(460px,64vh,600px);}
-  .cst-note{max-width:none;}
+@media(max-width:640px){
+  .cst.cst-hero canvas{height:clamp(280px,40vh,360px);}
 }
 
 section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
@@ -370,51 +391,62 @@ footer .mono{color:var(--mut);}
   <a class="brand" href="/" aria-label="Crewless — hem"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <a href="/" aria-label="Read in English" style="font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:.16rem .46rem;margin-left:.7rem;text-decoration:none">EN</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Öppna meny">☰</button>
-  <nav class="nav" id="siteNav"><a href="#idea">Idén</a><a href="#brain">Hjärnan</a><a href="#real">Vad som är verkligt</a><a href="#receipts">Framsteg</a><a href="#wrong">Vad vi hade fel om</a><a href="/brief/">Rapporter</a><a href="#contact">Kontakt</a></nav>
+  <nav class="nav" id="siteNav"><a href="/build/">Bygg</a><a href="/method-pack/">Method Pack</a><a href="#idea">Idén</a><a href="#real">Vad som är verkligt</a><a href="#receipts">Framsteg</a><a href="/brief/">Rapporter</a><a href="#contact">Kontakt</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
   <div class="wrap herowrap">
-    <div class="herohead">
-      <div class="hud"><span class="dot"></span> <b id="agentct">ett team av</b> AI-agenter · driver företaget</div>
-      <h1>Ett företag som drivs av <span class="g">AI-agenter.</span></h1>
-      <p class="hlede">Ett <b>centralt team av AI-agenter</b> driver företaget och vakar över dess produkter —
-        och <b>varje produkt drivs av sitt eget team av AI-agenter</b>. Den enda människan är grundaren, som
-        sätter riktningen.</p>
+    <p class="brandmark" aria-label="Crewless">Crewless</p>
+    <h1>Kaffe — inte bönor eller <span class="g">kraftverk.</span></h1>
+    <p class="hlede">Vi säljer hantverket bakom ett <b>agent-drivet företag</b> på verktyg vem som helst kan hyra —
+      fail-closed grindar, grundaren tittar till för oåterkalleliga dörrar — inte en handelsbot, inte ett AI-foundry.</p>
+    <div class="cta">
+      <a class="btn p" href="/method-pack/">Begär Method Pack</a>
+      <a class="btn s" href="/build/">Se vad som är verkligt</a>
     </div>
+    <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
+  </div>
+</div>
 
-    <div class="herocst">
-      <div class="cst cst-hero">
-        <div class="cst-bar">
-          <div class="tnow-tabs" role="tablist" aria-label="Nu jämfört med om ett år">
-            <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Nu</button>
-            <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 år</button>
-          </div>
-          <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Idag — glest med flit</span>
-        </div>
-        <canvas id="cstCanvas" role="img" aria-label="En radiell karta över driftmodellen. I mitten ett litet team av AI-agenter som vakar över produkterna. Runt om ligger fristående produkter — idag är en aktiv och ett par håller på att formas — var och en byggd av sitt eget team av agenter, dess ryggrad. Produkter länkar aldrig till varandra; de enda länkarna går från det centrala teamet ut till varje produkt. I ettårsvisionen dyker fler produkter och större team upp, jämnt fördelade. Produkterna visas generiskt här — de namngivna listas i avsnittet Vad som är verkligt."></canvas>
-        <div class="cst-foot">
-          <div class="cst-legend" aria-hidden="true">
-            <span><i style="background:#8a94a8"></i>centralt team av AI-agenter — vakar över produkterna</span>
-            <span><i style="background:#4fe0d0"></i>en produkt · dess agenter är dess ryggrad</span>
-            <span><i style="background:#b57bff"></i>+1 år, platshållare — inget vi lovat</span>
-            <span><i style="background:#eef2f8"></i>varje prick = en AI-agent</span>
-          </div>
-        </div>
-      </div>
-      <p class="cst-note" id="cstFoot"><b>Glest med flit:</b> en produkt är aktiv, ett par håller precis på att
-        formas — var och en sitt eget lilla team av AI-agenter. Namngivna produkter och ärlig status i
-        <a href="#real" style="color:var(--c1)">Vad som är verkligt</a>.</p>
-    </div>
-
-    <div class="heroactions">
-      <div class="cta"><a class="btn p" href="#brain">Så funkar det ↓</a><a class="btn s" href="mailto:admin@dancing-flamingo.org?subject=Hello%20from%20crewless.se">Hör av dig</a></div>
-      <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
-    </div>
+<div class="proofstrip" aria-label="Vad som är verkligt idag">
+  <div class="wrap">
+    <span class="pk">Verkligt idag</span>
+    <a href="/method-pack/">Method Pack-grind — live</a>
+    <span class="sep">·</span>
+    <a href="/build/">Bygglogg &amp; bevis</a>
+    <span class="sep">·</span>
+    <span>Pre-proof · under-claim</span>
   </div>
 </div>
 
 <main>
+<section id="shape"><div class="wrap">
+  <p class="kick">Formen</p>
+  <p class="big">Ett centralt team vakar; varje produkt har egna agenter.</p>
+  <p class="sub">Glest med flit — namngivna produkter och ärlig status finns i
+    <a href="#real" style="color:var(--c1)">Vad som är verkligt</a>.</p>
+  <div class="cst cst-hero" style="margin-top:1.6rem">
+    <div class="cst-bar">
+      <div class="tnow-tabs" role="tablist" aria-label="Nu jämfört med om ett år">
+        <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Nu</button>
+        <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 år</button>
+      </div>
+      <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Idag — glest med flit</span>
+    </div>
+    <canvas id="cstCanvas" role="img" aria-label="En radiell karta över driftmodellen. I mitten ett litet team av AI-agenter som vakar över produkterna. Runt om ligger fristående produkter — idag är en aktiv och ett par håller på att formas — var och en byggd av sitt eget team av agenter, dess ryggrad. Produkter länkar aldrig till varandra; de enda länkarna går från det centrala teamet ut till varje produkt. I ettårsvisionen dyker fler produkter och större team upp, jämnt fördelade. Produkterna visas generiskt här — de namngivna listas i avsnittet Vad som är verkligt."></canvas>
+    <div class="cst-foot">
+      <div class="cst-legend" aria-hidden="true">
+        <span><i style="background:#8a94a8"></i>centralt team av AI-agenter — vakar över produkterna</span>
+        <span><i style="background:#4fe0d0"></i>en produkt · dess agenter är dess ryggrad</span>
+        <span><i style="background:#b57bff"></i>+1 år, platshållare — inget vi lovat</span>
+        <span><i style="background:#eef2f8"></i>varje prick = en AI-agent</span>
+      </div>
+    </div>
+  </div>
+  <p class="cst-note" id="cstFoot"><b>Glest med flit:</b> ett offentligt ansikte är live, ett par idéer
+    håller på att formas — var och en sitt eget lilla team av AI-agenter.</p>
+</div></section>
+
 <section id="idea"><div class="wrap">
   <p class="kick">Idén</p>
   <p class="big">Kan en enda person, med ett team av AI-agenter, bygga och driva ett riktigt företag?</p>
@@ -493,14 +525,14 @@ footer .mono{color:var(--mut);}
   <p class="kick">Vad som är verkligt</p>
   <p class="big">Det som faktiskt finns idag — namngivet, med ärlig status.</p>
   <p class="sub">Modellen ovan är hur vi arbetar. Nedan är det verkliga bakom den, utan spinn —
-    en produkt i drift, resten tidiga — inte en portfölj.</p>
+    Beacon är live; Method Pack-grinden är live; resten är fortfarande tidiga — inte en portfölj.</p>
   <div class="co-conf" id="companyConf"></div>
   <div class="bynum">
     <p class="bynum-kick">I siffror <span>— per september 2026</span></p>
     <div class="stats">
       <div class="stat"><b>~6</b><span>fasta AI-agenter — specialister, en guvernör, forskningsspåret och COO:n</span></div>
-      <div class="stat"><b>~12</b><span>specialiserade agenter definierade i Agastya (en delmängd aktiv)</span></div>
-      <div class="stat"><b>~70</b><span>schemalagda jobb + 14 alltid-igång-tjänster — infrastrukturen, inte agenter</span></div>
+      <div class="stat"><b>~21</b><span>agentmoduler inuti Agastya idag — en per marknadslinse. Sprawl vi kollapsar, inte ett skryt</span></div>
+      <div class="stat"><b>~35</b><span>schemalagda jobb + 14 alltid-igång-tjänster — infrastrukturen, inte agenter</span></div>
     </div>
     <p class="bynum-foot mono">”Ett team av AI-agenter” betyder en handfull specialister som var och en äger en uppgift — inte hundratals.</p>
   </div>
@@ -533,7 +565,7 @@ footer .mono{color:var(--mut);}
     <p class="labsum"><b class="lg">2 utforskas</b> · <b class="ln">2 avlivade</b> — ett ”nej” är ett resultat, kvar i öppen dager.</p>
     <ul class="labgrid">
       <li class="lab-item"><span class="tag go">Utforskas</span><p>En självläkande vakthund för mindre webbplatser — tekniken vi redan kör för egen del.</p></li>
-      <li class="lab-item"><span class="tag go">Öppen grind</span><p>En metodpack för hur agenter driver ett bolag — <a href="/method-pack/" style="color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28)">e-postgrind öppen</a>; <a href="/brief/we-put-a-doorbell-on-the-method-pack/" style="color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28)">varför vi grindade den</a>. Fortfarande före bevis.</p></li>
+      <li class="lab-item"><span class="tag go">Live-grind</span><p>Method Pack — <a href="/method-pack/" style="color:var(--c1)">begär adopt-ritualen</a>; <a href="/brief/we-put-a-doorbell-on-the-method-pack/" style="color:var(--c1)">varför vi grindade den</a>. Inte en handelsbot. Inte ett foundry-kit.</p></li>
       <li class="lab-item killed"><span class="tag no">Avlivad</span><p>Att kopiera vårt angreppssätt till andra marknader — testat, ingen verklig edge, nedlagt.</p></li>
       <li class="lab-item killed"><span class="tag no">Avlivad</span><p>En kortsiktig reverseringssignal — såg lovande ut, falnade under ärlig testning.</p></li>
     </ul>

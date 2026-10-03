@@ -3,14 +3,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Crewless is a company run by AI agents. One founder sets the direction and makes the key decisions; a team of AI agents handles the research, engineering and day-to-day operations.">
+<meta name="description" content="Crewless sells the craft of an agent-run company on tools anyone can rent — Method Pack gate live, honest build log. Not a trading bot. Not an AI foundry.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Crewless — a company run by AI agents">
-<meta property="og:description" content="One founder sets the direction. A team of AI agents does the research, engineering and daily operations — built openly, including the honest setbacks.">
+<meta property="og:title" content="Crewless — coffee, not beans or power plants">
+<meta property="og:description" content="Agents run the company under fail-closed gates. Request the Method Pack or read what’s real today — pre-proof, under-claim.">
 <meta property="og:url" content="https://crewless.se">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://crewless.se">
-<title>Crewless</title>
+<title>Crewless — coffee, not beans or power plants</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,38 +51,58 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
   .nav.open a:first-child{border-top:none;}
 }
 
-/* ── hero: the big constellation is the centrepiece ── */
-.hero{position:relative;border-bottom:1px solid var(--line);
-  background:radial-gradient(120% 90% at 50% -15%,rgba(79,224,208,.07),transparent 55%);}
-/* mobile: single column — headline+intro, then the constellation, then actions */
-.herowrap{display:flex;flex-direction:column;gap:clamp(1.4rem,4vw,2rem);
-  padding:clamp(1.5rem,4vw,2.6rem) 0 clamp(2rem,5vw,3.2rem);}
-.herohead{max-width:46ch;}
-.heroactions{display:flex;flex-direction:column;}
-.heroactions .cta{margin-top:0;}
+/* ── hero: one composition — brand, headline, sentence, CTAs ── */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  border-bottom:1px solid var(--line);overflow:hidden;
+  background:
+    radial-gradient(90% 70% at 18% 20%,rgba(79,224,208,.16),transparent 55%),
+    radial-gradient(80% 60% at 88% 15%,rgba(124,140,255,.14),transparent 50%),
+    radial-gradient(70% 50% at 60% 95%,rgba(181,123,255,.1),transparent 55%),
+    linear-gradient(180deg,#060912 0%,#05070d 55%,#05070d 100%);}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(115deg,transparent 40%,rgba(79,224,208,.04) 50%,transparent 60%),
+    repeating-linear-gradient(-12deg,transparent 0 18px,rgba(238,242,248,.015) 18px 19px);
+  animation:heroDrift 18s ease-in-out infinite alternate;}
+.hero::after{content:"";position:absolute;inset:auto -20% -30% -20%;height:55%;pointer-events:none;
+  background:radial-gradient(50% 60% at 50% 0%,rgba(79,224,208,.09),transparent 70%);
+  animation:heroGlow 12s ease-in-out infinite alternate;}
+@keyframes heroDrift{from{transform:translate3d(-1.5%,0,0)}to{transform:translate3d(1.5%,0,0)}}
+@keyframes heroGlow{from{opacity:.55;transform:scale(1)}to{opacity:1;transform:scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after{animation:none;}}
+.herowrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;
+  gap:0;padding:calc(58px + clamp(2.4rem,8vh,4.5rem)) 0 clamp(2.4rem,6vh,3.8rem);max-width:42rem;}
+.brandmark{font-size:clamp(1.05rem,2.4vw,1.35rem);font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);margin-bottom:1.35rem;
+  background:linear-gradient(105deg,var(--ink),var(--c1));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:brandIn .9s ease both;}
+@keyframes brandIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .hud{display:inline-flex;align-items:center;gap:.55rem;
   padding:.4rem .85rem;border:1px solid var(--line);border-radius:100px;background:var(--panel);
   font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--mut);margin-bottom:1.3rem;max-width:100%;}
+  color:var(--mut);margin-bottom:1.15rem;max-width:100%;}
 .hud .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);animation:blip 2.4s infinite;}
 .hud b{color:var(--ink);font-weight:500;letter-spacing:.04em;}
 @keyframes blip{0%{box-shadow:0 0 0 0 #4fe0d088}70%{box-shadow:0 0 0 7px #4fe0d000}100%{box-shadow:0 0 0 0 #4fe0d000}}
-h1{font-size:clamp(2.3rem,6.2vw,4.3rem);line-height:1.03;font-weight:600;letter-spacing:-.025em;
-  max-width:15ch;text-wrap:balance;}
+h1{font-size:clamp(2.45rem,7vw,4.55rem);line-height:1.02;font-weight:600;letter-spacing:-.03em;
+  max-width:14ch;text-wrap:balance;animation:brandIn 1s .08s ease both;}
 h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
   -webkit-background-clip:text;background-clip:text;color:transparent;}
-.hlede{margin-top:1rem;max-width:56ch;color:var(--mut);font-size:clamp(1rem,2.1vw,1.18rem);line-height:1.5;}
+.hlede{margin-top:1.15rem;max-width:36ch;color:var(--mut);font-size:clamp(1.05rem,2.2vw,1.25rem);line-height:1.5;
+  animation:brandIn 1s .16s ease both;}
 .hlede b{color:var(--ink);font-weight:600;}
-.cta{margin-top:1.6rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;}
-.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.2rem;border-radius:11px;
-  font-weight:500;font-size:.92rem;transition:.2s;}
+.cta{margin-top:1.85rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;
+  animation:brandIn 1s .24s ease both;}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.78rem 1.25rem;border-radius:11px;
+  font-weight:500;font-size:.95rem;transition:.2s;}
 .btn.p{background:linear-gradient(105deg,var(--c1),#3bc7cf);color:#04130f;}
 .btn.p:hover{filter:brightness(1.08);transform:translateY(-1px);}
 .btn.s{border:1px solid var(--line);background:var(--panel);color:var(--ink);}
 .btn.s:hover{border-color:var(--c1);color:var(--c1);}
-/* one-line live pulse under the buttons (replaces the panel) */
-.pulse{margin-top:1.45rem;display:flex;align-items:center;gap:.55rem;min-height:1.2em;
-  font-family:"IBM Plex Mono",monospace;font-size:.73rem;color:var(--mut);pointer-events:none;}
+.pulse{margin-top:1.55rem;display:flex;align-items:center;gap:.55rem;min-height:1.2em;
+  font-family:"IBM Plex Mono",monospace;font-size:.73rem;color:var(--mut);pointer-events:none;
+  animation:brandIn 1s .32s ease both;}
 .pulse .pdot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);flex:none;animation:blip 2.4s infinite;}
 .pulse #feedline b{color:var(--c1);font-weight:500;}
 .pulse .fade{animation:fadein .5s;}
@@ -98,9 +118,19 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 @keyframes latest-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .latest{animation:latest-in .6s ease .25s both;}
 
-/* big hero constellation panel — bigger on mobile so it's a real attractor */
+/* proof strip — one job, under hero */
+.proofstrip{border-bottom:1px solid var(--line);background:rgba(8,12,20,.85);}
+.proofstrip .wrap{display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem 1.1rem;
+  padding:1rem 0;font-size:.92rem;color:var(--mut);}
+.proofstrip .pk{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--c1);margin-right:.2rem;}
+.proofstrip a{color:var(--ink);border-bottom:1px solid #28374f;transition:color .2s,border-color .2s;}
+.proofstrip a:hover{color:var(--c1);border-color:var(--c1);}
+.proofstrip .sep{color:var(--dim);}
+
+/* constellation lives below the fold now */
 .cst.cst-hero{margin-top:0;}
-.cst.cst-hero canvas{height:clamp(480px,70vh,620px);}
+.cst.cst-hero canvas{height:clamp(320px,48vh,520px);}
 .cst-bar{display:flex;align-items:center;justify-content:space-between;gap:.7rem 1rem;flex-wrap:wrap;
   padding:.8rem 1rem;border-bottom:1px solid var(--line);}
 .cst-bar .tnow-badge{margin-bottom:0;}
@@ -108,17 +138,8 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 .cst-foot .cst-legend{margin-top:0;}
 .cst-note{margin-top:1.1rem;font-size:.88rem;color:var(--mut);max-width:72ch;line-height:1.55;}
 .cst-note b{color:var(--ink);font-weight:600;}
-
-/* desktop: two columns — text (+actions) left, constellation filling the right, both centred */
-@media(min-width:920px){
-  .herowrap{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.12fr);
-    grid-template-areas:"head cst" "act cst";
-    column-gap:clamp(2rem,4.5vw,3.8rem);row-gap:0;align-items:center;}
-  .herohead{grid-area:head;align-self:end;max-width:34ch;}
-  .heroactions{grid-area:act;align-self:start;margin-top:1.6rem;}
-  .herocst{grid-area:cst;align-self:center;}
-  .cst.cst-hero canvas{height:clamp(460px,64vh,600px);}
-  .cst-note{max-width:none;}
+@media(max-width:640px){
+  .cst.cst-hero canvas{height:clamp(280px,40vh,360px);}
 }
 
 section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
@@ -382,52 +403,64 @@ footer .mono{color:var(--mut);}
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <a href="/sv/" aria-label="Läs på svenska" style="font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:.16rem .46rem;margin-left:.7rem;text-decoration:none">SV</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
-  <nav class="nav" id="siteNav"><a href="#idea">The idea</a><a href="#brain">The brain</a><a href="#real">What's real</a><a href="#receipts">Progress</a><a href="/brief/we-put-a-doorbell-on-the-method-pack/">Build log</a><a href="/brief/">Briefs</a><a href="/method-pack/">Method Pack</a><a href="#contact">Contact</a></nav>
+  <nav class="nav" id="siteNav"><a href="/build/">Build</a><a href="/method-pack/">Method Pack</a><a href="#idea">The idea</a><a href="#real">What's real</a><a href="#receipts">Progress</a><a href="/brief/">Briefs</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
   <div class="wrap herowrap">
-    <div class="herohead">
-      <div class="hud"><span class="dot"></span> <b id="agentct">a team of</b> AI agents · running the company</div>
-      <h1>A company run by <span class="g">AI agents.</span></h1>
-      <p class="hlede">A <b>central team of AI agents</b> runs the company and watches over its products —
-        and <b>each product runs on its own team of AI agents</b>. The only human is the founder, who sets
-        direction.</p>
+    <p class="brandmark" aria-label="Crewless">Crewless</p>
+    <h1>Coffee, not beans or <span class="g">power plants.</span></h1>
+    <p class="hlede">We sell the craft of an <b>agent-run company</b> on tools anyone can rent —
+      fail-closed gates, founder glances for irreversible doors — not a trading bot, not an AI foundry.</p>
+    <div class="cta">
+      <a class="btn p" href="/method-pack/">Request the Method Pack</a>
+      <a class="btn s" href="/build/">See what’s real</a>
     </div>
+    <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
+  </div>
+</div>
 
-    <div class="herocst">
-      <div class="cst cst-hero">
-        <div class="cst-bar">
-          <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
-            <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now</button>
-            <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year</button>
-          </div>
-          <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Today — sparse on purpose</span>
-        </div>
-        <canvas id="cstCanvas" role="img" aria-label="A radial map of the operating model. At the centre, a small team of AI agents that monitors the products. Around it sit independent products — today one is active and a couple more are just forming — each built from its own team of agents, its spine. Products never link to each other; the only links run from the central team out to each product. In the one-year vision more products and larger teams appear, evenly arranged. The products are shown generically here — the named ones are listed in the What's real section."></canvas>
-        <div class="cst-foot">
-          <div class="cst-legend" aria-hidden="true">
-            <span><i style="background:#8a94a8"></i>central team of AI agents — monitors the products</span>
-            <span><i style="background:#4fe0d0"></i>a product · its agents are its spine</span>
-            <span><i style="background:#b57bff"></i>+1yr placeholder — not committed</span>
-            <span><i style="background:#eef2f8"></i>each dot = one AI agent</span>
-          </div>
-        </div>
-      </div>
-      <p class="cst-note" id="cstFoot"><b>Sparse on purpose:</b> one product is active, a couple more just
-        forming — each its own small team of AI agents. Named products and honest status in
-        <a href="#real" style="color:var(--c1)">What's real</a>.</p>
-    </div>
-
-    <div class="heroactions">
-      <div class="cta"><a class="btn p" href="#brain">How it works ↓</a><a class="btn s" href="/brief/we-put-a-doorbell-on-the-method-pack/">Latest build log</a></div>
-      <p class="latest"><a href="/brief/we-put-a-doorbell-on-the-method-pack/"><span class="lk">New</span><span class="lt">We put a doorbell on the Method Pack</span></a></p>
-      <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
-    </div>
+<div class="proofstrip" aria-label="What’s real today">
+  <div class="wrap">
+    <span class="pk">What’s real today</span>
+    <a href="/method-pack/">Method Pack gate — live</a>
+    <span class="sep">·</span>
+    <a href="/build/">Build log &amp; proof</a>
+    <span class="sep">·</span>
+    <a href="/brief/we-put-a-doorbell-on-the-method-pack/">Doorbell brief</a>
+    <span class="sep">·</span>
+    <span>Pre-proof · under-claim</span>
   </div>
 </div>
 
 <main>
+<section id="shape"><div class="wrap">
+  <p class="kick">The shape</p>
+  <p class="big">A central team watches; each product runs its own agents.</p>
+  <p class="sub">Sparse on purpose — named products and honest status live in
+    <a href="#real" style="color:var(--c1)">What’s real</a>.</p>
+  <div class="cst cst-hero" style="margin-top:1.6rem">
+    <div class="cst-bar">
+      <div class="tnow-tabs" role="tablist" aria-label="Now versus one year out">
+        <button role="tab" type="button" id="tabNow" aria-selected="true"><span class="td"></span>Now</button>
+        <button role="tab" type="button" id="tabNext" class="fut" aria-selected="false"><span class="td"></span>+1 year</button>
+      </div>
+      <span class="tnow-badge now" id="cstBadge"><span class="bd2"></span>Today — sparse on purpose</span>
+    </div>
+    <canvas id="cstCanvas" role="img" aria-label="A radial map of the operating model. At the centre, a small team of AI agents that monitors the products. Around it sit independent products — today one is active and a couple more are just forming — each built from its own team of agents, its spine. Products never link to each other; the only links run from the central team out to each product. In the one-year vision more products and larger teams appear, evenly arranged. The products are shown generically here — the named ones are listed in the What's real section."></canvas>
+    <div class="cst-foot">
+      <div class="cst-legend" aria-hidden="true">
+        <span><i style="background:#8a94a8"></i>central team of AI agents — monitors the products</span>
+        <span><i style="background:#4fe0d0"></i>a product · its agents are its spine</span>
+        <span><i style="background:#b57bff"></i>+1yr placeholder — not committed</span>
+        <span><i style="background:#eef2f8"></i>each dot = one AI agent</span>
+      </div>
+    </div>
+  </div>
+  <p class="cst-note" id="cstFoot"><b>Sparse on purpose:</b> one public face is live, a couple more ideas
+    are forming — each its own small team of AI agents.</p>
+</div></section>
+
 <section id="idea"><div class="wrap">
   <p class="kick">The idea</p>
   <p class="big">Can one person, with a team of AI agents, build and run a real company?</p>
@@ -507,7 +540,7 @@ footer .mono{color:var(--mut);}
   <p class="kick">What's real</p>
   <p class="big">What actually exists today — named, with honest status.</p>
   <p class="sub">The model above is how we operate. Below are the real things behind it, no spin —
-    one product live, the rest still early — not a portfolio.</p>
+    Beacon is live; the Method Pack gate is live; the rest is still early — not a portfolio.</p>
   <div class="co-conf" id="companyConf"></div>
   <div class="bynum">
     <p class="bynum-kick">By the numbers <span>— as of Sep 2026</span></p>
@@ -547,7 +580,7 @@ footer .mono{color:var(--mut);}
     <p class="labsum"><b class="lg">2 exploring</b> · <b class="ln">2 killed</b> — a “no” is a finding, kept in the open.</p>
     <ul class="labgrid">
       <li class="lab-item"><span class="tag go">Exploring</span><p>A self-healing watchdog for small websites — the tech we already run for ourselves.</p></li>
-      <li class="lab-item"><span class="tag go">Live gate</span><p>A method pack for how agents run a company — <a href="/method-pack/" style="color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28)">email gate open</a>; <a href="/brief/we-put-a-doorbell-on-the-method-pack/" style="color:var(--c1);border-bottom:1px solid rgba(79,224,208,.28)">why we gated it</a>. Still pre-proof.</p></li>
+      <li class="lab-item"><span class="tag go">Live gate</span><p>Method Pack — <a href="/method-pack/" style="color:var(--c1)">request the adopt ritual</a>; <a href="/brief/we-put-a-doorbell-on-the-method-pack/" style="color:var(--c1)">why we gated it</a>. Not a trading bot. Not a foundry kit.</p></li>
       <li class="lab-item killed"><span class="tag no">Killed</span><p>Copying our approach onto other markets — tested, no real edge, dropped.</p></li>
       <li class="lab-item killed"><span class="tag no">Killed</span><p>A short-term reversal signal — looked promising, decayed under honest testing.</p></li>
     </ul>
