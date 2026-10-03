@@ -5,8 +5,13 @@
  "desk_desc": "Running, and only acting when there's a reason to.",
  "changes_7d": 37,
  "active_days_7d": 7,
- "receipts_count": 10,
+ "receipts_count": 11,
  "receipts": [
+  {
+   "date": "2026-10-03",
+   "headline": "We put a doorbell on the Method Pack",
+   "lesson": "Email gate live at /method-pack/ — request the redacted pack; no public dump of the company bible. Manual send on purpose. Still pre-proof."
+  },
   {
    "date": "2026-10-02",
    "headline": "We locked a three-year direction",
