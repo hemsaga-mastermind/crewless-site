@@ -706,6 +706,18 @@ footer .mono{color:var(--mut);}
     var line=FEEDLINES[(Math.random()*FEEDLINES.length)|0]; var parts=line.split(' \u00b7 ');
     el.className='mono'; void el.offsetWidth; el.className='mono fade';
     el.innerHTML='<b>'+esc(parts[0])+'</b> \u00b7 '+esc(parts.slice(1).join(' \u00b7 ')); }
+  // After async state injects receipts / unhides #wrong, hash targets drift under the sticky bar.
+  function resyncHashTarget(){
+    var id=(location.hash||'').replace(/^#/,'');
+    if(!id) return;
+    var el=document.getElementById(id);
+    if(!el) return;
+    var prev=document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior='auto';
+    el.scrollIntoView();
+    document.documentElement.style.scrollBehavior=prev;
+    window.dispatchEvent(new Event('scroll'));
+  }
   function loadState(){
     fetch('/state.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
       var kc=document.getElementById('k-changes'); if(kc&&d.changes_7d!=null) kc.textContent=d.changes_7d;
@@ -716,6 +728,7 @@ footer .mono{color:var(--mut);}
       renderConfidence(d.products);
       renderCompany(d.company);
       renderMistakes(d.mistakes);
+      requestAnimationFrame(function(){ requestAnimationFrame(resyncHashTarget); });
     }).catch(function(){});
   }
   // ── "Vad vi hade fel om" — ≤3 nyaste enradare från state.mistakes; tomt ⇒ avsnittet döljs ──
