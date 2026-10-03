@@ -21,7 +21,7 @@
   --panel:rgba(13,19,30,.72); --c1:#4fe0d0; --c2:#7c8cff; --c3:#b57bff; --live:#4fe0d0;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;scroll-padding-top:80px;}
 body{background:var(--bg);color:var(--ink);overflow-x:hidden;
   font:400 16px/1.65 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;}
 .mono{font-family:"IBM Plex Mono",monospace;}
@@ -185,8 +185,8 @@ section{padding:clamp(3.6rem,9vw,6.2rem) 0;border-top:1px solid var(--line);}
 .big{font-size:clamp(1.55rem,3.8vw,2.35rem);font-weight:600;letter-spacing:-.02em;max-width:22ch;line-height:1.12;}
 .sub{color:var(--mut);max-width:60ch;margin-top:1rem;}
 .hl{color:var(--ink);font-weight:600;}
-/* sticky header (~58px) — keep hash targets + kicks visible under the bar */
-section,[id="now"],[id="next"],[id="write"],[id="building"],[id="real"],[id="receipts"],[id="contact"],[id="idea"],[id="brain"],[id="shape"],[id="sell"],[id="lab"]{scroll-margin-top:72px;}
+/* sticky header (~58px) — scroll-padding on html is primary; margin backs hash targets */
+section,[id="now"],[id="next"],[id="write"],[id="building"],[id="real"],[id="receipts"],[id="contact"],[id="idea"],[id="brain"],[id="shape"],[id="sell"],[id="lab"]{scroll-margin-top:80px;}
 .pills{list-style:none;display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.9rem;padding:0;}
 .pills li{border:1px solid var(--line);border-radius:100px;padding:.5rem .95rem;font-size:.88rem;color:var(--mut);background:var(--panel);}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.85rem;margin:1.9rem 0 .4rem;}
@@ -453,9 +453,8 @@ footer .mono{color:var(--mut);}
         <p><a href="/method-pack/">Starter pack</a> — leave a work email; we send a short pack. Reach out if you want the detail.</p>
         <p style="margin-top:.55rem"><a href="/tools/honesty/">Page honesty check</a> — optional demo that flags risky claims on a page before you publish.</p>
       </div>
-      <div class="lane build" id="next">
-        <!-- alias for pre-rewrite /#building links (briefs, bookmarks) -->
-        <span id="building" aria-hidden="true"></span>
+      <div class="lane build" id="next" style="position:relative">
+        <span id="building" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden"></span>
         <span class="lk">Next</span>
         <h2>What’s coming</h2>
         <ul>
@@ -811,11 +810,20 @@ footer .mono{color:var(--mut);}
   if(nav){
     var contactLink=nav.querySelector('a[href="#contact"]');
     var contactSec=document.getElementById('contact');
-    if(contactLink&&contactSec&&'IntersectionObserver' in window){
-      var spy=new IntersectionObserver(function(entries){
-        entries.forEach(function(en){ contactLink.classList.toggle('is-active', en.isIntersecting); });
-      },{rootMargin:'-72px 0px -55% 0px',threshold:0});
-      spy.observe(contactSec);
+    if(contactLink&&contactSec){
+      var syncContact=function(){
+        var r=contactSec.getBoundingClientRect();
+        var vh=window.innerHeight||0;
+        var atEnd=(window.scrollY+vh) >= (document.documentElement.scrollHeight-8);
+        // active under sticky bar, or pinned at page end (mobile short tail)
+        var active=(r.top < 140 && r.bottom > Math.min(vh*0.3, 220)) || (atEnd && r.top < vh);
+        contactLink.classList.toggle('is-active', active);
+      };
+      syncContact();
+      window.addEventListener('scroll', syncContact, {passive:true});
+      window.addEventListener('resize', syncContact);
+      window.addEventListener('load', function(){ setTimeout(syncContact, 0); });
+      window.addEventListener('hashchange', syncContact);
     }
   }
 })();
