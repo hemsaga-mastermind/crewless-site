@@ -2,10 +2,11 @@
 # Required so PR/preview builds (`wrangler versions upload`) know the assets root.
 # Production dashboard deploy previously passed --assets implicitly; preview did not.
 #
-# IMPORTANT: top-level /build/ is a *content* route (living proof page), NOT a
-# compile output directory. assets.directory must stay "." so the whole site
-# publishes. Workers Builds deploy command should be `npx wrangler deploy`
-# (or `npm run deploy`) with no `--assets ./build` override.
+# Living proof page lives at /whats-real/ (renamed from /build/ so Workers Builds /
+# dash deploy never treat a top-level compile-output folder as assets root).
+# assets.directory must stay "." so the whole site publishes.
+# Workers Builds deploy command MUST be: npx wrangler deploy
+# (never --assets ./build or --assets ./whats-real).
 name = "crewless-site"
 account_id = "d2891f2421efdeb5a31b6b6fde4bc5b9"
 compatibility_date = "2026-10-02"

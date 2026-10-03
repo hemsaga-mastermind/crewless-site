@@ -1,0 +1,5 @@
+# Keep legacy /build/ URL while content lives at /whats-real/
+# (top-level build/ folder broke Workers Builds — treated as compile output)
+/build /whats-real 200
+/build/ /whats-real/ 200
+/build/* /whats-real/:splat 200
