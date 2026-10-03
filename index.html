@@ -3,10 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Crewless sells the craft of an agent-run company on tools anyone can rent — Method Pack gate live, honest build log. Not a trading bot. Not an AI foundry.">
+<meta name="description" content="Crewless — agent-run company craft. Available now: Method Pack. In the works: honesty tools, claim gate, production-line CI. Not a trading bot. Not an AI foundry.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Crewless — we sell the craft">
-<meta property="og:description" content="Agents run the company under fail-closed gates. Request the Method Pack or read what’s real today — pre-proof, under-claim. Not a trading bot. Not an AI foundry.">
+<meta property="og:description" content="What you can request today vs what we’re building. Method Pack on-ramp live; honesty tools and CI in the works. Pre-proof. Not a trading bot. Not an AI foundry.">
 <meta property="og:url" content="https://crewless.se">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://crewless.se">
@@ -71,9 +71,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 @keyframes heroGlow{from{opacity:.55;transform:scale(1)}to{opacity:1;transform:scale(1.06)}}
 @media(prefers-reduced-motion:reduce){.hero::before,.hero::after{animation:none;}}
 .herowrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;
-  gap:0;padding:calc(58px + clamp(2.4rem,8vh,4.5rem)) 0 clamp(2.4rem,6vh,3.8rem);max-width:42rem;}
+  gap:0;padding:calc(58px + clamp(1.8rem,6vh,3.6rem)) 0 clamp(1.4rem,3vh,2.2rem);max-width:46rem;}
 .brandmark{font-size:clamp(1.05rem,2.4vw,1.35rem);font-weight:700;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--ink);margin-bottom:1.35rem;
+  text-transform:uppercase;color:var(--ink);margin-bottom:1.15rem;
   background:linear-gradient(105deg,var(--ink),var(--c1));
   -webkit-background-clip:text;background-clip:text;color:transparent;
   animation:brandIn .9s ease both;}
@@ -85,14 +85,14 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
 .hud .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);animation:blip 2.4s infinite;}
 .hud b{color:var(--ink);font-weight:500;letter-spacing:.04em;}
 @keyframes blip{0%{box-shadow:0 0 0 0 #4fe0d088}70%{box-shadow:0 0 0 7px #4fe0d000}100%{box-shadow:0 0 0 0 #4fe0d000}}
-h1{font-size:clamp(2.45rem,7vw,4.55rem);line-height:1.02;font-weight:600;letter-spacing:-.03em;
-  max-width:14ch;text-wrap:balance;animation:brandIn 1s .08s ease both;}
+h1{font-size:clamp(2.2rem,6.4vw,4.1rem);line-height:1.02;font-weight:600;letter-spacing:-.03em;
+  max-width:15ch;text-wrap:balance;animation:brandIn 1s .08s ease both;}
 h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
   -webkit-background-clip:text;background-clip:text;color:transparent;}
-.hlede{margin-top:1.15rem;max-width:36ch;color:var(--mut);font-size:clamp(1.05rem,2.2vw,1.25rem);line-height:1.5;
+.hlede{margin-top:1rem;max-width:38ch;color:var(--mut);font-size:clamp(1.02rem,2.1vw,1.2rem);line-height:1.5;
   animation:brandIn 1s .16s ease both;}
 .hlede b{color:var(--ink);font-weight:600;}
-.cta{margin-top:1.85rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;
+.cta{margin-top:1.55rem;display:flex;gap:.75rem;flex-wrap:wrap;pointer-events:auto;
   animation:brandIn 1s .24s ease both;}
 .btn{display:inline-flex;align-items:center;gap:.45rem;padding:.78rem 1.25rem;border-radius:11px;
   font-weight:500;font-size:.95rem;transition:.2s;}
@@ -100,33 +100,60 @@ h1 .g{background:linear-gradient(105deg,var(--c1),var(--c2) 55%,var(--c3));
 .btn.p:hover{filter:brightness(1.08);transform:translateY(-1px);}
 .btn.s{border:1px solid var(--line);background:var(--panel);color:var(--ink);}
 .btn.s:hover{border-color:var(--c1);color:var(--c1);}
-.pulse{margin-top:1.55rem;display:flex;align-items:center;gap:.55rem;min-height:1.2em;
+.pulse{margin-top:1.2rem;display:flex;align-items:center;gap:.55rem;min-height:1.2em;
   font-family:"IBM Plex Mono",monospace;font-size:.73rem;color:var(--mut);pointer-events:none;
   animation:brandIn 1s .32s ease both;}
 .pulse .pdot{width:.5rem;height:.5rem;border-radius:50%;background:var(--live);flex:none;animation:blip 2.4s infinite;}
 .pulse #feedline b{color:var(--c1);font-weight:500;}
 .pulse .fade{animation:fadein .5s;}
 @keyframes fadein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
-/* one-scroll latest proof — single line, not a dashboard */
-.latest{margin-top:1.15rem;max-width:42ch;}
-.latest a{display:inline-flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;
-  font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.02em;
-  color:var(--mut);border-bottom:1px solid transparent;transition:color .2s,border-color .2s;}
-.latest a:hover{color:var(--c1);border-bottom-color:rgba(79,224,208,.35);}
-.latest .lk{color:var(--c1);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;}
-.latest .lt{color:var(--ink);font-weight:500;}
-@keyframes latest-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.latest{animation:latest-in .6s ease .25s both;}
 
-/* proof strip — one job, under hero */
-.proofstrip{border-bottom:1px solid var(--line);background:rgba(8,12,20,.85);}
-.proofstrip .wrap{display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem 1.1rem;
-  padding:1rem 0;font-size:.92rem;color:var(--mut);}
-.proofstrip .pk{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--c1);margin-right:.2rem;}
-.proofstrip a{color:var(--ink);border-bottom:1px solid #28374f;transition:color .2s,border-color .2s;}
-.proofstrip a:hover{color:var(--c1);border-color:var(--c1);}
-.proofstrip .sep{color:var(--dim);}
+/* sell vs build — fused first-scroll composition, not a card dashboard */
+.splitband{position:relative;z-index:1;border-top:1px solid rgba(79,224,208,.12);
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(8,12,20,.35),rgba(5,7,13,.92));
+  animation:brandIn 1s .36s ease both;}
+.splitband .wrap{padding:clamp(1.35rem,3.5vh,2.1rem) clamp(1.15rem,4vw,2.2rem) clamp(1.6rem,4vh,2.4rem);}
+.splitband .lanes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,4vw,2.8rem);
+  max-width:46rem;align-items:start;}
+.splitband .lane{min-width:0;}
+.splitband .lk{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;margin-bottom:.55rem;display:block;}
+.splitband .lane.sell .lk{color:var(--c1);}
+.splitband .lane.build .lk{color:var(--c2);}
+.splitband .lane h2{font-size:clamp(1.15rem,2.4vw,1.45rem);font-weight:600;letter-spacing:-.02em;
+  line-height:1.2;margin-bottom:.55rem;}
+.splitband .lane p{color:var(--mut);font-size:.92rem;line-height:1.5;max-width:28ch;}
+.splitband .lane.sell p a{color:var(--ink);border-bottom:1px solid rgba(79,224,208,.35);font-weight:500;}
+.splitband .lane.sell p a:hover{color:var(--c1);border-color:var(--c1);}
+.splitband .lane.build ul{list-style:none;margin:.7rem 0 0;padding:0;display:grid;gap:.4rem;}
+.splitband .lane.build li{font-size:.92rem;color:var(--ink);line-height:1.35;
+  padding-left:.85rem;position:relative;}
+.splitband .lane.build li::before{content:"";position:absolute;left:0;top:.55em;width:.35rem;height:.35rem;
+  border-radius:50%;background:var(--c2);opacity:.75;}
+.splitband .lane.build li a{color:var(--ink);border-bottom:1px solid #28374f;}
+.splitband .lane.build li a:hover{color:var(--c1);border-color:var(--c1);}
+.splitband .lane.build .mut{color:var(--mut);font-weight:400;}
+.splitband .foot{margin-top:1.1rem;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+  letter-spacing:.06em;color:var(--dim);max-width:46rem;}
+@media(max-width:700px){
+  .splitband .lanes{grid-template-columns:1fr;gap:1.45rem;}
+  .splitband .lane.build{padding-top:1.2rem;border-top:1px solid var(--line);}
+}
+@media(prefers-reduced-motion:reduce){.splitband{animation:none;}}
+.lane-block{margin-top:2.2rem;}
+.lane-block:first-of-type{margin-top:1.6rem;}
+.lane-block .bynum-kick{margin-bottom:.85rem;}
+.lane-list{list-style:none;padding:0;margin:0;display:grid;gap:.75rem;}
+.lane-list li{padding:.95rem 0;border-top:1px solid var(--line);}
+.lane-list li:first-child{border-top:none;padding-top:0;}
+.lane-list .st{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c1);display:block;margin-bottom:.3rem;}
+.lane-list.build .st{color:var(--c2);}
+.lane-list.dog .st{color:var(--dim);}
+.lane-list b{font-weight:600;color:var(--ink);}
+.lane-list p{color:var(--mut);font-size:.92rem;line-height:1.5;margin-top:.25rem;}
+.lane-list a{color:var(--ink);border-bottom:1px solid #28374f;}
+.lane-list a:hover{color:var(--c1);border-color:var(--c1);}
 
 /* constellation lives below the fold now */
 .cst.cst-hero{margin-top:0;}
@@ -403,33 +430,43 @@ footer .mono{color:var(--mut);}
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <a href="/sv/" aria-label="Läs på svenska" style="font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:.16rem .46rem;margin-left:.7rem;text-decoration:none">SV</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
-  <nav class="nav" id="siteNav"><a href="/whats-real/">Build</a><a href="/method-pack/">Method Pack</a><a href="#idea">The idea</a><a href="#real">What's real</a><a href="#receipts">Progress</a><a href="/brief/">Briefs</a><a href="#contact">Contact</a></nav>
+  <nav class="nav" id="siteNav"><a href="/method-pack/">Method Pack</a><a href="/whats-real/">What's real</a><a href="#building">Building</a><a href="#receipts">Progress</a><a href="/brief/">Briefs</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="hero">
   <div class="wrap herowrap">
     <p class="brandmark" aria-label="Crewless">Crewless</p>
     <h1>We sell the craft — not a trading bot, not an <span class="g">AI foundry.</span></h1>
-    <p class="hlede">An <b>agent-run company</b> under fail-closed gates — Method Pack on-ramp live,
-      honest build log, still pre-proof.</p>
+    <p class="hlede">An <b>agent-run company</b> under fail-closed gates.
+      Request the Method Pack today — or see what we’re building next. Still pre-proof.</p>
     <div class="cta">
       <a class="btn p" href="/method-pack/">Request the Method Pack</a>
-      <a class="btn s" href="/whats-real/">See what’s real</a>
+      <a class="btn s" href="#building">What’s in the works</a>
     </div>
     <div class="pulse"><span class="pdot"></span><span id="feedline" class="mono"></span></div>
   </div>
 </div>
 
-<div class="proofstrip" aria-label="What’s real today">
+<div class="splitband" id="now" aria-label="Available now versus in the works">
   <div class="wrap">
-    <span class="pk">What’s real today</span>
-    <a href="/method-pack/">Method Pack gate — live</a>
-    <span class="sep">·</span>
-    <a href="/whats-real/">Build log &amp; proof</a>
-    <span class="sep">·</span>
-    <a href="/brief/we-put-a-doorbell-on-the-method-pack/">Doorbell brief</a>
-    <span class="sep">·</span>
-    <span>Pre-proof · under-claim</span>
+    <div class="lanes">
+      <div class="lane sell">
+        <span class="lk">Available now</span>
+        <h2>Request or try today</h2>
+        <p><a href="/method-pack/">Method Pack</a> — leave a work email; we send the redacted adopt ritual. Not a bible dump.</p>
+        <p style="margin-top:.55rem"><a href="/tools/honesty/">Site honesty scanner</a> — live demo. Flags money-claim risks before you publish.</p>
+      </div>
+      <div class="lane build" id="building">
+        <span class="lk">In the works</span>
+        <h2>What we’re building</h2>
+        <ul>
+          <li>Claim-compliance gate <span class="mut">· next cup</span></li>
+          <li>Production-line CI <span class="mut">· fail-closed publish checks</span></li>
+          <li>Next cups on the open pipeline <span class="mut">· under-claim</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot">Pre-proof · under-claim · <a href="/whats-real/" style="color:var(--mut);border-bottom:1px solid #28374f">full proof surface</a></p>
   </div>
 </div>
 
@@ -538,49 +575,81 @@ footer .mono{color:var(--mut);}
 
 <section id="real"><div class="wrap">
   <p class="kick">What's real</p>
-  <p class="big">What actually exists today — named, with honest status.</p>
-  <p class="sub">The model above is how we operate. Below are the real things behind it, no spin —
-    Beacon is live; the Method Pack gate is live; the rest is still early — not a portfolio.</p>
+  <p class="big">Sell · build · dogfood — named, with honest status.</p>
+  <p class="sub">What you can request today, what we’re shipping next, and what stays personal.
+    Not a portfolio. Not a trading bot. Still pre-proof.</p>
   <div class="co-conf" id="companyConf"></div>
-  <div class="bynum">
-    <p class="bynum-kick">By the numbers <span>— as of Sep 2026</span></p>
-    <div class="stats">
-      <div class="stat"><b>~6</b><span>standing AI agents — specialists, a governor, the research lane, the COO</span></div>
-      <div class="stat"><b>~21</b><span>agentic modules inside Agastya today — one per market lens. Sprawl we are collapsing, not a boast</span></div>
-      <div class="stat"><b>~35</b><span>scheduled jobs + 14 always-on services — the plumbing, not agents</span></div>
-    </div>
-    <p class="bynum-foot mono">A “team of AI agents” means a handful of specialists that each own one job — not hundreds.</p>
+
+  <div class="lane-block" id="sell">
+    <p class="bynum-kick">Available now <span>— request or try</span></p>
+    <ul class="lane-list">
+      <li>
+        <span class="st">Sell · on-ramp</span>
+        <b><a href="/method-pack/">Method Pack</a></b>
+        <p>Redacted adopt ritual behind an email gate. Manual send. Not a public bible dump. Not a foundry kit.</p>
+      </li>
+      <li>
+        <span class="st">Live demo</span>
+        <b><a href="/tools/honesty/">Site honesty scanner</a></b>
+        <p>Try the public demo — flags money-claim risks on a page before you publish. Year-one tool, under-claim.</p>
+      </li>
+      <li>
+        <span class="st">Live · public face</span>
+        <b>Beacon</b>
+        <p>This website — built and kept up by the agents. You’re looking at it. <span class="conf" data-conf="beacon" style="display:inline;border:0;padding:0;margin:0;min-height:0"></span></p>
+      </li>
+    </ul>
   </div>
-  <div class="grid">
-    <div class="card">
-      <div class="rl"><span class="rd" style="background:#4fe0d0"></span><h3>Agastya</h3></div>
-      <p class="what">The founder's personal dogfood — a private wealth engine for his own use, not a commercial investing product and not for sale.</p>
-      <span class="badge test"><span class="bd"></span>Part live · in research</span>
-      <p>Status: a small real allocation is live; the swing and tactical parts are still on paper — and <b>no edge is proven yet.</b></p>
-      <div class="conf" data-conf="agastya"></div>
-    </div>
-    <div class="card">
-      <div class="rl"><span class="rd" style="background:#7c8cff"></span><h3>Keel</h3></div>
-      <p class="what">The memory layer that lets our agents run things over time without forgetting or drifting.</p>
-      <span class="badge live"><span class="bd"></span>Internal · working</span>
-      <p>Status: internal and working — the backbone the rest is built on.</p>
-      <div class="conf" data-conf="keel"></div>
-    </div>
-    <div class="card">
-      <div class="rl"><span class="rd" style="background:#ffd166"></span><h3>Beacon</h3></div>
-      <p class="what">This website — built and kept up to date by the agents themselves.</p>
-      <span class="badge live"><span class="bd"></span>Live</span>
-      <p>Status: live. You're looking at it.</p>
-      <div class="conf" data-conf="beacon"></div>
-    </div>
+
+  <div class="lane-block" id="lab">
+    <p class="bynum-kick">In the works <span>— pipeline, not for sale yet</span></p>
+    <ul class="lane-list build">
+      <li>
+        <span class="st">Building</span>
+        <b>Claim-compliance gate</b>
+        <p>Fail-closed check that marketing claims match what you can prove — next cup after the honesty scanner.</p>
+      </li>
+      <li>
+        <span class="st">Building</span>
+        <b>Production-line CI</b>
+        <p>Automated publish checks so a bad claim can’t ship quiet. Pre-proof helper, not a finished product.</p>
+      </li>
+      <li>
+        <span class="st">Exploring</span>
+        <b>Self-healing watchdog</b>
+        <p>The tech we already run for ourselves — still forming as a possible next cup.</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="lane-block">
+    <p class="bynum-kick">Personal dogfood <span>— not for sale</span></p>
+    <ul class="lane-list dog">
+      <li>
+        <span class="st">Private · not a product</span>
+        <b>Personal wealth tooling</b>
+        <p>The founder’s own dogfood — not a commercial investing product, not for sale, and <b style="color:var(--ink)">no edge is proven yet.</b>
+          <span class="conf" data-conf="agastya" style="display:block;margin-top:.8rem"></span></p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="lane-block">
+    <p class="bynum-kick">Internal spine <span>— how agents remember</span></p>
+    <ul class="lane-list dog">
+      <li>
+        <span class="st">Internal · working</span>
+        <b>Keel</b>
+        <p>Memory layer so agents run over months without forgetting or drifting — backbone, not a shopfront SKU.
+          <span class="conf" data-conf="keel" style="display:block;margin-top:.8rem"></span></p>
+      </li>
+    </ul>
   </div>
 
   <div class="labmerge">
-    <p class="bynum-kick labmerge-kick">Also on the board <span>— what we're weighing, and what we've killed</span></p>
-    <p class="labsum"><b class="lg">2 exploring</b> · <b class="ln">2 killed</b> — a “no” is a finding, kept in the open.</p>
+    <p class="bynum-kick labmerge-kick">Also on the board <span>— killed ideas stay visible</span></p>
+    <p class="labsum"><b class="ln">2 killed</b> — a “no” is a finding, kept in the open.</p>
     <ul class="labgrid">
-      <li class="lab-item"><span class="tag go">Exploring</span><p>A self-healing watchdog for small websites — the tech we already run for ourselves.</p></li>
-      <li class="lab-item"><span class="tag go">Live gate</span><p>Method Pack — <a href="/method-pack/" style="color:var(--c1)">request the adopt ritual</a>; <a href="/brief/we-put-a-doorbell-on-the-method-pack/" style="color:var(--c1)">why we gated it</a>. Not a trading bot. Not a foundry kit.</p></li>
       <li class="lab-item killed"><span class="tag no">Killed</span><p>Copying our approach onto other markets — tested, no real edge, dropped.</p></li>
       <li class="lab-item killed"><span class="tag no">Killed</span><p>A short-term reversal signal — looked promising, decayed under honest testing.</p></li>
     </ul>

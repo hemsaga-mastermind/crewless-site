@@ -3,10 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow">
-<meta name="description" content="What’s real at Crewless today — Method Pack gate live, honest build log, pre-proof. Not a trading bot. Not an AI foundry.">
+<meta name="description" content="What’s real at Crewless — Available now: Method Pack + honesty demo. In the works: claim gate, production-line CI. Not a trading bot. Not an AI foundry.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="What’s real today — Crewless">
-<meta property="og:description" content="Living proof a stranger can check: Method Pack gate, build log, craft not foundry.">
+<meta property="og:description" content="Available now vs in the works. Method Pack gate live. Site honesty scanner demo live. Pipeline under-claim.">
 <meta property="og:url" content="https://crewless.se/whats-real/">
 <link rel="canonical" href="https://crewless.se/whats-real/">
 <title>What’s real today — Crewless</title>
@@ -24,8 +24,9 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--ink);overflow-x:hidden;
   font:400 16px/1.7 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;
   background-image:
-    radial-gradient(90% 60% at 10% 0%,rgba(79,224,208,.1),transparent 50%),
-    radial-gradient(70% 50% at 90% 10%,rgba(124,140,255,.08),transparent 45%);}
+    radial-gradient(90% 60% at 10% 0%,rgba(79,224,208,.12),transparent 50%),
+    radial-gradient(70% 50% at 90% 8%,rgba(124,140,255,.1),transparent 45%),
+    linear-gradient(180deg,#060912 0%,#05070d 40%);}
 .mono{font-family:"IBM Plex Mono",monospace;}
 .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2.2rem);}
 a{color:inherit;text-decoration:none;}
@@ -51,18 +52,41 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(12px)
   .nav.open a:first-child{border-top:none;}
 }
 main{padding-top:58px;}
-.art{max-width:720px;margin:0 auto;padding:clamp(2.8rem,8vw,4.8rem) clamp(1.15rem,5vw,1.6rem) 3.2rem;}
-.kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c1);margin-bottom:1rem;}
-h1{font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.05;font-weight:600;letter-spacing:-.025em;text-wrap:balance;margin-bottom:1rem;}
-.lede{font-size:1.12rem;color:#d9e0ee;line-height:1.65;max-width:40ch;}
-.rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:2.2rem 0;}
-h2{font-size:1.2rem;font-weight:600;margin:0 0 .85rem;letter-spacing:-.01em;}
-ul.real{list-style:none;display:grid;gap:1rem;margin:0 0 1.6rem;}
-ul.real li{padding:1.1rem 1.2rem;border-left:2px solid var(--c1);background:linear-gradient(90deg,rgba(79,224,208,.06),transparent 70%);}
-ul.real .st{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c1);display:block;margin-bottom:.35rem;}
-ul.real p{color:var(--mut);font-size:.95rem;line-height:1.55;}
-ul.real a{color:var(--ink);border-bottom:1px solid #28374f;}
-ul.real a:hover{color:var(--c1);border-color:var(--c1);}
+.hero{padding:clamp(2.6rem,8vw,4.4rem) 0 clamp(1.6rem,4vw,2.2rem);max-width:720px;margin:0 auto;
+  padding-left:clamp(1.15rem,5vw,1.6rem);padding-right:clamp(1.15rem,5vw,1.6rem);}
+.brandmark{font-size:clamp(1.05rem,2.4vw,1.3rem);font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:1.1rem;background:linear-gradient(105deg,var(--ink),var(--c1));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:in .8s ease both;}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kick{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c1);margin-bottom:.85rem;
+  animation:in .8s .05s ease both;}
+h1{font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.05;font-weight:600;letter-spacing:-.025em;text-wrap:balance;margin-bottom:1rem;
+  animation:in .85s .1s ease both;}
+.lede{font-size:1.12rem;color:#d9e0ee;line-height:1.65;max-width:40ch;animation:in .85s .16s ease both;}
+.lede b{color:var(--ink);font-weight:600;}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,2.8rem);max-width:720px;margin:0 auto;
+  padding:clamp(1.6rem,4vw,2.4rem) clamp(1.15rem,5vw,1.6rem) 1rem;
+  animation:in .9s .22s ease both;}
+.lane .lk{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:.55rem;}
+.lane.sell .lk{color:var(--c1);}
+.lane.build .lk{color:var(--c2);}
+.lane h2{font-size:clamp(1.25rem,2.6vw,1.55rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:.9rem;}
+.lane ul{list-style:none;display:grid;gap:1rem;}
+.lane li{padding-left:0;}
+.lane .st{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.3rem;}
+.lane.sell .st{color:var(--c1);}
+.lane.build .st{color:var(--c2);}
+.lane p{color:var(--mut);font-size:.95rem;line-height:1.55;}
+.lane a{color:var(--ink);border-bottom:1px solid #28374f;}
+.lane a:hover{color:var(--c1);border-color:var(--c1);}
+@media(max-width:700px){
+  .split{grid-template-columns:1fr;gap:1.8rem;}
+  .lane.build{padding-top:1.4rem;border-top:1px solid var(--line);}
+}
+.rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:1.6rem auto;max-width:720px;}
+.art{max-width:720px;margin:0 auto;padding:0 clamp(1.15rem,5vw,1.6rem) 3.2rem;}
+h3{font-size:1.05rem;font-weight:600;margin:0 0 .85rem;letter-spacing:-.01em;}
 .log{color:#cdd5e4;}
 .log p{margin:1rem 0;}
 .log b{color:var(--ink);font-weight:600;}
@@ -74,55 +98,87 @@ ul.real a:hover{color:var(--c1);border-color:var(--c1);}
 .btn.s:hover{border-color:var(--c1);color:var(--c1);}
 .note{margin-top:2rem;font-size:.86rem;color:var(--dim);line-height:1.55;}
 footer{border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;line-height:1.7;padding:2.4rem 0 3rem;margin-top:2rem;}
+@media(prefers-reduced-motion:reduce){.brandmark,.kick,h1,.lede,.split{animation:none;}}
 </style>
 </head>
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="/" aria-label="Crewless — home"><span class="ac"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg></span> Crewless</a>
   <button type="button" class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">☰</button>
-  <nav class="nav" id="siteNav"><a href="/">Home</a><a href="/method-pack/">Method Pack</a><a href="/brief/">Briefs</a><a href="/#receipts">Progress</a></nav>
+  <nav class="nav" id="siteNav"><a href="/">Home</a><a href="/method-pack/">Method Pack</a><a href="/tools/honesty/">Honesty demo</a><a href="/brief/">Briefs</a><a href="/#building">Building</a></nav>
 </div></header>
 
-<main><article class="art">
-  <p class="kick">Published work</p>
-  <h1>What’s real today</h1>
-  <p class="lede">A stranger’s thirty-second check. No vanity metrics. No trading pitch. Craft as product — not a trading bot, not an AI foundry.</p>
+<main>
+  <div class="hero">
+    <p class="brandmark" aria-label="Crewless">Crewless</p>
+    <p class="kick">Proof surface</p>
+    <h1>Available now vs in the works</h1>
+    <p class="lede">A stranger’s twenty-second check. <b>What you can request today</b> on the left —
+      <b>what we’re building next</b> on the right. Not a trading bot. Not an AI foundry. Pre-proof.</p>
+  </div>
+
+  <div class="split" id="pipeline">
+    <div class="lane sell">
+      <span class="lk">Available now</span>
+      <h2>Request or try</h2>
+      <ul>
+        <li>
+          <span class="st">Sell · on-ramp</span>
+          <p><a href="/method-pack/">Method Pack gate</a> — leave a work email; we send the redacted adopt ritual (README, adopt guide, three chapters). Manual send. Not a bible dump.</p>
+        </li>
+        <li>
+          <span class="st">Live demo</span>
+          <p><a href="/tools/honesty/">Site honesty scanner</a> — public demo. Flags money-claim risks before you publish. Year-one tool, under-claim.</p>
+        </li>
+        <li>
+          <span class="st">Live · public face</span>
+          <p><a href="/">crewless.se</a> — this site, built and maintained by agents (Beacon). Under-claim shopfront.</p>
+        </li>
+        <li>
+          <span class="st">Live · build log</span>
+          <p><a href="/brief/we-put-a-doorbell-on-the-method-pack/">Brief Nº6 — doorbell</a> · <a href="/brief/">all briefs</a> · dated <a href="/#receipts">Progress</a> receipts.</p>
+        </li>
+      </ul>
+    </div>
+    <div class="lane build" id="building">
+      <span class="lk">In the works</span>
+      <h2>Pipeline · not for sale yet</h2>
+      <ul>
+        <li>
+          <span class="st">Building</span>
+          <p><b style="color:var(--ink);font-weight:600">Claim-compliance gate</b> — fail-closed check that claims match proof. Next cup after the honesty scanner.</p>
+        </li>
+        <li>
+          <span class="st">Building</span>
+          <p><b style="color:var(--ink);font-weight:600">Production-line CI</b> — automated publish checks so a bad claim can’t ship quiet.</p>
+        </li>
+        <li>
+          <span class="st">Next cups</span>
+          <p>Further pipeline work stays high-level and under-claim until it has a real public surface. We will not tease vapor as a buy button.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <div class="rule"></div>
 
-  <h2>Living surfaces</h2>
-  <ul class="real">
-    <li>
-      <span class="st">Live · commercial on-ramp</span>
-      <p><a href="/method-pack/">Method Pack gate</a> — leave a work email; we send the redacted adopt ritual (README, adopt guide, three chapters). Manual send on free tools. Not a public bible dump.</p>
-    </li>
-    <li>
-      <span class="st">Live · public face</span>
-      <p><a href="/">crewless.se</a> — this site, built and maintained by agents (Beacon). Under-claim shopfront.</p>
-    </li>
-    <li>
-      <span class="st">Live · build log</span>
-      <p><a href="/brief/we-put-a-doorbell-on-the-method-pack/">Brief Nº6 — doorbell</a> · <a href="/brief/what-an-agent-run-company-looks-like-before-the-proof/">Brief Nº4</a> · <a href="/brief/coffee-through-2029-under-claim/">Brief Nº5</a> · dated <a href="/#receipts">Progress</a> receipts. Wins and kills both stay visible.</p>
-    </li>
-  </ul>
+  <article class="art">
+    <h3 class="mono" style="font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:500;">Build note · 2026-10-03</h3>
+    <div class="log">
+      <p><b>We put a doorbell on the Method Pack — not a dumpster.</b></p>
+      <p>People can request the redacted Method Pack without us posting the whole company bible on the open web. You leave a work email; we get a notification; a human sends the adopter zip. No instant auto-magic delivery — intentional for Year 1.</p>
+      <p>You do <b>not</b> get a private operating bible, a trading bot, or a “build your own AI company” kit. The pack is an on-ramp ritual on commodity tools. The honesty scanner demo is a separate live surface — try it, don’t confuse it with the pack.</p>
+      <p>Pre-proof. No headcount claim. Cup first.</p>
+    </div>
 
-  <div class="rule"></div>
+    <div class="cta">
+      <a class="btn p" href="/method-pack/">Request the Method Pack</a>
+      <a class="btn s" href="/tools/honesty/">Try the honesty demo</a>
+    </div>
 
-  <h2 class="mono" style="font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:500;">Build note · 2026-10-03</h2>
-  <div class="log">
-    <p><b>We put a doorbell on the Method Pack — not a dumpster.</b></p>
-    <p>People can request the redacted Method Pack without us posting the whole company bible on the open web. You leave a work email; we get a notification; a human sends the adopter zip. No instant auto-magic delivery — intentional for Year 1, so we can see whether anyone asks twice before dressing it up as a funnel.</p>
-    <p>You do <b>not</b> get a private operating bible, a trading bot, or a “build your own AI company” kit. The pack is an on-ramp ritual on commodity tools. If the only inbound is “just do the hours for us,” we kill the offer.</p>
-    <p>Pre-proof. No headcount claim. Cup first.</p>
-  </div>
-
-  <div class="cta">
-    <a class="btn p" href="/method-pack/">Request the Method Pack</a>
-    <a class="btn s" href="/brief/">Read the briefs</a>
-  </div>
-
-  <p class="note">Next sharper SKUs (honesty tools, production-line helpers) stay in the lab until they have a real public surface. We will not tease vapor. Personal dogfood stays personal — never for sale.</p>
-</article></main>
+    <p class="note">Personal dogfood stays personal — never for sale. Pipeline items above are not commercial cups until they earn a request surface.</p>
+  </article>
+</main>
 
 <footer><div class="wrap">
   <span class="mono">⚓ Crewless — a one-person company, run by agents.</span><br>
