@@ -36,6 +36,7 @@ KEY_ROUTES = [
     "/",
     "/sv/",
     "/whats-real/",
+    "/sv/whats-real/",
     "/method-pack/",
     "/tools/honesty/",
     "/tools/claims/",
@@ -120,6 +121,7 @@ def check_atf_jargon(path: str, html: str, fails: list[str]) -> None:
         "/",
         "/sv/",
         "/whats-real/",
+        "/sv/whats-real/",
         "/method-pack/",
         "/tools/honesty/",
         "/tools/claims/",
@@ -132,7 +134,7 @@ def check_atf_jargon(path: str, html: str, fails: list[str]) -> None:
         if word.lower() in text.lower():
             # Honesty may say "passes/blocked" — scanner banned; Method Pack banned on shopfront.
             fails.append(f"P0 jargon ATF {path}: {word!r}")
-    if path in ("/", "/sv/", "/whats-real/"):
+    if path in ("/", "/sv/", "/whats-real/", "/sv/whats-real/"):
         for word in ATF_NAV_BANNED:
             nav = re.search(r"<nav[^>]*>(.*?)</nav>", html, re.I | re.S)
             nav_t = strip_tags(nav.group(1)) if nav else ""
@@ -200,6 +202,7 @@ def main() -> int:
         "/": "index.html",
         "/sv/": "sv/index.html",
         "/whats-real/": "whats-real/index.html",
+        "/sv/whats-real/": "sv/whats-real/index.html",
         "/method-pack/": "method-pack/index.html",
         "/tools/honesty/": "tools/honesty/index.html",
         "/tools/claims/": "tools/claims/index.html",
@@ -240,6 +243,7 @@ def main() -> int:
                 "/",
                 "/sv/",
                 "/whats-real/",
+                "/sv/whats-real/",
                 "/method-pack/",
                 "/tools/honesty/",
                 "/tools/claims/",

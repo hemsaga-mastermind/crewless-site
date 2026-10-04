@@ -38,6 +38,7 @@
 
 ## What’s real today
 - Now · Next · Write to us: https://crewless.se/whats-real/
+- Swedish twin: https://crewless.se/sv/whats-real/
 - Starter pack request: https://crewless.se/method-pack/
 - Page honesty check (demo, sample switch): https://crewless.se/tools/honesty/
 - Claim check (demo, not a product yet): https://crewless.se/tools/claims/
