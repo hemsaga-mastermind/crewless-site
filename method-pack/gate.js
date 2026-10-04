@@ -1,24 +1,20 @@
 /**
- * P-001 method-pack email gate (client).
- * Live: set form[data-endpoint] to Formspree URL
- * (https://formspree.io/f/XXXX) and data-dry-run="false".
- * Until then, shows dry-run status (no network).
- * Never embeds secrets. Never ships bible paths.
+ * Starter-pack email gate (client).
+ * Live: form[data-endpoint] = Formspree URL, data-dry-run="false".
+ * Never embeds secrets. Never ships private paths.
  *
- * Formspree POST contract (field names match index.html):
- *   email      — required; also mirrored to _replyto for Reply-To / autoresponse
- *   name       — optional
- *   intent     — optional (adopt_self | walkthrough | curious | hours)
- *   product_id — hidden (P-001)
- *   _subject   — Formspree subject override
- *   _gotcha    — Formspree honeypot (must stay empty)
+ * Fields: email, name, intent, product_id, _subject, _gotcha; JS sets _replyto.
  * Headers: Accept: application/json (AJAX; no redirect HTML)
  */
 (function () {
   var form = document.getElementById("pack-gate-form");
   var statusEl = document.getElementById("form-status");
   var submitBtn = document.getElementById("submit-btn");
-  if (!form || !statusEl) return;
+  var emailInput = document.getElementById("email");
+  var emailError = document.getElementById("email-error");
+  if (!form || !statusEl || !submitBtn) return;
+
+  var idleLabel = submitBtn.textContent || "Send me the pack";
 
   function show(msg, kind) {
     statusEl.hidden = false;
@@ -26,25 +22,53 @@
     statusEl.className = "status" + (kind ? " " + kind : "");
   }
 
+  function clearStatus() {
+    statusEl.hidden = true;
+    statusEl.textContent = "";
+    statusEl.className = "status";
+  }
+
+  function setEmailError(msg) {
+    if (!emailError || !emailInput) return;
+    if (msg) {
+      emailError.hidden = false;
+      emailError.textContent = msg;
+      emailInput.classList.add("is-invalid");
+      emailInput.setAttribute("aria-invalid", "true");
+    } else {
+      emailError.hidden = true;
+      emailError.textContent = "";
+      emailInput.classList.remove("is-invalid");
+      emailInput.removeAttribute("aria-invalid");
+    }
+  }
+
   function validEmail(v) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || "").trim());
   }
 
-  function isFormspree(url) {
-    return /formspree\.io\/f\//i.test(url || "");
+  if (emailInput) {
+    emailInput.addEventListener("input", function () {
+      setEmailError("");
+      clearStatus();
+    });
   }
 
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
+    clearStatus();
+    setEmailError("");
 
     var email = ((form.elements.email && form.elements.email.value) || "").trim();
     var honeypot = (form.elements._gotcha && form.elements._gotcha.value) || "";
     if (honeypot) {
-      show("Thanks — check your inbox shortly.", "ok");
+      window.location.href = "thank-you.html";
       return;
     }
     if (!validEmail(email)) {
+      setEmailError("Enter a valid work email.");
       show("Enter a valid work email.", "err");
+      if (emailInput) emailInput.focus();
       return;
     }
 
@@ -54,40 +78,32 @@
 
     if (dryRun) {
       show(
-        "Gate ready (dry-run). Live capture requires Formspree on crewless.se/method-pack/ — set endpoint in config.local.json, apply_gate_endpoint.py, then draft site PR. Your email was not sent.",
+        "Form is in dry-run mode here. On crewless.se your email is sent — this preview did not send it.",
         "ok"
       );
       return;
     }
 
     submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
     var body = new FormData(form);
-
-    // Formspree Reply-To + autoresponse target (email field alone is often enough;
-    // _replyto is the explicit Formspree convention — always set from email).
     body.set("_replyto", email);
     body.set("email", email);
-
-    var headers = { Accept: "application/json" };
 
     fetch(endpoint, {
       method: "POST",
       body: body,
-      headers: headers,
+      headers: { Accept: "application/json" },
       mode: "cors",
     })
       .then(function (res) {
-        // Formspree returns 200 + { ok: true } or errors with JSON body.
         if (res.ok) {
           window.location.href = "thank-you.html";
           return null;
         }
         return res.json().then(
-          function (data) {
-            var detail =
-              (data && (data.error || (data.errors && JSON.stringify(data.errors)))) ||
-              "submit_failed";
-            throw new Error(detail);
+          function () {
+            throw new Error("submit_failed");
           },
           function () {
             throw new Error("submit_failed");
@@ -98,15 +114,12 @@
         /* navigated */
       })
       .catch(function () {
-        var hint = isFormspree(endpoint)
-          ? " Formspree may need the form activated (confirm email in dashboard) or CORS allowed for this host."
-          : "";
         show(
-          "Could not reach the form endpoint. Try again, or reply via the ask path in the build log." +
-            hint,
+          "Could not send just now. Try again in a moment, or write to us from the home page.",
           "err"
         );
         submitBtn.disabled = false;
+        submitBtn.textContent = idleLabel;
       });
   });
 })();

@@ -13,10 +13,8 @@
 - Each product runs on its own team of agents: Research, Engineering, Operations, Safeguards, Reliability, Comms — filled by dozens of agents working in parallel.
 
 ## Now (ask or try)
-- Starter pack — leave a work email; we send a short pack (manual send): https://crewless.se/method-pack/
-- Page honesty check — optional public demo with money/returns/ops/day-job samples (live, not a product yet): https://crewless.se/tools/honesty/
-- Claim check — optional public demo with wellness/beauty/course/fitness samples (live, not a product yet): https://crewless.se/tools/claims/
-- Shipping gates — optional before-it-ships demo with wording/no-reviewer/no-kill-line/rush samples (live, not a product yet): https://crewless.se/tools/shipping-gates/
+- Starter pack — leave a work email; we send a short pack (manual send, usually within a day): https://crewless.se/method-pack/
+- Live demos (not products yet) — page honesty check, claim check, shipping gates; each page lets you switch samples: https://crewless.se/tools/honesty/ · https://crewless.se/tools/claims/ · https://crewless.se/tools/shipping-gates/
 - This site — LIVE, built and maintained by the agents.
 
 ## Next (not for sale yet)

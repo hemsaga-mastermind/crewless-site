@@ -1,84 +1,225 @@
 :root {
-  --ink: #1a1f1c;
-  --muted: #4a534c;
-  --paper: #f3efe6;
-  --panel: #fffdf8;
-  --line: #c9c2b4;
-  --accent: #2f5d50;
-  --accent-ink: #f7f4ec;
-  --warn: #6b4f2a;
-  --radius: 2px;
-  --font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-  --sans: "Segoe UI", "Helvetica Neue", sans-serif;
+  --bg: #05070d;
+  --ink: #eef2f8;
+  --mut: #8a94a8;
+  --dim: #565f72;
+  --line: #161d2b;
+  --panel: rgba(13, 19, 30, 0.72);
+  --c1: #4fe0d0;
+  --c2: #7c8cff;
+  --warn: #e8a87c;
+  --ok: #4fe0d0;
+  --radius: 11px;
+  --font: "Space Grotesk", -apple-system, Segoe UI, Roboto, sans-serif;
+  --mono: "IBM Plex Mono", monospace;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
   color: var(--ink);
-  background:
-    radial-gradient(ellipse at 10% 0%, #e7e0d2 0%, transparent 45%),
-    radial-gradient(ellipse at 90% 20%, #d9e3dc 0%, transparent 40%),
-    linear-gradient(180deg, #efe9dc 0%, var(--paper) 55%, #e8e2d4 100%);
-  font-family: var(--sans);
-  line-height: 1.5;
+  font: 400 16px/1.65 var(--font);
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+  background-image:
+    radial-gradient(90% 60% at 10% 0%, rgba(79, 224, 208, 0.12), transparent 50%),
+    radial-gradient(70% 50% at 90% 8%, rgba(124, 140, 255, 0.1), transparent 45%),
+    linear-gradient(180deg, #060912 0%, #05070d 40%);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 clamp(1.15rem, 4vw, 2.2rem);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(#05070d, #05070de6);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1.06rem;
+  letter-spacing: 0.01em;
+}
+
+.brand .ac {
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 1.15rem;
+  font-size: 0.8rem;
+  color: var(--mut);
+}
+
+.nav a {
+  transition: color 0.2s;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--c1);
 }
 
 .shell {
   max-width: 38rem;
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 4rem;
+  padding: clamp(2.2rem, 7vw, 3.4rem) clamp(1.15rem, 4vw, 1.6rem) 2.5rem;
+  animation: in 0.75s ease both;
 }
 
-.brand {
-  margin: 0 0 0.75rem;
-  font-family: var(--font);
-  font-size: 1.75rem;
-  letter-spacing: 0.02em;
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.kick {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c1);
+  margin-bottom: 0.85rem;
 }
 
 h1 {
-  margin: 0 0 0.75rem;
-  font-family: var(--font);
-  font-size: clamp(1.55rem, 4vw, 2rem);
+  font-size: clamp(1.85rem, 5.2vw, 2.55rem);
+  line-height: 1.08;
   font-weight: 600;
-  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  margin-bottom: 1rem;
 }
 
 .lede,
 .gate-help,
 .note,
-.underclaim {
-  color: var(--muted);
+.underclaim,
+.field-hint {
+  color: var(--mut);
 }
 
 .lede {
+  margin: 0 0 1.5rem;
+  font-size: 1.08rem;
+  max-width: 40ch;
+  color: #d9e0ee;
+}
+
+.steps {
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
   margin: 0 0 1.75rem;
-  font-size: 1.05rem;
+  padding: 1rem 1.05rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.steps li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  color: #cdd5e4;
+}
+
+.steps .n {
+  flex: 0 0 1.45rem;
+  height: 1.45rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: #04130f;
+  background: linear-gradient(105deg, var(--c1), #3bc7cf);
+  margin-top: 0.1rem;
+}
+
+.steps b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.steps a {
+  color: var(--c1);
+  border-bottom: 1px solid rgba(79, 224, 208, 0.35);
 }
 
 .what,
 .gate {
-  margin-top: 1.75rem;
+  margin-top: 1.25rem;
   padding: 1.25rem 1.15rem;
-  background: color-mix(in srgb, var(--panel) 92%, white);
+  background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
 
 h2 {
-  margin: 0 0 0.65rem;
-  font-family: var(--font);
-  font-size: 1.15rem;
+  margin: 0 0 0.55rem;
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.gate-help {
+  margin-bottom: 0.85rem;
+  font-size: 0.95rem;
 }
 
 ul {
   margin: 0 0 0.85rem;
   padding-left: 1.15rem;
+  color: #cdd5e4;
+}
+
+ul li + li {
+  margin-top: 0.45rem;
 }
 
 .note {
@@ -88,8 +229,8 @@ ul {
 
 .form {
   display: grid;
-  gap: 0.85rem;
-  margin: 1rem 0;
+  gap: 0.95rem;
+  margin: 1rem 0 0.35rem;
 }
 
 label {
@@ -100,7 +241,7 @@ label {
 
 label span em {
   font-style: normal;
-  color: var(--muted);
+  color: var(--dim);
   font-size: 0.85em;
 }
 
@@ -113,26 +254,60 @@ button {
 input,
 select {
   width: 100%;
-  padding: 0.65rem 0.7rem;
+  padding: 0.72rem 0.8rem;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #fff;
+  border-radius: 9px;
+  background: #0a101a;
   color: var(--ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input::placeholder {
+  color: var(--dim);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(79, 224, 208, 0.55);
+  box-shadow: 0 0 0 3px rgba(79, 224, 208, 0.12);
+}
+
+input.is-invalid {
+  border-color: rgba(232, 168, 124, 0.7);
+  box-shadow: 0 0 0 3px rgba(232, 168, 124, 0.12);
+}
+
+.field-hint {
+  font-size: 0.8rem;
+}
+
+.field-error {
+  font-size: 0.85rem;
+  color: var(--warn);
 }
 
 button {
-  margin-top: 0.25rem;
-  padding: 0.75rem 1rem;
+  margin-top: 0.15rem;
+  padding: 0.82rem 1.15rem;
   border: 0;
   border-radius: var(--radius);
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: linear-gradient(105deg, var(--c1), #3bc7cf);
+  color: #04130f;
+  font-weight: 600;
   cursor: pointer;
+  transition: filter 0.15s, transform 0.15s;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
 }
 
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.65;
   cursor: wait;
+  transform: none;
 }
 
 .hp {
@@ -143,12 +318,12 @@ button:disabled {
 }
 
 .status {
-  margin: 0.5rem 0 0;
+  margin: 0.65rem 0 0;
   font-size: 0.95rem;
 }
 
 .status.ok {
-  color: var(--accent);
+  color: var(--ok);
 }
 
 .status.err {
@@ -158,10 +333,86 @@ button:disabled {
 .underclaim {
   margin: 1rem 0 0;
   font-size: 0.88rem;
+  color: var(--dim);
+  line-height: 1.55;
 }
 
-@media (max-width: 480px) {
+.cta {
+  margin-top: 1.75rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.72rem 1.2rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: 0.2s;
+}
+
+.btn.p {
+  background: linear-gradient(105deg, var(--c1), #3bc7cf);
+  color: #04130f;
+}
+
+.btn.p:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn.s {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.btn.s:hover {
+  border-color: var(--c1);
+  color: var(--c1);
+}
+
+.foot {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.15rem, 4vw, 1.6rem) 3rem;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+  color: var(--dim);
+}
+
+.foot a:hover {
+  color: var(--c1);
+}
+
+.thanks .steps {
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 520px) {
+  .nav {
+    gap: 0.85rem;
+    font-size: 0.76rem;
+  }
+
   .shell {
     padding-top: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell {
+    animation: none;
+  }
+
+  button:hover:not(:disabled),
+  .btn.p:hover {
+    transform: none;
   }
 }

@@ -2,48 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Starter pack — request access · Crewless</title>
   <meta name="description" content="Request the Crewless starter pack — a short pack for agent-run work on tools you already rent. Not a trading bot. Not an AI factory." />
   <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="/" aria-label="Crewless — home">
+        <span class="ac" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="100%" height="100%"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg>
+        </span>
+        Crewless
+      </a>
+      <nav class="nav" aria-label="Page">
+        <a href="/">Home</a>
+        <a href="/method-pack/" aria-current="page">Pack</a>
+        <a href="/#contact">Write to us</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="shell">
-    <p class="brand">Starter pack</p>
-    <h1>A short pack for agent-run work — on tools you already rent.</h1>
+    <p class="kick">Starter pack</p>
+    <h1>Leave a work email. We send a short pack.</h1>
     <p class="lede">
-      Not a trading bot. Not an AI factory. A starter pack: simple contracts,
-      gates that stop bad work by default, and clear rules for when to halt —
-      so agents can run while you only glance for irreversible doors.
+      Not a trading bot. Not an AI factory. A starter pack for agent-run work on
+      tools you already rent — so agents can run while you only glance for
+      irreversible decisions.
     </p>
 
-    <section class="what" aria-labelledby="what-title">
-      <h2 id="what-title">What you get (after you ask)</h2>
-      <ul>
-        <li>Adopt ritual — six-part agent contract, glance doors, first-week proof</li>
-        <li>Three short chapters — ritual · production line · Mark / kill / sunset</li>
-        <li>Stop shapes you can copy — including when buyers only want hours</li>
-      </ul>
-      <p class="note">
-        You do <strong>not</strong> get a private company bible, a private product,
-        or a model-stack kit. This is a Year-1 starting point, not the forever company.
-      </p>
-    </section>
+    <ol class="steps" aria-label="How this works">
+      <li><span class="n">1</span><span><b>Ask</b> — work email (name optional)</span></li>
+      <li><span class="n">2</span><span><b>We send</b> — usually within a day (manual for now)</span></li>
+      <li><span class="n">3</span><span><b>You try</b> — short files you can copy onto your stack</span></li>
+    </ol>
 
     <section class="gate" aria-labelledby="gate-title">
       <h2 id="gate-title">Request the pack</h2>
-      <p class="gate-help">
-        Email only. We send the files — no public dump.
-      </p>
+      <p class="gate-help">Email only. No public dump. No account to create.</p>
 
       <!--
-        Formspree live wire (domain lock = crewless.se only):
-          1. config.local.json → form.endpoint_url = https://formspree.io/f/<ID>
-          2. python3 tools/apply_gate_endpoint.py
-          3. Publish gate assets to https://crewless.se/method-pack/ (draft PR; see SITE_PLACEMENT.md)
+        Formspree live wire (domain lock = crewless.se only).
         Fields: email, name, intent, product_id, _subject, _gotcha; JS sets _replyto.
-        Until endpoint set: dry-run only (local OK, no POST). Other origins refuse for live.
       -->
       <form
         id="pack-gate-form"
@@ -57,12 +64,16 @@
         <label>
           <span>Work email</span>
           <input
+            id="email"
             type="email"
             name="email"
             autocomplete="email"
             required
             placeholder="you@company.com"
+            aria-describedby="email-hint"
           />
+          <span id="email-hint" class="field-hint">We’ll reply to this address.</span>
+          <span id="email-error" class="field-error" role="alert" hidden></span>
         </label>
         <label>
           <span>Name <em>(optional)</em></span>
@@ -72,13 +83,12 @@
           <span>Why you’re asking <em>(optional)</em></span>
           <select name="intent">
             <option value="">Select…</option>
-            <option value="adopt_self">Adopt for my own team</option>
+            <option value="adopt_self">For my own team</option>
             <option value="walkthrough">Want a walkthrough</option>
             <option value="curious">Curious / research</option>
             <option value="hours">Looking for custom hours only</option>
           </select>
         </label>
-        <!-- honeypot -->
         <label class="hp" aria-hidden="true">
           <span>Company website</span>
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
@@ -90,11 +100,31 @@
 
       <p id="form-status" class="status" role="status" aria-live="polite" hidden></p>
       <p class="underclaim">
-        Pre-proof v0 extract. If the ritual only works as paid hours with no pack
-        reuse, we kill the offer. 
+        Still early. Short starting files — not a company bible, not a private product,
+        not a model-stack kit. If people only want hours and never reuse the pack,
+        we stop offering it.
+      </p>
+    </section>
+
+    <section class="what" aria-labelledby="what-title">
+      <h2 id="what-title">What you get</h2>
+      <ul>
+        <li>A simple contract agents can boot from — and clear refuse lines</li>
+        <li>When agents decide alone vs when a human must glance</li>
+        <li>A short production line: draft → review → merge</li>
+        <li>Stop shapes — including when buyers only want hours</li>
+      </ul>
+      <p class="note">
+        You do <strong>not</strong> get a trading product, a private dump, or an “AI factory” kit.
       </p>
     </section>
   </main>
+
+  <footer class="foot">
+    <a href="/">← Crewless home</a>
+    <a href="/#contact">Write to us</a>
+  </footer>
+
   <script src="gate.js"></script>
 </body>
 </html>

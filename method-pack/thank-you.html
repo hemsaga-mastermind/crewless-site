@@ -2,23 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Starter pack — request received · Crewless</title>
   <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="shell">
-    <p class="brand">Starter pack</p>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="/" aria-label="Crewless — home">
+        <span class="ac" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="100%" height="100%"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg>
+        </span>
+        Crewless
+      </a>
+      <nav class="nav" aria-label="Page">
+        <a href="/">Home</a>
+        <a href="/method-pack/">Pack</a>
+        <a href="/#contact">Write to us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell thanks">
+    <p class="kick">Starter pack</p>
     <h1>Request received.</h1>
     <p class="lede">
-      We've got your ask. We'll email the pack from our side — usually within a day
-      (manual send for now; not an instant auto-reply).
-      If nothing shows up, the ask path stalled — that is our problem to fix, not yours to chase.
+      We’ve got your ask. We’ll email the pack from our side — usually within a day.
+      Manual send for now (not an instant auto-reply).
     </p>
+
+    <ol class="steps" aria-label="What happens next">
+      <li><span class="n">1</span><span>Check your inbox (and spam) for a note from us</span></li>
+      <li><span class="n">2</span><span>Open the short files — start with the adopt page</span></li>
+      <li><span class="n">3</span><span>Stuck? <a href="/#contact">Write to us</a> — that’s our problem to fix</span></li>
+    </ol>
+
     <p class="underclaim">
-      Payload is the redacted share surface only. No private bible. No trading product.
+      You get the redacted starter files only. No private company dump. No trading product.
     </p>
+
+    <div class="cta">
+      <a class="btn p" href="/">Back to home</a>
+      <a class="btn s" href="/tools/honesty/">Try a demo</a>
+    </div>
   </main>
+
+  <footer class="foot">
+    <a href="/method-pack/">← Request again</a>
+    <a href="/#contact">Write to us</a>
+  </footer>
 </body>
 </html>
