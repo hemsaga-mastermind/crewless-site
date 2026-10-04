@@ -42,6 +42,9 @@ KEY_ROUTES = [
     "/tools/honesty/",
     "/tools/claims/",
     "/tools/shipping-gates/",
+    "/sv/tools/honesty/",
+    "/sv/tools/claims/",
+    "/sv/tools/shipping-gates/",
     "/brief/",
     "/sv/brief/",
     "/brief/we-put-a-doorbell-on-the-method-pack/",
@@ -170,10 +173,16 @@ def check_home(html: str, fails: list[str], notes: list[str]) -> None:
 
 
 def check_honesty(html: str, fails: list[str], label: str = "honesty") -> None:
-    if not re.search(r"<h2>\s*Passes\s*</h2>", html):
-        fails.append(f"P0 {label} missing Passes column")
-    if not re.search(r"<h2>\s*Blocked\s*</h2>", html):
-        fails.append(f"P0 {label} missing Blocked column")
+    if not (
+        re.search(r"<h2>\s*Passes\s*</h2>", html)
+        or re.search(r"<h2>\s*Godkänd\s*</h2>", html)
+    ):
+        fails.append(f"P0 {label} missing Passes/Godkänd column")
+    if not (
+        re.search(r"<h2>\s*Blocked\s*</h2>", html)
+        or re.search(r"<h2>\s*Stoppad\s*</h2>", html)
+    ):
+        fails.append(f"P0 {label} missing Blocked/Stoppad column")
     atf = strip_tags(first_scroll_chunk(html))
     for bad in ("sku", "risk_count", "exit"):
         if bad in atf.lower():
@@ -213,6 +222,9 @@ def main() -> int:
         "/tools/honesty/": "tools/honesty/index.html",
         "/tools/claims/": "tools/claims/index.html",
         "/tools/shipping-gates/": "tools/shipping-gates/index.html",
+        "/sv/tools/honesty/": "sv/tools/honesty/index.html",
+        "/sv/tools/claims/": "sv/tools/claims/index.html",
+        "/sv/tools/shipping-gates/": "sv/tools/shipping-gates/index.html",
         "/brief/": "brief/index.html",
         "/sv/brief/": "sv/brief/index.html",
     }
@@ -231,12 +243,12 @@ def main() -> int:
         check_hashes(path, html, home_ids, fails)
         if path == "/":
             check_home(html, fails, notes)
-        if path == "/tools/honesty/":
-            check_honesty(html, fails, "honesty")
-        if path == "/tools/claims/":
-            check_honesty(html, fails, "claims")
-        if path == "/tools/shipping-gates/":
-            check_honesty(html, fails, "shipping-gates")
+        if path in ("/tools/honesty/", "/sv/tools/honesty/"):
+            check_honesty(html, fails, path.strip("/").replace("/", "-") or "honesty")
+        if path in ("/tools/claims/", "/sv/tools/claims/"):
+            check_honesty(html, fails, path.strip("/").replace("/", "-") or "claims")
+        if path in ("/tools/shipping-gates/", "/sv/tools/shipping-gates/"):
+            check_honesty(html, fails, path.strip("/").replace("/", "-") or "shipping-gates")
 
 
     # SV chrome must not dump "Rapporter" into English /brief/
@@ -246,6 +258,12 @@ def main() -> int:
             continue
         if 'href="/brief/">Rapporter</a>' in html:
             fails.append(f"P0 SV nav {path}: Rapporter still points at EN /brief/")
+        # SV demos must stay on /sv/tools/* (not EN dump)
+        if path in ("/sv/", "/sv/whats-real/"):
+            if 'href="/tools/honesty/"' in html or 'href="/tools/claims/"' in html or 'href="/tools/shipping-gates/"' in html:
+                fails.append(f"P0 SV {path}: demo links still dump into EN /tools/*")
+            if "/sv/tools/honesty/" not in html:
+                fails.append(f"P0 SV {path}: missing /sv/tools/honesty/ twin link")
         if path == "/sv/brief/":
             if "Korta anteckningar" not in html:
                 fails.append("P0 /sv/brief/ missing Swedish H1 kick")
@@ -274,17 +292,30 @@ def main() -> int:
                 "/tools/honesty/",
                 "/tools/claims/",
                 "/tools/shipping-gates/",
+                "/sv/tools/honesty/",
+                "/sv/tools/claims/",
+                "/sv/tools/shipping-gates/",
             ):
                 check_atf_jargon(route, body, fails)
             if route == "/":
                 check_home(body, fails, notes)
                 home_ids = ids_in(body)
-            if route == "/tools/honesty/":
-                check_honesty(body, fails, "honesty")
-            if route == "/tools/claims/":
-                check_honesty(body, fails, "claims")
-            if route == "/tools/shipping-gates/":
-                check_honesty(body, fails, "shipping-gates")
+            if route in ("/tools/honesty/", "/sv/tools/honesty/"):
+                check_honesty(body, fails, route)
+            if route in ("/tools/claims/", "/sv/tools/claims/"):
+                check_honesty(body, fails, route)
+            if route in ("/tools/shipping-gates/", "/sv/tools/shipping-gates/"):
+                check_honesty(body, fails, route)
+            if route == "/sv/":
+                if 'href="/tools/honesty/"' in body:
+                    fails.append("P0 live /sv/ still dumps demos to EN /tools/*")
+                if "Ärlighetskoll" in body and "/sv/tools/honesty/" not in body:
+                    fails.append("P0 live /sv/ missing SV honesty twin")
+            if route.startswith("/sv/tools/") and route.endswith("/"):
+                if 'href="/">' in body and 'href="/sv/">' not in body:
+                    fails.append(f"P0 live {route} Home dumps to EN /")
+                if 'lang-switch' not in body and 'Read in English' not in body:
+                    fails.append(f"P0 live {route} missing EN switcher")
         # quick link sample from home
         code, home = fetch_live(args.base + "/")
         if code == 200:

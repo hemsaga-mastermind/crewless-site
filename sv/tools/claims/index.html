@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="sv" data-theme="night">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crewless — Påståendekoll</title>
+  <meta name="description" content="Se en demo som flaggar riskfyllda marknadsföringspåståenden innan du publicerar. Förhandsbevis — inte en handelsbot." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://crewless.se/sv/tools/claims/" />
+  <link rel="alternate" hreflang="sv" href="https://crewless.se/sv/tools/claims/" />
+  <link rel="alternate" hreflang="en" href="https://crewless.se/tools/claims/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Crewless — Påståendekoll" />
+  <meta property="og:description" content="Valfri demo: ett exempel godkänns, ett stoppas. Hälsa, inkomst och garantiformade formuleringar." />
+  <meta property="og:url" content="https://crewless.se/sv/tools/claims/" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="/tools/claims/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <div class="topbar">
+      <a class="brand-mark" href="/sv/" aria-label="Crewless — hem">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg>
+        </span>
+        <span class="name">Crewless</span>
+      </a>
+      <div class="topbar-actions">
+        <a class="lang-switch" href="/tools/claims/" aria-label="Read in English">EN</a>
+        <div class="theme-toggle" role="group" aria-label="Dag- eller nattläge">
+          <button type="button" data-theme-btn="day" aria-pressed="false">Dag</button>
+          <button type="button" data-theme-btn="night" aria-pressed="true">Natt</button>
+        </div>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div>
+        <p class="brandmark" aria-label="Crewless">Crewless</p>
+        <p class="kick">Påståendekoll</p>
+        <h1>Upptäck riskfyllda påståenden innan du publicerar.</h1>
+        <p class="lede">
+          Två exempelsidor sida vid sida — en <b>godkänns</b>, en <b>stoppas</b>. Byt det stoppade exemplet för att se andra påståendeformer. Bara en demo. Inte en produkt än. En människa granskar fortfarande. Exempeltexterna i rapporterna kan vara på engelska.
+        </p>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="/sv/method-pack/">Begär startpaketet</a>
+        <a class="btn secondary" href="/sv/#contact">Skriv till oss</a>
+        <a class="btn secondary" href="/sv/tools/honesty/">Ärlighetsdemo</a>
+        <a class="btn secondary" href="/sv/">Hem</a>
+      </div>
+    </header>
+
+    <div class="sample-picker" role="group" aria-label="Prova ett annat stoppat exempel">
+      <p class="sample-picker-label">Prova ett annat stoppat exempel</p>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip is-active" data-sample="wellness" aria-pressed="true">Hälsa</button>
+        <button type="button" class="sample-chip" data-sample="beauty" aria-pressed="false">Skönhet</button>
+        <button type="button" class="sample-chip" data-sample="course" aria-pressed="false">Kurs</button>
+        <button type="button" class="sample-chip" data-sample="fitness" aria-pressed="false">Träning</button>
+      </div>
+    </div>
+
+    <section class="demo-stage" aria-label="Godkänd kontra stoppad">
+      <article class="report clean" id="report-clean">
+        <div class="report-head">
+          <h2>Godkänd</h2>
+          <span class="badge pass" data-badge>Rent</span>
+        </div>
+        <div class="report-body">
+          <p class="meta-soft" data-meta>Exempel på en utomhusbutikssida med försiktig formulering. Inget riskfyllt flaggat.</p>
+          <p class="verdict pass" data-verdict>Rent — inget riskfyllt flaggat. En person bör ändå granska innan publicering.</p>
+          <div data-findings>
+            <p class="empty">Inga problem hittades. En person bör ändå läsa innan det går live.</p>
+          </div>
+          <details class="tech">
+            <summary>Rapportdetaljer</summary>
+            <p class="fixture">
+              Exempelfiler:
+              <a href="/tools/claims/demo/clean.md">sida</a> ·
+              <a href="/tools/claims/demo/clean.json">rapport</a> ·
+              <a href="/tools/claims/demo/clean.txt">text</a>
+            </p>
+          </details>
+        </div>
+      </article>
+
+      <article class="report fail" id="report-fail">
+        <div class="report-head">
+          <h2>Stoppad</h2>
+          <span class="badge fail" data-badge>Behöver fix</span>
+        </div>
+        <div class="report-body">
+          <p class="meta-soft" data-meta>Hälsolanding med övermodiga hälsopåståenden.</p>
+          <p class="verdict fail" data-verdict>Stoppad — riskfyllda påståendeformer fångade. Publicera inte som den är.</p>
+          <div data-findings>
+            <ul class="findings">
+              <li>
+                <span class="cat">Hälsopåstående</span>
+                <span class="detail">Sjukdoms- eller botformulering flaggad i exempelcopy</span>
+              </li>
+              <li>
+                <span class="cat">Bevis- eller garantiformulering</span>
+                <span class="detail">Kliniskt bevis eller garanti utan stöd</span>
+              </li>
+            </ul>
+          </div>
+          <details class="tech">
+            <summary>Rapportdetaljer</summary>
+            <p class="fixture" data-fixture-links>
+              Exempelfiler (gjorda för att faila med flit):
+              <a href="/tools/claims/demo/fail_wellness.html">sida</a> · <a href="/tools/claims/demo/fail_wellness.json">rapport</a> · <a href="/tools/claims/demo/fail_wellness.txt">text</a>
+            </p>
+          </details>
+        </div>
+      </article>
+    </section>
+
+    <p class="underclaim">
+      Bara en demo — inte en hostad tjänst, inte juridisk rådgivning, inte en handelsprodukt.
+      En person granskar fortfarande. Relaterat:
+      <a href="/sv/tools/honesty/">ärlighetskoll av sida</a> · <a href="/sv/method-pack/">startpaket</a>.
+    </p>
+
+    <footer class="foot">
+      <a href="/sv/">Hem</a>
+      <a href="/sv/method-pack/">Begär startpaketet</a>
+      <a href="/sv/#contact">Skriv till oss</a>
+      <a href="/sv/tools/honesty/">Ärlighetsdemo</a>
+      <span>Valfri demo · inte en produkt än · mänsklig granskning kvarstår</span>
+    </footer>
+  </main>
+  <script src="demo.js" defer></script>
+</body>
+</html>

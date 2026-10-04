@@ -17,4 +17,7 @@
   <url><loc>https://crewless.se/method-pack/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://crewless.se/sv/method-pack/</loc><lastmod>2026-10-04</lastmod><priority>0.75</priority></url>
   <url><loc>https://crewless.se/sv/brief/</loc><lastmod>2026-10-04</lastmod><priority>0.75</priority></url>
+  <url><loc>https://crewless.se/sv/tools/shipping-gates/</loc><lastmod>2026-10-04</lastmod><priority>0.75</priority></url>
+  <url><loc>https://crewless.se/sv/tools/claims/</loc><lastmod>2026-10-04</lastmod><priority>0.75</priority></url>
+  <url><loc>https://crewless.se/sv/tools/honesty/</loc><lastmod>2026-10-04</lastmod><priority>0.75</priority></url>
 </urlset>

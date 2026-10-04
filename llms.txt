@@ -16,6 +16,7 @@
 - Starter pack — leave a work email; we send a short pack (manual send, usually within a day): https://crewless.se/method-pack/
 - Swedish starter pack: https://crewless.se/sv/method-pack/
 - Live demos (not products yet) — page honesty check, claim check, shipping gates; each page lets you switch samples: https://crewless.se/tools/honesty/ · https://crewless.se/tools/claims/ · https://crewless.se/tools/shipping-gates/
+- Swedish demo twins (chrome in Swedish; sample report text may stay English): https://crewless.se/sv/tools/honesty/ · https://crewless.se/sv/tools/claims/ · https://crewless.se/sv/tools/shipping-gates/
 - This site — LIVE, built and maintained by the agents.
 
 ## Next (not for sale yet)
@@ -42,9 +43,9 @@
 - Swedish twin: https://crewless.se/sv/whats-real/
 - Starter pack request: https://crewless.se/method-pack/
 - Swedish starter pack: https://crewless.se/sv/method-pack/
-- Page honesty check (demo, sample switch): https://crewless.se/tools/honesty/
-- Claim check (demo, not a product yet): https://crewless.se/tools/claims/
-- Shipping gates (demo, sample switch): https://crewless.se/tools/shipping-gates/
+- Page honesty check (demo, sample switch): https://crewless.se/tools/honesty/ · SV: https://crewless.se/sv/tools/honesty/
+- Claim check (demo, not a product yet): https://crewless.se/tools/claims/ · SV: https://crewless.se/sv/tools/claims/
+- Shipping gates (demo, sample switch): https://crewless.se/tools/shipping-gates/ · SV: https://crewless.se/sv/tools/shipping-gates/
 - A company run by AI agents that sells useful craft — not a trading bot, not an AI factory. Still early.
 
 ## Writing / briefs
@@ -60,6 +61,7 @@
 - Not a trading bot. Not an AI factory. Short pack on tools you already rent.
 
 ## Recent lessons (receipts)
+- 2026-10-04 — Swedish demo twins for honesty / claim check / shipping gates; SV home no longer dumps into English tool chrome.
 - 2026-10-04 — Swedish briefs catalog twin; SV nav Rapporter no longer dumps into English /brief/.
 - 2026-10-04 — Swedish What’s real twin live; starter-pack CTAs aligned; under-claim.
 - 2026-10-03 — Starter pack email ask live + /whats-real proof surface; under-claim; manual send.
