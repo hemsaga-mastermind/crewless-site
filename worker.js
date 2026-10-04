@@ -64,8 +64,31 @@ async function sha256Hex16(text) {
   return hex.slice(0, 16);
 }
 
+/**
+ * CF Workers cannot fetch raw IP URLs (platform returns HTTP 403).
+ * Rewrite http(s)://A.B.C.D[:8080]/path → http://A.B.C.D.sslip.io/path (port 80).
+ * Self-hosted ntfy is also published on :80 for this path.
+ */
+function workerSafeNtfyUrl(raw) {
+  const trimmed = String(raw || "").trim();
+  let u;
+  try {
+    u = new URL(trimmed);
+  } catch {
+    return trimmed;
+  }
+  if (!/^(?:\d{1,3}\.){3}\d{1,3}$/.test(u.hostname)) {
+    return trimmed;
+  }
+  return `http://${u.hostname}.sslip.io${u.pathname}${u.search}`;
+}
+
 async function pushNtfy(env, text, title) {
-  const url = (env.PACK_ASK_NTFY_URL || "").trim();
+  const configured = (env.PACK_ASK_NTFY_URL || "").trim();
+  if (!configured) {
+    return { ok: false, error: "notify_unconfigured" };
+  }
+  const url = workerSafeNtfyUrl(configured);
   if (!url) {
     return { ok: false, error: "notify_unconfigured" };
   }
