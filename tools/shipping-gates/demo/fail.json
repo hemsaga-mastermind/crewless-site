@@ -1,0 +1,48 @@
+{
+  "demo": true,
+  "sample": "hype landing + unreviewed pull request",
+  "result": "Blocked",
+  "badge": "Needs fix",
+  "summary": "Sample change written to fail on purpose — risky page wording, no independent reviewer mark, no kill line.",
+  "note": "Demo only — not a hosted gate, not a trading product.",
+  "clean": false,
+  "checks": [
+    {
+      "kind": "Page wording",
+      "detail": "Risky claim shapes flagged in the sample page",
+      "ok": false
+    },
+    {
+      "kind": "Reviewer mark",
+      "detail": "No independent reviewer label",
+      "ok": false
+    },
+    {
+      "kind": "Kill line",
+      "detail": "No kill line saying when to stop shipping this claim",
+      "ok": false
+    }
+  ],
+  "findings": [
+    {
+      "kind": "Risky claim",
+      "detail": "Unproven performance-claim phrasing flagged"
+    },
+    {
+      "kind": "Risky claim",
+      "detail": "Return-percentage claim shape flagged"
+    },
+    {
+      "kind": "Risky claim",
+      "detail": "Money or desk vocabulary flagged in page text"
+    },
+    {
+      "kind": "Missing reviewer",
+      "detail": "No independent reviewer mark on the change"
+    },
+    {
+      "kind": "Missing kill line",
+      "detail": "No kill line stating when to stop shipping this claim"
+    }
+  ]
+}

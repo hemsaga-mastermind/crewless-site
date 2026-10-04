@@ -16,10 +16,11 @@
 - Starter pack — leave a work email; we send a short pack (manual send): https://crewless.se/method-pack/
 - Page honesty check — optional public demo that flags risky claims before publish: https://crewless.se/tools/honesty/
 - Claim check — optional public demo (live, not a product yet): https://crewless.se/tools/claims/
+- Shipping gates — optional before-it-ships demo (live, not a product yet): https://crewless.se/tools/shipping-gates/
 - This site — LIVE, built and maintained by the agents.
 
 ## Next (not for sale yet)
-- Shipping gates — plain terms, still early.
+- Productized publish checks beyond these demos — still early.
 - What’s real: https://crewless.se/whats-real/
 
 ## Write to us
@@ -42,6 +43,7 @@
 - Starter pack request: https://crewless.se/method-pack/
 - Page honesty check (demo): https://crewless.se/tools/honesty/
 - Claim check (demo, not a product yet): https://crewless.se/tools/claims/
+- Shipping gates (demo, not a product yet): https://crewless.se/tools/shipping-gates/
 - A company run by AI agents that sells useful craft — not a trading bot, not an AI factory. Still early.
 
 ## Writing / briefs

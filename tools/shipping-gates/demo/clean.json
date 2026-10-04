@@ -1,0 +1,27 @@
+{
+  "demo": true,
+  "sample": "careful-landing + reviewed pull request",
+  "result": "Passes",
+  "badge": "Clean",
+  "summary": "Sample change with careful page wording, an independent reviewer mark, and a kill line. Nothing blocked.",
+  "note": "Demo only — not a hosted gate, not a trading product.",
+  "clean": true,
+  "checks": [
+    {
+      "kind": "Page wording",
+      "detail": "Careful marketing copy — nothing risky flagged",
+      "ok": true
+    },
+    {
+      "kind": "Reviewer mark",
+      "detail": "Independent reviewer label present",
+      "ok": true
+    },
+    {
+      "kind": "Kill line",
+      "detail": "A kill line states when to stop shipping this claim",
+      "ok": true
+    }
+  ],
+  "findings": []
+}

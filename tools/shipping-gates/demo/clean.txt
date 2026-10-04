@@ -1,0 +1,6 @@
+Shipping gates demo — Passes sample
+
+Page: careful landing (Small Tools Co). Early-stage under-claim copy.
+Pull request meta: independent reviewer mark present; kill line present.
+
+Gate result: Passes. A person should still review before publish.

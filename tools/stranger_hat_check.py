@@ -39,6 +39,7 @@ KEY_ROUTES = [
     "/method-pack/",
     "/tools/honesty/",
     "/tools/claims/",
+    "/tools/shipping-gates/",
     "/brief/",
     "/brief/we-put-a-doorbell-on-the-method-pack/",
     "/llms.txt",
@@ -122,6 +123,7 @@ def check_atf_jargon(path: str, html: str, fails: list[str]) -> None:
         "/method-pack/",
         "/tools/honesty/",
         "/tools/claims/",
+        "/tools/shipping-gates/",
     ):
         return
     chunk = first_scroll_chunk(html)
@@ -201,6 +203,7 @@ def main() -> int:
         "/method-pack/": "method-pack/index.html",
         "/tools/honesty/": "tools/honesty/index.html",
         "/tools/claims/": "tools/claims/index.html",
+        "/tools/shipping-gates/": "tools/shipping-gates/index.html",
         "/brief/": "brief/index.html",
     }
 
@@ -222,6 +225,8 @@ def main() -> int:
             check_honesty(html, fails, "honesty")
         if path == "/tools/claims/":
             check_honesty(html, fails, "claims")
+        if path == "/tools/shipping-gates/":
+            check_honesty(html, fails, "shipping-gates")
 
     if args.live:
         print(f"Live probe {args.base} …")
@@ -238,6 +243,7 @@ def main() -> int:
                 "/method-pack/",
                 "/tools/honesty/",
                 "/tools/claims/",
+                "/tools/shipping-gates/",
             ):
                 check_atf_jargon(route, body, fails)
             if route == "/":
@@ -247,6 +253,8 @@ def main() -> int:
                 check_honesty(body, fails, "honesty")
             if route == "/tools/claims/":
                 check_honesty(body, fails, "claims")
+            if route == "/tools/shipping-gates/":
+                check_honesty(body, fails, "shipping-gates")
         # quick link sample from home
         code, home = fetch_live(args.base + "/")
         if code == 200:

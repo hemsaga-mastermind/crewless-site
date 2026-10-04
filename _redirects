@@ -8,3 +8,8 @@
 /tools/claim-check /tools/claims/ 301
 /tools/claim-check/ /tools/claims/ 301
 /tools/claim-check/* /tools/claims/:splat 301
+
+# Shipping gates alias → canonical path
+/tools/before-it-ships /tools/shipping-gates/ 301
+/tools/before-it-ships/ /tools/shipping-gates/ 301
+/tools/before-it-ships/* /tools/shipping-gates/:splat 301

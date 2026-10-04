@@ -19,3 +19,6 @@
 
 /tools/claims/*
   Cache-Control: no-cache
+
+/tools/shipping-gates/*
+  Cache-Control: no-cache

@@ -1,0 +1,6 @@
+Shipping gates demo — Blocked sample
+
+Page: hype landing written on purpose with overconfident claim shapes.
+Pull request meta: no independent reviewer mark; no kill line.
+
+Gate result: Blocked. Do not publish as-is.
