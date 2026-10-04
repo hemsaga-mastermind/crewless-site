@@ -48,6 +48,11 @@ KEY_ROUTES = [
     "/brief/",
     "/sv/brief/",
     "/brief/we-put-a-doorbell-on-the-method-pack/",
+    "/brief/coffee-through-2029-under-claim/",
+    "/brief/the-trust-layer-is-the-product/",
+    "/brief/what-an-agent-run-company-looks-like-before-the-proof/",
+    "/brief/which-review-sources-can-you-trust/",
+    "/brief/why-we-wont-promise-an-algorithm/",
     "/llms.txt",
     "/state.json",
 ]
@@ -272,6 +277,18 @@ def main() -> int:
             if "handelsbot" not in html.lower():
                 fails.append("P0 /sv/brief/ missing not-a-trading-bot line")
 
+    # EN brief articles must offer SV escape (catalog stays EN-content + På engelska)
+    article_dirs = sorted((root / "brief").glob("*/index.html")) if (root / "brief").exists() else []
+    for ap in article_dirs:
+        html = ap.read_text(encoding="utf-8", errors="replace")
+        rel = ap.relative_to(root).as_posix()
+        if 'href="/sv/brief/"' not in html:
+            fails.append(f"P0 {rel}: missing SV escape to /sv/brief/")
+        if "Tillbaka till svenska rapporter" not in html and "Svenska rapporter" not in html:
+            fails.append(f"P0 {rel}: missing Svenska rapporter label")
+        if 'hreflang="sv"' not in html:
+            fails.append(f"P0 {rel}: missing hreflang sv → /sv/brief/")
+
     if args.live:
         print(f"Live probe {args.base} …")
         for route in KEY_ROUTES:
@@ -316,6 +333,11 @@ def main() -> int:
                     fails.append(f"P0 live {route} Home dumps to EN /")
                 if 'lang-switch' not in body and 'Read in English' not in body:
                     fails.append(f"P0 live {route} missing EN switcher")
+            if route.startswith("/brief/") and route.count("/") >= 3:
+                if 'href="/sv/brief/"' not in body:
+                    fails.append(f"P0 live {route}: EN article dumps SV visitors (no /sv/brief/ escape)")
+                if "Svenska rapporter" not in body:
+                    fails.append(f"P0 live {route}: missing Svenska rapporter escape label")
         # quick link sample from home
         code, home = fetch_live(args.base + "/")
         if code == 200:
