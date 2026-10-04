@@ -28,7 +28,7 @@ const DEFAULT_OPS_TO = "admin@dancing-flamingo.org";
 const KV_TTL = 60 * 60 * 24 * 90; // 90d
 
 function corsHeaders(origin) {
-  const allow = ALLOWED_ORIGINS.has(origin) ? origin : "https://crewless.se";
+  const allow = ALLOWED_ORIGINS.has(origin) ? origin : "https://www.crewless.se";
   return {
     "Access-Control-Allow-Origin": allow,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -44,7 +44,7 @@ function json(body, status, origin) {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
-      ...corsHeaders(origin || "https://crewless.se"),
+      ...corsHeaders(origin || "https://www.crewless.se"),
     },
   });
 }
@@ -559,7 +559,7 @@ export default {
         return json(
           { ok: false, error: "origin_refused" },
           403,
-          "https://crewless.se"
+          "https://www.crewless.se"
         );
       }
       return handlePackAsk(request, env, origin);
@@ -569,7 +569,7 @@ export default {
       return handleFormspreeWebhook(
         request,
         env,
-        origin || "https://crewless.se"
+        origin || "https://www.crewless.se"
       );
     }
 
