@@ -1,13 +1,15 @@
 /**
- * Starter-pack email gate (client) — Swedish copy.
+ * Starter-pack email gate (client) — Swedish · Phase B enterprise inbox.
  * Live: form[data-endpoint] = Formspree URL, data-dry-run="false".
  * Never embeds secrets. Never ships private paths.
  *
- * Flow (ops-proof thank-you):
+ * Flow (ops-proof thank-you — NOT ntfy):
  *   1) mint request_id
- *   2) POST Formspree (capture)
- *   3) POST /api/pack-ask (ledger + ntfy) — required before thank-you
- * Pack send stays manual. Thank-you alone is not delivery proof.
+ *   2) POST Formspree (capture; Notifications → admin@dancing-flamingo.org)
+ *   3) POST /api/pack-ask (KV ledger + ops email) — required before thank-you
+ * Pack send stays manual until Phase C. Thank-you alone is not delivery proof.
+ *
+ * thank-you ⇔ Formspree accepted ∧ Worker ok:true ∧ ops_notified ∧ !pack_sent
  */
 (function () {
   var form = document.getElementById("pack-gate-form");
@@ -75,6 +77,12 @@
     submitBtn.textContent = idleLabel;
   }
 
+  function opsProofOk(data) {
+    if (!data || data.ok !== true) return false;
+    if (data.ops_notified === true || data.notify_ok === true) return true;
+    return data.status === "ops_notified";
+  }
+
   if (emailInput) {
     emailInput.addEventListener("input", function () {
       setEmailError("");
@@ -94,8 +102,8 @@
       return;
     }
     if (!validEmail(email)) {
-      setEmailError("Ange en giltig jobbmejl.");
-      show("Ange en giltig jobbmejl.", "err");
+      setEmailError("Ange en giltig jobbmej.");
+      show("Ange en giltig jobbmej.", "err");
       if (emailInput) emailInput.focus();
       return;
     }
@@ -106,7 +114,7 @@
 
     if (dryRun) {
       show(
-        "Formuläret är i torrläge här. På crewless.se skickas mejlen — den här förhandsvisningen skickade den inte.",
+        "Formuläret är i dry-run här. På crewless.se skickas mejlen — den här förhandsvisningen skickade den inte.",
         "ok"
       );
       return;
@@ -164,7 +172,7 @@
         if (!res) return null;
         return res.json().then(
           function (data) {
-            if (!res.ok || !data || data.ok !== true) {
+            if (!res.ok || !opsProofOk(data)) {
               var err = new Error("ops_ingest_failed");
               err.detail = data && data.error;
               err.requestId = requestId;
@@ -190,7 +198,7 @@
       .catch(function (err) {
         if (err && err.message === "ops_ingest_failed") {
           show(
-            "Din mejl kan vara sparad, men vårt ops-larm misslyckades — skriv också till oss från startsidan så vi inte missar att skicka paketet. Ref: " +
+            "Din mejl kan vara sparad, men ops-ledger/mejl steget misslyckades — skriv också till oss från startsidan så vi inte missar att skicka paketet. Ref: " +
               ((err && err.requestId) || requestId),
             "err"
           );

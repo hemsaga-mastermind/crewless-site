@@ -1,17 +1,15 @@
 /**
- * Starter-pack email gate (client).
+ * Starter-pack email gate (client) — Phase B enterprise inbox.
  * Live: form[data-endpoint] = Formspree URL, data-dry-run="false".
  * Never embeds secrets. Never ships private paths.
  *
- * Flow (ops-proof thank-you):
+ * Flow (ops-proof thank-you — NOT ntfy):
  *   1) mint request_id
- *   2) POST Formspree (capture)
- *   3) POST /api/pack-ask (ledger + ntfy) — required before thank-you
- * Pack send stays manual. Thank-you alone is not delivery proof.
+ *   2) POST Formspree (capture; Notifications → admin@dancing-flamingo.org)
+ *   3) POST /api/pack-ask (KV ledger + ops email) — required before thank-you
+ * Pack send stays manual until Phase C. Thank-you alone is not delivery proof.
  *
- * Fields: email, name, intent, product_id, _subject, _gotcha, request_id;
- * JS sets _replyto.
- * Headers: Accept: application/json (AJAX; no redirect HTML)
+ * thank-you ⇔ Formspree accepted ∧ Worker ok:true ∧ ops_notified ∧ !pack_sent
  */
 (function () {
   var form = document.getElementById("pack-gate-form");
@@ -77,6 +75,15 @@
   function resetBtn() {
     submitBtn.disabled = false;
     submitBtn.textContent = idleLabel;
+  }
+
+  function opsProofOk(data) {
+    if (!data || data.ok !== true) return false;
+    // Phase B: ledger + ops notify. Accept ops_notified or notify_ok.
+    if (data.ops_notified === true || data.notify_ok === true) return true;
+    // Legacy Worker without new fields — still require explicit ok only if
+    // status says ops_notified (Phase B worker always sets one of the above).
+    return data.status === "ops_notified";
   }
 
   if (emailInput) {
@@ -168,14 +175,14 @@
         if (!res) return null;
         return res.json().then(
           function (data) {
-            if (!res.ok || !data || data.ok !== true) {
+            if (!res.ok || !opsProofOk(data)) {
               var err = new Error("ops_ingest_failed");
               err.detail = data && data.error;
               err.requestId = requestId;
               throw err;
             }
+            // Phase B: pack is NOT auto-emailed. Refuse invented send claims.
             if (data.pack_sent === true) {
-              // Refuse invented send claims from the edge.
               throw new Error("ops_claimed_send");
             }
             window.location.href =
@@ -195,7 +202,7 @@
       .catch(function (err) {
         if (err && err.message === "ops_ingest_failed") {
           show(
-            "Your email may be saved, but our ops alarm failed — please also write to us from the home page so we do not miss the pack send. Ref: " +
+            "Your email may be saved, but our ops record/email step failed — please also write to us from the home page so we do not miss the pack send. Ref: " +
               ((err && err.requestId) || requestId),
             "err"
           );

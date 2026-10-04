@@ -1,16 +1,9 @@
-# Cloudflare Workers static site (migrated from Pages).
-# Required so PR/preview builds (`wrangler versions upload`) know the assets root.
-# Production dashboard deploy previously passed --assets implicitly; preview did not.
-#
-# Living proof page lives at /whats-real/ (renamed from /build/ so Workers Builds /
-# dash deploy never treat a top-level compile-output folder as assets root).
-# assets.directory must stay "." so the whole site publishes.
-# Workers Builds deploy command MUST be: npx wrangler deploy
-# (never --assets ./build or --assets ./whats-real).
-#
-# Pack-ask ops ingest (2026-10-04): Worker script + ntfy secret.
-# Secret PACK_ASK_NTFY_URL via CF dash/wrangler when available; until then Worker fail-closed (503).
-# KV PACK_ASKS omitted until real namespace id (no REPLACE placeholder — would break Builds).
+# Phase B — pack-ask ledger + ops email (enterprise inbox).
+# SSOT: docs/crewless-pack-ask-enterprise-inbox.md
+# Deploy path: git push main → Cloudflare Workers Builds (no local wrangler OAuth).
+# Secrets optional for formspree mode. ntfy NOT required for ok:true.
+# KV PACK_ASKS: omit until real namespace id (REPLACE placeholder breaks Builds).
+# Founder: create KV "PACK_ASKS" in CF dash → write id to ~/.crewless/pack_asks_kv_id → re-run ONE_SHOT.
 name = "crewless-site"
 account_id = "d2891f2421efdeb5a31b6b6fde4bc5b9"
 compatibility_date = "2026-10-02"
@@ -20,5 +13,8 @@ main = "worker.js"
 directory = "."
 binding = "ASSETS"
 html_handling = "auto-trailing-slash"
-# Blank null-body 404s dump strangers; serve nearest 404.html with HTTP 404.
 not_found_handling = "404-page"
+
+[vars]
+PACK_ASK_OPS_TO = "admin@dancing-flamingo.org"
+PACK_ASK_OPS_NOTIFY_MODE = "formspree"
