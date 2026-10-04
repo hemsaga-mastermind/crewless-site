@@ -7,12 +7,18 @@
 # assets.directory must stay "." so the whole site publishes.
 # Workers Builds deploy command MUST be: npx wrangler deploy
 # (never --assets ./build or --assets ./whats-real).
+#
+# Pack-ask ops ingest (2026-10-04): Worker script + ntfy secret.
+# Secret PACK_ASK_NTFY_URL via CF dash/wrangler when available; until then Worker fail-closed (503).
+# KV PACK_ASKS omitted until real namespace id (no REPLACE placeholder — would break Builds).
 name = "crewless-site"
 account_id = "d2891f2421efdeb5a31b6b6fde4bc5b9"
 compatibility_date = "2026-10-02"
+main = "worker.js"
 
 [assets]
 directory = "."
+binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 # Blank null-body 404s dump strangers; serve nearest 404.html with HTTP 404.
 not_found_handling = "404-page"
