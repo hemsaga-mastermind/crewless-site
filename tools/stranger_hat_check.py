@@ -43,6 +43,7 @@ KEY_ROUTES = [
     "/tools/claims/",
     "/tools/shipping-gates/",
     "/brief/",
+    "/sv/brief/",
     "/brief/we-put-a-doorbell-on-the-method-pack/",
     "/llms.txt",
     "/state.json",
@@ -125,6 +126,8 @@ def check_atf_jargon(path: str, html: str, fails: list[str]) -> None:
         "/sv/whats-real/",
         "/method-pack/",
         "/sv/method-pack/",
+        "/brief/",
+        "/sv/brief/",
         "/tools/honesty/",
         "/tools/claims/",
         "/tools/shipping-gates/",
@@ -211,6 +214,7 @@ def main() -> int:
         "/tools/claims/": "tools/claims/index.html",
         "/tools/shipping-gates/": "tools/shipping-gates/index.html",
         "/brief/": "brief/index.html",
+        "/sv/brief/": "sv/brief/index.html",
     }
 
     local_html = {}
@@ -234,6 +238,22 @@ def main() -> int:
         if path == "/tools/shipping-gates/":
             check_honesty(html, fails, "shipping-gates")
 
+
+    # SV chrome must not dump "Rapporter" into English /brief/
+    for path in ("/sv/", "/sv/whats-real/", "/sv/brief/"):
+        html = local_html.get(path, "")
+        if not html:
+            continue
+        if 'href="/brief/">Rapporter</a>' in html:
+            fails.append(f"P0 SV nav {path}: Rapporter still points at EN /brief/")
+        if path == "/sv/brief/":
+            if "Korta anteckningar" not in html:
+                fails.append("P0 /sv/brief/ missing Swedish H1 kick")
+            if "På engelska" not in html:
+                fails.append("P0 /sv/brief/ missing honest EN-article tags")
+            if "handelsbot" not in html.lower():
+                fails.append("P0 /sv/brief/ missing not-a-trading-bot line")
+
     if args.live:
         print(f"Live probe {args.base} …")
         for route in KEY_ROUTES:
@@ -249,6 +269,8 @@ def main() -> int:
                 "/sv/whats-real/",
                 "/method-pack/",
                 "/sv/method-pack/",
+                "/brief/",
+                "/sv/brief/",
                 "/tools/honesty/",
                 "/tools/claims/",
                 "/tools/shipping-gates/",

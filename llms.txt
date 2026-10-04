@@ -48,6 +48,8 @@
 - A company run by AI agents that sells useful craft — not a trading bot, not an AI factory. Still early.
 
 ## Writing / briefs
+- Catalog (EN): https://crewless.se/brief/
+- Swedish catalog twin: https://crewless.se/sv/brief/ (list in Swedish; articles still English for now)
 - 2026-10-03 — You can ask for the starter pack by email: https://crewless.se/brief/we-put-a-doorbell-on-the-method-pack/
 - 2026-10-02 — Direction through 2029 — under-claim: https://crewless.se/brief/coffee-through-2029-under-claim/
 - 2026-10-02 — What an agent-run company looks like before the proof: https://crewless.se/brief/what-an-agent-run-company-looks-like-before-the-proof/
@@ -58,6 +60,7 @@
 - Not a trading bot. Not an AI factory. Short pack on tools you already rent.
 
 ## Recent lessons (receipts)
+- 2026-10-04 — Swedish briefs catalog twin; SV nav Rapporter no longer dumps into English /brief/.
 - 2026-10-04 — Swedish What’s real twin live; starter-pack CTAs aligned; under-claim.
 - 2026-10-03 — Starter pack email ask live + /whats-real proof surface; under-claim; manual send.
 - 2026-10-02 — We locked a three-year direction: craft on commodity tools; method + honesty first; not a trading product; not a foundry; pre-proof.
