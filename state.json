@@ -1,10 +1,10 @@
 {
- "built_utc": "2026-10-04T00:24:10Z",
+ "built_utc": "2026-10-04T19:25:42Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 48,
- "active_days_7d": 6,
+ "changes_7d": 67,
+ "active_days_7d": 7,
  "receipts_count": 11,
  "receipts": [
   {
@@ -126,9 +126,9 @@
   {
    "key": "beacon",
    "name": "Beacon",
-   "confidence": 83,
+   "confidence": 65,
    "measures": "legacy internal percent for site liveness — not a money success metric",
-   "basis": "this website; live and serving, self-maintaining hourly, leak-gated, locked template",
+   "basis": "this website; site not serving correctly, self-maintaining hourly, leak-gated, locked template",
    "updated": "2026-10-04",
    "score_kind": "legacy_percent",
    "not_success_metric": true,
@@ -212,9 +212,9 @@
  "company": {
   "key": "company",
   "name": "Crewless",
-  "confidence": 47,
+  "confidence": 40,
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
-  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence live and honest; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
+  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence not serving correctly; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
   "updated": "2026-10-04",
   "items": {
    "recon_defined": 3,
@@ -229,10 +229,10 @@
    "memory_hygiene": 0,
    "continuity_drill": 0,
    "agastya_ok": 4,
-   "beacon_ok": 4,
+   "beacon_ok": 0,
    "keel_ok": 4,
    "discipline_exercised": 6,
-   "presence_live": 3,
+   "presence_live": 0,
    "honesty_ledger_exists": 2,
    "honesty_proven": 2,
    "internal_track": 2,
@@ -242,14 +242,14 @@
   "dimensions": {
    "D1_foundations": 9,
    "D2_keel": 8,
-   "D3_products": 18,
-   "D4_presence_honesty": 7,
+   "D3_products": 14,
+   "D4_presence_honesty": 4,
    "D5_track_record": 5
   },
-  "raw": 47,
+  "raw": 40,
   "penalty": 0,
   "ceiling": 55,
-  "itemized": "D1 9/32; D2 8/20; D3 18/18; D4 7/10; D5 5/20; raw 47; ceiling 55",
+  "itemized": "D1 9/32; D2 8/20; D3 14/18; D4 4/10; D5 5/20; raw 40; ceiling 55",
   "score_kind": "legacy_percent",
   "not_success_metric": true,
   "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
