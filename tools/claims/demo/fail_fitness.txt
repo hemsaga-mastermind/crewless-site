@@ -1,0 +1,4 @@
+Claim check demo — Blocked sample
+sample: fitness-ad.md
+result: Blocked
+findings: outcome guarantee

@@ -1,0 +1,4 @@
+Claim check demo — Blocked sample
+sample: beauty-pdp.html
+result: Blocked
+findings: miracle / permanent-eliminate shapes

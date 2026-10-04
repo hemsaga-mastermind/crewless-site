@@ -260,6 +260,66 @@ h1 {
   color: var(--brand);
 }
 
+.sample-picker {
+  margin: 0 0 1.15rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--panel-edge);
+  border-radius: 14px;
+  background: var(--panel);
+  animation: rise-in 0.9s 0.26s var(--ease) both;
+}
+
+.sample-picker-label {
+  margin: 0 0 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--mut);
+  letter-spacing: 0.01em;
+}
+
+.sample-picker-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.sample-chip {
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--mut);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42rem 0.85rem;
+  cursor: pointer;
+  transition: color 0.18s var(--ease), border-color 0.18s var(--ease),
+    background 0.18s var(--ease), transform 0.18s var(--ease);
+}
+
+.sample-chip:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+  transform: translateY(-1px);
+}
+
+.sample-chip:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.sample-chip.is-active,
+.sample-chip[aria-pressed="true"] {
+  color: var(--btn-ink);
+  border-color: transparent;
+  background: linear-gradient(105deg, var(--fail), color-mix(in srgb, var(--fail) 55%, var(--brand-3)));
+}
+
+html[data-theme="day"] .sample-chip.is-active,
+html[data-theme="day"] .sample-chip[aria-pressed="true"] {
+  color: #fffaf8;
+}
+
 .demo-stage {
   display: grid;
   gap: 1rem;

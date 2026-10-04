@@ -1,0 +1,16 @@
+{
+  "demo": true,
+  "sample": "fitness-ad.md",
+  "result": "Blocked",
+  "badge": "Needs fix",
+  "summary": "Fitness ad with a results guarantee.",
+  "note": "Demo only — screening sample, not legal advice.",
+  "clean": false,
+  "findings": [
+    {
+      "kind": "Proof or guarantee wording",
+      "line": "Flagged wording: “Guaranteed to work”",
+      "why": "Sounds like clinical proof or guaranteed results without support."
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Claim check demo — Blocked sample
+sample: info-product.md
+result: Blocked
+findings: income dollar promise

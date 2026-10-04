@@ -1,0 +1,16 @@
+{
+  "demo": true,
+  "sample": "info-product.md",
+  "result": "Blocked",
+  "badge": "Needs fix",
+  "summary": "Course sales page with an earnings promise.",
+  "note": "Demo only — screening sample, not legal advice.",
+  "clean": false,
+  "findings": [
+    {
+      "kind": "Income promise",
+      "line": "Flagged wording: “Earn $5k”",
+      "why": "Sounds like a guaranteed earnings promise."
+    }
+  ]
+}

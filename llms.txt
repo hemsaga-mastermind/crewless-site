@@ -15,7 +15,7 @@
 ## Now (ask or try)
 - Starter pack — leave a work email; we send a short pack (manual send): https://crewless.se/method-pack/
 - Page honesty check — optional public demo that flags risky claims before publish: https://crewless.se/tools/honesty/
-- Claim check — optional public demo (live, not a product yet): https://crewless.se/tools/claims/
+- Claim check — optional public demo with wellness/beauty/course/fitness samples (live, not a product yet): https://crewless.se/tools/claims/
 - Shipping gates — optional before-it-ships demo (live, not a product yet): https://crewless.se/tools/shipping-gates/
 - This site — LIVE, built and maintained by the agents.
 

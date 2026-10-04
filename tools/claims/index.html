@@ -39,6 +39,7 @@
         <h1>Spot risky claims before you publish.</h1>
         <p class="lede">
           Two sample pages side by side — one <b>passes</b>, one is <b>blocked</b>.
+          Switch the blocked sample to see other claim shapes.
           Demo only. Not a product yet. A human still reviews.
         </p>
       </div>
@@ -49,6 +50,16 @@
         <a class="btn secondary" href="/">Home</a>
       </div>
     </header>
+
+    <div class="sample-picker" role="group" aria-label="Try another blocked sample">
+      <p class="sample-picker-label">Try another blocked sample</p>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip is-active" data-sample="wellness" aria-pressed="true">Wellness</button>
+        <button type="button" class="sample-chip" data-sample="beauty" aria-pressed="false">Beauty</button>
+        <button type="button" class="sample-chip" data-sample="course" aria-pressed="false">Course</button>
+        <button type="button" class="sample-chip" data-sample="fitness" aria-pressed="false">Fitness</button>
+      </div>
+    </div>
 
     <section class="demo-stage" aria-label="Passes versus blocked demo reports">
       <article class="report clean" id="report-clean">
@@ -85,7 +96,7 @@
         </div>
         <div class="report-body">
           <p class="meta-soft" data-meta>
-            Sample wellness landing written on purpose with overconfident claim shapes.
+            Wellness landing with overconfident health claim shapes.
           </p>
           <p class="verdict fail" data-verdict>
             Blocked — risky claim shapes caught. Do not publish as-is.
@@ -98,17 +109,17 @@
               </li>
               <li>
                 <span class="cat">Proof or guarantee wording</span>
-                <span class="detail">Clinical-proof phrasing flagged without support</span>
+                <span class="detail">Clinical-proof or guarantee phrasing flagged without support</span>
               </li>
             </ul>
           </div>
           <details class="tech">
             <summary>Report details</summary>
-            <p class="fixture">
+            <p class="fixture" data-fixture-links>
               Sample files (written to fail on purpose):
-              <a href="./demo/fail.html">page</a> ·
-              <a href="./demo/fail.json">report</a> ·
-              <a href="./demo/fail.txt">text</a>
+              <a href="./demo/fail_wellness.html">page</a> ·
+              <a href="./demo/fail_wellness.json">report</a> ·
+              <a href="./demo/fail_wellness.txt">text</a>
             </p>
           </details>
         </div>

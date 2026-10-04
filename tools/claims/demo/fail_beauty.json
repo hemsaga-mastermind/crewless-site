@@ -1,0 +1,21 @@
+{
+  "demo": true,
+  "sample": "beauty-pdp.html",
+  "result": "Blocked",
+  "badge": "Needs fix",
+  "summary": "Beauty product page with overconfident results wording.",
+  "note": "Demo only — screening sample, not legal advice.",
+  "clean": false,
+  "findings": [
+    {
+      "kind": "Proof or guarantee wording",
+      "line": "Flagged wording: “Miracle results”",
+      "why": "Sounds like clinical proof or guaranteed results without support."
+    },
+    {
+      "kind": "Needs a closer look",
+      "line": "Flagged wording: “permanently eliminates”",
+      "why": "Strong efficacy language that needs human review before publish."
+    }
+  ]
+}
