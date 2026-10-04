@@ -1,0 +1,6 @@
+sources: /tmp/crewless-site/tools/honesty/demo/fail_dayjob.html
+independence_terms_loaded: 0
+risk_count: 2
+findings:
+  - [independence/risk] [/tmp/crewless-site/tools/honesty/demo/fail_dayjob.html] day-job / employer phrasing: 'at my day job'
+  - [independence/risk] [/tmp/crewless-site/tools/honesty/demo/fail_dayjob.html] day-job / employer phrasing: 'my employer'

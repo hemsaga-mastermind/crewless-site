@@ -7,8 +7,9 @@
   "risk_count": 0,
   "findings": [],
   "clean": true,
+  "demo": true,
   "sku": "site-honesty-scanner",
   "sku_version": "0.1.0",
-  "demo": true,
-  "note": "Static pre-rendered demo from planted fixtures. Not a live site scan."
+  "note": "Static pre-rendered demo from planted fixtures. Not a live site scan.",
+  "summary": "Sample page with careful wording. Nothing risky flagged."
 }

@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Crewless — Page honesty check</title>
-  <meta name="description" content="See a demo that flags risky claims on a page before you publish. Pre-proof — not a trading bot." />
+  <meta name="description" content="See a demo that flags money slips and overconfident page copy before you publish. Pre-proof — not a trading bot." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://crewless.se/tools/honesty/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta property="og:title" content="Crewless — Page honesty check" />
-  <meta property="og:description" content="Optional demo: see risky claims flagged before you publish. One example passes, one is blocked." />
+  <meta property="og:description" content="Optional demo: one sample passes, one is blocked. Switch money, returns, ops talk, or day-job slips." />
   <meta property="og:url" content="https://crewless.se/tools/honesty/" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,18 +36,30 @@
       <div>
         <p class="brandmark" aria-label="Crewless">Crewless</p>
         <p class="kick">Page honesty check</p>
-        <h1>Flags risky claims before you publish.</h1>
+        <h1>Catch money slips before you publish.</h1>
         <p class="lede">
           Two sample pages side by side — one <b>passes</b>, one is <b>blocked</b>.
-          Same check. Demo only. A human still reviews.
+          Switch the blocked sample to see other slip shapes.
+          Demo only. Not a product yet. A human still reviews.
         </p>
       </div>
       <div class="cta-row">
         <a class="btn primary" href="/method-pack/">Request the pack</a>
         <a class="btn secondary" href="/#contact">Write to us</a>
+        <a class="btn secondary" href="/tools/claims/">Claim check</a>
         <a class="btn secondary" href="/">Home</a>
       </div>
     </header>
+
+    <div class="sample-picker" role="group" aria-label="Try another blocked sample">
+      <p class="sample-picker-label">Try another blocked sample</p>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip is-active" data-sample="money" aria-pressed="true">Money</button>
+        <button type="button" class="sample-chip" data-sample="returns" aria-pressed="false">Returns</button>
+        <button type="button" class="sample-chip" data-sample="ops" aria-pressed="false">Ops talk</button>
+        <button type="button" class="sample-chip" data-sample="dayjob" aria-pressed="false">Day job</button>
+      </div>
+    </div>
 
     <section class="demo-stage" aria-label="Passes versus blocked demo reports">
       <article class="report clean" id="report-clean">
@@ -84,10 +96,10 @@
         </div>
         <div class="report-body">
           <p class="meta-soft" data-meta>
-            Sample page written on purpose with overconfident claim shapes.
+            Public page with currency figures that should stay private.
           </p>
           <p class="verdict fail" data-verdict>
-            Blocked — risky claim shapes caught. Do not publish as-is.
+            Blocked — honesty slips caught. Do not publish as-is.
           </p>
           <div data-findings>
             <ul class="findings">
@@ -97,33 +109,17 @@
               </li>
               <li>
                 <span class="cat">Risky claim</span>
-                <span class="detail">Money or desk vocabulary flagged in page text</span>
-              </li>
-              <li>
-                <span class="cat">Risky claim</span>
-                <span class="detail">Money or desk vocabulary flagged in page text</span>
-              </li>
-              <li>
-                <span class="cat">Risky claim</span>
-                <span class="detail">Unproven performance-claim phrasing flagged</span>
-              </li>
-              <li>
-                <span class="cat">Risky claim</span>
-                <span class="detail">Unproven performance-claim phrasing flagged</span>
-              </li>
-              <li>
-                <span class="cat">Risky claim</span>
-                <span class="detail">Return-percentage claim shape flagged</span>
+                <span class="detail">Currency or money-figure shape flagged in page text</span>
               </li>
             </ul>
           </div>
           <details class="tech">
             <summary>Report details</summary>
-            <p class="fixture">
+            <p class="fixture" data-fixture-links>
               Sample files (written to fail on purpose):
-              <a href="./demo/money_claims.html">page</a> ·
-              <a href="./demo/fail.json">report</a> ·
-              <a href="./demo/fail.txt">text</a>
+              <a href="./demo/fail_money.html">page</a> ·
+              <a href="./demo/fail_money.json">report</a> ·
+              <a href="./demo/fail_money.txt">text</a>
             </p>
           </details>
         </div>
@@ -133,6 +129,7 @@
     <p class="underclaim">
       Demo only — not a hosted checker, not legal advice, not a trading product.
       A person still reviews. Related:
+      <a href="/tools/claims/">claim check</a> ·
       <a href="/method-pack/">starter pack</a>.
     </p>
 
@@ -140,7 +137,8 @@
       <a href="/">Home</a>
       <a href="/method-pack/">Request the pack</a>
       <a href="/#contact">Write to us</a>
-      <span>Optional demo · human review still owed</span>
+      <a href="/tools/claims/">Claim check</a>
+      <span>Optional demo · not a product yet · human review still owed</span>
     </footer>
   </main>
   <script src="demo.js" defer></script>

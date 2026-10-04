@@ -1,0 +1,34 @@
+{
+  "sources": [
+    "demo/fail_ops.html"
+  ],
+  "independence_terms_loaded": 0,
+  "independence_check_ran": true,
+  "risk_count": 3,
+  "findings": [
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "money/broker vocabulary: 'broker'",
+      "source": "demo/fail_ops.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "money/broker vocabulary: 'p&l'",
+      "source": "demo/fail_ops.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "money/broker vocabulary: 'profit'",
+      "source": "demo/fail_ops.html"
+    }
+  ],
+  "clean": false,
+  "demo": true,
+  "sku": "site-honesty-scanner",
+  "sku_version": "0.1.0",
+  "note": "Static pre-rendered demo from planted fixtures. Not a live site scan.",
+  "summary": "Ops note that leaks private money-desk vocabulary on a public page."
+}

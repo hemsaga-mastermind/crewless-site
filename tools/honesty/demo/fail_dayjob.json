@@ -1,22 +1,22 @@
 {
   "sources": [
-    "demo/fail_money.html"
+    "demo/fail_dayjob.html"
   ],
   "independence_terms_loaded": 0,
   "independence_check_ran": true,
   "risk_count": 2,
   "findings": [
     {
-      "category": "money_claim",
+      "category": "independence",
       "severity": "risk",
-      "detail": "currency/number figure: '$1'",
-      "source": "demo/fail_money.html"
+      "detail": "day-job / employer phrasing: 'at my day job'",
+      "source": "demo/fail_dayjob.html"
     },
     {
-      "category": "money_claim",
+      "category": "independence",
       "severity": "risk",
-      "detail": "currency/number figure: 'rs.5'",
-      "source": "demo/fail_money.html"
+      "detail": "day-job / employer phrasing: 'my employer'",
+      "source": "demo/fail_dayjob.html"
     }
   ],
   "clean": false,
@@ -24,5 +24,5 @@
   "sku": "site-honesty-scanner",
   "sku_version": "0.1.0",
   "note": "Static pre-rendered demo from planted fixtures. Not a live site scan.",
-  "summary": "Public page with currency figures that should stay private."
+  "summary": "About page that links the work to a day job / employer."
 }

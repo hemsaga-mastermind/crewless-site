@@ -1,0 +1,8 @@
+sources: /tmp/crewless-site/tools/honesty/demo/fail_returns.html
+independence_terms_loaded: 0
+risk_count: 4
+findings:
+  - [money_claim/risk] [/tmp/crewless-site/tools/honesty/demo/fail_returns.html] unproven performance claim: 'profitable'
+  - [money_claim/risk] [/tmp/crewless-site/tools/honesty/demo/fail_returns.html] unproven performance claim: 'proven edge'
+  - [money_claim/risk] [/tmp/crewless-site/tools/honesty/demo/fail_returns.html] unproven performance claim: 'market-beating'
+  - [money_claim/risk] [/tmp/crewless-site/tools/honesty/demo/fail_returns.html] return-percentage claim: '12% annual'

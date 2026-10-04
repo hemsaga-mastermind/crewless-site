@@ -1,0 +1,40 @@
+{
+  "sources": [
+    "demo/fail_returns.html"
+  ],
+  "independence_terms_loaded": 0,
+  "independence_check_ran": true,
+  "risk_count": 4,
+  "findings": [
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "unproven performance claim: 'profitable'",
+      "source": "demo/fail_returns.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "unproven performance claim: 'proven edge'",
+      "source": "demo/fail_returns.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "unproven performance claim: 'market-beating'",
+      "source": "demo/fail_returns.html"
+    },
+    {
+      "category": "money_claim",
+      "severity": "risk",
+      "detail": "return-percentage claim: '12% annual'",
+      "source": "demo/fail_returns.html"
+    }
+  ],
+  "clean": false,
+  "demo": true,
+  "sku": "site-honesty-scanner",
+  "sku_version": "0.1.0",
+  "note": "Static pre-rendered demo from planted fixtures. Not a live site scan.",
+  "summary": "Results page with return-percentage and performance claim shapes."
+}
