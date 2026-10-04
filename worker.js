@@ -539,6 +539,11 @@ async function handleFormspreeWebhook(request, env, origin) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // Canonical host = www. Formspree Allowed Domains is www-only — 301 apex first.
+    if (url.hostname === "crewless.se") {
+      url.hostname = "www.crewless.se";
+      return Response.redirect(url.toString(), 301);
+    }
     const origin = request.headers.get("Origin") || "";
 
     if (

@@ -5,7 +5,7 @@
  *
  * Flow (ops-proof thank-you — NOT ntfy):
  *   1) mint request_id
- *   2) POST Formspree (capture; Notifications → admin@dancing-flamingo.org)
+ *   2) POST Formspree (capture / spam only — NOT Formspree Notifications)
  *   3) POST /api/pack-ask (KV ledger + ops email) — required before thank-you
  * Pack send stays manual until Phase C. Thank-you alone is not delivery proof.
  *
