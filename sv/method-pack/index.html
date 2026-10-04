@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Startpaket — begär tillgång · Crewless</title>
+  <meta name="description" content="Be om Crewless startpaket — ett kort paket för agentdrivet arbete på verktyg du redan hyr. Inte en handelsbot. Inte en AI-fabrik." />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="canonical" href="https://crewless.se/sv/method-pack/" />
+  <link rel="alternate" hreflang="en" href="https://crewless.se/method-pack/" />
+  <link rel="alternate" hreflang="sv" href="https://crewless.se/sv/method-pack/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="/method-pack/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="/sv/" aria-label="Crewless — hem">
+        <span class="ac" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="100%" height="100%"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg>
+        </span>
+        Crewless
+      </a>
+      <a href="/method-pack/" aria-label="Read in English" style="font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:.16rem .46rem;margin-left:.7rem;text-decoration:none">EN</a>
+      <nav class="nav" aria-label="Sida">
+        <a href="/sv/">Hem</a>
+        <a href="/sv/method-pack/" aria-current="page">Paket</a>
+        <a href="/sv/#contact">Skriv till oss</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <p class="kick">Startpaket</p>
+    <h1>Lämna en jobbadress. Vi skickar ett kort paket.</h1>
+    <p class="lede">
+      Inte en handelsbot. Inte en AI-fabrik. Ett startpaket för agentdrivet arbete på
+      verktyg du redan hyr — så agenter kan köra medan du bara gläntar vid
+      oåterkalleliga beslut.
+    </p>
+
+    <ol class="steps" aria-label="Så funkar det">
+      <li><span class="n">1</span><span><b>Be om</b> — jobbmejl (namn valfritt)</span></li>
+      <li><span class="n">2</span><span><b>Vi skickar</b> — oftast inom en dag (manuellt just nu)</span></li>
+      <li><span class="n">3</span><span><b>Du provar</b> — korta filer du kan kopiera till din stack</span></li>
+    </ol>
+
+    <section class="gate" aria-labelledby="gate-title">
+      <h2 id="gate-title">Be om paketet</h2>
+      <p class="gate-help">Bara mejl. Ingen offentlig dump. Inget konto att skapa.</p>
+
+      <!--
+        Formspree live wire (domain lock = crewless.se only).
+        Fields: email, name, intent, product_id, _subject, _gotcha; JS sets _replyto.
+      -->
+      <form
+        id="pack-gate-form"
+        class="form"
+        method="POST"
+        action="#"
+        data-endpoint="https://formspree.io/f/xjykqdvj"
+        data-dry-run="false"
+        novalidate
+      >
+        <label>
+          <span>Jobbmejl</span>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            autocomplete="email"
+            required
+            placeholder="du@foretag.se"
+            aria-describedby="email-hint"
+          />
+          <span id="email-hint" class="field-hint">Vi svarar till den här adressen.</span>
+          <span id="email-error" class="field-error" role="alert" hidden></span>
+        </label>
+        <label>
+          <span>Namn <em>(valfritt)</em></span>
+          <input type="text" name="name" autocomplete="name" placeholder="Förnamn" />
+        </label>
+        <label>
+          <span>Varför du frågar <em>(valfritt)</em></span>
+          <select name="intent">
+            <option value="">Välj…</option>
+            <option value="adopt_self">För mitt eget team</option>
+            <option value="walkthrough">Vill ha en genomgång</option>
+            <option value="curious">Nyfiken / research</option>
+            <option value="hours">Söker bara anpassade timmar</option>
+          </select>
+        </label>
+        <label class="hp" aria-hidden="true">
+          <span>Företagets webbplats</span>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </label>
+        <input type="hidden" name="product_id" value="P-001" />
+        <input type="hidden" name="_subject" value="P-001 method pack request (sv)" />
+        <button type="submit" id="submit-btn">Skicka paketet till mig</button>
+      </form>
+
+      <p id="form-status" class="status" role="status" aria-live="polite" hidden></p>
+      <p class="underclaim">
+        Fortfarande tidigt. Korta startfiler — inte en företagsbibel, inte en privat produkt,
+        inte ett modellstack-kit. Om folk bara vill ha timmar och aldrig återanvänder paketet
+        slutar vi erbjuda det.
+      </p>
+    </section>
+
+    <section class="what" aria-labelledby="what-title">
+      <h2 id="what-title">Vad du får</h2>
+      <ul>
+        <li>Ett enkelt kontrakt agenter kan starta från — och tydliga nej-linjer</li>
+        <li>När agenter beslutar själva vs när en människa måste glänta</li>
+        <li>En kort produktionslinje: utkast → granskning → merge</li>
+        <li>Stoppformer — inklusive när köpare bara vill ha timmar</li>
+      </ul>
+      <p class="note">
+        Du får <strong>inte</strong> en handelsprodukt, en privat dump eller ett ”AI-fabriks”-kit.
+      </p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a href="/sv/">← Crewless hem</a>
+    <a href="/sv/#contact">Skriv till oss</a>
+  </footer>
+
+  <script src="gate.js"></script>
+</body>
+</html>

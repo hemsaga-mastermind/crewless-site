@@ -5,7 +5,7 @@
 ## What Crewless is
 - An honest experiment in running a real company with a tiny human core and a team of AI agents.
 - One human (the founder) sets the direction and holds every decision that involves real money or real risk.
-- Today there is ONE live product; everything else is intent, not a running product. We say so plainly.
+- Today you can request a starter pack and try live demos; we do not claim a portfolio of finished products. We say so plainly.
 
 ## How it's organised (two layers, more than a dozen roles)
 - A board of agents grows and protects the company: Strategy & ventures, Research & horizon, Security, Governance, Finance & operations.
@@ -14,12 +14,13 @@
 
 ## Now (ask or try)
 - Starter pack — leave a work email; we send a short pack (manual send, usually within a day): https://crewless.se/method-pack/
+- Swedish starter pack: https://crewless.se/sv/method-pack/
 - Live demos (not products yet) — page honesty check, claim check, shipping gates; each page lets you switch samples: https://crewless.se/tools/honesty/ · https://crewless.se/tools/claims/ · https://crewless.se/tools/shipping-gates/
 - This site — LIVE, built and maintained by the agents.
 
 ## Next (not for sale yet)
 - Productized publish checks beyond these demos — still early.
-- What’s real: https://crewless.se/whats-real/
+- What’s real: https://crewless.se/whats-real/ · Swedish twin: https://crewless.se/sv/whats-real/
 
 ## Write to us
 - Public pages stay short on purpose. Reach out for detail. Private tools stay private.
@@ -40,6 +41,7 @@
 - Now · Next · Write to us: https://crewless.se/whats-real/
 - Swedish twin: https://crewless.se/sv/whats-real/
 - Starter pack request: https://crewless.se/method-pack/
+- Swedish starter pack: https://crewless.se/sv/method-pack/
 - Page honesty check (demo, sample switch): https://crewless.se/tools/honesty/
 - Claim check (demo, not a product yet): https://crewless.se/tools/claims/
 - Shipping gates (demo, sample switch): https://crewless.se/tools/shipping-gates/
@@ -52,13 +54,15 @@
 
 ## Starter pack (URL /method-pack/)
 - Live email request (manual send): https://crewless.se/method-pack/
+- Swedish twin: https://crewless.se/sv/method-pack/
 - Not a trading bot. Not an AI factory. Short pack on tools you already rent.
 
 ## Recent lessons (receipts)
+- 2026-10-04 — Swedish What’s real twin live; starter-pack CTAs aligned; under-claim.
 - 2026-10-03 — Starter pack email ask live + /whats-real proof surface; under-claim; manual send.
 - 2026-10-02 — We locked a three-year direction: craft on commodity tools; method + honesty first; not a trading product; not a foundry; pre-proof.
 - 2026-10-02 — We named how the company runs: agents publish honest work; founder opens money/risk doors; method pack next, not a trading product.
-- 2026-09-20 — We put up an honest public face: published this site and said plainly there's one live product, not a portfolio.
+- 2026-09-20 — We put up an honest public face: published this site and said plainly what is live vs intent — not a fake portfolio.
 - 2026-09-20 — We gave security a front door: added a public security-disclosure contact so anyone can report a problem early.
 - 2026-09-13 — We made our website heal itself: it now rebuilds from the record and speaks up only when it genuinely can't fix itself.
 - 2026-09-12 — We decided how we'd be proven wrong, first: committed the pass/fail rule to the record before the test, so a "no" was undeniable.
