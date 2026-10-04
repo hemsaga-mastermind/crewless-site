@@ -1,0 +1,32 @@
+{
+  "demo": true,
+  "sample": "missing reviewer mark",
+  "result": "Blocked",
+  "badge": "Needs fix",
+  "summary": "Sample change with careful page wording and a kill line — but no independent reviewer mark.",
+  "note": "Demo only — not a hosted gate, not a trading product.",
+  "clean": false,
+  "checks": [
+    {
+      "kind": "Page wording",
+      "detail": "Careful marketing copy — nothing risky flagged",
+      "ok": true
+    },
+    {
+      "kind": "Reviewer mark",
+      "detail": "No independent reviewer label",
+      "ok": false
+    },
+    {
+      "kind": "Kill line",
+      "detail": "A kill line states when to stop shipping this claim",
+      "ok": true
+    }
+  ],
+  "findings": [
+    {
+      "kind": "Missing reviewer",
+      "detail": "No independent reviewer mark on the change"
+    }
+  ]
+}

@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Crewless — Shipping gates</title>
-  <meta name="description" content="See a demo of before-it-ships checks: page wording, a reviewer mark, and a kill line. One sample passes, one is blocked. Not a product yet." />
+  <meta name="description" content="See a demo of before-it-ships checks: page wording, a reviewer mark, and a kill line. Switch blocked samples. Not a product yet." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://crewless.se/tools/shipping-gates/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta property="og:title" content="Crewless — Shipping gates" />
-  <meta property="og:description" content="Optional demo: before it ships — page wording, reviewer mark, kill line. One sample passes, one is blocked." />
+  <meta property="og:description" content="Optional demo: before it ships — page wording, reviewer mark, kill line. Switch wording, no reviewer, no kill line, or rush samples." />
   <meta property="og:url" content="https://crewless.se/tools/shipping-gates/" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +39,7 @@
         <h1>Catch a bad ship before it leaves.</h1>
         <p class="lede">
           Two sample changes side by side — one <b>passes</b>, one is <b>blocked</b>.
-          Checks page wording, a reviewer mark, and a kill line.
+          Switch the blocked sample to see wording, reviewer, or kill-line misses.
           Demo only. Not a product yet. A human still reviews.
         </p>
       </div>
@@ -50,6 +50,16 @@
         <a class="btn secondary" href="/">Home</a>
       </div>
     </header>
+
+    <div class="sample-picker" role="group" aria-label="Try another blocked sample">
+      <p class="sample-picker-label">Try another blocked sample</p>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip is-active" data-sample="wording" aria-pressed="true">Wording</button>
+        <button type="button" class="sample-chip" data-sample="reviewer" aria-pressed="false">No reviewer</button>
+        <button type="button" class="sample-chip" data-sample="killline" aria-pressed="false">No kill line</button>
+        <button type="button" class="sample-chip" data-sample="rush" aria-pressed="false">Rush</button>
+      </div>
+    </div>
 
     <section class="demo-stage" aria-label="Passes versus blocked demo reports">
       <article class="report clean" id="report-clean">
@@ -103,7 +113,7 @@
         </div>
         <div class="report-body">
           <p class="meta-soft" data-meta>
-            Sample change written on purpose with risky page wording, no reviewer mark, and no kill line.
+            Sample change with risky page wording — reviewer mark and kill line are present, but the page text still fails.
           </p>
           <p class="verdict fail" data-verdict>
             Blocked — do not ship as-is.
@@ -116,11 +126,11 @@
               </li>
               <li>
                 <span class="cat">Reviewer mark</span>
-                <span class="detail">No independent reviewer label</span>
+                <span class="detail">Independent reviewer label present</span>
               </li>
               <li>
                 <span class="cat">Kill line</span>
-                <span class="detail">No kill line saying when to stop shipping this claim</span>
+                <span class="detail">A kill line states when to stop shipping this claim</span>
               </li>
             </ul>
           </div>
@@ -138,24 +148,16 @@
                 <span class="cat">Risky claim</span>
                 <span class="detail">Money or desk vocabulary flagged in page text</span>
               </li>
-              <li>
-                <span class="cat">Missing reviewer</span>
-                <span class="detail">No independent reviewer mark on the change</span>
-              </li>
-              <li>
-                <span class="cat">Missing kill line</span>
-                <span class="detail">No kill line stating when to stop shipping this claim</span>
-              </li>
             </ul>
           </div>
           <details class="tech">
             <summary>Report details</summary>
-            <p class="fixture">
+            <p class="fixture" data-fixture-links>
               Sample files (written to fail on purpose):
-              <a href="./demo/fail.html">page</a> ·
-              <a href="./demo/fail_pr.json">change meta</a> ·
-              <a href="./demo/fail.json">report</a> ·
-              <a href="./demo/fail.txt">text</a>
+              <a href="./demo/fail_wording.html">page</a> ·
+              <a href="./demo/fail_wording_pr.json">change meta</a> ·
+              <a href="./demo/fail_wording.json">report</a> ·
+              <a href="./demo/fail_wording.txt">text</a>
             </p>
           </details>
         </div>

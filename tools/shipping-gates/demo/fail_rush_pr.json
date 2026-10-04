@@ -1,0 +1,8 @@
+{
+  "title": "agent: ship landing rewrite",
+  "body": "LGTM from the same agent that wrote it. Ship it.",
+  "labels": [
+    {"name": "docs"},
+    {"name": "agent-pr"}
+  ]
+}

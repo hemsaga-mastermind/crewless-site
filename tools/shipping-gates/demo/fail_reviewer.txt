@@ -1,0 +1,6 @@
+Shipping gates demo — Blocked sample (No reviewer)
+
+Page: careful marketing copy — nothing risky flagged.
+Pull request meta: kill line present; no independent reviewer mark.
+
+Gate result: Blocked. Do not publish as-is.

@@ -1,0 +1,8 @@
+{
+  "title": "docs: refresh landing copy",
+  "body": "Ship it.\n\nKill: waive-rate >50% in two weeks.\n",
+  "labels": [
+    {"name": "docs"},
+    {"name": "agent-pr"}
+  ]
+}

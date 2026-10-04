@@ -1,9 +1,9 @@
 {
   "demo": true,
-  "sample": "risky page wording",
+  "sample": "rush — all gaps",
   "result": "Blocked",
   "badge": "Needs fix",
-  "summary": "Sample change with risky page wording — reviewer mark and kill line are present, but the page text still fails.",
+  "summary": "Sample change written to fail on purpose — risky page wording, no independent reviewer mark, no kill line.",
   "note": "Demo only — not a hosted gate, not a trading product.",
   "clean": false,
   "checks": [
@@ -14,13 +14,13 @@
     },
     {
       "kind": "Reviewer mark",
-      "detail": "Independent reviewer label present",
-      "ok": true
+      "detail": "No independent reviewer label",
+      "ok": false
     },
     {
       "kind": "Kill line",
-      "detail": "A kill line states when to stop shipping this claim",
-      "ok": true
+      "detail": "No kill line saying when to stop shipping this claim",
+      "ok": false
     }
   ],
   "findings": [
@@ -35,6 +35,14 @@
     {
       "kind": "Risky claim",
       "detail": "Money or desk vocabulary flagged in page text"
+    },
+    {
+      "kind": "Missing reviewer",
+      "detail": "No independent reviewer mark on the change"
+    },
+    {
+      "kind": "Missing kill line",
+      "detail": "No kill line stating when to stop shipping this claim"
     }
   ]
 }
