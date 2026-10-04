@@ -13,3 +13,6 @@
 /tools/before-it-ships /tools/shipping-gates/ 301
 /tools/before-it-ships/ /tools/shipping-gates/ 301
 /tools/before-it-ships/* /tools/shipping-gates/:splat 301
+
+# Common mistype → well-known security.txt (RFC 9116)
+/security.txt /.well-known/security.txt 301

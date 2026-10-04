@@ -14,3 +14,5 @@ compatibility_date = "2026-10-02"
 [assets]
 directory = "."
 html_handling = "auto-trailing-slash"
+# Blank null-body 404s dump strangers; serve nearest 404.html with HTTP 404.
+not_found_handling = "404-page"

@@ -289,6 +289,44 @@ def main() -> int:
         if 'hreflang="sv"' not in html:
             fails.append(f"P0 {rel}: missing hreflang sv → /sv/brief/")
 
+    # Home EN+SV must advertise language alternates (shopfront hreflang)
+    for path, need_sv in (("/", True), ("/sv/", True)):
+        html = local_html.get(path, "")
+        if not html:
+            continue
+        if 'hreflang="en"' not in html or 'hreflang="sv"' not in html:
+            fails.append(f"P0 {path}: missing home hreflang en/sv")
+        if 'https://crewless.se/sv/' not in html:
+            fails.append(f"P0 {path}: missing absolute SV home alternate")
+
+    # Stranger-facing 404 page (Workers not_found_handling = 404-page)
+    four = root / "404.html"
+    if not four.exists():
+        fails.append("P0 missing 404.html stranger pass page")
+    else:
+        html404 = four.read_text(encoding="utf-8", errors="replace")
+        for needle in (
+            "This page isn’t here.",
+            "Den här sidan finns inte.",
+            'href="/"',
+            'href="/method-pack/"',
+            'href="/#contact"',
+            'href="/sv/"',
+            'href="/sv/method-pack/"',
+            'href="/sv/#contact"',
+            "Not a trading bot",
+        ):
+            if needle not in html404:
+                fails.append(f"P0 404.html missing {needle!r}")
+        for bad in ("dogfood", "SKU", "fail-closed", "scanner", "cups"):
+            if bad.lower() in strip_tags(html404).lower():
+                fails.append(f"P0 404.html jargon: {bad!r}")
+    wrangler = root / "wrangler.toml"
+    if wrangler.exists():
+        wt = wrangler.read_text(encoding="utf-8", errors="replace")
+        if 'not_found_handling' not in wt or "404-page" not in wt:
+            fails.append("P0 wrangler.toml missing assets.not_found_handling = 404-page")
+
     if args.live:
         print(f"Live probe {args.base} …")
         for route in KEY_ROUTES:
@@ -338,6 +376,25 @@ def main() -> int:
                     fails.append(f"P0 live {route}: EN article dumps SV visitors (no /sv/brief/ escape)")
                 if "Svenska rapporter" not in body:
                     fails.append(f"P0 live {route}: missing Svenska rapporter escape label")
+            if route in ("/", "/sv/"):
+                if 'hreflang="en"' not in body or 'hreflang="sv"' not in body:
+                    fails.append(f"P0 live {route}: missing home hreflang en/sv")
+        # Live 404 must be HTTP 404 with stranger HTML (not blank null-body)
+        miss = urljoin(args.base + "/", "/does-not-exist-stranger-test-xyz/")
+        code404, body404 = fetch_live(miss)
+        if code404 != 404:
+            fails.append(f"P0 live missing-URL expected HTTP 404, got {code404}")
+        elif not body404 or "This page isn’t here." not in body404:
+            fails.append("P0 live 404 is blank or missing stranger pass copy")
+        elif 'href="/method-pack/"' not in body404 or 'href="/#contact"' not in body404:
+            fails.append("P0 live 404 missing Home/Pack/Write escapes")
+        else:
+            print(f"  {code404} /does-not-exist-stranger-test-xyz/ (stranger 404 OK)")
+        # security.txt alias
+        csec, _ = fetch_live(urljoin(args.base + "/", "/security.txt"))
+        if csec not in (200, 301, 302):
+            # follow already in fetch_live; accept 200 after redirect
+            fails.append(f"P0 live /security.txt HTTP {csec}")
         # quick link sample from home
         code, home = fetch_live(args.base + "/")
         if code == 200:

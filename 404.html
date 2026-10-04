@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Page not found · Crewless</title>
+  <meta name="description" content="That page isn’t on crewless.se. Go home, request the starter pack, or write to us." />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="canonical" href="https://crewless.se/404.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+  <style>
+    :root{
+      --bg:#05070d; --ink:#eef2f8; --mut:#8a94a8; --dim:#565f72; --line:#161d2b;
+      --panel:rgba(13,19,30,.72); --c1:#4fe0d0; --c2:#7c8cff; --c3:#b57bff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      min-height:100vh;background:
+        radial-gradient(900px 420px at 12% -10%, rgba(79,224,208,.14), transparent 55%),
+        radial-gradient(700px 380px at 90% 0%, rgba(124,140,255,.12), transparent 50%),
+        var(--bg);
+      color:var(--ink);
+      font:400 16px/1.65 "Space Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none;}
+    .wrap{max-width:720px;margin:0 auto;padding:0 clamp(1.15rem,4vw,2.2rem);}
+    header{border-bottom:1px solid var(--line);backdrop-filter:blur(12px);
+      background:linear-gradient(#05070d,#05070de6);}
+    .bar{display:flex;align-items:center;height:58px;gap:.7rem;}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.06rem;}
+    .brand .ac{width:1.55rem;height:1.55rem;display:grid;place-items:center;}
+    .pill{font-size:.72rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;
+      padding:.16rem .46rem;margin-left:auto;}
+    .pill:hover{color:var(--c1);border-color:rgba(79,224,208,.35);}
+    main{padding:clamp(3.2rem,10vw,5.5rem) 0 3rem;}
+    .kick{font:500 .78rem/1 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;
+      color:var(--c1);margin-bottom:.85rem;}
+    h1{font-size:clamp(1.7rem,4.5vw,2.35rem);line-height:1.15;letter-spacing:-.02em;max-width:18ch;}
+    .lede{margin-top:1rem;color:var(--mut);max-width:38ch;}
+    .sv{margin-top:1.6rem;padding-top:1.35rem;border-top:1px solid var(--line);}
+    .sv h2{font-size:1.15rem;font-weight:600;margin-bottom:.35rem;}
+    .sv p{color:var(--mut);font-size:.95rem;max-width:38ch;}
+    .cta{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.75rem;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.72rem 1.05rem;
+      border-radius:10px;font-weight:600;font-size:.92rem;border:1px solid transparent;transition:.15s ease;}
+    .btn.p{background:linear-gradient(135deg,var(--c1),var(--c2));color:#041016;}
+    .btn.p:hover{filter:brightness(1.06);}
+    .btn.s{border-color:var(--line);color:var(--ink);background:var(--panel);}
+    .btn.s:hover{border-color:rgba(79,224,208,.4);color:var(--c1);}
+    .hint{margin-top:1.8rem;font-size:.82rem;color:var(--dim);}
+    footer{padding:1.5rem 0 2.4rem;color:var(--dim);font-size:.78rem;border-top:1px solid var(--line);}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="/" aria-label="Crewless — home">
+        <span class="ac" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="100%" height="100%"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe0d0"/><stop offset=".55" stop-color="#7c8cff"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs><circle cx="50" cy="50" r="32" fill="none" stroke="url(#hg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="160 42" transform="rotate(-52 50 50)"/><circle cx="50" cy="50" r="10" fill="#4fe0d0"/></svg>
+        </span>
+        Crewless
+      </a>
+      <a class="pill" href="/sv/" aria-label="Läs på svenska">SV</a>
+    </div>
+  </header>
+
+  <main class="wrap" id="missing">
+    <p class="kick">404</p>
+    <h1>This page isn’t here.</h1>
+    <p class="lede">
+      The link may be old, or the address mistyped. You can go home, request the starter pack, or write to us.
+    </p>
+
+    <div class="cta" aria-label="Next steps">
+      <a class="btn p" href="/">Home</a>
+      <a class="btn s" href="/method-pack/">Starter pack</a>
+      <a class="btn s" href="/#contact">Write to us</a>
+    </div>
+
+    <section class="sv" lang="sv" aria-labelledby="sv-miss">
+      <h2 id="sv-miss">Den här sidan finns inte.</h2>
+      <p>Länken kan vara gammal, eller adressen felstavad. Gå hem, be om startpaketet, eller skriv till oss.</p>
+      <div class="cta">
+        <a class="btn s" href="/sv/">Hem</a>
+        <a class="btn s" href="/sv/method-pack/">Startpaket</a>
+        <a class="btn s" href="/sv/#contact">Skriv till oss</a>
+      </div>
+    </section>
+
+    <p class="hint">Not a trading bot. Not an AI factory.</p>
+  </main>
+
+  <footer class="wrap">Crewless · useful craft, run by agents</footer>
+</body>
+</html>

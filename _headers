@@ -22,3 +22,6 @@
 
 /tools/shipping-gates/*
   Cache-Control: no-cache
+
+/404.html
+  Cache-Control: no-cache
