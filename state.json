@@ -1,9 +1,9 @@
 {
- "built_utc": "2026-10-04T19:25:42Z",
+ "built_utc": "2026-10-05T00:26:20Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 67,
+ "changes_7d": 68,
  "active_days_7d": 7,
  "receipts_count": 11,
  "receipts": [
@@ -71,7 +71,7 @@
    }
   ],
   "verdict": "UNVERIFIED",
-  "updated": "2026-10-04"
+  "updated": "2026-10-05"
  },
  "products": [
   {
@@ -80,7 +80,7 @@
    "confidence": 18,
    "measures": "legacy internal percent — not a success metric; does not mean on track",
    "basis": "core (long-term compounding) evidenced by published research, not yet proven by our own forward gate; swing & tactical sleeve(s) not yet proven; 1 live SIP month(s) settled so far",
-   "updated": "2026-10-04",
+   "updated": "2026-10-05",
    "score_kind": "legacy_percent",
    "not_success_metric": true,
    "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)",
@@ -115,10 +115,10 @@
   {
    "key": "keel",
    "name": "Keel",
-   "confidence": 70,
+   "confidence": 62,
    "measures": "legacy internal percent for continuity hygiene — not a money success metric",
-   "basis": "continuity layer under every product; internal-working, no external track record yet — durable identity in git, reconstitution defined, self-correcting governor running",
-   "updated": "2026-10-04",
+   "basis": "continuity layer under every product; internal-working, no external track record yet — durable identity in git, reconstitution defined, governor heartbeat stale",
+   "updated": "2026-10-05",
    "score_kind": "legacy_percent",
    "not_success_metric": true,
    "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
@@ -126,10 +126,10 @@
   {
    "key": "beacon",
    "name": "Beacon",
-   "confidence": 65,
+   "confidence": 55,
    "measures": "legacy internal percent for site liveness — not a money success metric",
-   "basis": "this website; site not serving correctly, self-maintaining hourly, leak-gated, locked template",
-   "updated": "2026-10-04",
+   "basis": "this website; site not serving correctly, self-maintenance loop stalled, leak-gated, locked template",
+   "updated": "2026-10-05",
    "score_kind": "legacy_percent",
    "not_success_metric": true,
    "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
@@ -212,10 +212,10 @@
  "company": {
   "key": "company",
   "name": "Crewless",
-  "confidence": 40,
+  "confidence": 32,
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
-  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence not serving correctly; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
-  "updated": "2026-10-04",
+  "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence not serving correctly; reconstitution and reproducible deploy defined; durable git identity and boot contract; governor heartbeat stale; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
+  "updated": "2026-10-05",
   "items": {
    "recon_defined": 3,
    "deploy_reproducible": 3,
@@ -225,12 +225,12 @@
    "failover_proven": 0,
    "tests_green": 0,
    "boot_contract_present": 4,
-   "governor_alive": 4,
+   "governor_alive": 0,
    "memory_hygiene": 0,
    "continuity_drill": 0,
    "agastya_ok": 4,
    "beacon_ok": 0,
-   "keel_ok": 4,
+   "keel_ok": 0,
    "discipline_exercised": 6,
    "presence_live": 0,
    "honesty_ledger_exists": 2,
@@ -241,15 +241,15 @@
   },
   "dimensions": {
    "D1_foundations": 9,
-   "D2_keel": 8,
-   "D3_products": 14,
+   "D2_keel": 4,
+   "D3_products": 10,
    "D4_presence_honesty": 4,
    "D5_track_record": 5
   },
-  "raw": 40,
+  "raw": 32,
   "penalty": 0,
   "ceiling": 55,
-  "itemized": "D1 9/32; D2 8/20; D3 14/18; D4 4/10; D5 5/20; raw 40; ceiling 55",
+  "itemized": "D1 9/32; D2 4/20; D3 10/18; D4 4/10; D5 5/20; raw 32; ceiling 55",
   "score_kind": "legacy_percent",
   "not_success_metric": true,
   "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
