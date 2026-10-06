@@ -1,9 +1,9 @@
 {
- "built_utc": "2026-10-06T04:29:34Z",
+ "built_utc": "2026-10-06T04:40:59Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 66,
+ "changes_7d": 67,
  "active_days_7d": 8,
  "receipts_count": 11,
  "receipts": [
@@ -128,7 +128,7 @@
    "name": "Beacon",
    "confidence": 83,
    "measures": "legacy internal percent for site liveness — not a money success metric",
-   "basis": "this website; live and serving, self-maintaining hourly, leak-gated, locked template",
+   "basis": "this website; live and serving, agent-managed hourly (site_keeper), leak-gated, locked template",
    "updated": "2026-10-06",
    "score_kind": "legacy_percent",
    "not_success_metric": true,
