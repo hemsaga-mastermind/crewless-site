@@ -1,10 +1,10 @@
 {
- "built_utc": "2026-10-07T00:40:20Z",
+ "built_utc": "2026-10-08T00:44:43Z",
  "desk_state": "holding",
  "desk_label": "Holding",
  "desk_desc": "Running, and only acting when there's a reason to.",
- "changes_7d": 61,
- "active_days_7d": 7,
+ "changes_7d": 60,
+ "active_days_7d": 6,
  "receipts_count": 11,
  "receipts": [
   {
@@ -71,7 +71,7 @@
    }
   ],
   "verdict": "UNVERIFIED",
-  "updated": "2026-10-07"
+  "updated": "2026-10-08"
  },
  "products": [
   {
@@ -80,7 +80,7 @@
    "confidence": 18,
    "measures": "legacy internal percent — not a success metric; does not mean on track",
    "basis": "core (long-term compounding) evidenced by published research, not yet proven by our own forward gate; swing & tactical sleeve(s) not yet proven; 1 live SIP month(s) settled so far",
-   "updated": "2026-10-07",
+   "updated": "2026-10-08",
    "score_kind": "legacy_percent",
    "not_success_metric": true,
    "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)",
@@ -118,7 +118,7 @@
    "confidence": 70,
    "measures": "legacy internal percent for continuity hygiene — not a money success metric",
    "basis": "continuity layer under every product; internal-working, no external track record yet — durable identity in git, reconstitution defined, self-correcting governor running",
-   "updated": "2026-10-07",
+   "updated": "2026-10-08",
    "score_kind": "legacy_percent",
    "not_success_metric": true,
    "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
@@ -129,7 +129,7 @@
    "confidence": 83,
    "measures": "legacy internal percent for site liveness — not a money success metric",
    "basis": "this website; live and serving, agent-managed hourly (site_keeper), leak-gated, locked template",
-   "updated": "2026-10-07",
+   "updated": "2026-10-08",
    "score_kind": "legacy_percent",
    "not_success_metric": true,
    "success_metric": "legacy percent is not the success metric; use weekly alpha vs NIFTYBEES (internal)"
@@ -215,7 +215,7 @@
   "confidence": 47,
   "measures": "our own confidence Crewless proves its thesis and survives, from internal state",
   "basis": "foundations-first score of resilience and trust, not any product's trading returns — public presence live and honest; reconstitution and reproducible deploy defined; durable git identity and boot contract; self-correcting governor live; a public mistake log with real killed ideas; the upside is gated on drills we have not run yet (disaster-recovery, failover, a fresh green test-run receipt) and on outside validation we do not have; no external validation of the company yet.",
-  "updated": "2026-10-07",
+  "updated": "2026-10-08",
   "items": {
    "recon_defined": 3,
    "deploy_reproducible": 3,
